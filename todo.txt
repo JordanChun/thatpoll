@@ -1,0 +1,34 @@
+###############################################
+
+CLIENT
+----------------------------------------------------------
+voting functions
+[DONE]split components/Poll.js -> Choices, Results
+[DONE] create poll redirect to new created poll
+create poll validation
+[DONE] moment/date tests - poll/pollpreview
+add content to index page
+[DONE] split poll component? (Poll Info, Poll Choices, Poll Results) less renders
+add unique views to polls
+actual polls pages
+polls page filtered views. (most votes. most views, most recent)
+featured poll (most votes or views to front page(index))
+side bar for visit history with localstorage
+share and report features
+
+SERVER
+----------------------------------------------------------
+[DONE] date field to dateCreated
+results mongoose schema
+views mongoose schema
+add unique views/ unique view middleware
+create poll validation
+limit poll creations to 5 every 3 hours?
+
+voting api routes
+
+use express session?
+express rate limiter
+
+
+links taking more than 1 click to load? cause recompiling time and loading?
