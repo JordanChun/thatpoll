@@ -29902,7 +29902,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 5:
 /*!*****************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
   \*****************************************************************************************************************************/
@@ -29925,5 +29925,5 @@ module.exports = dll_40e5610532f3b6b970d9;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js","styles"]]]);
+},[[5,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=index.js.map

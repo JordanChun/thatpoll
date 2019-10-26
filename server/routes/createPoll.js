@@ -24,7 +24,10 @@ router.post('/create-poll', getUser, async (req, res) => {
   try {
     user.createdPolls.push(url);
     user = await user.save();
-
+    let results = [];
+    choices.forEach(() => {
+      results.push(0);
+    });
     let poll = await new Poll({
       creatorIp: user.ip,
       url: url,
@@ -32,7 +35,8 @@ router.post('/create-poll', getUser, async (req, res) => {
       desc: desc,
       choices: choices,
       visibility: visibility,
-      votingPeriod: votingPeriod
+      votingPeriod: votingPeriod,
+      results: results
     });
     poll = await poll.save();
     res.status(201).json({ message: 'success', url: url });
