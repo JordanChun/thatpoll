@@ -34,7 +34,7 @@ const pollSchema = new mongoose.Schema({
     require: true,
     default: 6
   },
-  results: [0, 0, 0, 0],
+  results: [],
 });
 
 module.exports = mongoose.model('Poll', pollSchema);

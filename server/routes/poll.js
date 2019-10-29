@@ -2,14 +2,31 @@ const express = require('express');
 const router = express.Router();
 
 const Poll = require('../models/Poll');
+const Vote = require('../models/Vote');
 const Visits = require('../models/Visits');
+
+const ipaddr = require('ipaddr.js');
 
 
 router.get('/poll/:slug', async (req, res) => {
   try {
+    //console.log(ipaddr.process(req.clientIp).kind());
+    const ip = req.clientIp;
+    //const ip = ipaddr.process(req.clientIp).octets.join('.');
     const poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-      //const visits = await Visits.countDocuments({ url: req.params.slug });
+      const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
+      console.log(req.params.slug);
+      console.log(ip);
+      console.log(userDidVote);
+      const userData = { 
+        didVote: userDidVote,
+        vote: null
+      };
+      if(userDidVote) {
+        const userVote = await Vote.findOne({ url: req.params.slug, ip: ip });
+        userData.vote = userVote.vote;
+      }
       const pollData = {
         title: poll.title,
         desc: poll.desc,
@@ -17,9 +34,12 @@ router.get('/poll/:slug', async (req, res) => {
         choices: poll.choices,
         votingPeriod: poll.votingPeriod,
         dateCreated: poll.dateCreated,
-        visits: 0
+        totalVotes: poll.totalVotes,
+        visits: 0,
       }
-      res.status(200).json(pollData);
+
+
+      res.status(200).json({pollData, userData});
     } else {
       res.status(404).json({ message: 'not found'});
     }
@@ -27,6 +47,14 @@ router.get('/poll/:slug', async (req, res) => {
     console.log(err)
   }
   
+});
+
+router.get('/poll/results/:slug', async (req, res) => {
+  try {
+    
+  } catch (err) {
+    
+  }
 });
 
 async function getVisits(req, res, next) {

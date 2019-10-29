@@ -95,7 +95,7 @@ class CreatePoll extends React.Component {
     } = this.state;
 
     return (
-      <Layout>
+      <Layout pageTitle='Create Poll'>
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
         <hr />
         <Form autoComplete='off'>

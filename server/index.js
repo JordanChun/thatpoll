@@ -14,6 +14,9 @@ const requestIp = require('request-ip');
 
 const mongoose = require('mongoose');
 
+const ua = require('universal-analytics');
+const visitor = ua('UA-150975737-1');
+
 mongoose.connect('mongodb://admin:8398dfejuw98j3wsfu93d@ds229088.mlab.com:29088/statmix', {useNewUrlParser: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -50,6 +53,7 @@ app.prepare().then(() => {
   });
   
   server.get('/poll/:slug', (req, res) => {
+    visitor.pageview(`/poll/${req.params.slug}`).send();
     return app.render(req, res, '/poll', { slug: req.params.slug });
   });
 

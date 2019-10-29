@@ -8,7 +8,6 @@ import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import absoluteUrl from 'next-absolute-url';
 import CompactOptionsToggle from '../components/CompactOptionsToggle';
 
-
 class Home extends React.Component {
   static async getInitialProps({req}) {
     const { origin } = absoluteUrl(req);
@@ -28,7 +27,7 @@ class Home extends React.Component {
   render() {
     const { polls } = this.props;
     return (
-      <Layout>
+      <Layout pageTitle='StatMix'>
         <h4 className='page-header'>Recent Polls</h4>
         <hr />
         {polls.map(poll => (
@@ -49,13 +48,13 @@ class Home extends React.Component {
               <div>
                 <Link href={{ pathname: '/poll', query: { slug: poll.url } }} as={`/poll/${poll.url}`}>
                   <a>
-                    <Button variant="grey-blue" className='view-poll'>
+                    <Button variant="grey-blue" size="sm">
                       View Poll
                     </Button>
                   </a>
                 </Link>
                 <div className='poll-stat' style={{ lineHeight: '2.5', marginLeft: '0.75rem' }}>
-                  <span>{poll.totalVotes} votes • Posted {poll.dateCreated}</span>
+                  <span>{poll.totalVotes} votes • {poll.dateCreated}</span>
                 </div>
               </div>
               <div className='poll-card-actions-options'>

@@ -1,12 +1,10 @@
 import Layout from '../components/Layout';
 import fetch from 'isomorphic-unfetch';
 import moment from 'moment';
-import InputGroup from 'react-bootstrap/InputGroup';
 import Alert from 'react-bootstrap/Alert';
 import PollChoices from '../components/PollChoices';
 import PollResults from '../components/PollResults';
-import { Router } from 'next/router';
-import Error from 'next/error';
+import Router from 'next/router';
 import NotFound from './not-found';
 import absoluteUrl from 'next-absolute-url';
 
@@ -17,11 +15,47 @@ class PollPage extends React.Component {
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
   
-    return { errorCode, poll: data }
+    return { errorCode, poll: data.pollData, user: data.userData }
   }
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      selectedVote: 0
+    }
+
+    this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
+    this.submitVote = this.submitVote.bind(this);
+  }
+
+  updateChoiceSelected(e) {
+    this.setState({ selectedVote: e.target.value });
+  }
+
+  async submitVote(e, req) {
+    e.preventDefault();
+    const { origin } = absoluteUrl(req);
+    try {
+      const res = await fetch(`${origin}/api/poll/vote/${this.props.url.query.slug}`, {
+        method: 'POST',
+        headers: {
+          'Acceot': 'accplication/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({selectedVote: this.state.selectedVote})
+      });
+
+      const data = await res.json();
+      if(data.message === 'success') {
+        Router.push(`/poll/${this.props.url.query.slug}`);
+      }
+
+      console.log(data);
+      
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
@@ -30,7 +64,6 @@ class PollPage extends React.Component {
       return <NotFound />
     }
 
-    
     const {
       title,
       desc,
@@ -39,12 +72,12 @@ class PollPage extends React.Component {
       votingPeriod,
       dateCreated,
       visits,
-
+      totalVotes
     } = this.props.poll;
     //console.log(moment.duration(moment(dateCreated).add(votingPeriod, 'hours').diff(dateCreated)).asHours())
     //console.log(moment(dateCreated).add(votingPeriod, 'hours'));
     return (
-      <Layout>
+      <Layout pageTitle={`Poll - ${title}`}>
         <div className='poll-wrapper'>
           {visibility == 'private' ?
             <div className='poll-alert'>
@@ -70,7 +103,11 @@ class PollPage extends React.Component {
           <hr />
           {
             moment(dateCreated).add(votingPeriod, 'hours').isAfter(Date.now()) ?
-            <PollChoices choices={choices} dateCreated={dateCreated} votingPeriod={votingPeriod} />
+            <PollChoices
+              choices={choices} dateCreated={dateCreated} votingPeriod={votingPeriod} totalVotes={totalVotes}
+              updateChoiceSelected={this.updateChoiceSelected}
+              submitVote={this.submitVote}
+            />
             :
             <PollResults />
           }

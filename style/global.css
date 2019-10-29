@@ -39,6 +39,7 @@ button[type='submit'].btn.btn-light-blue {
   border-color: #598ecc;
   color: #e6e6e6;
   border-radius: 2rem;
+  border-width: 2px;
 }
 
 button[type='submit'].btn.btn-light-blue:hover {
@@ -91,11 +92,6 @@ input[type='number']:focus {
 
 .page-header {
   padding: 1rem 0;
-}
-
-.poll-card-actions button.view-poll {
-  font-size: 0.9rem;
-  line-height: 1.2;
 }
 
 .poll-card-actions {
