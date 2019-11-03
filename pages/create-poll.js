@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPoll, faQuestionCircle, faEye } from '@fortawesome/free-solid-svg-icons';
 import PollPreview from '../components/PollPreview';
@@ -44,7 +45,8 @@ class CreatePoll extends React.Component {
       choice4: '',
       visibility: 'public',
       votingPeriod: 6,
-      dateCreated: new Date()
+      dateCreated: new Date(),
+      error: false
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
@@ -76,10 +78,12 @@ class CreatePoll extends React.Component {
       const data = await res.json();
       if(data.message === 'success') {
         Router.push(`/poll/${data.url}`);
+      } else {
+        this.setState({ error: true });
       }
-      console.log(data);
+      //console.log(data);
     } catch(err) {
-      console.log(err)
+      //console.log(err)
     }
   }
 
@@ -92,13 +96,19 @@ class CreatePoll extends React.Component {
       choice3,
       choice4,
       votingPeriod,
+      error
     } = this.state;
 
     return (
       <Layout pageTitle='Create Poll'>
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
         <hr />
-        <Form autoComplete='off'>
+        { error ?
+          <Alert variant='danger'>
+           <b>Error submitting poll</b>
+          </Alert> : null
+        }
+        <Form autoComplete='off' onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label>
               Title
@@ -107,6 +117,7 @@ class CreatePoll extends React.Component {
               value={title}
               onChange={this.inputUpdate}
               type='text' name='title' maxLength='100'
+              required
             />
           </Form.Group>
           <Form.Group>
@@ -132,6 +143,7 @@ class CreatePoll extends React.Component {
                 value={choice1}
                 onChange={this.inputUpdate}
                 type='text' name='choice1' maxLength='50'
+                required
               />
             </Form.Group>
             <Form.Group as={Col}>
@@ -142,6 +154,7 @@ class CreatePoll extends React.Component {
                 value={choice2}
                 onChange={this.inputUpdate} 
                 type='text' name='choice2' maxLength='50'
+                required
               />
             </Form.Group>
           </Form.Row>
@@ -206,7 +219,6 @@ class CreatePoll extends React.Component {
           <hr />
           <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
             <Button 
-              onClick={this.handleSubmit}
               variant='light-blue' type="submit" style={{ width: '200px' }}>
               Create Poll
             </Button>

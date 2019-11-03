@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const pollSchema = new mongoose.Schema({
-  dateCreated: { type: Date, default: Date.now },
+  dateCreated: { type: Date, default: new Date() },
   creatorIp: {
     type: String,
     required: true,
@@ -31,10 +31,15 @@ const pollSchema = new mongoose.Schema({
   },
   votingPeriod: {
     type: Number,
-    require: true,
+    required: true,
     default: 6
   },
   results: [],
+  active: {
+    type: Boolean,
+    required: true,
+    default: true
+  }
 });
 
 module.exports = mongoose.model('Poll', pollSchema);

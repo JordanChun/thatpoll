@@ -5,39 +5,59 @@ const Poll = require('../models/Poll');
 const Vote = require('../models/Vote');
 const Visits = require('../models/Visits');
 
-const ipaddr = require('ipaddr.js');
+const moment = require('moment');
+require('moment-precise-range-plugin');
+
+//const ipaddr = require('ipaddr.js');
 
 
 router.get('/poll/:slug', async (req, res) => {
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
-    const ip = req.clientIp;
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
-    const poll = await Poll.findOne({ url: req.params.slug });
+    const ip = req.clientIp;
+    let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
-      console.log(req.params.slug);
-      console.log(ip);
-      console.log(userDidVote);
       const userData = { 
-        didVote: userDidVote,
-        vote: null
+        didVote: userDidVote
       };
-      if(userDidVote) {
-        const userVote = await Vote.findOne({ url: req.params.slug, ip: ip });
-        userData.vote = userVote.vote;
+
+      // if poll is active calculate timelimit
+      let timelimit = '';
+      if(poll.active) {
+        const endTime = moment(poll.dateCreated,'YYYY-MM-DD HH:mm:ss').add(poll.votingPeriod, 'hours');
+        const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
+        if(endTime > currentTime) {
+          timelimit = 'Voting ends in:';
+          const diff = moment.preciseDiff(endTime, currentTime, true);
+          const days = diff.days;
+          const hours = diff.hours;
+          const minutes = diff.minutes;
+          if(days > 0) timelimit += ` ${days} days`;
+          if(hours > 0) timelimit += ` ${hours} hours`;
+          if(minutes > 0) timelimit += ` ${minutes} minutes`;
+        } else {
+          timelimit = 'Voting has ended'
+          poll = await Poll.findOneAndUpdate({ url: req.params.slug }, { active: false }, {new: true});
+        }
+      } else {
+        timelimit = 'Voting has ended'
       }
+
       const pollData = {
         title: poll.title,
         desc: poll.desc,
         visibility: poll.visibility,
         choices: poll.choices,
         votingPeriod: poll.votingPeriod,
-        dateCreated: poll.dateCreated,
+        dateCreated: moment(poll.dateCreated).format('ll'),
         totalVotes: poll.totalVotes,
+        timelimit: timelimit,
+        active: poll.active,
+        results: poll.results,
         visits: 0,
       }
-
 
       res.status(200).json({pollData, userData});
     } else {
@@ -45,15 +65,6 @@ router.get('/poll/:slug', async (req, res) => {
     }
   } catch (err) {
     console.log(err)
-  }
-  
-});
-
-router.get('/poll/results/:slug', async (req, res) => {
-  try {
-    
-  } catch (err) {
-    
   }
 });
 

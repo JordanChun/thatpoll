@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import absoluteUrl from 'next-absolute-url';
 import CompactOptionsToggle from '../components/CompactOptionsToggle';
+import PollPagination from '../components/PollPagination';
 
 class Home extends React.Component {
   static async getInitialProps({req}) {
@@ -15,7 +16,8 @@ class Home extends React.Component {
     const data = await res.json();
   
     return {
-      polls: data
+      polls: data.pollsArr,
+      totalItems: data.totalItems
     }
   }
 
@@ -25,7 +27,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { polls } = this.props;
+    const { polls, totalItems } = this.props;
     return (
       <Layout pageTitle='StatMix'>
         <h4 className='page-header'>Recent Polls</h4>
@@ -86,6 +88,7 @@ class Home extends React.Component {
             </div>
           </div>
         ))}
+        <PollPagination active={1} totalItems={totalItems} />
       </Layout>
     )
   }

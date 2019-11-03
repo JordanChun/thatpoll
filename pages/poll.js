@@ -1,10 +1,9 @@
 import Layout from '../components/Layout';
 import fetch from 'isomorphic-unfetch';
-import moment from 'moment';
 import Alert from 'react-bootstrap/Alert';
 import PollChoices from '../components/PollChoices';
 import PollResults from '../components/PollResults';
-import Router from 'next/router';
+import { withRouter } from 'next/router'
 import NotFound from './not-found';
 import absoluteUrl from 'next-absolute-url';
 
@@ -22,10 +21,17 @@ class PollPage extends React.Component {
     super(props);
 
     this.state = {
-      selectedVote: 0
+      totalVotes: this.props.poll.totalVotes,
+      results: this.props.poll.results,
+      userDidVote: this.props.user.didVote,
+      revealResults: !this.props.poll.active,
+      resultsLoading: false,
+      refreshResultsLoading: false,
+      selectedVote: null,
     }
 
     this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
+    this.loadResults = this.loadResults.bind(this);
     this.submitVote = this.submitVote.bind(this);
   }
 
@@ -33,28 +39,64 @@ class PollPage extends React.Component {
     this.setState({ selectedVote: e.target.value });
   }
 
+  async loadResults(e, req) {
+    const { origin } = absoluteUrl(req);
+    const { slug } = this.props.router.query;
+    if(!this.state.revealResults) {
+      this.setState({ revealResults: true, resultsLoading: true });
+    } else {
+      this.setState({ refreshResultsLoading: true });
+    }
+    try {
+      const res = await fetch(`${origin}/api/poll/results/${slug}`);
+      const data = await res.json();
+
+      this.setState({
+        totalVotes: data.totalVotes,
+        userDidVote: data.userDidVote,
+        results: data.results,
+        resultsLoading: false,
+        refreshResultsLoading: false,
+      });
+    } catch (err) {
+      
+    }
+  }
+
   async submitVote(e, req) {
     e.preventDefault();
-    const { origin } = absoluteUrl(req);
-    try {
-      const res = await fetch(`${origin}/api/poll/vote/${this.props.url.query.slug}`, {
-        method: 'POST',
-        headers: {
-          'Acceot': 'accplication/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({selectedVote: this.state.selectedVote})
-      });
-
-      const data = await res.json();
-      if(data.message === 'success') {
-        Router.push(`/poll/${this.props.url.query.slug}`);
+    if(this.state.selectedVote !== null) {
+      const { origin } = absoluteUrl(req);
+      const { slug } = this.props.router.query;
+      try {
+        const res = await fetch(`${origin}/api/poll/vote/${slug}`, {
+          method: 'POST',
+          headers: {
+            'Acceot': 'accplication/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({selectedVote: this.state.selectedVote})
+        });
+  
+        const data = await res.json();
+        console.log(data);
+        
+        if(data.message === 'error') {
+          console.log('already voted');
+        } else {
+          this.setState({
+            totalVotes: data.resultsData.totalVotes,
+            userDidVote: data.resultsData.userDidVote,
+            selectedVote: data.resultsData.selectedVote
+          });
+          this.loadResults(e, req);
+        }
+        
+      } catch (err) {
+        console.log(err);
       }
-
-      console.log(data);
-      
-    } catch (err) {
-      console.log(err);
+    } else {
+      // user didnt select vote
     }
   }
 
@@ -68,18 +110,26 @@ class PollPage extends React.Component {
       title,
       desc,
       visibility,
+      active,
       choices,
-      votingPeriod,
       dateCreated,
       visits,
-      totalVotes
+      timelimit
     } = this.props.poll;
-    //console.log(moment.duration(moment(dateCreated).add(votingPeriod, 'hours').diff(dateCreated)).asHours())
-    //console.log(moment(dateCreated).add(votingPeriod, 'hours'));
+
+    const {
+      totalVotes,
+      results,
+      userDidVote,
+      revealResults,
+      resultsLoading,
+      refreshResultsLoading
+    } = this.state;
+
     return (
-      <Layout pageTitle={`Poll - ${title}`}>
+      <Layout pageTitle={`Poll - ${title}`} pageDesc={desc}>
         <div className='poll-wrapper'>
-          {visibility == 'private' ?
+          {visibility === 'private' ?
             <div className='poll-alert'>
               <Alert variant='danger'>
                 This is a <b>private</b> poll. Please consider before sharing the link.
@@ -96,65 +146,37 @@ class PollPage extends React.Component {
               </p>
               <hr />
               <div className='poll-stat'>
-                {visits} views • {moment(dateCreated).format('ll')}
+                {visits} views • {dateCreated}
               </div>
             </div>
           </div>
           <hr />
-          {
-            moment(dateCreated).add(votingPeriod, 'hours').isAfter(Date.now()) ?
-            <PollChoices
-              choices={choices} dateCreated={dateCreated} votingPeriod={votingPeriod} totalVotes={totalVotes}
-              updateChoiceSelected={this.updateChoiceSelected}
-              submitVote={this.submitVote}
+
+          { active && !userDidVote ?
+          <PollChoices
+            updateChoiceSelected={this.updateChoiceSelected}
+            timelimit={timelimit}
+            choices={choices}
+            revealResults={revealResults}
+            submitVote={this.submitVote}
+            loadResults={this.loadResults}
+          /> : null }
+
+          { !active || userDidVote || revealResults ?
+            <PollResults
+              totalVotes={totalVotes}
+              results={results}
+              choices={choices}
+              timelimit={timelimit}
+              resultsLoading={resultsLoading}
+              refreshResultsLoading={refreshResultsLoading}
+              loadResults={this.loadResults}
             />
-            :
-            <PollResults />
-          }
+            : null }
         </div>
       </Layout>
     )
   }
 }
 
-/*
-const PollPage = (props) => {
-  const router = useRouter()
-  const { slug } = router.query;
-  console.log(props);
-  return (
-    <Layout>
-      <Poll {...props} />
-    </Layout>
-  )
-}
-*?
-
-/*
-const Poll = props => (
-  <Layout>
-    
-    <h3>{props.title}</h3>
-  </Layout>
-);
-*/
-
-/*
-PollPage.getInitialProps = async function(context) {
-  const { slug } = context.query;
-  const res = await fetch(`http://localhost:3000/api/poll/${slug}`);
-  console.log(res);
-  const errorCode = res.status > 200 ? res.status : false
-  const data = await res.json()
-
-  return { errorCode, poll: data }
-  if(res.status === 200) {
-    const data = await res.json();
-    return { poll: data };
-  } else {
-    Router.push('')
-  }
-  console.log(data);
-}
- */
-export default PollPage
+export default withRouter(PollPage)

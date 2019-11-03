@@ -8,6 +8,8 @@ const Layout = props => (
   <div>
     <Head>
       <title>{props.pageTitle}</title>
+      <meta name='description' content={props.pageDesc} />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"></script>
       <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}

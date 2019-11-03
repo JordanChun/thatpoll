@@ -5,10 +5,18 @@ const Poll = require('../models/Poll');
 const moment = require('moment');
 
 
-router.get('/polls/page/:page', async (req, res) => {
+router.get('/polls/page/:num', async (req, res) => {
   let pollsArr = [];
+  let skip;
+  let num = Math.round(req.params.num);
+
   try {
-    const polls = await Poll.find().limit(25);
+    const totalItems = await Poll.countDocuments();
+    const totalPages = Math.ceil(totalItems/10);
+    num = Math.min(Math.max(num, 1), totalPages);
+    skip = (num - 1) * 10;
+    
+    const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ $natural: -1 }).limit(10);
     for (let i = 0; i < polls.length; i++) {
       pollsArr.push({
         url: polls[i].url,
@@ -16,12 +24,14 @@ router.get('/polls/page/:page', async (req, res) => {
         desc: polls[i].desc,
         totalVotes: polls[i].totalVotes,
         votingPeriod: polls[i].votingPeriod,
-        dateCreated: moment(polls[i].dateCreated).startOf('hour').fromNow()
+        dateCreated: moment(polls[i].dateCreated).startOf('minute').fromNow()
       });
     }
+    res.status(200).json({
+      pollsArr: pollsArr,
+      totalItems: totalItems
+    });
 
-    //console.log(pollsArr);
-    res.send(pollsArr.reverse());
   } catch (err) {
     console.log(err)
   }

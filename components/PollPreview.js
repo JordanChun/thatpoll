@@ -33,7 +33,7 @@ const PollPreview = props => (
       <div className='poll-stat mb-3'>
         0 votes • {
           moment(props.dateCreated).add(props.votingPeriod, 'hours') > moment(Date.now()) ? 
-          <b>Voting ends: {moment(Date.now()).add(props.votingPeriod, 'hours').fromNow()}</b> 
+          <b>Voting ends in: {moment(Date.now()).add(props.votingPeriod, 'hours').fromNow()}</b> 
           : <b>Voting has ended.</b>}
       </div>
       <InputGroup className="mb-3">
