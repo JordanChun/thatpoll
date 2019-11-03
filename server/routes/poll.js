@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const ipfilter = require('express-ipfilter').IpFilter
+const ips = ['10.7.164.30'];
 
 const Poll = require('../models/Poll');
 const Vote = require('../models/Vote');
@@ -11,7 +13,7 @@ require('moment-precise-range-plugin');
 //const ipaddr = require('ipaddr.js');
 
 
-router.get('/poll/:slug', async (req, res) => {
+router.get('/poll/:slug', ipfilter(ips, { mode: 'allow' }), async (req, res) => {
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');

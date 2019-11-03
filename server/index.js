@@ -14,7 +14,7 @@ const requestIp = require('request-ip');
 const ipfilter = require('express-ipfilter').IpFilter
 
 // Blacklist the following IPs
-const ips = ['54.165.34.193:443'];
+const ips = ['10.7.164.30'];
 
 const mongoose = require('mongoose');
 
@@ -48,7 +48,7 @@ var corsOptionsDelegate = function (req, callback) {
 app.prepare().then(() => {
   const server = express();
   server.use(helmet());
-  server.use(ipfilter(ips, { mode: 'allow' }));
+  //server.use(ipfilter(ips, { mode: 'allow' }));
   //server.use(cors(corsOptionsDelegate));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
