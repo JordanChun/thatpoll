@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const getUser = require('../middleware/user');
-const User = require('../models/User');
 const Poll = require('../models/Poll');
 const shortid = require('shortid');
 
@@ -38,6 +37,11 @@ router.post('/create-poll', getUser, async (req, res) => {
       res.status(409).json({ message: 'error' });
     }
   });
+
+  let findDuplicates = choices.filter((item, index) => choices.indexOf(item) != index);
+  if (findDuplicates.length > 0) {
+    res.status(409).json({ message: 'error' });
+  }
 
   if (votingPeriod < 6 || votingPeriod > 72 ) {
     res.status(409).json({ message: 'error' });

@@ -3,6 +3,7 @@ import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPollH } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
+import 'moment-precise-range-plugin';
 
 const PollPreview = props => (
   <div className='poll-wrapper'>
@@ -31,10 +32,7 @@ const PollPreview = props => (
     <div className='poll-choices'>
       <h6><FontAwesomeIcon icon={faPollH} /> Poll Choices</h6>
       <div className='poll-stat mb-3'>
-        0 votes • {
-          moment(props.dateCreated).add(props.votingPeriod, 'hours') > moment(Date.now()) ? 
-          <b>Voting ends in: {moment(Date.now()).add(props.votingPeriod, 'hours').fromNow()}</b> 
-          : <b>Voting has ended.</b>}
+        0 votes • <b>{props.timelimit}</b>
       </div>
       <InputGroup className="mb-3">
         <input className='choice-control' type='radio' name='poll-choice' value='0' />

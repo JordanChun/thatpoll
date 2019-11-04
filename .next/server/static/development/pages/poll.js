@@ -2451,7 +2451,7 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/${slug}`, {
       method: 'GET',
       headers: {
-        'Origin': 'statmix'
+        'X-Origin': 'statmix'
       }
     });
     const errorCode = res.status > 200 ? res.status : false;
@@ -2508,7 +2508,7 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/results/${slug}`, {
         method: 'GET',
         headers: {
-          'Origin': 'statmix'
+          'X-Origin': 'statmix'
         }
       });
       const data = await res.json();
@@ -2539,7 +2539,7 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
           headers: {
             'Accept': 'accplication/json',
             'Content-Type': 'application/json',
-            'Origin': 'statmix'
+            'X-Origin': 'statmix'
           },
           body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
             selectedVote: this.state.selectedVote

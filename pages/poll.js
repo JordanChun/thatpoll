@@ -13,7 +13,7 @@ class PollPage extends React.Component {
     const res = await fetch(`${origin}/api/poll/${slug}`, {
       method: 'GET',
       headers: {
-        'Origin': 'statmix',
+        'X-Origin': 'statmix',
       }
     });
     const errorCode = res.status > 200 ? res.status : false
@@ -56,7 +56,7 @@ class PollPage extends React.Component {
       const res = await fetch(`${origin}/api/poll/results/${slug}`, {
         method: 'GET',
         headers: {
-          'Origin': 'statmix',
+          'X-Origin': 'statmix',
         }
       });
       const data = await res.json();
@@ -84,7 +84,7 @@ class PollPage extends React.Component {
           headers: {
             'Accept': 'accplication/json',
             'Content-Type': 'application/json',
-            'Origin': 'statmix',
+            'X-Origin': 'statmix',
           },
           body: JSON.stringify({selectedVote: this.state.selectedVote})
         });

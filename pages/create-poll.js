@@ -8,6 +8,8 @@ import { faPoll, faQuestionCircle, faEye } from '@fortawesome/free-solid-svg-ico
 import PollPreview from '../components/PollPreview';
 import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
+import moment from 'moment';
+import 'moment-precise-range-plugin';
 
 //TO DO ##############################################
 //Validate Poll Inputs
@@ -46,12 +48,14 @@ class CreatePoll extends React.Component {
       visibility: 'public',
       votingPeriod: 6,
       dateCreated: new Date(),
-      error: false
+      error: false,
+      timelimit: 'Voting ends in: 6 hours'
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
     this.visibilityUpdate = this.visibilityUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateTimePeriod = this.updateTimePeriod.bind(this);
   }
 
   inputUpdate(e) {
@@ -72,7 +76,7 @@ class CreatePoll extends React.Component {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Origin': 'statmix'
+          'X-Origin': 'statmix'
         },
         body: JSON.stringify(pollData)
       });
@@ -81,11 +85,33 @@ class CreatePoll extends React.Component {
         Router.push(`/poll/${data.url}`);
       } else {
         this.setState({ error: true });
+        window.scrollTo({
+          top: 56,
+          left: 0,
+          behavior: 'smooth'
+        });
       }
       //console.log(data);
     } catch(err) {
       //console.log(err)
     }
+  }
+
+  updateTimePeriod(e) {
+    const endTime = moment(this.state.dateCreated,'YYYY-MM-DD HH:mm:ss').add(e.target.value, 'hours');
+    const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
+    let timelimit = 'Voting ends in:';
+    const diff = moment.preciseDiff(endTime, currentTime, true);
+    const days = diff.days;
+    const hours = diff.hours;
+    const minutes = diff.minutes;
+    if(days > 0) timelimit += ` ${days} days`;
+    if(hours > 0) timelimit += ` ${hours} hours`;
+    if(minutes > 0) timelimit += ` ${minutes} minutes`;
+    this.setState({
+      [e.target.name]: e.target.value,
+      timelimit: timelimit
+    })
   }
 
   render() {
@@ -202,7 +228,7 @@ class CreatePoll extends React.Component {
               </Form.Label>
               <Form.Control
                 value={votingPeriod}
-                onChange={this.inputUpdate}
+                onChange={this.updateTimePeriod}
                 style={{ maxWidth: '200px' }}
                 type='number' min='6' max='72' name='votingPeriod'
               />

@@ -9,9 +9,9 @@ const handle = app.getRequestHandler();
 const helmet = require('helmet');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser')
 const apiRoutes = require('./routes/api');
 const requestIp = require('request-ip');
-const ipfilter = require('express-ipfilter').IpFilter
 
 // Blacklist the following IPs
 const ips = ['10.7.164.30'];
@@ -52,12 +52,9 @@ app.prepare().then(() => {
   //server.use(cors(corsOptionsDelegate));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
+  server.use(cookieParser());
   server.use(requestIp.mw());
   server.use('/api', apiRoutes);
-  server.use(function(req, res, next) {
-    res.header("Origin", 'statmix');
-    next();
-  });
 
   server.get('/', (req, res) => {
     return app.render(req, res, '/', req.query)

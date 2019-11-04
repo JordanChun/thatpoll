@@ -24528,6 +24528,7 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
 
 
+
 function useUncontrolledProp(propValue, defaultValue, handler) {
   var wasPropRef = Object(react__WEBPACK_IMPORTED_MODULE_2__["useRef"])(propValue !== undefined);
 
@@ -24556,6 +24557,8 @@ function useUncontrolledProp(propValue, defaultValue, handler) {
     setState(value);
   }, [handler])];
 }
+
+
 function useUncontrolled(props, config) {
   return Object.keys(config).reduce(function (result, fieldName) {
     var _extends2;
@@ -25810,7 +25813,7 @@ function (_React$Component) {
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug), {
                   method: 'GET',
                   headers: {
-                    'Origin': 'statmix'
+                    'X-Origin': 'statmix'
                   }
                 });
 
@@ -25903,7 +25906,7 @@ function (_React$Component) {
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/results/").concat(slug), {
                   method: 'GET',
                   headers: {
-                    'Origin': 'statmix'
+                    'X-Origin': 'statmix'
                   }
                 });
 
@@ -25970,7 +25973,7 @@ function (_React$Component) {
                   headers: {
                     'Accept': 'accplication/json',
                     'Content-Type': 'application/json',
-                    'Origin': 'statmix'
+                    'X-Origin': 'statmix'
                   },
                   body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
                     selectedVote: this.state.selectedVote

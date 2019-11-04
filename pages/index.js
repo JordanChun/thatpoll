@@ -16,7 +16,7 @@ class Home extends React.Component {
     const res = await fetch(`${origin}/api/polls/page/1`, {
       method: 'GET',
       headers: {
-        'Origin': 'statmix',
+        'X-Origin': 'statmix',
       }
     });
     const data = await res.json();

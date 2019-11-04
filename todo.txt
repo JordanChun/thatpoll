@@ -2,8 +2,8 @@
 
 CLIENT
 ----------------------------------------------------------
-handle if user already voted
-handle no vote submit
+[DONE] handle if user already voted
+[DONE] handle no vote submit
 create poll validation
 add content to index page
 add unique views to polls
@@ -17,11 +17,14 @@ share and report features
 [DONE] moment/date tests - poll/pollpreview
 [DONE] split poll component? (Poll Info, Poll Choices, Poll Results) less renders
 [DONE] actual polls pages
+[DONE] Pagination for pages
+[DONE] Header added to prevent direct api route access
 
 SERVER
 ----------------------------------------------------------
-poll doc expire
-handle no vote submit
+[DONE] Header added to prevent direct api route access
+[DONE] poll doc expire
+[DONE] handle no vote submit
 Google Analytics for page views
 create poll validation
 limit poll creations to 5 every 3 hours?
