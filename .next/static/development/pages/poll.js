@@ -25807,7 +25807,12 @@ function (_React$Component) {
                 slug = _ref.query.slug, req = _ref.req;
                 _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl.origin;
                 _context.next = 4;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug));
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug), {
+                  method: 'GET',
+                  headers: {
+                    'Origin': 'statmix'
+                  }
+                });
 
               case 4:
                 res = _context.sent;
@@ -25895,7 +25900,12 @@ function (_React$Component) {
 
                 _context2.prev = 3;
                 _context2.next = 6;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/results/").concat(slug));
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/results/").concat(slug), {
+                  method: 'GET',
+                  headers: {
+                    'Origin': 'statmix'
+                  }
+                });
 
               case 6:
                 res = _context2.sent;
@@ -25958,8 +25968,9 @@ function (_React$Component) {
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/vote/").concat(slug), {
                   method: 'POST',
                   headers: {
-                    'Acceot': 'accplication/json',
-                    'Content-Type': 'application/json'
+                    'Accept': 'accplication/json',
+                    'Content-Type': 'application/json',
+                    'Origin': 'statmix'
                   },
                   body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
                     selectedVote: this.state.selectedVote

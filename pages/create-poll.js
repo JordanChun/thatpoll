@@ -71,7 +71,8 @@ class CreatePoll extends React.Component {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Origin': 'statmix'
         },
         body: JSON.stringify(pollData)
       });

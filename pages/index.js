@@ -8,11 +8,17 @@ import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import absoluteUrl from 'next-absolute-url';
 import CompactOptionsToggle from '../components/CompactOptionsToggle';
 import PollPagination from '../components/PollPagination';
+import PollCard from '../components/PollCard';
 
 class Home extends React.Component {
   static async getInitialProps({req}) {
     const { origin } = absoluteUrl(req);
-    const res = await fetch(`${origin}/api/polls/page/1`);
+    const res = await fetch(`${origin}/api/polls/page/1`, {
+      method: 'GET',
+      headers: {
+        'Origin': 'statmix',
+      }
+    });
     const data = await res.json();
   
     return {
@@ -32,7 +38,10 @@ class Home extends React.Component {
       <Layout pageTitle='StatMix'>
         <h4 className='page-header'>Recent Polls</h4>
         <hr />
-        {polls.map(poll => (
+        {polls.map((poll, i) => (
+          <PollCard key={i} poll={poll} />
+        ))}
+        {/*polls.map(poll => (
           <div className='poll-card-container' key={poll.url}>
             <Link href={`/poll/${poll.url}`}>
               <a>
@@ -87,7 +96,7 @@ class Home extends React.Component {
               </div>
             </div>
           </div>
-        ))}
+        ))*/}
         <PollPagination active={1} totalItems={totalItems} />
       </Layout>
     )

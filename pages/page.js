@@ -13,7 +13,12 @@ import { withRouter } from 'next/router';
 class Page extends React.Component {
   static async getInitialProps({ query: { num }, req }) {
     const { origin } = absoluteUrl(req);
-    const res = await fetch(`${origin}/api/polls/page/${num}`);
+    const res = await fetch(`${origin}/api/polls/page/${num}`, {
+      method: 'GET',
+      headers: {
+        'Origin': 'statmix',
+      }
+    });
     const data = await res.json();
   
     return {

@@ -54,7 +54,11 @@ app.prepare().then(() => {
   server.use(bodyParser.json());
   server.use(requestIp.mw());
   server.use('/api', apiRoutes);
-  
+  server.use(function(req, res, next) {
+    res.header("Origin", 'statmix');
+    next();
+  });
+
   server.get('/', (req, res) => {
     return app.render(req, res, '/', req.query)
   });

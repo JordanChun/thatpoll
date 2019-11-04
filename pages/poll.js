@@ -10,7 +10,12 @@ import absoluteUrl from 'next-absolute-url';
 class PollPage extends React.Component {
   static async getInitialProps({ query: { slug }, req }) {
     const { origin } = absoluteUrl(req);
-    const res = await fetch(`${origin}/api/poll/${slug}`);
+    const res = await fetch(`${origin}/api/poll/${slug}`, {
+      method: 'GET',
+      headers: {
+        'Origin': 'statmix',
+      }
+    });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
   
@@ -48,7 +53,12 @@ class PollPage extends React.Component {
       this.setState({ refreshResultsLoading: true });
     }
     try {
-      const res = await fetch(`${origin}/api/poll/results/${slug}`);
+      const res = await fetch(`${origin}/api/poll/results/${slug}`, {
+        method: 'GET',
+        headers: {
+          'Origin': 'statmix',
+        }
+      });
       const data = await res.json();
 
       this.setState({
@@ -72,8 +82,9 @@ class PollPage extends React.Component {
         const res = await fetch(`${origin}/api/poll/vote/${slug}`, {
           method: 'POST',
           headers: {
-            'Acceot': 'accplication/json',
-            'Content-Type': 'application/json'
+            'Accept': 'accplication/json',
+            'Content-Type': 'application/json',
+            'Origin': 'statmix',
           },
           body: JSON.stringify({selectedVote: this.state.selectedVote})
         });

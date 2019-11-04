@@ -66,7 +66,7 @@ const PollPagination = props => {
     items.push(
       <li className='page-item' key='next'>
         <Link href={{ pathname: '/page', query: { num: active + 1 } }} as={`/page/${active + 1}`}>
-          <a class="page-link" role="button">
+          <a className="page-link" role="button">
             <span aria-hidden="true">›</span>
             <span className="sr-only">Next</span>
           </a>
