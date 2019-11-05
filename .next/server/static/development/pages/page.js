@@ -88,10 +88,47 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./components/CompactOptionsToggle.js":
+/*!********************************************!*\
+  !*** ./components/CompactOptionsToggle.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+class CompactOptionsToggle extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.onClick(e);
+  }
+
+  render() {
+    return __jsx("span", {
+      onClick: this.handleClick
+    }, this.props.children);
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (CompactOptionsToggle);
+
+/***/ }),
 
 /***/ "./components/Layout.js":
 /*!******************************!*\
@@ -235,10 +272,10 @@ const MainHeader = () => __jsx("header", {
 
 /***/ }),
 
-/***/ "./components/PollChoices.js":
-/*!***********************************!*\
-  !*** ./components/PollChoices.js ***!
-  \***********************************/
+/***/ "./components/PollCard.js":
+/*!********************************!*\
+  !*** ./components/PollCard.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -246,14 +283,17 @@ const MainHeader = () => __jsx("header", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "react-bootstrap/InputGroup");
-/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "react-bootstrap/Dropdown");
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/CompactOptionsToggle */ "./components/CompactOptionsToggle.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -261,49 +301,63 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-const PollChoices = props => __jsx("div", {
-  className: "poll-choices"
-}, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPollH"]
-}), " Choices"), __jsx("div", {
-  className: "poll-stat mb-3"
-}, __jsx("b", null, props.timelimit)), props.choices.map((choice, i) => __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  className: "mb-3",
-  key: i
-}, __jsx("input", {
-  className: "choice-control",
-  type: "radio",
-  name: "poll-choice",
-  value: i,
-  onChange: props.updateChoiceSelected
-}), __jsx("label", {
-  className: "form-control"
-}, choice))), __jsx("div", {
-  className: "mb-3"
-}, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-  size: "sm",
-  onClick: props.submitVote,
-  variant: "light-blue",
-  type: "submit",
-  style: {
-    width: '200px'
-  }
-}, "Submit Vote")), !props.revealResults ? __jsx("div", {
-  className: "mb-3"
-}, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-  variant: "grey-blue",
-  size: "sm",
-  onClick: props.loadResults
-}, "View Results")) : null);
 
-/* harmony default export */ __webpack_exports__["default"] = (PollChoices);
+
+const PollCard = props => __jsx("div", {
+  className: "poll-card-container",
+  key: props.poll.url
+}, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  href: `/poll/${props.poll.url}`
+}, __jsx("a", null, __jsx("h6", {
+  className: "poll-card-title"
+}, props.poll.title))), __jsx("hr", null), __jsx("div", {
+  className: "poll-card-desc"
+}, props.poll.desc.length > 0 ? __jsx("p", null, props.poll.desc) : __jsx("i", null, "No Description")), __jsx("hr", null), __jsx("div", {
+  className: "poll-card-actions"
+}, __jsx("div", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  href: {
+    pathname: '/poll',
+    query: {
+      slug: props.poll.url
+    }
+  },
+  as: `/poll/${props.poll.url}`
+}, __jsx("a", null, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  variant: "grey-blue",
+  size: "sm"
+}, "View Poll"))), __jsx("div", {
+  className: "poll-stat",
+  style: {
+    lineHeight: '2.5',
+    marginLeft: '0.75rem'
+  }
+}, __jsx("span", null, props.poll.totalVotes, " votes \u2022 ", props.poll.dateCreated))), __jsx("div", {
+  className: "poll-card-actions-options"
+}, __jsx("div", null, __jsx("span", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faFlag"]
+}), " Report")), __jsx("div", {
+  className: "poll-card-actions-compact"
+}, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3___default.a, {
+  alignRight: true
+}, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3___default.a.Toggle, {
+  as: _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_6__["default"],
+  id: "dropdown-custom-components"
+}, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faEllipsisV"]
+})), __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3___default.a.Menu, null, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
+  as: react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a
+}, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faFlag"]
+}), " Report")))))));
+
+/* harmony default export */ __webpack_exports__["default"] = (PollCard);
 
 /***/ }),
 
-/***/ "./components/PollResults.js":
-/*!***********************************!*\
-  !*** ./components/PollResults.js ***!
-  \***********************************/
+/***/ "./components/PollPagination.js":
+/*!**************************************!*\
+  !*** ./components/PollPagination.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -311,79 +365,125 @@ const PollChoices = props => __jsx("div", {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Spinner */ "react-bootstrap/Spinner");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! prop-types */ "prop-types");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Pagination */ "react-bootstrap/Pagination");
+/* harmony import */ var react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
+const PollPagination = props => {
+  let active = props.active;
+  let items = [];
+  let offset = 0;
 
-
-
-const PollResults = props => __jsx("div", {
-  className: "poll-results"
-}, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faChartBar"]
-}), " Results"), props.resultsLoading ? __jsx("div", {
-  className: "justify-content-center align-items-center",
-  style: {
-    height: '200px',
-    display: 'flex'
+  if (active > 3) {
+    offset = active - 3;
+    items.push(__jsx("li", {
+      className: "page-item",
+      key: "prev"
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: {
+        pathname: '/page',
+        query: {
+          num: active - 1
+        }
+      },
+      as: `/page/${active - 1}`
+    }, __jsx("a", {
+      className: "page-link",
+      role: "button"
+    }, __jsx("span", {
+      "aria-hidden": "true"
+    }, "\u2039"), __jsx("span", {
+      className: "sr-only"
+    }, "Previous")))));
   }
-}, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  animation: "grow",
-  variant: "light"
-})) : __jsx("div", null, __jsx("div", {
-  className: "poll-stat mb-3"
-}, __jsx("b", null, props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, props.timelimit)), __jsx("div", {
-  className: "mb-3"
-}, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-  variant: "grey-blue",
-  size: "sm",
-  onClick: props.loadResults
-}, props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_3___default.a, {
-  as: "span",
-  animation: "grow",
-  size: "sm",
-  role: "status",
-  "aria-hidden": "true"
-}) : null, "Refresh Results")), __jsx("div", {
-  className: "results-container"
-}, props.results.map((result, i) => __jsx("div", {
-  key: i
-}, __jsx("h6", null, props.choices[i]), __jsx("div", {
-  className: "poll-result"
-}, __jsx("div", {
-  className: "result-bar mb-3",
-  style: {
-    width: `${Math.round(result / props.totalVotes * 100)}%`
-  }
-}, __jsx("div", null, result !== 0 ? `${result} votes • ${Math.round(result / props.totalVotes * 100).toFixed(2)}%` : '0 votes • 0.00%'))))))));
 
-PollResults.propTypes = {
-  loadResults: prop_types__WEBPACK_IMPORTED_MODULE_5___default.a.func
+  const totalItems = props.totalItems;
+  const totalPages = Math.ceil(totalItems / 10);
+  active = Math.min(Math.max(active, 1), totalPages); // max offset = total pages - max pagination items
+
+  offset = Math.min(Math.max(offset, 0), Math.max(totalPages - 5, 0)); //offset = Math.min(Math.max(offset, 0), (totalPages - 5));
+
+  for (let i = 1; i <= 5; i++) {
+    if (i > totalPages) break;
+
+    if (i + offset === active) {
+      items.push(__jsx("li", {
+        className: "page-item active",
+        key: i
+      }, __jsx("span", {
+        className: "page-link"
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: {
+          pathname: '/page',
+          query: {
+            num: i + offset
+          }
+        },
+        as: `/page/${i + offset}`
+      }, __jsx("a", null, i + offset)), __jsx("span", {
+        className: "sr-only"
+      }, "(current)"))));
+    } else {
+      items.push(__jsx("li", {
+        className: "page-item",
+        key: i
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: {
+          pathname: '/page',
+          query: {
+            num: i + offset
+          }
+        },
+        as: `/page/${i + offset}`
+      }, __jsx("a", {
+        className: "page-link"
+      }, i + offset))));
+    }
+  }
+  /*
+   for (let i = 1; i <= 5; i++) {
+    items.push(
+      <Pagination.Item key={i} active={(i+offset) === active}>
+        <Link href={{ pathname: '/page', query: { num: i + offset } }} as={`/page/${i + offset}`}>
+          <a>{i + offset}</a>
+        </Link>
+      </Pagination.Item>
+    );
+  }
+  */
+
+
+  if (active < totalPages - 2) {
+    items.push(__jsx("li", {
+      className: "page-item",
+      key: "next"
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: {
+        pathname: '/page',
+        query: {
+          num: active + 1
+        }
+      },
+      as: `/page/${active + 1}`
+    }, __jsx("a", {
+      className: "page-link",
+      role: "button"
+    }, __jsx("span", {
+      "aria-hidden": "true"
+    }, "\u203A"), __jsx("span", {
+      className: "sr-only"
+    }, "Next")))));
+  }
+
+  return __jsx(react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1___default.a, null, items);
 };
-/* harmony default export */ __webpack_exports__["default"] = (PollResults);
 
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
-  \***********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
+/* harmony default export */ __webpack_exports__["default"] = (PollPagination);
 
 /***/ }),
 
@@ -2375,10 +2475,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./pages/not-found.js":
-/*!****************************!*\
-  !*** ./pages/not-found.js ***!
-  \****************************/
+/***/ "./pages/page.js":
+/*!***********************!*\
+  !*** ./pages/page.js ***!
+  \***********************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2387,48 +2487,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "react-bootstrap/Dropdown");
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next-absolute-url */ "next-absolute-url");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/CompactOptionsToggle */ "./components/CompactOptionsToggle.js");
+/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const NotFound = props => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  pageTitle: "Page Not Found"
-}, __jsx("h4", {
-  className: "page-header"
-}, "404 Page Not Found"));
-
-/* harmony default export */ __webpack_exports__["default"] = (NotFound);
-
-/***/ }),
-
-/***/ "./pages/poll.js":
-/*!***********************!*\
-  !*** ./pages/poll.js ***!
-  \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! isomorphic-unfetch */ "isomorphic-unfetch");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Alert */ "react-bootstrap/Alert");
-/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_PollChoices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/PollChoices */ "./components/PollChoices.js");
-/* harmony import */ var _components_PollResults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PollResults */ "./components/PollResults.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _not_found__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./not-found */ "./pages/not-found.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next-absolute-url */ "next-absolute-url");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_9__);
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
@@ -2438,193 +2519,57 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
-class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+
+
+class Page extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
   static async getInitialProps({
     query: {
-      slug
+      num
     },
     req
   }) {
     const {
       origin
-    } = next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default()(req);
-    const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/${slug}`, {
+    } = next_absolute_url__WEBPACK_IMPORTED_MODULE_8___default()(req);
+    const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_2___default()(`${origin}/api/polls/page/${num}`, {
       method: 'GET',
       headers: {
         'X-Origin': 'statmix'
       }
     });
-    const errorCode = res.status > 200 ? res.status : false;
     const data = await res.json();
     return {
-      errorCode,
-      poll: data.pollData,
-      user: data.userData
+      polls: data.pollsArr,
+      totalItems: data.totalItems
     };
   }
 
   constructor(props) {
     super(props);
-    this.state = {
-      totalVotes: this.props.poll.totalVotes,
-      results: this.props.poll.results,
-      userDidVote: this.props.user.didVote,
-      revealResults: !this.props.poll.active,
-      resultsLoading: false,
-      refreshResultsLoading: false,
-      selectedVote: null
-    };
-    this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
-    this.loadResults = this.loadResults.bind(this);
-    this.submitVote = this.submitVote.bind(this);
-  }
-
-  updateChoiceSelected(e) {
-    this.setState({
-      selectedVote: e.target.value
-    });
-  }
-
-  async loadResults(e, req) {
-    const {
-      origin
-    } = next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default()(req);
-    const {
-      slug
-    } = this.props.router.query;
-
-    if (!this.state.revealResults) {
-      this.setState({
-        revealResults: true,
-        resultsLoading: true
-      });
-    } else {
-      this.setState({
-        refreshResultsLoading: true
-      });
-    }
-
-    try {
-      const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/results/${slug}`, {
-        method: 'GET',
-        headers: {
-          'X-Origin': 'statmix'
-        }
-      });
-      const data = await res.json();
-      this.setState({
-        totalVotes: data.totalVotes,
-        userDidVote: data.userDidVote,
-        results: data.results,
-        resultsLoading: false,
-        refreshResultsLoading: false
-      });
-    } catch (err) {}
-  }
-
-  async submitVote(e, req) {
-    e.preventDefault();
-
-    if (this.state.selectedVote !== null) {
-      const {
-        origin
-      } = next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default()(req);
-      const {
-        slug
-      } = this.props.router.query;
-
-      try {
-        const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/vote/${slug}`, {
-          method: 'POST',
-          headers: {
-            'Accept': 'accplication/json',
-            'Content-Type': 'application/json',
-            'X-Origin': 'statmix'
-          },
-          body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
-            selectedVote: this.state.selectedVote
-          })
-        });
-        const data = await res.json();
-        console.log(data);
-
-        if (data.message === 'error') {
-          console.log('already voted');
-        } else {
-          this.setState({
-            totalVotes: data.resultsData.totalVotes,
-            userDidVote: data.resultsData.userDidVote,
-            selectedVote: data.resultsData.selectedVote
-          });
-          this.loadResults(e, req);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    } else {// user didnt select vote
-    }
   }
 
   render() {
-    // if not data found for poll
-    if (this.props.errorCode) {
-      return __jsx(_not_found__WEBPACK_IMPORTED_MODULE_8__["default"], null);
-    }
-
     const {
-      title,
-      desc,
-      visibility,
-      active,
-      choices,
-      dateCreated,
-      visits,
-      timelimit
-    } = this.props.poll;
-    const {
-      totalVotes,
-      results,
-      userDidVote,
-      revealResults,
-      resultsLoading,
-      refreshResultsLoading
-    } = this.state;
-    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      pageTitle: `Poll - ${title}`,
-      pageDesc: desc
-    }, __jsx("div", {
-      className: "poll-wrapper"
-    }, visibility === 'private' ? __jsx("div", {
-      className: "poll-alert"
-    }, __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_4___default.a, {
-      variant: "danger"
-    }, "This is a ", __jsx("b", null, "private"), " poll. Please consider before sharing the link.")) : null, __jsx("h4", {
-      className: "poll-title"
-    }, title.length > 0 ? title : 'Untitled'), __jsx("hr", null), __jsx("div", {
-      className: "poll-desc"
-    }, __jsx("h6", null, "Description"), __jsx("div", null, __jsx("p", null, desc.length > 0 ? desc : __jsx("i", null, "No description")), __jsx("hr", null), __jsx("div", {
-      className: "poll-stat"
-    }, visits, " views \u2022 ", dateCreated))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      updateChoiceSelected: this.updateChoiceSelected,
-      timelimit: timelimit,
-      choices: choices,
-      revealResults: revealResults,
-      submitVote: this.submitVote,
-      loadResults: this.loadResults
-    }) : null, !active || userDidVote || revealResults ? __jsx(_components_PollResults__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      totalVotes: totalVotes,
-      results: results,
-      choices: choices,
-      timelimit: timelimit,
-      resultsLoading: resultsLoading,
-      refreshResultsLoading: refreshResultsLoading,
-      loadResults: this.loadResults
-    }) : null));
+      polls,
+      totalItems,
+      router
+    } = this.props;
+    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      pageTitle: "StatMix"
+    }, __jsx("h4", {
+      className: "page-header"
+    }, "Recent Polls"), __jsx("hr", null), polls.map((poll, i) => __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_12__["default"], {
+      key: i,
+      poll: poll
+    })), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      active: router.query.num,
+      totalItems: totalItems
+    }));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(PollPage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_11__["withRouter"])(Page));
 
 /***/ }),
 
@@ -2639,14 +2584,14 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 /***/ }),
 
-/***/ 6:
+/***/ 4:
 /*!*****************************!*\
-  !*** multi ./pages/poll.js ***!
+  !*** multi ./pages/page.js ***!
   \*****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Users\Jordan\Desktop\statmix\pages\poll.js */"./pages/poll.js");
+module.exports = __webpack_require__(/*! E:\Users\Jordan\Desktop\statmix\pages\page.js */"./pages/page.js");
 
 
 /***/ }),
@@ -2670,17 +2615,6 @@ module.exports = require("@fortawesome/free-solid-svg-icons");
 /***/ (function(module, exports) {
 
 module.exports = require("@fortawesome/react-fontawesome");
-
-/***/ }),
-
-/***/ "core-js/library/fn/json/stringify":
-/*!****************************************************!*\
-  !*** external "core-js/library/fn/json/stringify" ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 
@@ -2849,17 +2783,6 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "react-bootstrap/Alert":
-/*!****************************************!*\
-  !*** external "react-bootstrap/Alert" ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-bootstrap/Alert");
-
-/***/ }),
-
 /***/ "react-bootstrap/Button":
 /*!*****************************************!*\
   !*** external "react-bootstrap/Button" ***!
@@ -2882,14 +2805,14 @@ module.exports = require("react-bootstrap/Container");
 
 /***/ }),
 
-/***/ "react-bootstrap/InputGroup":
-/*!*********************************************!*\
-  !*** external "react-bootstrap/InputGroup" ***!
-  \*********************************************/
+/***/ "react-bootstrap/Dropdown":
+/*!*******************************************!*\
+  !*** external "react-bootstrap/Dropdown" ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-bootstrap/InputGroup");
+module.exports = require("react-bootstrap/Dropdown");
 
 /***/ }),
 
@@ -2915,14 +2838,14 @@ module.exports = require("react-bootstrap/Navbar");
 
 /***/ }),
 
-/***/ "react-bootstrap/Spinner":
-/*!******************************************!*\
-  !*** external "react-bootstrap/Spinner" ***!
-  \******************************************/
+/***/ "react-bootstrap/Pagination":
+/*!*********************************************!*\
+  !*** external "react-bootstrap/Pagination" ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = require("react-bootstrap/Spinner");
+module.exports = require("react-bootstrap/Pagination");
 
 /***/ }),
 
@@ -2938,4 +2861,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=poll.js.map
+//# sourceMappingURL=page.js.map

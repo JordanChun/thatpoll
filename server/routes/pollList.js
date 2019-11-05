@@ -11,7 +11,7 @@ router.get('/polls/page/:num', async (req, res) => {
   let num = Math.round(req.params.num);
 
   try {
-    const totalItems = await Poll.countDocuments();
+    const totalItems = await Poll.countDocuments({ visibility: 'public' });
     const totalPages = Math.ceil(totalItems/10);
     num = Math.min(Math.max(num, 1), totalPages);
     skip = (num - 1) * 10;

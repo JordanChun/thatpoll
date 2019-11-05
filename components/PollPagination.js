@@ -6,7 +6,7 @@ const PollPagination = props => {
   let items = [];
   let offset = 0;
 
-  if (active > 3 ) {
+  if (active > 3) {
     offset = active - 3;
     items.push(
       <li className='page-item' key='prev'>
@@ -24,9 +24,12 @@ const PollPagination = props => {
   const totalPages = Math.ceil(totalItems/10);
   active = Math.min(Math.max(active, 1), totalPages);
   // max offset = total pages - max pagination items
-  offset = Math.min(Math.max(offset, 0), totalPages - 5); 
+  offset = Math.min(Math.max(offset, 0), Math.max((totalPages - 5), 0));
+  //offset = Math.min(Math.max(offset, 0), (totalPages - 5));
   
+
   for (let i = 1; i <= 5; i++) {
+    if (i > totalPages) break;
     if ((i + offset) === active) {
       items.push(
         <li className="page-item active" key={i}>
