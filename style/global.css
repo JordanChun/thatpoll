@@ -272,10 +272,24 @@ input[type='number']:focus {
   margin: 8px;
 }
 
+.results-container div:nth-child(1) .poll-result .result-bar {
+  background-color: #28a745;
+}
+
+.results-container div:nth-child(2) .poll-result .result-bar {
+  background-color: #3f86a5;
+}
+
+.results-container div:nth-child(3) .poll-result .result-bar {
+  background-color: #dc4144;
+}
+
+.results-container div:nth-child(4) .poll-result .result-bar {
+  background-color: #9ca02a;
+}
 .result-bar {
   display: flex;
   justify-content: space-between;
-  background-color: #28a745;
   width: 0;
   transition: width 1.2s;
   white-space: nowrap;
@@ -284,6 +298,8 @@ input[type='number']:focus {
   border-radius: 0.25rem;
   padding: .375rem .75rem;
 }
+
+
 
 .result-bar > div:not(:first-child) {
   margin-left: 1rem;
