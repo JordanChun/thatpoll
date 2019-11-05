@@ -19,6 +19,13 @@ router.get('/poll/:slug', async (req, res) => {
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
+      console.log(userDidVote);
+      /*
+      if(vote) {
+        // user did voted
+        resultsData.userDidVote = true;
+      }
+      */
       const userData = { 
         didVote: userDidVote
       };

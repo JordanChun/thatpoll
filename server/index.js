@@ -53,7 +53,8 @@ app.prepare().then(() => {
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
   server.use(cookieParser());
-  server.use(requestIp.mw());
+  //server.use(requestIp.mw());
+
   server.use('/api', apiRoutes);
 
   server.get('/', (req, res) => {
@@ -81,8 +82,8 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
-  // remove '0,0,0,0' on production
-  server.listen(port, err => {
+  // remove '0.0.0.0' on production
+  server.listen(port, '0.0.0.0', err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })

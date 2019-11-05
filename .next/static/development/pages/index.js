@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\page.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\index.js"],{
 
 /***/ "./components/CompactOptionsToggle.js":
 /*!********************************************!*\
@@ -16776,21 +16776,21 @@ module.exports = absoluteUrl;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js!./":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js!./":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
+  \*************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/page", function() {
-      var mod = __webpack_require__(/*! ./pages/page.js */ "./pages/page.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
+      var mod = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
       if(true) {
-        module.hot.accept(/*! ./pages/page.js */ "./pages/page.js", function() {
-          if(!next.router.components["/page"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/page.js */ "./pages/page.js")
-          next.router.update("/page", updatedPage)
+        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
+          if(!next.router.components["/"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+          next.router.update("/", updatedPage)
         })
       }
       return mod
@@ -31135,10 +31135,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/page.js":
-/*!***********************!*\
-  !*** ./pages/page.js ***!
-  \***********************/
+/***/ "./pages/index.js":
+/*!************************!*\
+  !*** ./pages/index.js ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -31157,12 +31157,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/CompactOptionsToggle */ "./components/CompactOptionsToggle.js");
+/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
+/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_19__);
 
 
 
@@ -31179,27 +31186,33 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
 
-var Page =
+
+
+
+
+
+
+var Home =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Page, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Home, _React$Component);
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Page, null, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Home, null, [{
     key: "getInitialProps",
     value: function () {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
-        var num, req, _absoluteUrl, origin, res, data;
+        var req, _absoluteUrl, origin, res, data;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                num = _ref.query.num, req = _ref.req;
-                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_10___default()(req), origin = _absoluteUrl.origin;
+                req = _ref.req;
+                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default()(req), origin = _absoluteUrl.origin;
                 _context.next = 4;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(origin, "/api/polls/page/").concat(num), {
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(origin, "/api/polls/page/1"), {
                   method: 'GET',
                   headers: {
                     'X-Origin': 'statmix'
@@ -31234,13 +31247,13 @@ function (_React$Component) {
     }()
   }]);
 
-  function Page(props) {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Page);
+  function Home(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Home);
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Page).call(this, props));
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Home).call(this, props));
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Page, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Home, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -31248,36 +31261,38 @@ function (_React$Component) {
           totalItems = _this$props.totalItems,
           router = _this$props.router;
       return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_8__["default"], {
-        pageTitle: "StatMix"
+        pageTitle: "StatMix",
+        pageDesc: "Create polls and vote"
       }, __jsx("h4", {
         className: "page-header"
       }, "Recent Polls"), __jsx("hr", null), polls.map(function (poll, i) {
-        return __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        return __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_18__["default"], {
           key: i,
           poll: poll
         });
-      }), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_11__["default"], {
-        active: router.query.num,
-        totalItems: totalItems
+      }), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        active: 1,
+        totalItems: totalItems,
+        path: router.asPath
       }));
     }
   }]);
 
-  return Page;
+  return Home;
 }(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_12__["withRouter"])(Page));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_19__["withRouter"])(Home));
 
 /***/ }),
 
-/***/ 1:
-/*!********************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js ***!
-  \********************************************************************************************************************************/
+/***/ 6:
+/*!*****************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js!./");
 
 
 /***/ }),
@@ -31293,5 +31308,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
-//# sourceMappingURL=page.js.map
+},[[6,"static/runtime/webpack.js","styles"]]]);
+//# sourceMappingURL=index.js.map
