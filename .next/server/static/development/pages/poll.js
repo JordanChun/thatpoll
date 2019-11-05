@@ -2624,6 +2624,16 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
 
 }
 
+PollPage.defaultProps = {
+  poll: {
+    totalVotes: 0,
+    results: []
+  },
+  user: {
+    userDidVote: false
+  },
+  revealResults: false
+};
 /* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(PollPage));
 
 /***/ }),

@@ -1,12 +1,6 @@
 import Layout from '../components/Layout';
 import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import absoluteUrl from 'next-absolute-url';
-import CompactOptionsToggle from '../components/CompactOptionsToggle';
 import PollPagination from '../components/PollPagination';
 import { withRouter } from 'next/router';
 import PollCard from '../components/PollCard';

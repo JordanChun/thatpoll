@@ -31148,19 +31148,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/isomorphic-unfetch/browser.js");
 /* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/CompactOptionsToggle */ "./components/CompactOptionsToggle.js");
-/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
 
 
 
@@ -31170,12 +31163,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
-
-
-
-
-
-
 
 
 
@@ -31201,7 +31188,7 @@ function (_React$Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 num = _ref.query.num, req = _ref.req;
-                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default()(req), origin = _absoluteUrl.origin;
+                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_10___default()(req), origin = _absoluteUrl.origin;
                 _context.next = 4;
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(origin, "/api/polls/page/").concat(num), {
                   method: 'GET',
@@ -31256,11 +31243,11 @@ function (_React$Component) {
       }, __jsx("h4", {
         className: "page-header"
       }, "Recent Polls"), __jsx("hr", null), polls.map(function (poll, i) {
-        return __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_19__["default"], {
+        return __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_13__["default"], {
           key: i,
           poll: poll
         });
-      }), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_17__["default"], {
+      }), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_11__["default"], {
         active: router.query.num,
         totalItems: totalItems
       }));
@@ -31270,11 +31257,11 @@ function (_React$Component) {
   return Page;
 }(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_18__["withRouter"])(Page));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_12__["withRouter"])(Page));
 
 /***/ }),
 
-/***/ 1:
+/***/ 8:
 /*!********************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js ***!
   \********************************************************************************************************************************/
@@ -31297,5 +31284,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js","styles"]]]);
+},[[8,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=page.js.map

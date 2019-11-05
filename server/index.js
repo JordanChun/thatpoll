@@ -81,6 +81,7 @@ app.prepare().then(() => {
     return handle(req, res)
   })
 
+  // remove '0,0,0,0' on production
   server.listen(port, err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)

@@ -190,4 +190,15 @@ class PollPage extends React.Component {
   }
 }
 
+PollPage.defaultProps = {
+  poll: {
+    totalVotes: 0,
+    results: [],
+  },
+  user: {
+    userDidVote: false  
+  },
+  revealResults: false,
+}
+
 export default withRouter(PollPage)

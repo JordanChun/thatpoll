@@ -44457,7 +44457,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 6:
+/***/ 1:
 /*!**********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcreate-poll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Ccreate-poll.js ***!
   \**********************************************************************************************************************************************/
@@ -44480,5 +44480,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[6,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=create-poll.js.map
