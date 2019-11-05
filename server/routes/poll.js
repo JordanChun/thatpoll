@@ -14,11 +14,11 @@ router.get('/poll/:slug', async (req, res) => {
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
-    const ip = req.clientIp;
     console.log(ip)
     let poll = await Poll.findOne({ url: req.params.slug });
+    const ip = req.clientIp;
     if(poll !== null) {
-      const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
+      const userDidVote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
       console.log(userDidVote);
       /*
       if(vote) {
