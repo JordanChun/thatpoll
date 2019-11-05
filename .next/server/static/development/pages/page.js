@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -163,6 +163,15 @@ const Layout = props => __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MOD
 }), __jsx("meta", {
   name: "viewport",
   content: "width=device-width, initial-scale=1.0"
+}), __jsx("meta", {
+  property: "og:type",
+  content: "StatMix"
+}), __jsx("meta", {
+  property: "og:title",
+  content: props.pageTitle
+}), __jsx("meta", {
+  property: "og:description",
+  content: props.pageDesc
 }), __jsx("script", {
   async: true,
   src: "https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"
@@ -2567,7 +2576,7 @@ class Page extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 
 /***/ }),
 
-/***/ 7:
+/***/ 4:
 /*!*****************************!*\
   !*** multi ./pages/page.js ***!
   \*****************************/

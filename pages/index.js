@@ -9,6 +9,7 @@ import absoluteUrl from 'next-absolute-url';
 import CompactOptionsToggle from '../components/CompactOptionsToggle';
 import PollPagination from '../components/PollPagination';
 import PollCard from '../components/PollCard';
+import { withRouter } from 'next/router';
 
 class Home extends React.Component {
   static async getInitialProps({req}) {
@@ -33,9 +34,9 @@ class Home extends React.Component {
   }
 
   render() {
-    const { polls, totalItems } = this.props;
+    const { polls, totalItems, router } = this.props;
     return (
-      <Layout pageTitle='StatMix'>
+      <Layout pageTitle='StatMix' pageDesc='Create polls and vote' >
         <h4 className='page-header'>Recent Polls</h4>
         <hr />
         {polls.map((poll, i) => (
@@ -97,10 +98,10 @@ class Home extends React.Component {
             </div>
           </div>
         ))*/}
-        <PollPagination active={1} totalItems={totalItems} />
+        <PollPagination active={1} totalItems={totalItems} path={router.asPath} />
       </Layout>
     )
   }
 }
 
-export default Home
+export default withRouter(Home)

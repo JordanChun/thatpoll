@@ -10,6 +10,9 @@ const Layout = props => (
       <title>{props.pageTitle}</title>
       <meta name='description' content={props.pageDesc} />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:type" content="StatMix" />
+      <meta property="og:title" content={props.pageTitle} />
+      <meta property="og:description" content={props.pageDesc} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"></script>
       <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}

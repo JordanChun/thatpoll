@@ -96,6 +96,15 @@ var Layout = function Layout(props) {
   }), __jsx("meta", {
     name: "viewport",
     content: "width=device-width, initial-scale=1.0"
+  }), __jsx("meta", {
+    property: "og:type",
+    content: "StatMix"
+  }), __jsx("meta", {
+    property: "og:title",
+    content: props.pageTitle
+  }), __jsx("meta", {
+    property: "og:description",
+    content: props.pageDesc
   }), __jsx("script", {
     async: true,
     src: "https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"
@@ -31261,7 +31270,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 8:
+/***/ 1:
 /*!********************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fpage&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpage.js ***!
   \********************************************************************************************************************************/
@@ -31284,5 +31293,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[8,"static/runtime/webpack.js","styles"]]]);
+},[[1,"static/runtime/webpack.js","styles"]]]);
 //# sourceMappingURL=page.js.map
