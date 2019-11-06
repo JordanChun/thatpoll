@@ -182,6 +182,7 @@ class PollPage extends React.Component {
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}
+              revealResults={!active || userDidVote || revealResults}
             />
             : null }
         </div>
@@ -195,10 +196,9 @@ PollPage.defaultProps = {
     totalVotes: 0,
     results: [],
   },
-  user: {
-    userDidVote: false  
-  },
+  user: { userDidVote: false },
   revealResults: false,
+  active: true
 }
 
 export default withRouter(PollPage)

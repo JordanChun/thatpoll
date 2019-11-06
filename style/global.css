@@ -287,11 +287,11 @@ input[type='number']:focus {
 .results-container div:nth-child(4) .poll-result .result-bar {
   background-color: #9ca02a;
 }
+
 .result-bar {
   display: flex;
   justify-content: space-between;
-  width: 0;
-  transition: width 1.2s;
+  transition: width 1.2s ease-in-out;
   white-space: nowrap;
   border: none;
   color: #e6e6e6;
@@ -299,7 +299,52 @@ input[type='number']:focus {
   padding: .375rem .75rem;
 }
 
+.results-container div:nth-child(1) .poll-result .result-transition {
+  background-color: #28a745;
+}
 
+.results-container div:nth-child(2) .poll-result .result-transition {
+  background-color: #3f86a5;
+}
+
+.results-container div:nth-child(3) .poll-result .result-transition {
+  background-color: #dc4144;
+}
+
+.results-container div:nth-child(4) .poll-result .result-transition {
+  background-color: #9ca02a;
+}
+
+.result-transition {
+  display: flex;
+  justify-content: space-between;
+  width: 0;
+  white-space: nowrap;
+  border: none;
+  color: #e6e6e6;
+  border-radius: 0.25rem;
+  padding: .375rem .75rem;
+}
+
+.result-transition-enter {
+  display: flex;
+  justify-content: space-between;
+  width: 0;
+  white-space: nowrap;
+  border: none;
+  color: #e6e6e6;
+  border-radius: 0.25rem;
+  padding: .375rem .75rem;
+}
+
+.result-transition > div:not(:first-child) {
+  margin-left: 1rem;
+}
+
+.result-transition-active {
+  width: 100%;
+  transition: width 1.2s;
+}
 
 .result-bar > div:not(:first-child) {
   margin-left: 1rem;
