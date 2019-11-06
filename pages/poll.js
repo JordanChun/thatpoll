@@ -48,7 +48,7 @@ class PollPage extends React.Component {
     const { slug } = this.props.router.query;
 
     if (this.state.revealResults || this.state.userDidVote || this.props.active) {
-      this.setState({ refreshResultsLoading: true });
+      this.setState({ refreshResultsLoading: true, revealResults: true });
     } else {
       this.setState({ revealResults: true, resultsLoading: true });
     }
@@ -192,7 +192,7 @@ class PollPage extends React.Component {
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}
-              revealResults={!active || userDidVote && revealResults}
+              revealResults={!active || userDidVote || revealResults}
             />
             : null }
         </div>

@@ -48,7 +48,7 @@ const PollResults = props => (
              Refresh Results
           </Button>
         </div>
-        <Transition in={props.revealResults} timeout={300} appear>
+        <Transition in={props.revealResults} timeout={300} appear mountOnEnter unmountOnExit>
           {state => (
             <div className='results-container'>
                 {props.results.map((result, i) => (
