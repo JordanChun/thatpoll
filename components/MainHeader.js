@@ -13,7 +13,7 @@ const MainHeader = () => (
         <Link href='/'>
           <a>
             <Navbar.Brand style={{ padding: 0 }}>
-              <img src='/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
+              <img src='/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
             </Navbar.Brand>
           </a>
         </Link>
