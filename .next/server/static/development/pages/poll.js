@@ -423,54 +423,134 @@ const transitionStyles = resultWidth => {
   return style;
 };
 
-const PollResults = props => __jsx("div", {
-  className: "poll-results"
-}, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faChartBar"]
-}), " Results"), props.resultsLoading ? __jsx("div", {
-  className: "justify-content-center align-items-center",
-  style: {
-    height: '200px',
-    display: 'flex'
+class PollResults extends react__WEBPACK_IMPORTED_MODULE_7___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      resultsBar: false
+    };
   }
-}, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10___default.a, {
-  animation: "grow",
-  variant: "light"
-})) : __jsx("div", null, __jsx("div", {
-  className: "poll-stat mb-3"
-}, __jsx("b", null, props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, props.timelimit)), __jsx("div", {
-  className: "mb-3"
-}, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11___default.a, {
-  variant: "grey-blue",
-  size: "sm",
-  onClick: props.loadResults
-}, props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10___default.a, {
-  as: "span",
-  animation: "grow",
-  size: "sm",
-  role: "status",
-  "aria-hidden": "true"
-}) : null, "Refresh Results")), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_13__["Transition"], {
-  in: props.revealResults,
-  timeout: 300,
-  appear: true,
-  mountOnEnter: true,
-  unmountOnExit: true
-}, state => __jsx("div", {
-  className: "results-container"
-}, props.results.map((result, i) => __jsx("div", {
-  key: i
-}, __jsx("h6", null, props.choices[i]), __jsx("div", {
-  className: "poll-result"
-}, __jsx("div", {
-  className: "result-bar mb-3",
-  style: _objectSpread({}, defaultStyle, {}, transitionStyles(Math.round(result / props.totalVotes * 100))[state])
-}, __jsx("div", null, result !== 0 ? `${result} votes • ${Math.round(result / props.totalVotes * 100).toFixed(2)}%` : '0 votes • 0.00%')))))))));
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        resultsBar: true
+      });
+    }, 0);
+  }
+
+  render() {
+    return __jsx("div", {
+      className: "poll-results"
+    }, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faChartBar"]
+    }), " Results"), this.props.resultsLoading ? __jsx("div", {
+      className: "justify-content-center align-items-center",
+      style: {
+        height: '200px',
+        display: 'flex'
+      }
+    }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10___default.a, {
+      animation: "grow",
+      variant: "light"
+    })) : __jsx("div", null, __jsx("div", {
+      className: "poll-stat mb-3"
+    }, __jsx("b", null, this.props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, this.props.timelimit)), __jsx("div", {
+      className: "mb-3"
+    }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11___default.a, {
+      variant: "grey-blue",
+      size: "sm",
+      onClick: this.props.loadResults
+    }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10___default.a, {
+      as: "span",
+      animation: "grow",
+      size: "sm",
+      role: "status",
+      "aria-hidden": "true"
+    }) : null, "Refresh Results")), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_13__["Transition"], {
+      in: this.state.resultsBar,
+      timeout: 300,
+      appear: true
+    }, state => __jsx("div", {
+      className: "results-container"
+    }, this.props.results.map((result, i) => __jsx("div", {
+      key: i
+    }, __jsx("h6", null, this.props.choices[i]), __jsx("div", {
+      className: "poll-result"
+    }, __jsx("div", {
+      className: "result-bar mb-3",
+      style: _objectSpread({}, defaultStyle, {}, transitionStyles(Math.round(result / this.props.totalVotes * 100))[state])
+    }, __jsx("div", null, result !== 0 ? `${result} votes • ${Math.round(result / this.props.totalVotes * 100).toFixed(2)}%` : '0 votes • 0.00%')))))))));
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_15__["withRouter"])(PollResults));
+/*
+const PollResults = props => (
+  <div className='poll-results'>
+    <h5><FontAwesomeIcon icon={faChartBar}/> Results</h5>
+    { props.resultsLoading ?
+      <div className='justify-content-center align-items-center' style={{height: '200px', display: 'flex'}}>
+        <Spinner animation="grow" variant="light" />
+      </div>
+      :
+      <div>
+        <div className='poll-stat mb-3'>
+          <b>{props.totalVotes} votes</b> • <b>{props.timelimit}</b>
+        </div>
+        <div className='mb-3'>
+          <Button variant='grey-blue' size='sm' onClick={props.loadResults}>
+            { props.refreshResultsLoading ? 
+              <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+              /> : null
+            }
+             Refresh Results
+          </Button>
+        </div>
+        <Transition in={props.revealResults} timeout={300} appear mountOnEnter unmountOnExit>
+          {state => (
+            <div className='results-container'>
+                {props.results.map((result, i) => (
+                  <div key={i}>
+                    <h6>{props.choices[i]}</h6>
+                    <div className='poll-result'>
+                      <div className='result-bar mb-3'
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles(Math.round((result/props.totalVotes) * 100))[state]
+                        }}
+                      >
+                        <div>
+                          {result !== 0 ?
+                            `${result} votes • ${Math.round((result/props.totalVotes) * 100).toFixed(2)}%`
+                            : '0 votes • 0.00%' }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          )}
+        </Transition>
+      </div>
+    }
+  </div>
+);
 
 PollResults.propTypes = {
-  loadResults: prop_types__WEBPACK_IMPORTED_MODULE_12___default.a.func
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_15__["withRouter"])(PollResults));
+  loadResults: PropTypes.func
+}
+
+export default withRouter(PollResults);
+
+*/
+
 /*
 const PollResults = props => (
     <div className='poll-results'>

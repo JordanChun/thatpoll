@@ -264,19 +264,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/index.js");
-/* harmony import */ var next_page_transitions__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! next-page-transitions */ "./node_modules/next-page-transitions/lib/index.js");
-/* harmony import */ var next_page_transitions__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(next_page_transitions__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/index.js");
+/* harmony import */ var next_page_transitions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! next-page-transitions */ "./node_modules/next-page-transitions/lib/index.js");
+/* harmony import */ var next_page_transitions__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(next_page_transitions__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_20__);
 
 
 
@@ -285,7 +290,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
+
+
+
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement;
 
 function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -318,60 +328,156 @@ var transitionStyles = function transitionStyles(resultWidth) {
   return style;
 };
 
-var PollResults = function PollResults(props) {
-  return __jsx("div", {
-    className: "poll-results"
-  }, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_8__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_9__["faChartBar"]
-  }), " Results"), props.resultsLoading ? __jsx("div", {
-    className: "justify-content-center align-items-center",
-    style: {
-      height: '200px',
-      display: 'flex'
+var PollResults =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__["default"])(PollResults, _React$Component);
+
+  function PollResults(props) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__["default"])(this, PollResults);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__["default"])(PollResults).call(this, props));
+    _this.state = {
+      resultsBar: false
+    };
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__["default"])(PollResults, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.setState({
+          resultsBar: true
+        });
+      }, 0);
     }
-  }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    animation: "grow",
-    variant: "light"
-  })) : __jsx("div", null, __jsx("div", {
-    className: "poll-stat mb-3"
-  }, __jsx("b", null, props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, props.timelimit)), __jsx("div", {
-    className: "mb-3"
-  }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    variant: "grey-blue",
-    size: "sm",
-    onClick: props.loadResults
-  }, props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    as: "span",
-    animation: "grow",
-    size: "sm",
-    role: "status",
-    "aria-hidden": "true"
-  }) : null, "Refresh Results")), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_13__["Transition"], {
-    "in": props.revealResults,
-    timeout: 300,
-    appear: true,
-    mountOnEnter: true,
-    unmountOnExit: true
-  }, function (state) {
-    return __jsx("div", {
-      className: "results-container"
-    }, props.results.map(function (result, i) {
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
       return __jsx("div", {
-        key: i
-      }, __jsx("h6", null, props.choices[i]), __jsx("div", {
-        className: "poll-result"
-      }, __jsx("div", {
-        className: "result-bar mb-3",
-        style: _objectSpread({}, defaultStyle, {}, transitionStyles(Math.round(result / props.totalVotes * 100))[state])
-      }, __jsx("div", null, result !== 0 ? "".concat(result, " votes \u2022 ").concat(Math.round(result / props.totalVotes * 100).toFixed(2), "%") : '0 votes • 0.00%'))));
-    }));
-  })));
-};
+        className: "poll-results"
+      }, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__["faChartBar"]
+      }), " Results"), this.props.resultsLoading ? __jsx("div", {
+        className: "justify-content-center align-items-center",
+        style: {
+          height: '200px',
+          display: 'flex'
+        }
+      }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        animation: "grow",
+        variant: "light"
+      })) : __jsx("div", null, __jsx("div", {
+        className: "poll-stat mb-3"
+      }, __jsx("b", null, this.props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, this.props.timelimit)), __jsx("div", {
+        className: "mb-3"
+      }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        variant: "grey-blue",
+        size: "sm",
+        onClick: this.props.loadResults
+      }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        as: "span",
+        animation: "grow",
+        size: "sm",
+        role: "status",
+        "aria-hidden": "true"
+      }) : null, "Refresh Results")), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_18__["Transition"], {
+        "in": this.state.resultsBar,
+        timeout: 300,
+        appear: true
+      }, function (state) {
+        return __jsx("div", {
+          className: "results-container"
+        }, _this3.props.results.map(function (result, i) {
+          return __jsx("div", {
+            key: i
+          }, __jsx("h6", null, _this3.props.choices[i]), __jsx("div", {
+            className: "poll-result"
+          }, __jsx("div", {
+            className: "result-bar mb-3",
+            style: _objectSpread({}, defaultStyle, {}, transitionStyles(Math.round(result / _this3.props.totalVotes * 100))[state])
+          }, __jsx("div", null, result !== 0 ? "".concat(result, " votes \u2022 ").concat(Math.round(result / _this3.props.totalVotes * 100).toFixed(2), "%") : '0 votes • 0.00%'))));
+        }));
+      })));
+    }
+  }]);
+
+  return PollResults;
+}(react__WEBPACK_IMPORTED_MODULE_12___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_20__["withRouter"])(PollResults));
+/*
+const PollResults = props => (
+  <div className='poll-results'>
+    <h5><FontAwesomeIcon icon={faChartBar}/> Results</h5>
+    { props.resultsLoading ?
+      <div className='justify-content-center align-items-center' style={{height: '200px', display: 'flex'}}>
+        <Spinner animation="grow" variant="light" />
+      </div>
+      :
+      <div>
+        <div className='poll-stat mb-3'>
+          <b>{props.totalVotes} votes</b> • <b>{props.timelimit}</b>
+        </div>
+        <div className='mb-3'>
+          <Button variant='grey-blue' size='sm' onClick={props.loadResults}>
+            { props.refreshResultsLoading ? 
+              <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+              /> : null
+            }
+             Refresh Results
+          </Button>
+        </div>
+        <Transition in={props.revealResults} timeout={300} appear mountOnEnter unmountOnExit>
+          {state => (
+            <div className='results-container'>
+                {props.results.map((result, i) => (
+                  <div key={i}>
+                    <h6>{props.choices[i]}</h6>
+                    <div className='poll-result'>
+                      <div className='result-bar mb-3'
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles(Math.round((result/props.totalVotes) * 100))[state]
+                        }}
+                      >
+                        <div>
+                          {result !== 0 ?
+                            `${result} votes • ${Math.round((result/props.totalVotes) * 100).toFixed(2)}%`
+                            : '0 votes • 0.00%' }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          )}
+        </Transition>
+      </div>
+    }
+  </div>
+);
 
 PollResults.propTypes = {
-  loadResults: prop_types__WEBPACK_IMPORTED_MODULE_12___default.a.func
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_15__["withRouter"])(PollResults));
+  loadResults: PropTypes.func
+}
+
+export default withRouter(PollResults);
+
+*/
+
 /*
 const PollResults = props => (
     <div className='poll-results'>
