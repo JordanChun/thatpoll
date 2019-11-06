@@ -4,9 +4,7 @@ const MainFooter = () => (
   <footer>
     <div className='footer-wrapper'>
       <Container>
-        <h3>
-          StatMix
-        </h3>
+        <img src='/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
       </Container>
     </div>
   </footer>

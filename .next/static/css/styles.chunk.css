@@ -25,7 +25,7 @@ a, a:hover {
   justify-content: center;
 }
 
-.footer-wrapper h3 {
+.footer-wrapper .container {
   margin-top: 0.5rem;
   text-align: center;
 }

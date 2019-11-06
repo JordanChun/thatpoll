@@ -2,9 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPollH } from '@fortawesome/free-solid-svg-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
 
 const PollChoices = props => (
   <div className='poll-choices'>
+    {props.userDidVoteError ?
+      <div className='poll-alert'>
+        <Alert variant='warning'>
+          You have already voted.
+        </Alert>
+      </div>
+    : null }
     <h5><FontAwesomeIcon icon={faPollH} /> Choices</h5>
     <div className='poll-stat mb-3'>
       <b>{props.timelimit}</b>

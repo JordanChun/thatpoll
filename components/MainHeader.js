@@ -12,8 +12,8 @@ const MainHeader = () => (
       <Navbar bg="dark-blue" variant="dark" expand='sm'>
         <Link href='/'>
           <a>
-            <Navbar.Brand>
-              StatMix
+            <Navbar.Brand style={{ padding: 0 }}>
+              <img src='/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
             </Navbar.Brand>
           </a>
         </Link>

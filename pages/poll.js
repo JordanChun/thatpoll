@@ -12,9 +12,7 @@ class PollPage extends React.Component {
     const { origin } = absoluteUrl(req);
     const res = await fetch(`${origin}/api/poll/${slug}`, {
       method: 'GET',
-      headers: {
-        'X-Origin': 'statmix',
-      }
+      headers: { 'X-Origin': 'statmix' }
     });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
@@ -33,6 +31,7 @@ class PollPage extends React.Component {
       resultsLoading: false,
       refreshResultsLoading: false,
       selectedVote: null,
+      userDidVoteError: false
     }
 
     this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
@@ -47,17 +46,23 @@ class PollPage extends React.Component {
   async loadResults(e, req) {
     const { origin } = absoluteUrl(req);
     const { slug } = this.props.router.query;
-    if(!this.state.revealResults) {
+
+    if (this.state.revealResults || this.state.userDidVote || this.props.active) {
+      this.setState({ refreshResultsLoading: true });
+    } else {
+      this.setState({ revealResults: true, resultsLoading: true });
+    }
+    /*
+    if(!this.state.revealResults || !this.state.userDidVote ) {
       this.setState({ revealResults: true, resultsLoading: true });
     } else {
       this.setState({ refreshResultsLoading: true });
     }
+    */
     try {
       const res = await fetch(`${origin}/api/poll/results/${slug}`, {
         method: 'GET',
-        headers: {
-          'X-Origin': 'statmix',
-        }
+        headers: { 'X-Origin': 'statmix' }
       });
       const data = await res.json();
 
@@ -93,12 +98,14 @@ class PollPage extends React.Component {
         console.log(data);
         
         if(data.message === 'error') {
+          this.setState({ userDidVoteError: true });
           console.log('already voted');
         } else {
           this.setState({
             totalVotes: data.resultsData.totalVotes,
             userDidVote: data.resultsData.userDidVote,
-            selectedVote: data.resultsData.selectedVote
+            selectedVote: data.resultsData.selectedVote,
+            userDidVoteError: false
           });
           this.loadResults(e, req);
         }
@@ -132,6 +139,7 @@ class PollPage extends React.Component {
       totalVotes,
       results,
       userDidVote,
+      userDidVoteError,
       revealResults,
       resultsLoading,
       refreshResultsLoading
@@ -165,12 +173,14 @@ class PollPage extends React.Component {
 
           { active && !userDidVote ?
           <PollChoices
+            userDidVote={userDidVote}
             updateChoiceSelected={this.updateChoiceSelected}
             timelimit={timelimit}
             choices={choices}
             revealResults={revealResults}
             submitVote={this.submitVote}
             loadResults={this.loadResults}
+            userDidVoteError={userDidVoteError}
           /> : null }
 
           { !active || userDidVote || revealResults ?

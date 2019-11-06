@@ -19,7 +19,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
         let vote = await Vote.exists({ url: req.params.slug, ip: ip });
         console.log(vote)
         if(vote) {
-          res.status(200).json({ message: 'error' });
+          return res.status(200).json({ message: 'error' }).end();
           // user already voted
         } else {
           // add vote doc
@@ -52,7 +52,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
           });
         }             
       } else {
-        res.status(200).json({ message: 'error' });
+        return res.status(200).json({ message: 'error' }).end();
       }
     } else {
       res.status(404).json({ message: 'not found'});
