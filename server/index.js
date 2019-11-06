@@ -55,7 +55,7 @@ app.prepare().then(() => {
   server.use(cookieParser());
   //server.use(requestIp.mw());
 
-  server.use(express.static('img'));
+  server.use('/img', express.static('public'));
 
   server.use('/api', apiRoutes);
 
