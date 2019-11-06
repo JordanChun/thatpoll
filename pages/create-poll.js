@@ -10,6 +10,7 @@ import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
+import { withRouter } from 'next/router';
 
 //TO DO ##############################################
 //Validate Poll Inputs
@@ -127,7 +128,11 @@ class CreatePoll extends React.Component {
     } = this.state;
 
     return (
-      <Layout pageTitle='Create Poll'>
+      <Layout
+        pageTitle='Create Poll'
+        pageDesc='Create public or private polls. Share with friends, communties and gather data.'
+        path={this.props.router.asPath}
+      >
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
         <hr />
         { error ?
@@ -256,4 +261,4 @@ class CreatePoll extends React.Component {
   }
 }
 
-export default CreatePoll;
+export default withRouter(CreatePoll);

@@ -146,7 +146,7 @@ class PollPage extends React.Component {
     } = this.state;
 
     return (
-      <Layout pageTitle={`Poll - ${title}`} pageDesc={desc}>
+      <Layout pageTitle={`Poll - ${title}`} pageDesc={desc} path={this.props.router.asPath}>
         <div className='poll-wrapper'>
           {visibility === 'private' ?
             <div className='poll-alert'>
@@ -192,7 +192,7 @@ class PollPage extends React.Component {
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}
-              revealResults={!active || userDidVote || revealResults}
+              revealResults={!active || userDidVote && revealResults}
             />
             : null }
         </div>

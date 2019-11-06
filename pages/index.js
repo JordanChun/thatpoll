@@ -36,7 +36,11 @@ class Home extends React.Component {
   render() {
     const { polls, totalItems, router } = this.props;
     return (
-      <Layout pageTitle='StatMix' pageDesc='Create polls and vote' >
+      <Layout
+        pageTitle='StatMix'
+        pageDesc='Create public or private polls. Share with friends, communties and gather data.'
+        path={this.props.router.asPath}
+      >
         <h4 className='page-header'>Recent Polls</h4>
         <hr />
         {polls.map((poll, i) => (
