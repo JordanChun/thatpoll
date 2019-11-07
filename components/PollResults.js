@@ -4,7 +4,6 @@ import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
-import { PageTransition } from 'next-page-transitions'
 import { withRouter } from 'next/router';
 
 const defaultStyle = {
@@ -25,14 +24,12 @@ class PollResults extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      resultsBar: false
-    }
+    this.state = { resultsBar: false }
   }
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({resultsBar: true});
+      this.setState({ resultsBar: true });
     }, 0)
   }
 
