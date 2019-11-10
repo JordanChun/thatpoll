@@ -68,8 +68,8 @@ app.prepare().then(() => {
   });
   
   server.get('/poll/:slug', (req, res) => {
-    visitor.pageview(`/poll/${req.query.slug}`).send();
-    return app.render(req, res, '/poll', { slug: req.query.slug });
+    visitor.pageview(`/poll/${req.params.slug}`).send();
+    return app.render(req, res, '/poll', { slug: req.params.slug });
   });
 
   server.post('*', (req, res) => {
