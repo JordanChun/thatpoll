@@ -60,11 +60,7 @@ app.prepare().then(() => {
   server.use('/api', apiRoutes);
 
   server.get('/', (req, res) => {
-    return app.render(req, res, '/', req.query)
-  });
-
-  server.get('/page/:num', (req, res) => {
-    return app.render(req, res, '/page', { num: req.params.num });
+    return app.render(req, res, '/', { page: req.query.page });
   });
   
   server.get('/create-poll', (req, res) => {
@@ -72,8 +68,8 @@ app.prepare().then(() => {
   });
   
   server.get('/poll/:slug', (req, res) => {
-    visitor.pageview(`/poll/${req.params.slug}`).send();
-    return app.render(req, res, '/poll', { slug: req.params.slug });
+    visitor.pageview(`/poll/${req.query.slug}`).send();
+    return app.render(req, res, '/poll', { slug: req.query.slug });
   });
 
   server.post('*', (req, res) => {

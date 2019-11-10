@@ -1,19 +1,13 @@
 const express = require('express');
 const router = express.Router();
 
-const getUser = require('../middleware/user');
-
 const Poll = require('../models/Poll');
 const Vote = require('../models/Vote');
-//const ipaddr = require('ipaddr.js');
 
 router.post('/poll/vote/:slug', async (req, res) => {
   try {
-    //console.log(ipaddr.process(req.clientIp).kind());
-    //const ip = ipaddr.process(req.clientIp).octets.join('.');
     const ip = req.clientIp;
     const poll = await Poll.findOne({ url: req.params.slug });
-    // let poll = await Poll.exists({ url: req.params.slug });
     if(poll !== null) {
       if(poll.active) {
         let vote = await Vote.exists({ url: req.params.slug, ip: ip });

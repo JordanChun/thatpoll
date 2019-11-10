@@ -5,16 +5,16 @@ const Poll = require('../models/Poll');
 const moment = require('moment');
 
 
-router.get('/polls/page/:num', async (req, res) => {
+router.get('/polls', async (req, res) => {
   let pollsArr = [];
   let skip;
-  let num = Math.round(req.params.num);
+  let page = Math.round(req.query.page);
 
   try {
     const totalItems = await Poll.countDocuments({ visibility: 'public' });
     const totalPages = Math.ceil(totalItems/10);
-    num = Math.min(Math.max(num, 1), totalPages);
-    skip = (num - 1) * 10;
+    page = Math.min(Math.max(page, 1), totalPages);
+    skip = (page - 1) * 10;
     
     const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ $natural: -1 }).limit(10);
     for (let i = 0; i < polls.length; i++) {

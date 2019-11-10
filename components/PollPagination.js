@@ -1,8 +1,15 @@
 import Pagination from 'react-bootstrap/Pagination';
 import Link from 'next/link';
+import PropTypes from 'prop-types';
+import { withRouter } from 'next/router';
 
 const PollPagination = props => {
-  let active = props.active;
+  let active;
+  if (props.router.query.page) {
+    active = props.router.query.page;
+  } else {
+    active = 1;
+  }
   let items = [];
   let offset = 0;
 
@@ -10,7 +17,7 @@ const PollPagination = props => {
     offset = active - 3;
     items.push(
       <li className='page-item' key='prev'>
-        <Link href={{ pathname: '/page', query: { num: active - 1 } }} as={`/page/${active - 1}`}>
+        <Link href={{ pathname: '/', query: { page: active - 1 } }} as={`?page=${active - 1}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">‹</span>
             <span className="sr-only">Previous</span>
@@ -21,7 +28,8 @@ const PollPagination = props => {
   }
   
   const totalItems = props.totalItems;
-  const totalPages = Math.ceil(totalItems/10);
+  let totalPages = Math.ceil(totalItems/10);
+  if (totalPages === 0) totalPages = 1;
   active = Math.min(Math.max(active, 1), totalPages);
   // max offset = total pages - max pagination items
   offset = Math.min(Math.max(offset, 0), Math.max((totalPages - 5), 0));
@@ -34,7 +42,7 @@ const PollPagination = props => {
       items.push(
         <li className="page-item active" key={i}>
           <span className="page-link">
-            <Link href={{ pathname: '/page', query: { num: i + offset } }} as={`/page/${i + offset}`}>
+            <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
               <a>{i + offset}</a>
             </Link>
             <span className="sr-only">(current)</span>
@@ -44,7 +52,7 @@ const PollPagination = props => {
     } else {
       items.push(
         <li className="page-item" key={i}>
-          <Link href={{ pathname: '/page', query: { num: i + offset } }} as={`/page/${i + offset}`}>
+          <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
             <a className="page-link">{i + offset}</a>
           </Link>
         </li>
@@ -52,23 +60,10 @@ const PollPagination = props => {
     }
   }
 
-  /*
-
-  for (let i = 1; i <= 5; i++) {
-    items.push(
-      <Pagination.Item key={i} active={(i+offset) === active}>
-        <Link href={{ pathname: '/page', query: { num: i + offset } }} as={`/page/${i + offset}`}>
-          <a>{i + offset}</a>
-        </Link>
-      </Pagination.Item>
-    );
-  }
-  */ 
-
   if (active < totalPages - 2) {
     items.push(
       <li className='page-item' key='next'>
-        <Link href={{ pathname: '/page', query: { num: active + 1 } }} as={`/page/${active + 1}`}>
+        <Link href={{ pathname: '/', query: { page: active + 1 } }} as={`?page=${active + 1}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">›</span>
             <span className="sr-only">Next</span>
@@ -85,4 +80,8 @@ const PollPagination = props => {
   )
 }
 
-export default PollPagination;
+PollPagination.propTypes = {
+  totalItems: PropTypes.number.isRequired,
+}
+
+export default withRouter(PollPagination);

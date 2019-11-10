@@ -52,13 +52,7 @@ class PollPage extends React.Component {
     } else {
       this.setState({ revealResults: true, resultsLoading: true });
     }
-    /*
-    if(!this.state.revealResults || !this.state.userDidVote ) {
-      this.setState({ revealResults: true, resultsLoading: true });
-    } else {
-      this.setState({ refreshResultsLoading: true });
-    }
-    */
+
     try {
       const res = await fetch(`${origin}/api/poll/results/${slug}`, {
         method: 'GET',
@@ -101,6 +95,18 @@ class PollPage extends React.Component {
           this.setState({ userDidVoteError: true });
           console.log('already voted');
         } else {
+          if (localStorage.voteHistory) {
+            let voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
+            voteHistory.unshift({ title: this.props.poll.title, url: this.props.router.query.slug });
+            voteHistory = JSON.stringify(voteHistory)
+            localStorage.setItem('voteHistory', voteHistory);
+          } else {
+            let voteHistory = [];
+            voteHistory.unshift({ title: this.props.poll.title, url: this.props.router.query.slug });
+            voteHistory = JSON.stringify(voteHistory)
+            localStorage.setItem('voteHistory', voteHistory);
+          }
+
           this.setState({
             totalVotes: data.resultsData.totalVotes,
             userDidVote: data.resultsData.userDidVote,
@@ -174,13 +180,13 @@ class PollPage extends React.Component {
           { active && !userDidVote ?
           <PollChoices
             userDidVote={userDidVote}
-            updateChoiceSelected={this.updateChoiceSelected}
+            userDidVoteError={userDidVoteError}
             timelimit={timelimit}
             choices={choices}
             revealResults={revealResults}
+            updateChoiceSelected={this.updateChoiceSelected}
             submitVote={this.submitVote}
             loadResults={this.loadResults}
-            userDidVoteError={userDidVoteError}
           /> : null }
 
           { !active || userDidVote || revealResults ?
@@ -192,7 +198,7 @@ class PollPage extends React.Component {
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}
-              revealResults={!active || userDidVote || revealResults}
+              active={active}
             />
             : null }
         </div>

@@ -20,7 +20,11 @@ const MainHeader = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-
+            <Nav.Item>
+              <Link href='/categories'>
+                <a>Categories</a>
+              </Link>
+            </Nav.Item>
           </Nav>
           <Nav>
             <Nav.Item style={{'marginLeft': '10px'}}>

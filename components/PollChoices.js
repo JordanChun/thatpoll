@@ -3,6 +3,7 @@ import { faPollH } from '@fortawesome/free-solid-svg-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
+import PropTypes from 'prop-types';
 
 const PollChoices = props => (
   <div className='poll-choices'>
@@ -39,5 +40,16 @@ const PollChoices = props => (
       : null }
   </div>
 );
+
+PollChoices.propTypes = {
+  userDidVote: PropTypes.bool.isRequired,
+  userDidVoteError: PropTypes.bool.isRequired,
+  timelimit: PropTypes.string.isRequired,
+  choices: PropTypes.array.isRequired,
+  revealResults: PropTypes.bool.isRequired,
+  updateChoiceSelected: PropTypes.func.isRequired,
+  submitVote: PropTypes.func.isRequired,
+  loadResults: PropTypes.func.isRequired
+}
 
 export default PollChoices;

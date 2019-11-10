@@ -1,11 +1,48 @@
+html {
+  --primaryBackground: #2d4563;
+  --primaryTextColor: #e6e6e6;
+  --primaryAnchorColor: #e6e6e6;
+  --primaryBorder: 1px solid #375375;
+  --primaryBordercolor: #375375;
+  --primaryContainerColor: #2d4563;
+  --primaryButtonTextColor: #e6e6e6;
+
+  --headerBackgroundColor: #1c2c40;
+  --secondaryBackground: #2d4b6d;
+  --pollDescBackground: #2c4563;
+  --choiceLabelColor: #1c2c40;
+}
+
+html[data-theme="light"] {
+  --primaryBackground: #f9f9f9;
+  --primaryTextColor: #3c3c3c;
+  --primaryAnchorColor: #3c3c3c;
+  --primaryBorder: 1px solid #e4e4e4;
+  --primaryBordercolor: #e4e4e4;
+  --primaryContainerColor: white;
+  --primaryButtonTextColor: #e6e6e6;
+
+  --headerBackgroundColor: #1c2c40;
+  --secondaryBackground: #f1f1f1;
+  --pollDescBackground: #eaeaea;
+  --choiceLabelColor: #ababab;
+}
 body {
-  background-color: #2d4563;
-  color: #e6e6e6;
+  background-color: var(--primaryBackground);
+  color: var(--primaryTextColor);
 }
 
 a, a:hover {
-  color: #e6e6e6;
+  color: var(--primaryAnchorColor);
   text-decoration: none;
+}
+
+a:visited {
+  color: #ababab;
+}
+
+.nav-item a {
+  color: #e6e6e6;
 }
 
 .header-wrapper {
@@ -14,7 +51,7 @@ a, a:hover {
 
 .main-wrapper { 
   padding: 1.65rem;
-  background-color: #2d4563;
+  background-color: var(--primaryBackground);
   height: calc(100% - 56px);
 }
 
@@ -41,7 +78,7 @@ a, a:hover {
 button[type='submit'].btn.btn-light-blue {
   background-color: #598ecc;
   border-color: #598ecc;
-  color: #e6e6e6;
+  color: var(--primaryButtonTextColor);
   border-radius: 2rem;
   border-width: 2px;
 }
@@ -49,20 +86,20 @@ button[type='submit'].btn.btn-light-blue {
 button[type='submit'].btn.btn-light-blue:hover {
   background-color: #21354c;
   border-color: #598ecc;
-  color: #e6e6e6;
+  color: var(--primaryButtonTextColor);
 }
 
 .btn-grey-blue {
   border-radius: 2rem;
   background-color: #2c4563;
-  color: #e6e6e6;
-  border: 1px solid #375275;
+  color: var(--primaryButtonTextColor);
+  border: 1px solid #375375;
 }
 
 .btn-grey-blue:hover {
   background-color: #598ecc;
   border-color: #598ecc;
-  color: #e6e6e6;
+  color: var(--primaryButtonTextColor);
 }
 
 textarea.form-control,
@@ -71,23 +108,23 @@ input[type='text'],
 input[type='text']:focus,
 input[type='number'],
 input[type='number']:focus {
-  color: #e6e6e6;
-  background-color: #46586c;
-  border-color: #21354c;
+  color: var(--primaryTextColor);
+  background-color: var(--secondaryBackground);
+  border: var(--primaryBorder)
 }
 
 .dropdown-menu {
-  background-color: #1c2c40;
+  background-color: var(--primaryContainerColor);
 }
 
 .dropdown-item {
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
 }
 
 .dropdown-item:hover {
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   text-decoration: none;
-  background-color: #2d4563;
+  background-color: var(--primaryBackground);
 }
 
 .dropdown-item.btn {
@@ -96,6 +133,58 @@ input[type='number']:focus {
 
 .page-header {
   padding: 1rem 0;
+}
+
+.card {
+  border: none;
+  background-color: var(--secondaryBackground);
+}
+
+.card-header {
+  color: #e6e6e6;
+  background-color: #1c2c40;
+  border-bottom: var(--primaryBorder);
+}
+
+.list-group-item {
+  background-color: var(--secondaryBackground);
+  border: var(--primaryBorder);
+}
+
+.vote-history .list-group {
+  max-height: 300px;
+  overflow-y: hidden;
+}
+
+.vote-history .list-group:hover {
+  overflow-y: scroll;
+}
+
+.vote-history.card .list-group-item {
+  padding: .5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vote-history .list-group-item a {
+  display: -webkit-inline-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: pre-wrap;
+  margin-right: 1em;
+}
+
+.vote-history.card .list-group-item:hover span {
+  display: block;
+}
+
+.vote-history.card .list-group-item span {
+  cursor: pointer;
+  line-height: 1.5;
+  display: none;
 }
 
 .poll-card-actions {
@@ -129,11 +218,11 @@ input[type='number']:focus {
 }
 
 .poll-card-container {
-  background-color: #2d4b6d;
+  background-color: var(--secondaryBackground);
   padding: 1rem 1rem 0.4rem;
   border-radius: .25rem;
   margin-bottom: 1rem;
-  border: 1px solid #375375;
+  border: var(--primaryBorder);
 }
 
 .poll-card-container hr {
@@ -154,14 +243,13 @@ input[type='number']:focus {
 }
 
 .poll-wrapper {
-  border: 1px solid #375275;
+  border: var(--primaryBorder);
   padding: 2rem;
-  background-color: #2d4a6d;
+  background-color: var(--secondaryBackground);
   border-radius: 0.25rem;
 }
 
 .poll-title {
-  padding: 1rem 0;
   word-break: break-word;
 }
 
@@ -176,7 +264,7 @@ input[type='number']:focus {
 .poll-desc > div {
   padding: 0.8rem;
   border-radius: .25rem;
-  background-color: #2c4563;
+  background-color: var(--pollDescBackground);
 }
 
 .poll-card-desc p, .poll-card-desc i {
@@ -202,7 +290,7 @@ input[type='number']:focus {
 }
 
 .poll-choices-icon {
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   cursor: pointer;
 }
   
@@ -222,15 +310,16 @@ input[type='number']:focus {
   flex: 0.3;
   transition: width 1.2s;
   white-space: nowrap;
-  background-color: #1c2c40;
+  background-color: var(--choiceLabelColor);
   border: none;
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
+  font-weight: 500;
 }
 
 .poll-choices input[type='radio']:checked.choice-control + label.form-control {
   background-color: #28a745;
   border-color: #28a745;
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   width: 100%;
   flex: 1;
   transition: 1.2s;
@@ -253,11 +342,11 @@ input[type='number']:focus {
 .results-container {
   padding: 0.8rem;
   border-radius: .25rem;
-  background-color: #2c4563;
+  background-color: var(--pollDescBackground);
 }
 
 .poll-result {
-  background-color: #2d496d;
+  background-color: var(--secondaryBackground);
   border-radius: 0.25rem;
 }
 
@@ -294,9 +383,20 @@ input[type='number']:focus {
   transition: width 1.2s ease-in-out;
   white-space: nowrap;
   border: none;
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   border-radius: 0.25rem;
   padding: .375rem .75rem;
+}
+
+.result-bar > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-weight: 600;
+}
+
+.result-bar > div div:not(:first-child) {
+  margin-left: 1rem;
 }
 
 .results-container div:nth-child(1) .poll-result .result-transition {
@@ -321,7 +421,7 @@ input[type='number']:focus {
   width: 0;
   white-space: nowrap;
   border: none;
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   border-radius: 0.25rem;
   padding: .375rem .75rem;
 }
@@ -332,7 +432,7 @@ input[type='number']:focus {
   width: 0;
   white-space: nowrap;
   border: none;
-  color: #e6e6e6;
+  color: var(--primaryTextColor);
   border-radius: 0.25rem;
   padding: .375rem .75rem;
 }
@@ -354,10 +454,15 @@ input[type='number']:focus {
   justify-content: center;
 }
 
+.page-item.active .page-link a {
+  color: #e6e6e6;
+}
+
 .page-link {
+  color: #e6e6e6;
   padding: 0.75rem 1rem;
   background-color: #2d4a6d;
-  border: 1px solid #375275;
+  border: 1px solid #375375;
 }
 
 .page-link:hover {
