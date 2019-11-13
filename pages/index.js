@@ -40,7 +40,6 @@ class Home extends React.Component {
     return (
       <Layout
         pageTitle='StatMix'
-        pageDesc='Create public or private polls. Share with friends, communties and gather data.'
         path={this.props.router.asPath}
       >
         <h4 className='page-header'>Recent Polls</h4>

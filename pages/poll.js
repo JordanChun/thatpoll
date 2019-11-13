@@ -153,7 +153,12 @@ class PollPage extends React.Component {
     } = this.state;
 
     return (
-      <Layout pageTitle={`Poll - ${title}`} pageDesc={desc} path={this.props.router.asPath}>
+      <Layout
+        pageTitle={`Poll - ${title}`}
+        pageDesc={desc}
+        visibility={visibility}
+        path={this.props.router.asPath}
+      >
         <div className='poll-wrapper'>
           {visibility === 'private' ?
             <div className='poll-alert'>

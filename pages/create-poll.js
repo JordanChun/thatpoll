@@ -172,7 +172,6 @@ class CreatePoll extends React.Component {
     return (
       <Layout
         pageTitle='Create Poll'
-        pageDesc='Create public or private polls. Share with friends, communties and gather data.'
         path={this.props.router.asPath}
       >
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
@@ -190,7 +189,7 @@ class CreatePoll extends React.Component {
             <Form.Control
               value={title}
               onChange={this.inputUpdate}
-              type='text' name='title' maxLength='100'
+              type='text' name='title' maxLength='120'
               required
             />
           </Form.Group>
@@ -202,10 +201,10 @@ class CreatePoll extends React.Component {
               value={desc}
               onChange={this.inputUpdate}
               style={{ 'maxHeight': '144px', minHeight: '72px' }}
-              as="textarea" rows="3" name='desc' maxLength='400'
+              as="textarea" rows="3" name='desc' maxLength='500'
             />
             <Form.Text>
-              Characters remaining: {400 - desc.length}
+              Characters remaining: {500 - desc.length}
             </Form.Text>
           </Form.Group>
           <Form.Row>
@@ -216,7 +215,7 @@ class CreatePoll extends React.Component {
               <Form.Control
                 value={choice1}
                 onChange={this.inputUpdate}
-                type='text' name='choice1' maxLength='50'
+                type='text' name='choice1' maxLength='75'
                 required
               />
             </Form.Group>
@@ -227,7 +226,7 @@ class CreatePoll extends React.Component {
               <Form.Control
                 value={choice2}
                 onChange={this.inputUpdate} 
-                type='text' name='choice2' maxLength='50'
+                type='text' name='choice2' maxLength='75'
                 required
               />
             </Form.Group>
@@ -240,7 +239,7 @@ class CreatePoll extends React.Component {
               <Form.Control
                 value={choice3}
                 onChange={this.inputUpdate}
-                type='text' name='choice3' maxLength='50'
+                type='text' name='choice3' maxLength='75'
               />
             </Form.Group>
             <Form.Group as={Col}>
@@ -250,7 +249,7 @@ class CreatePoll extends React.Component {
               <Form.Control
                 value={choice4}
                 onChange={this.inputUpdate}
-                type='text'name='choice4' maxLength='50'
+                type='text'name='choice4' maxLength='75'
               />
             </Form.Group>
           </Form.Row>

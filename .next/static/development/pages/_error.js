@@ -16,18 +16,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MainHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainHeader */ "./components/MainHeader.js");
 /* harmony import */ var _MainFooter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MainFooter */ "./components/MainFooter.js");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var _style_index_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../style/index.css */ "./style/index.css");
-/* harmony import */ var _style_index_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_style_index_css__WEBPACK_IMPORTED_MODULE_5__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-
-
+ //import '../style/index.css';
 
 var Layout = function Layout(props) {
-  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, props.pageTitle), __jsx("link", {
+  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("link", {
     rel: "icon",
     type: "image/png",
     sizes: "32x32",
@@ -40,6 +37,11 @@ var Layout = function Layout(props) {
   }), __jsx("link", {
     rel: "stylesheet",
     href: "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-svg-core@1.2.25/styles.css"
+  }), __jsx("title", null, props.pageTitle), props.visibility === 'private' ? __jsx("meta", {
+    name: "robots",
+    content: "noindex"
+  }) : null, __jsx("meta", {
+    charSet: "UTF-8"
   }), __jsx("meta", {
     name: "description",
     content: props.pageDesc
@@ -25236,7 +25238,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 2:
 /*!************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F_error&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5C_error.js ***!
   \************************************************************************************************************************************/
@@ -25259,5 +25261,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js","styles"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=_error.js.map
