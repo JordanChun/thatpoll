@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -121,6 +121,11 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 const Layout = props => __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("title", null, props.pageTitle), __jsx("link", {
+  rel: "icon",
+  type: "image/png",
+  sizes: "32x32",
+  href: "/img/favicon.ico"
+}), __jsx("link", {
   rel: "stylesheet",
   href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
   integrity: "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T",
@@ -254,9 +259,7 @@ const MainHeader = () => __jsx("header", {
   id: "responsive-navbar-nav"
 }, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a, {
   className: "mr-auto"
-}, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a.Item, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  href: "/categories"
-}, __jsx("a", null, "Categories")))), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
+}), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3___default.a.Item, {
   style: {
     'marginLeft': '10px'
   }
@@ -1513,7 +1516,7 @@ class Router {
       // can be caused by navigating back from an external site
 
 
-      if (e.state.options && e.state.options.fromExternal) {
+      if (e.state.options && e.state.options.historyId !== this.historyId) {
         return;
       } // If the downstream application returns falsy, return.
       // They will then be responsible for handling the event.
@@ -1569,7 +1572,9 @@ class Router {
     is_dynamic_1.isDynamicRoute(pathname) && __NEXT_DATA__.nextExport ? pathname : as;
     this.sub = subscription;
     this.clc = null;
-    this._wrapApp = wrapApp;
+    this._wrapApp = wrapApp; // we use a historyId to enable ignoring invalid popstates
+
+    this.historyId = Math.random();
 
     if (false) {}
   } // @deprecated backwards compatibility even though it's a private method.
@@ -1773,7 +1778,9 @@ class Router {
       window.history[method]({
         url,
         as,
-        options
+        options: _Object$assign({}, options, {
+          historyId: this.historyId
+        })
       }, null, as);
     }
   }
@@ -2003,8 +2010,7 @@ class Router {
     } = this.components['/_app'];
     let props;
 
-    if ( // @ts-ignore workaround for dead-code elimination
-    (self.__HAS_SPR || "development" !== 'production') && Component.__NEXT_SPR) {
+    if (Component.__NEXT_SPR) {
       let status; // pathname should have leading slash
 
       let {
@@ -2204,11 +2210,14 @@ const url_1 = __webpack_require__(/*! url */ "url");
 
 function execOnce(fn) {
   let used = false;
+  let result = null;
   return (...args) => {
     if (!used) {
       used = true;
-      fn.apply(this, args);
+      result = fn.apply(this, args);
     }
+
+    return result;
   };
 }
 
@@ -2247,10 +2256,10 @@ function isResSent(res) {
 
 exports.isResSent = isResSent;
 
-async function loadGetInitialProps(Component, ctx) {
+async function loadGetInitialProps(App, ctx) {
   if (true) {
-    if (Component.prototype && Component.prototype.getInitialProps) {
-      const message = `"${getDisplayName(Component)}.getInitialProps()" is defined as an instance method - visit https://err.sh/zeit/next.js/get-initial-props-as-an-instance-method for more information.`;
+    if (App.prototype && App.prototype.getInitialProps) {
+      const message = `"${getDisplayName(App)}.getInitialProps()" is defined as an instance method - visit https://err.sh/zeit/next.js/get-initial-props-as-an-instance-method for more information.`;
       throw new Error(message);
     }
   } // when called from _app `ctx` is nested in `ctx`
@@ -2258,24 +2267,31 @@ async function loadGetInitialProps(Component, ctx) {
 
   const res = ctx.res || ctx.ctx && ctx.ctx.res;
 
-  if (!Component.getInitialProps) {
+  if (!App.getInitialProps) {
+    if (ctx.ctx && ctx.Component) {
+      // @ts-ignore pageProps default
+      return {
+        pageProps: await loadGetInitialProps(ctx.Component, ctx.ctx)
+      };
+    }
+
     return {};
   }
 
-  const props = await Component.getInitialProps(ctx);
+  const props = await App.getInitialProps(ctx);
 
   if (res && isResSent(res)) {
     return props;
   }
 
   if (!props) {
-    const message = `"${getDisplayName(Component)}.getInitialProps()" should resolve to an object. But found "${props}" instead.`;
+    const message = `"${getDisplayName(App)}.getInitialProps()" should resolve to an object. But found "${props}" instead.`;
     throw new Error(message);
   }
 
   if (true) {
     if (_Object$keys(props).length === 0 && !ctx.ctx) {
-      console.warn(`${getDisplayName(Component)} returned an empty object from \`getInitialProps\`. This de-optimizes and prevents automatic static optimization. https://err.sh/zeit/next.js/empty-object-getInitialProps`);
+      console.warn(`${getDisplayName(App)} returned an empty object from \`getInitialProps\`. This de-optimizes and prevents automatic static optimization. https://err.sh/zeit/next.js/empty-object-getInitialProps`);
     }
   }
 
@@ -2573,10 +2589,10 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./pages/not-found.js":
-/*!****************************!*\
-  !*** ./pages/not-found.js ***!
-  \****************************/
+/***/ "./pages/_error.js":
+/*!*************************!*\
+  !*** ./pages/_error.js ***!
+  \*************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2585,17 +2601,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
+/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const NotFound = props => __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-  pageTitle: "Page Not Found"
-}, __jsx("h4", {
-  className: "page-header"
-}, "404 Page Not Found"));
 
-/* harmony default export */ __webpack_exports__["default"] = (NotFound);
+
+class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  static propTypes() {
+    return {
+      errorCode: react__WEBPACK_IMPORTED_MODULE_0___default.a.PropTypes.number.isRequired
+    };
+  }
+
+  static getInitialProps({
+    res,
+    xhr
+  }) {
+    const errorCode = res ? res.statusCode : xhr ? xhr.status : null;
+    return {
+      errorCode
+    };
+  }
+
+  render() {
+    var response;
+
+    switch (this.props.errorCode) {
+      case 200: // Also display a 404 if someone requests /_error explicitly
+
+      case 404:
+        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          pageTitle: "Page Not Found"
+        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
+          className: "error-container"
+        }, __jsx("h4", {
+          className: "page-header"
+        }, "404 Page Not Found"))));
+        break;
+
+      case 500:
+        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          pageTitle: "Internal Server Error"
+        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
+          className: "error-container"
+        }, __jsx("h4", {
+          className: "page-header"
+        }, "500 Internal Server Error"))));
+        break;
+
+      default:
+        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          pageTitle: "An Error Occured"
+        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
+          className: "error-container"
+        }, __jsx("h4", {
+          className: "page-header"
+        }, "An error occured while trying to access this page."))));
+    }
+
+    return response;
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(ErrorPage));
 
 /***/ }),
 
@@ -2621,7 +2695,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PollResults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/PollResults */ "./components/PollResults.js");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "next/router");
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _not_found__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./not-found */ "./pages/not-found.js");
+/* harmony import */ var _pages_error__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/_error */ "./pages/_error.js");
 /* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next-absolute-url */ "next-absolute-url");
 /* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_9__);
 
@@ -2790,7 +2864,9 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   render() {
     // if not data found for poll
     if (this.props.errorCode) {
-      return __jsx(_not_found__WEBPACK_IMPORTED_MODULE_8__["default"], null);
+      return __jsx(_pages_error__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        errorCode: this.props.errorCode
+      });
     }
 
     const {
@@ -2801,7 +2877,8 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       choices,
       dateCreated,
       visits,
-      timelimit
+      timelimit,
+      category
     } = this.props.poll;
     const {
       totalVotes,
@@ -2827,8 +2904,15 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     }, title.length > 0 ? title : 'Untitled'), __jsx("hr", null), __jsx("div", {
       className: "poll-desc"
     }, __jsx("h6", null, "Description"), __jsx("div", null, __jsx("p", null, desc.length > 0 ? desc : __jsx("i", null, "No description")), __jsx("hr", null), __jsx("div", {
+      style: {
+        display: 'flex',
+        justifyContent: 'space-between'
+      }
+    }, __jsx("div", {
       className: "poll-stat"
-    }, visits, " views \u2022 ", dateCreated))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, visits, " views \u2022 ", dateCreated), __jsx("div", {
+      className: "poll-stat"
+    }, "Category: ", category)))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
       userDidVote: userDidVote,
       userDidVoteError: userDidVoteError,
       timelimit: timelimit,
@@ -2877,7 +2961,7 @@ PollPage.defaultProps = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************!*\
   !*** multi ./pages/poll.js ***!
   \*****************************/

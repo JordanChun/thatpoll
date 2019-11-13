@@ -9,12 +9,11 @@ html {
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #2d4b6d;
-  --pollDescBackground: #2c4563;
   --choiceLabelColor: #1c2c40;
 }
 
 html[data-theme="light"] {
-  --primaryBackground: #f9f9f9;
+  --primaryBackground: #f1f1f1;
   --primaryTextColor: #3c3c3c;
   --primaryAnchorColor: #3c3c3c;
   --primaryBorder: 1px solid #e4e4e4;
@@ -23,8 +22,7 @@ html[data-theme="light"] {
   --primaryButtonTextColor: #e6e6e6;
 
   --headerBackgroundColor: #1c2c40;
-  --secondaryBackground: #f1f1f1;
-  --pollDescBackground: #eaeaea;
+  --secondaryBackground: #f9f9f9;
   --choiceLabelColor: #ababab;
 }
 body {
@@ -38,7 +36,7 @@ a, a:hover {
 }
 
 a:visited {
-  color: #ababab;
+  color: #777777;
 }
 
 .nav-item a {
@@ -102,6 +100,8 @@ button[type='submit'].btn.btn-light-blue:hover {
   color: var(--primaryButtonTextColor);
 }
 
+select.form-control,
+select.form-control:focus,
 textarea.form-control,
 textarea.form-control:focus,
 input[type='text'],
@@ -149,6 +149,17 @@ input[type='number']:focus {
 .list-group-item {
   background-color: var(--secondaryBackground);
   border: var(--primaryBorder);
+}
+
+.error-container {
+  min-height: calc(50% - 156px);
+  min-height: calc(50vh - 156px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--primaryBorder);
+  background-color: var(--secondaryBackground);
+  border-radius: .25rem;
 }
 
 .vote-history .list-group {
@@ -264,7 +275,7 @@ input[type='number']:focus {
 .poll-desc > div {
   padding: 0.8rem;
   border-radius: .25rem;
-  background-color: var(--pollDescBackground);
+  background-color: var(--primaryBackground);
 }
 
 .poll-card-desc p, .poll-card-desc i {
@@ -342,7 +353,7 @@ input[type='number']:focus {
 .results-container {
   padding: 0.8rem;
   border-radius: .25rem;
-  background-color: var(--pollDescBackground);
+  background-color: var(--primaryBackground);
 }
 
 .poll-result {

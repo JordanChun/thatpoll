@@ -1,19 +1,54 @@
 import Layout from '../components/Layout';
+import PollPreview from '../components/PollPreview';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPoll, faQuestionCircle, faEye } from '@fortawesome/free-solid-svg-icons';
-import PollPreview from '../components/PollPreview';
 import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
 import { withRouter } from 'next/router';
+import CategoriesList from '../helpers/CategoriesList';
 
 //TO DO ##############################################
 //Validate Poll Inputs
+
+const visibilityTooltip = props => (
+  <div
+    {...props}
+    style={{
+      maxWidth: '400px',
+      backgroundColor: '#1c2c40',
+      padding: '1rem',
+      color: '#e6e6e6',
+      borderRadius: '0.25rem',
+      ...props.style,
+    }}
+  >
+    Set whether to allow the public to see this poll or keep it private.
+    Only those with the URL will be able to access the poll if set private.
+  </div>
+);
+
+const votingPeriodTooltip = props => (
+  <div
+    {...props}
+    style={{
+      maxWidth: '400px',
+      backgroundColor: '#1c2c40',
+      padding: '1rem',
+      color: '#e6e6e6',
+      borderRadius: '0.25rem',
+      ...props.style,
+    }}
+  >
+    Set in hours when the poll will expire.
+  </div>
+);
 
 function validatePollInput(pollDataObj) {
   let choices = [pollDataObj.choice1, pollDataObj.choice2];
@@ -29,7 +64,8 @@ function validatePollInput(pollDataObj) {
     desc: pollDataObj.desc,
     choices: choices,
     visibility: pollDataObj.visibility,
-    votingPeriod: pollDataObj.votingPeriod
+    votingPeriod: pollDataObj.votingPeriod,
+    category: pollDataObj.category
   }
 
   return pollData;
@@ -49,6 +85,7 @@ class CreatePoll extends React.Component {
       visibility: 'public',
       votingPeriod: 6,
       dateCreated: new Date(),
+      category: 0,
       error: false,
       timelimit: 'Voting ends in: 6 hours'
     }
@@ -57,10 +94,15 @@ class CreatePoll extends React.Component {
     this.visibilityUpdate = this.visibilityUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
   }
 
   inputUpdate(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  updateCategory(e) {
+    this.setState({ category: e.target.selectedIndex });
   }
 
   visibilityUpdate(e) {
@@ -216,7 +258,13 @@ class CreatePoll extends React.Component {
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>
-                Visibility <FontAwesomeIcon icon={faQuestionCircle} />
+                Visibility{" "}
+                <OverlayTrigger
+                    placement="top-start"
+                    delay={{ show: 250, hide: 400 }}
+                    overlay={visibilityTooltip}>
+                  <FontAwesomeIcon icon={faQuestionCircle} />
+                </OverlayTrigger>
               </Form.Label>
               <Form.Check
                 onClick={this.visibilityUpdate}
@@ -229,7 +277,14 @@ class CreatePoll extends React.Component {
             </Form.Group>
             <Form.Group as={Col}>
               <Form.Label>
-                Voting Period (hours) <FontAwesomeIcon icon={faQuestionCircle} />
+                Voting Period (hours){" "}
+                <OverlayTrigger
+                  placement="top-start"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={votingPeriodTooltip}
+                >
+                  <FontAwesomeIcon icon={faQuestionCircle} />
+                </OverlayTrigger>
               </Form.Label>
               <Form.Control
                 value={votingPeriod}
@@ -241,8 +296,22 @@ class CreatePoll extends React.Component {
                 6h - 72h 
               </Form.Text>
             </Form.Group>
-
           </Form.Row>
+          <Form.Group>
+            <Form.Label>
+              Category
+            </Form.Label>
+            <Form.Control
+              onChange={this.updateCategory}
+              as="select"
+              name='category'
+            >
+            <option>Select a category</option>
+            {CategoriesList.map((category, i) => (
+              <option key={i}>{category}</option>
+            ))}
+            </Form.Control>
+          </Form.Group>
           <div className='poll-preview'>
             <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
             <hr />

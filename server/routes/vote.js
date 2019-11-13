@@ -11,7 +11,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
     if(poll !== null) {
       if(poll.active) {
         let vote = await Vote.exists({ url: req.params.slug, ip: ip });
-        console.log(vote)
+        //console.log(vote)
         if(vote) {
           return res.status(200).json({ message: 'error' }).end();
           // user already voted

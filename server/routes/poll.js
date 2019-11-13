@@ -18,7 +18,7 @@ router.get('/poll/:slug', async (req, res) => {
     const ip = await req.clientIp;
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-      console.log("client ip: " + ip);
+      //console.log("client ip: " + ip);
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
       /*
       if(vote) {
@@ -63,6 +63,7 @@ router.get('/poll/:slug', async (req, res) => {
         timelimit: timelimit,
         active: poll.active,
         results: poll.results,
+        category: poll.category,
         visits: 0,
       }
 

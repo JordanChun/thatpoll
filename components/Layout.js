@@ -8,6 +8,7 @@ const Layout = props => (
   <div>
     <Head>
       <title>{props.pageTitle}</title>
+      <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.ico"></link>
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"

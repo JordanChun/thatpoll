@@ -2,15 +2,21 @@
 
 CLIENT
 ----------------------------------------------------------
-[DONE] handle if user already voted
-[DONE] handle no vote submit
-create poll validation
 add content to index page
 add unique views to polls
 polls page filtered views. (most votes. most views, most recent)
 featured poll (most votes or views to front page(index))
-side bar for visit history with localstorage
+improve create poll validation UI
 share and report features
+[DONE] categories for create poll page
+category page
+implement prop types
+light theme toggle
+react redux implement
+[DONE] handle if user already voted
+[DONE] handle no vote submit
+[DONE] create poll validation
+[DONE] side bar for visit history with localstorage
 [DONE] voting functions
 [DONE]split components/Poll.js -> Choices, Results
 [DONE] create poll redirect to new created poll
@@ -19,22 +25,32 @@ share and report features
 [DONE] actual polls pages
 [DONE] Pagination for pages
 [DONE] Header added to prevent direct api route access
+[DONE] Hide refresh results of poll not active
+[DONE] poll results transitions
+[DONE] custom error pages
+
 
 SERVER
 ----------------------------------------------------------
+page sorting methods
+better create poll validation
+userDidVote not sending true on page refresh
+Google Analytics for page views
+limit poll creations to 5 every 3 hours?
+category page routing
+[DONE] category added to poll schema
+[DONE] create poll validation
 [DONE] Header added to prevent direct api route access
 [DONE] poll doc expire
 [DONE] handle no vote submit
-Google Analytics for page views
-create poll validation
-limit poll creations to 5 every 3 hours?
 [FIX] add unique views/ unique view middleware
 [DONE] date field to dateCreated
 [DONE] vote schema
 [DONE] results mongoose schema
 [DONE] views mongoose schema
+[DONE] voting api routes
+[DONE] page view query routing
 
-voting api routes
 
 use express session?
 express rate limiter

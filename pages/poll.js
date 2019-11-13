@@ -4,7 +4,7 @@ import Alert from 'react-bootstrap/Alert';
 import PollChoices from '../components/PollChoices';
 import PollResults from '../components/PollResults';
 import { withRouter } from 'next/router'
-import NotFound from './not-found';
+import ErrorPage from '../pages/_error';
 import absoluteUrl from 'next-absolute-url';
 
 class PollPage extends React.Component {
@@ -127,7 +127,7 @@ class PollPage extends React.Component {
   render() {
     // if not data found for poll
     if (this.props.errorCode) {
-      return <NotFound />
+      return <ErrorPage errorCode={this.props.errorCode} />
     }
 
     const {
@@ -138,7 +138,8 @@ class PollPage extends React.Component {
       choices,
       dateCreated,
       visits,
-      timelimit
+      timelimit,
+      category
     } = this.props.poll;
 
     const {
@@ -170,8 +171,13 @@ class PollPage extends React.Component {
                 {desc.length > 0 ? desc : <i>No description</i>}
               </p>
               <hr />
-              <div className='poll-stat'>
-                {visits} views • {dateCreated}
+              <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                <div className='poll-stat'>
+                  {visits} views • {dateCreated}
+                </div>
+                <div className='poll-stat'>
+                  Category: {category}
+                </div>
               </div>
             </div>
           </div>

@@ -39,6 +39,11 @@ const pollSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: true
+  },
+  category: {
+    type: String,
+    required: true,
+    default: 'Other'
   }
 });
 
