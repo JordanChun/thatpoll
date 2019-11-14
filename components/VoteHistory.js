@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
+import Accordion from 'react-bootstrap/Accordion';
 
 
 class VoteHistory extends React.Component {
@@ -20,10 +21,10 @@ class VoteHistory extends React.Component {
 
   componentDidMount() {
     // get history from localstorage
-    console.log(localStorage.voteHistory)
+    //console.log(localStorage.voteHistory)
     if (localStorage.voteHistory) {
       const voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
-      console.log(voteHistory)
+      //console.log(voteHistory)
       this.setState({ history: voteHistory });
     }
   }
@@ -53,30 +54,35 @@ class VoteHistory extends React.Component {
   render() {
     const { history } = this.state;
     return (
-      <Card className='vote-history'>
-        <Card.Header>Vote History</Card.Header>
-        { history.length > 0 ?
-          <ListGroup variant="flush">
-            {history.map((poll, i) => (
-              <ListGroup.Item key={i}>
-                <Link href={{ pathname: '/poll', query: { slug: poll.url } }} as={`/poll/${poll.url}`}>
-                  <a title={poll.title}>{poll.title}</a>
-                </Link>
-                <span onClick={this.deleteHistory} data-index={i}>
-                  <FontAwesomeIcon icon={faTimes} />
-                </span>
-              </ListGroup.Item>
-            ))}
-          </ListGroup> 
-        : 
+      <Accordion defaultActiveKey="0">
+        <Card className='vote-history'>
+        <Accordion.Toggle as={Card.Header} eventKey="0" style={{ cursor: 'pointer' }}>
+          Vote History
+        </Accordion.Toggle>
+        <Accordion.Collapse eventKey="0">
+          { history.length > 0 ?
+            <ListGroup variant="flush">
+              {history.map((poll, i) => (
+                <ListGroup.Item key={i}>
+                  <Link href={{ pathname: '/poll', query: { slug: poll.url } }} as={`/poll/${poll.url}`}>
+                    <a title={poll.title}>{poll.title}</a>
+                  </Link>
+                  <span onClick={this.deleteHistory} data-index={i}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
+                </ListGroup.Item>
+              ))}
+            </ListGroup> 
+          : 
           <ListGroup variant='flush'>
-            <ListGroupItem>
-              <i>No history...</i>
-            </ListGroupItem>
-          </ListGroup>
-        }
-
-      </Card>
+              <ListGroupItem>
+                <i>No history...</i>
+              </ListGroupItem>
+            </ListGroup>
+          }
+        </Accordion.Collapse>
+        </Card>
+      </Accordion>
     )
   }
 }
