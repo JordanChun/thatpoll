@@ -349,13 +349,13 @@ function (_React$Component) {
         style: style
       }, __jsx("h6", null, "Settings"), __jsx("div", {
         className: "dropdown-divider"
-      }), __jsx("div", null, __jsx("div", null, "Theme: ", theme === 'light' ? 'Light' : 'Dark'), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_7__["default"], null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_7__["default"].Check, {
+      }), __jsx("div", null, __jsx("div", null, "Theme: ", theme === 'light' ? 'Light' : 'Dark'), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_7__["default"].Switch, {
         id: "switch-theme",
         type: "switch",
         label: "",
         onChange: this.toggleTheme,
         checked: theme === 'light' ? false : true
-      }))));
+      })));
     }
   }]);
 
@@ -22171,4 +22171,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F_error
 /***/ })
 
 })
-//# sourceMappingURL=_error.js.ab6012306a8b402b6d06.hot-update.js.map
+//# sourceMappingURL=_error.js.8a917493519489da0cc2.hot-update.js.map

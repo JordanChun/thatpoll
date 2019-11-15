@@ -405,13 +405,13 @@ class MainHeaderSettings extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
       style: style
     }, __jsx("h6", null, "Settings"), __jsx("div", {
       className: "dropdown-divider"
-    }), __jsx("div", null, __jsx("div", null, "Theme: ", theme === 'light' ? 'Light' : 'Dark'), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Check, {
+    }), __jsx("div", null, __jsx("div", null, "Theme: ", theme === 'light' ? 'Light' : 'Dark'), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1___default.a.Switch, {
       id: "switch-theme",
       type: "switch",
       label: "",
       onChange: this.toggleTheme,
       checked: theme === 'light' ? false : true
-    }))));
+    })));
   }
 
 }

@@ -46,15 +46,13 @@ class MainHeaderSettings extends React.Component {
           <div>
             Theme: {theme === 'light' ? 'Light' : 'Dark' }
           </div>
-          <Form>
-            <Form.Check 
+          <Form.Switch
               id='switch-theme'
               type="switch"
               label=''
               onChange={this.toggleTheme}
               checked={theme === 'light' ? false : true }
-            />
-          </Form>
+          />
 
         </div>
       </div>
