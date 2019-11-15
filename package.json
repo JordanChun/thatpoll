@@ -1,6 +1,9 @@
 {
   "name": "statmix",
   "version": "1.0.0",
+  "engines": {
+    "yarn": "1.3.2"
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
