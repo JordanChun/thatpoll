@@ -13,9 +13,6 @@ const cookieParser = require('cookie-parser')
 const apiRoutes = require('./routes/api');
 const requestIp = require('request-ip');
 
-// Blacklist the following IPs
-const ips = ['10.7.164.30'];
-
 const mongoose = require('mongoose');
 
 const ua = require('universal-analytics');
@@ -32,24 +29,10 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-/*
-var whitelist = ['http://localhost:3000']
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (whitelist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false } // disable CORS for this request
-  }
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
-*/
-
 app.prepare().then(() => {
   const server = express();
   server.use(helmet());
   //server.use(ipfilter(ips, { mode: 'allow' }));
-  //server.use(cors(corsOptionsDelegate));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
   server.use(cookieParser());

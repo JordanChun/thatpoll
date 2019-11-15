@@ -4,6 +4,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPollH } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
+import CategoryList from '../helpers/CategoriesList';
+
+function getMomentTimelimit(dateCreated, votingPeriod) {
+  const endTime = moment(dateCreated,'YYYY-MM-DD HH:mm:ss').add(votingPeriod, 'hours');
+  const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
+  let timelimit = 'Voting ends in:';
+  const diff = moment.preciseDiff(endTime, currentTime, true);
+  const days = diff.days;
+  const hours = diff.hours;
+  const minutes = diff.minutes;
+  if(days > 0) timelimit += ` ${days} days`;
+  if(hours > 0) timelimit += ` ${hours} hours`;
+  if(minutes > 0) timelimit += ` ${minutes} minutes`;
+
+  return timelimit;
+}
 
 const PollPreview = props => (
   <div className='poll-wrapper'>
@@ -24,6 +40,9 @@ const PollPreview = props => (
         </p>
         <hr />
         <div className='poll-stat'>
+          Category: {props.category === 0 ? 'Other' : CategoryList[props.category - 1]}
+        </div>
+        <div className='poll-stat'>
           0 views • {moment(new Date()).format('ll')}
         </div>
       </div>
@@ -32,7 +51,7 @@ const PollPreview = props => (
     <div className='poll-choices'>
       <h6><FontAwesomeIcon icon={faPollH} /> Poll Choices</h6>
       <div className='poll-stat mb-3'>
-        0 votes • <b>{props.timelimit}</b>
+        0 votes • <b>{getMomentTimelimit(props.dateCreated, props.votingPeriod)}</b>
       </div>
       <InputGroup className="mb-3">
         <input className='choice-control' type='radio' name='poll-choice' value='0' />

@@ -24,7 +24,7 @@ const MainHeader = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Item className='create-poll-nav'>
+            <Nav.Item>
               <Link href='/create-poll'>
                 <a><FontAwesomeIcon icon={faPoll} /> Create Poll</a>
               </Link>

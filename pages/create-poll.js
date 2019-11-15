@@ -5,12 +5,11 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPoll, faQuestionCircle, faEye } from '@fortawesome/free-solid-svg-icons';
 import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
-import moment from 'moment';
-import 'moment-precise-range-plugin';
 import { withRouter } from 'next/router';
 import CategoriesList from '../helpers/CategoriesList';
 
@@ -23,7 +22,7 @@ const visibilityTooltip = props => (
     style={{
       maxWidth: '400px',
       backgroundColor: '#1c2c40',
-      padding: '1rem',
+      padding: '0.5rem 0.75rem',
       color: '#e6e6e6',
       borderRadius: '0.25rem',
       ...props.style,
@@ -40,7 +39,7 @@ const votingPeriodTooltip = props => (
     style={{
       maxWidth: '400px',
       backgroundColor: '#1c2c40',
-      padding: '1rem',
+      padding: '0.5rem 0.75rem',
       color: '#e6e6e6',
       borderRadius: '0.25rem',
       ...props.style,
@@ -95,6 +94,7 @@ class CreatePoll extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
+    this.setHourPreset = this.setHourPreset.bind(this);
   }
 
   inputUpdate(e) {
@@ -141,20 +141,11 @@ class CreatePoll extends React.Component {
   }
 
   updateTimePeriod(e) {
-    const endTime = moment(this.state.dateCreated,'YYYY-MM-DD HH:mm:ss').add(e.target.value, 'hours');
-    const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
-    let timelimit = 'Voting ends in:';
-    const diff = moment.preciseDiff(endTime, currentTime, true);
-    const days = diff.days;
-    const hours = diff.hours;
-    const minutes = diff.minutes;
-    if(days > 0) timelimit += ` ${days} days`;
-    if(hours > 0) timelimit += ` ${hours} hours`;
-    if(minutes > 0) timelimit += ` ${minutes} minutes`;
-    this.setState({
-      [e.target.name]: e.target.value,
-      timelimit: timelimit
-    })
+   this.setState({ [e.target.name]: e.target.value });
+  }
+
+  setHourPreset(e) {
+    this.setState({ votingPeriod: e.target.dataset['hours'] });
   }
 
   render() {
@@ -289,10 +280,16 @@ class CreatePoll extends React.Component {
                 value={votingPeriod}
                 onChange={this.updateTimePeriod}
                 style={{ maxWidth: '200px' }}
-                type='number' min='6' max='72' name='votingPeriod'
+                type='number' min='6' max='168h' name='votingPeriod'
+                className="mb-1"
               />
+              <ButtonGroup size="sm">
+                <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='24'>1 day</Button>
+                <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='72'>3 days</Button>
+                <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='168'>7 days</Button>
+              </ButtonGroup>
               <Form.Text>
-                6h - 72h 
+                6h - 168h (1 week) 
               </Form.Text>
             </Form.Group>
           </Form.Row>

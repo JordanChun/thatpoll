@@ -107,7 +107,7 @@ function createPollAuth(req, res, next) {
     return res.status(400).json({ message: 'error' }).end();
   };
 
-  if (req.votingPeriod < 6 || req.votingPeriod > 72) {
+  if (req.votingPeriod < 6 || req.votingPeriod > 168) {
     return res.status(400).json({ message: 'error' }).end();
   }
 

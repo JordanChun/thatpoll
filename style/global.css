@@ -1,10 +1,10 @@
-html {
+html[data-theme="dark"] {
   --primaryBackground: #2d4563;
   --primaryTextColor: #e6e6e6;
   --primaryAnchorColor: #e6e6e6;
   --primaryBorder: 1px solid #375375;
   --primaryBordercolor: #375375;
-  --primaryContainerColor: #2d4563;
+  --primaryContainerColor: #2d4a6d;
   --primaryButtonTextColor: #e6e6e6;
 
   --headerBackgroundColor: #1c2c40;
@@ -12,7 +12,7 @@ html {
   --choiceLabelColor: #1c2c40;
 }
 
-html[data-theme="light"] {
+html {
   --primaryBackground: #f1f1f1;
   --primaryTextColor: #3c3c3c;
   --primaryAnchorColor: #3c3c3c;
@@ -144,8 +144,7 @@ input[type='number']:focus {
 
 .dropdown.header-settings .dropdown-menu {
   padding: 0.5rem 0.75rem;
-  max-width: 200px;
-  width: 200px;
+  width: 220px;
   color: var(--primaryTextColor);
 }
 

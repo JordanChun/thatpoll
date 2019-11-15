@@ -176,13 +176,11 @@ class PollPage extends React.Component {
                 {desc.length > 0 ? desc : <i>No description</i>}
               </p>
               <hr />
-              <div style={{ display: 'flex', justifyContent: 'space-between'}}>
-                <div className='poll-stat'>
-                  {visits} views • {dateCreated}
-                </div>
-                <div className='poll-stat'>
-                  Category: {category}
-                </div>
+              <div className='poll-stat'>
+                Category: {category}
+              </div>
+              <div className='poll-stat'>
+                {visits} views • {dateCreated}
               </div>
             </div>
           </div>
