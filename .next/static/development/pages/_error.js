@@ -31852,7 +31852,7 @@ function (_React$Component) {
             className: "error-container"
           }, __jsx("h4", {
             className: "page-header"
-          }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          }, "An error occured while trying to access this page.", this.props.errorCode), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
             variant: "grey-blue",
             onClick: function onClick() {
               return next_router__WEBPACK_IMPORTED_MODULE_7___default.a.back();

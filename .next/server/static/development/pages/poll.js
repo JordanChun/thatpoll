@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -3210,7 +3210,7 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+        }, "An error occured while trying to access this page.", this.props.errorCode), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
           variant: "grey-blue",
           onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
         }, "Go back"))));
@@ -3528,7 +3528,7 @@ PollPage.defaultProps = {
 
 /***/ }),
 
-/***/ 5:
+/***/ 4:
 /*!*****************************!*\
   !*** multi ./pages/poll.js ***!
   \*****************************/

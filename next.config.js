@@ -1,10 +1,7 @@
 const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
-  useFileSystemPublicRoutes: false,
-  webpack(config) {
-    return config;
-  },
+  useFileSystemPublicRoutes: false
 });
 /*
 

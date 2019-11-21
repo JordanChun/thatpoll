@@ -36910,7 +36910,7 @@ function (_React$Component) {
             className: "error-container"
           }, __jsx("h4", {
             className: "page-header"
-          }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
+          }, "An error occured while trying to access this page.", this.props.errorCode), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
             variant: "grey-blue",
             onClick: function onClick() {
               return next_router__WEBPACK_IMPORTED_MODULE_7___default.a.back();
@@ -37371,7 +37371,7 @@ PollPage.defaultProps = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!********************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js ***!
   \********************************************************************************************************************************/
@@ -37394,5 +37394,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
+},[[3,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=poll.js.map

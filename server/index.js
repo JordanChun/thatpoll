@@ -73,6 +73,10 @@ app.prepare().then(() => {
     return app.render(req, res, '/terms-of-use');
   });
 
+  server.get('/privacy-policy', (req, res) => {
+    return app.render(req, res, '/privacy-policy');
+  });
+
   server.post('*', (req, res) => {
     return handle(req, res)
   })
