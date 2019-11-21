@@ -14,6 +14,8 @@ const apiRoutes = require('./routes/api');
 const requestIp = require('request-ip');
 
 const mongoose = require('mongoose');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo')(session);
 
 const ua = require('universal-analytics');
 const visitor = ua('UA-150975737-1');
@@ -36,6 +38,18 @@ app.prepare().then(() => {
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
   server.use(cookieParser());
+  /*
+  server.use(session({
+    secret: 'super secret',
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 14 * 24 * 60 * 60, // 15 days
+      autoRemove: 'native'
+    }),
+    resave: false,
+    saveUninitialized: true
+  }));
+  */
   //server.use(requestIp.mw());
 
   server.use('/img', express.static('public'));
@@ -53,6 +67,10 @@ app.prepare().then(() => {
   server.get('/poll/:slug', (req, res) => {
     visitor.pageview(`/poll/${req.params.slug}`).send();
     return app.render(req, res, '/poll', { slug: req.params.slug });
+  });
+
+  server.get('/terms-of-use', (req, res) => {
+    return app.render(req, res, '/terms-of-use');
   });
 
   server.post('*', (req, res) => {

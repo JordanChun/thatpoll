@@ -12,6 +12,7 @@ import { withRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import VoteHistory from '../components/VoteHistory';
+import Router from 'next/router';
 
 class Home extends React.Component {
   static async getInitialProps({ query: { page }, req }) {
@@ -44,18 +45,26 @@ class Home extends React.Component {
       >
         <h4 className='page-header'>Recent Polls</h4>
         <hr />
-
-          <Row>
-            <Col md={9}>
-              {polls.map((poll, i) => (
-                <PollCard key={i} poll={poll} />
-              ))}
-              <PollPagination totalItems={totalItems} />
-            </Col>
-            <Col>
-              <VoteHistory />
-            </Col>
-          </Row>
+        
+        <Row>
+          <Col md={9}>
+            { polls.length === 0 ?
+              <div className='no-polls-card'>
+                <h4>No Polls Found</h4>
+              </div>
+            :
+              <div>
+                {polls.map((poll, i) => (
+                  <PollCard key={i} poll={poll} />
+                ))}
+                <PollPagination totalItems={totalItems} />
+              </div>
+            }
+          </Col>
+          <Col>
+            <VoteHistory />
+          </Col>
+        </Row>
       </Layout>
     )
   }

@@ -7,7 +7,7 @@ import Alert from 'react-bootstrap/Alert';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPoll, faQuestionCircle, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faPoll, faQuestionCircle, faEye, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
 import { withRouter } from 'next/router';
@@ -50,18 +50,17 @@ const votingPeriodTooltip = props => (
 );
 
 function validatePollInput(pollDataObj) {
-  let choices = [pollDataObj.choice1, pollDataObj.choice2];
-  if(pollDataObj.choice3 !== '') {
-    choices.push(pollDataObj.choice3);
-  }
-  if(pollDataObj.choice4 !== '') {
-    choices.push(pollDataObj.choice4);
+  let choicesArr = [];
+  for (let i = 0; i < pollDataObj.choices.length; i++) {
+    if (pollDataObj.choices[i].choice !== '') {
+      choicesArr.push(pollDataObj.choices[i].choice);
+    }
   }
 
   const pollData = {
     title: pollDataObj.title,
     desc: pollDataObj.desc,
-    choices: choices,
+    choices: choicesArr,
     visibility: pollDataObj.visibility,
     votingPeriod: pollDataObj.votingPeriod,
     category: pollDataObj.category
@@ -77,10 +76,10 @@ class CreatePoll extends React.Component {
     this.state = {
       title: '',
       desc: '',
-      choice1: '',
-      choice2: '',
-      choice3: '',
-      choice4: '',
+      choices: [
+        { choice: '' },
+        { choice: '' },
+      ],
       visibility: 'public',
       votingPeriod: 6,
       dateCreated: new Date(),
@@ -95,10 +94,19 @@ class CreatePoll extends React.Component {
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
     this.setHourPreset = this.setHourPreset.bind(this);
+    this.updateChoice = this.updateChoice.bind(this);
+    this.addChoice = this.addChoice.bind(this);
+    this.removeChoice = this.removeChoice.bind(this);
   }
 
   inputUpdate(e) {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  updateChoice(e) {
+    const choices = this.state.choices.slice();
+    choices[e.target.dataset['index']].choice = e.target.value;
+    this.setState({ choices: choices });
   }
 
   updateCategory(e) {
@@ -137,6 +145,7 @@ class CreatePoll extends React.Component {
       //console.log(data);
     } catch(err) {
       //console.log(err)
+      // display error
     }
   }
 
@@ -148,14 +157,27 @@ class CreatePoll extends React.Component {
     this.setState({ votingPeriod: e.target.dataset['hours'] });
   }
 
+  addChoice() {
+    if (this.state.choices.length < 4) {
+      const choices = this.state.choices.slice();
+      choices.push({ choice: '' });
+      this.setState({ choices: choices })
+    }
+  }
+
+  removeChoice(e) {
+    if (this.state.choices.length > 2) {
+      const choices = this.state.choices.slice();
+      choices.splice(e.target.dataset['index'], 1);
+      this.setState({ choices: choices })
+    }
+  }
+
   render() {
     const {
       title,
       desc,
-      choice1,
-      choice2,
-      choice3,
-      choice4,
+      choices,
       votingPeriod,
       error
     } = this.state;
@@ -172,7 +194,7 @@ class CreatePoll extends React.Component {
            <b>Error submitting poll</b>
           </Alert> : null
         }
-        <Form autoComplete='off' onSubmit={this.handleSubmit}>
+        <Form autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
           <Form.Group>
             <Form.Label>
               Title
@@ -198,53 +220,46 @@ class CreatePoll extends React.Component {
               Characters remaining: {500 - desc.length}
             </Form.Text>
           </Form.Group>
-          <Form.Row>
-            <Form.Group as={Col}>
+          {choices.map((choiceObj, i) => (
+            <Form.Group key={i}>
               <Form.Label>
-                Choice #1
+                Choice #{i+1}
               </Form.Label>
+              {i > 1 ? 
+                <ButtonGroup size='sm' style={{ marginLeft: '0.5rem' }}>
+                  <Button variant="grey-blue" data-index={i} onClick={this.removeChoice}>
+                    <FontAwesomeIcon icon={faMinus} /> Remove choice
+                  </Button>
+                </ButtonGroup> : null }
               <Form.Control
-                value={choice1}
-                onChange={this.inputUpdate}
-                type='text' name='choice1' maxLength='75'
-                required
+                value={choiceObj.choice}
+                data-index={i}
+                onChange={this.updateChoice}
+                type='text' maxLength='75'
               />
             </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>
-                Choice #2
-              </Form.Label>
-              <Form.Control
-                value={choice2}
-                onChange={this.inputUpdate} 
-                type='text' name='choice2' maxLength='75'
-                required
-              />
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col}>
-              <Form.Label>
-                Choice #3 (Optional)
-              </Form.Label>
-              <Form.Control
-                value={choice3}
-                onChange={this.inputUpdate}
-                type='text' name='choice3' maxLength='75'
-              />
-            </Form.Group>
-            <Form.Group as={Col}>
-              <Form.Label>
-                Choice #4 (Optional)
-              </Form.Label>
-              <Form.Control
-                value={choice4}
-                onChange={this.inputUpdate}
-                type='text'name='choice4' maxLength='75'
-              />
-            </Form.Group>
-          </Form.Row>
-          <hr />
+          ))}
+          <ButtonGroup size="sm" className='mb-3'>
+            <Button variant="grey-blue" onClick={this.addChoice} disabled={choices.length === 4}>
+              <FontAwesomeIcon icon={faPlus} /> Add choice
+            </Button>
+          </ButtonGroup>
+
+          <Form.Group>
+            <Form.Label>
+              Category
+            </Form.Label>
+            <Form.Control
+              onChange={this.updateCategory}
+              as="select"
+              name='category'
+            >
+            <option>Select a category</option>
+            {CategoriesList.map((category, i) => (
+              <option key={i}>{category}</option>
+            ))}
+            </Form.Control>
+          </Form.Group>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>
@@ -280,7 +295,7 @@ class CreatePoll extends React.Component {
                 value={votingPeriod}
                 onChange={this.updateTimePeriod}
                 style={{ maxWidth: '200px' }}
-                type='number' min='6' max='168h' name='votingPeriod'
+                type='number' min='6' max='168' name='votingPeriod'
                 className="mb-1"
               />
               <ButtonGroup size="sm">
@@ -289,30 +304,10 @@ class CreatePoll extends React.Component {
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='168'>7 days</Button>
               </ButtonGroup>
               <Form.Text>
-                6h - 168h (1 week) 
+                6h - 168h (7 days) 
               </Form.Text>
             </Form.Group>
           </Form.Row>
-          <Form.Group>
-            <Form.Label>
-              Category
-            </Form.Label>
-            <Form.Control
-              onChange={this.updateCategory}
-              as="select"
-              name='category'
-            >
-            <option>Select a category</option>
-            {CategoriesList.map((category, i) => (
-              <option key={i}>{category}</option>
-            ))}
-            </Form.Control>
-          </Form.Group>
-          <div className='poll-preview'>
-            <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
-            <hr />
-            <PollPreview {...this.state} />
-          </div>
           <hr />
           <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
             <Button 
@@ -321,6 +316,11 @@ class CreatePoll extends React.Component {
             </Button>
           </Form.Group>
         </Form>
+        <div className='poll-preview'>
+          <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
+          <hr />
+          <PollPreview {...this.state} />
+        </div>
       </Layout>
     )
   }

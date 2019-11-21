@@ -44,6 +44,11 @@ const pollSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: 'Other'
+  },
+  visits: {
+    type: Number,
+    required: true,
+    default: 0
   }
 });
 

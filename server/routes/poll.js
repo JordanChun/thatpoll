@@ -18,6 +18,19 @@ router.get('/poll/:slug', async (req, res) => {
     const ip = await req.clientIp;
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
+
+      const visit = await Visits.findOne({ url: req.params.slug, ip: ip });
+      if(visit == null) {
+        let newVisit = await Visits({ url: req.params.slug, ip: ip });
+        newVisit = await newVisit.save();
+        
+        poll = await Poll.findOneAndUpdate({ url: req.params.slug },
+          { $inc: {
+            visits: 1
+           }
+         }, {new: true}
+        );
+      } 
       //console.log("client ip: " + ip);
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
       /*
@@ -64,7 +77,7 @@ router.get('/poll/:slug', async (req, res) => {
         active: poll.active,
         results: poll.results,
         category: poll.category,
-        visits: 0,
+        visits: poll.visits,
       }
 
       res.status(200).json({pollData, userData});
@@ -78,8 +91,10 @@ router.get('/poll/:slug', async (req, res) => {
 
 async function getVisits(req, res, next) {
   try {
-    // if poll exists -> if visit exists -> create new visit doc?
+    // if poll exists -> check if new session -> if visit exists -> create new visit doc
     const poll = await Poll.exists({ url: req.params.slug });
+    const pll = await Poll.findOne({url: req.params.slug });
+    console.log(pll)
     if(poll) {
       const visit = await Visits.exists({ url: req.params.slug, ip: req.clientIp });
       if(visit) {
@@ -87,39 +102,21 @@ async function getVisits(req, res, next) {
       } else {
         const newVisit = await Visits({ url: req.params.slug, ip: req.clientIp });
         newVisit = await newVisit.save();
+        
+        const pollVisit = await Poll.findOneAndUpdate({ url: req.params.slug },
+          { $inc: {
+            visits: 1
+           }
+         }, {new: true}
+        );
+        console.log(pollVisit);
         next();
       }
     }
   } catch(err) {
     
   }
-  /*
-  try {
-    // if poll exists, create new visit document
-    const poll = await Poll.findOne({ url: req.params.slug });
-    // if poll exists
-    if(poll !== null) {
-      // find one doc with userip and url
-      const viewerIp = await Visits.findOne({
-        url: poll.url,
-        ip: userIp
-      });
-      console.log(viewerIp);
-      // if no doc, create new doc
-      if(viewerIp == null) {
-        let newVisit = await new Visits({
-          url: poll.url,
-          ip: userIp
-        });
-        newVisit = await newVisit.save();
-      }
-
-    }
-
-  } catch(err) {
-
-  }
-  */
+  next();
 }
 
 

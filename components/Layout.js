@@ -42,7 +42,7 @@ const Layout = props => (
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Simple and free polls, no sign up required. Instantly create public or private polls. Share online with friends and communties and gather data.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
 }
 
 export default Layout;

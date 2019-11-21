@@ -210,7 +210,7 @@ const Layout = props => __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MOD
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Simple and free polls, no sign up required. Instantly create public or private polls. Share online with friends and communties and gather data.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
 };
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
 
@@ -229,17 +229,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "react-bootstrap/Row");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Col */ "react-bootstrap/Col");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+
+
 const MainFooter = () => __jsx("footer", null, __jsx("div", {
   className: "footer-wrapper"
-}, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("img", {
+}, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("div", {
+  className: "mb-3"
+}, __jsx("img", {
   src: "/img/StatMix_Logo.png",
   alt: "StatMix Logo",
   height: "32px"
-}))));
+})), __jsx("hr", null), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/"
+}, __jsx("a", null, "Recent Polls"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/create-poll"
+}, __jsx("a", null, "Create Poll"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/terms-of-use"
+}, __jsx("a", null, "Terms of Use"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/privacy-policy"
+}, __jsx("a", null, "Privacy Policy"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/feedback-and-suggestions"
+}, __jsx("a", null, "Feedback & Suggestions")))))))));
 
 /* harmony default export */ __webpack_exports__["default"] = (MainFooter);
 
@@ -2437,8 +2464,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -2473,7 +2504,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "404 Page Not Found"))));
+        }, "404 Page Not Found"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
         break;
 
       case 500:
@@ -2483,7 +2517,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "500 Internal Server Error"))));
+        }, "500 Internal Server Error"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
         break;
 
       default:
@@ -2493,7 +2530,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "An error occured while trying to access this page."))));
+        }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
     }
 
     return response;
@@ -2704,6 +2744,17 @@ module.exports = require("react-bootstrap/Button");
 
 /***/ }),
 
+/***/ "react-bootstrap/Col":
+/*!**************************************!*\
+  !*** external "react-bootstrap/Col" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Col");
+
+/***/ }),
+
 /***/ "react-bootstrap/Container":
 /*!********************************************!*\
   !*** external "react-bootstrap/Container" ***!
@@ -2756,6 +2807,17 @@ module.exports = require("react-bootstrap/Nav");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/Navbar");
+
+/***/ }),
+
+/***/ "react-bootstrap/Row":
+/*!**************************************!*\
+  !*** external "react-bootstrap/Row" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Row");
 
 /***/ }),
 

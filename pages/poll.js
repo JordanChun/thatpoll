@@ -6,6 +6,13 @@ import PollResults from '../components/PollResults';
 import { withRouter } from 'next/router'
 import ErrorPage from '../pages/_error';
 import absoluteUrl from 'next-absolute-url';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import ShareButton from '../components/ShareButton';
+import { ReportButton } from '../components/Report';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class PollPage extends React.Component {
   static async getInitialProps({ query: { slug }, req }) {
@@ -16,8 +23,8 @@ class PollPage extends React.Component {
     });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
-  
-    return { errorCode, poll: data.pollData, user: data.userData }
+    const url = `${origin}/poll/${slug}`;
+    return { errorCode, poll: data.pollData, user: data.userData, url: url }
   }
 
   constructor(props) {
@@ -130,6 +137,8 @@ class PollPage extends React.Component {
       return <ErrorPage errorCode={this.props.errorCode} />
     }
 
+    const { url } = this.props;
+
     const {
       title,
       desc,
@@ -169,7 +178,7 @@ class PollPage extends React.Component {
           : null }
           <h4 className='poll-title'>{title.length > 0 ? title : 'Untitled'}</h4>
           <hr />
-          <div className='poll-desc'>
+          <div className='poll-desc mb-1'>
             <h6>Description</h6>
             <div>
               <p>
@@ -184,6 +193,14 @@ class PollPage extends React.Component {
               </div>
             </div>
           </div>
+          <Row>
+            <Col>
+              <div className='poll-options mb-3'>
+                <ShareButton url={url} />
+                <ReportButton urlref={this.props.router.query.slug} />
+              </div>
+            </Col>
+          </Row>
           <hr />
 
           { active && !userDidVote ?

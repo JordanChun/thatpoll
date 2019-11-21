@@ -2,23 +2,25 @@
 
 CLIENT
 ----------------------------------------------------------
+add choice input option
 add content to index page
 add unique views to polls
 polls page filtered views. (most votes. most views, most recent)
 featured poll (most votes or views to front page(index))
 improve create poll validation UI
-share and report features
-[DONE] categories for create poll page
+[DONE] share and report features
+[REDO] categories for create poll page
 category page
 implement prop types
-light theme toggle
 react redux implement
+[DONE]light/dark theme toggle
+[DONE] voting hours preset button on create poll page
 [DONE] handle if user already voted
 [DONE] handle no vote submit
 [DONE] create poll validation
 [DONE] side bar for visit history with localstorage
 [DONE] voting functions
-[DONE]split components/Poll.js -> Choices, Results
+[DONE] split components/Poll.js -> Choices, Results
 [DONE] create poll redirect to new created poll
 [DONE] moment/date tests - poll/pollpreview
 [DONE] split poll component? (Poll Info, Poll Choices, Poll Results) less renders
@@ -32,8 +34,11 @@ react redux implement
 
 SERVER
 ----------------------------------------------------------
+get user country (node-where/node-geoip)
+[DONE] post report route
+[DONE] report db model
 page sorting methods
-better create poll validation
+[DONE] better create poll validation
 userDidVote not sending true on page refresh
 Google Analytics for page views
 limit poll creations to 5 every 3 hours?

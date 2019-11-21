@@ -1,6 +1,8 @@
 import Layout from '../components/Layout';
 import { withRouter } from 'next/router';
+import Router from 'next/router';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 
 class ErrorPage extends React.Component {
@@ -26,6 +28,7 @@ class ErrorPage extends React.Component {
             <Container>
               <div className='error-container'>
                 <h4 className='page-header'>404 Page Not Found</h4>
+                <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
               </div>
             </Container>
           </Layout>
@@ -37,6 +40,7 @@ class ErrorPage extends React.Component {
             <Container>
               <div className='error-container'>
                 <h4 className='page-header'>500 Internal Server Error</h4>
+                <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
               </div>
             </Container>
           </Layout>
@@ -48,6 +52,7 @@ class ErrorPage extends React.Component {
             <Container>
               <div className='error-container'>
                 <h4 className='page-header'>An error occured while trying to access this page.</h4>
+                <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
               </div>
             </Container>
           </Layout>

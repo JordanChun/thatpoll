@@ -12,6 +12,10 @@ const voteSchema = new mongoose.Schema({
   vote: {
     type: Number,
     required: true
+  },
+  pollId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
   }
 });
 

@@ -20,13 +20,14 @@ router.post('/poll/vote/:slug', async (req, res) => {
           vote = await new Vote({
             url: req.params.slug,
             ip: ip,
-            vote: req.body.selectedVote
+            vote: req.body.selectedVote,
+            pollId: poll.id
           });
   
           await vote.save();
           // increment number in array at position selected
           // increment totalvotes
-          const pollResult = await Poll.findOneAndUpdate({ url: req.params.slug },
+          const pollResult = await Poll.findByIdAndUpdate(poll.id,
             { $inc: {
                [`results.${req.body.selectedVote}`]: 1,
                totalVotes: 1
@@ -49,7 +50,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
         return res.status(200).json({ message: 'error' }).end();
       }
     } else {
-      res.status(404).json({ message: 'not found'});
+      return res.status(404).json({ message: 'not found'}).end();
     }
   } catch (err) {
     console.log(err)

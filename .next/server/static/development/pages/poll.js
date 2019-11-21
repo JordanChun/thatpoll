@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -210,7 +210,7 @@ const Layout = props => __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MOD
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Simple and free polls, no sign up required. Instantly create public or private polls. Share online with friends and communties and gather data.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
 };
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
 
@@ -229,17 +229,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Row */ "react-bootstrap/Row");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Col */ "react-bootstrap/Col");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+
+
 const MainFooter = () => __jsx("footer", null, __jsx("div", {
   className: "footer-wrapper"
-}, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("img", {
+}, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("div", {
+  className: "mb-3"
+}, __jsx("img", {
   src: "/img/StatMix_Logo.png",
   alt: "StatMix Logo",
   height: "32px"
-}))));
+})), __jsx("hr", null), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2___default.a, null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/"
+}, __jsx("a", null, "Recent Polls"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/create-poll"
+}, __jsx("a", null, "Create Poll"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("ul", {
+  className: "footer-list"
+}, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/terms-of-use"
+}, __jsx("a", null, "Terms of Use"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/privacy-policy"
+}, __jsx("a", null, "Privacy Policy"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+  href: "/feedback-and-suggestions"
+}, __jsx("a", null, "Feedback & Suggestions")))))))));
 
 /* harmony default export */ __webpack_exports__["default"] = (MainFooter);
 
@@ -659,6 +686,340 @@ PollResults.propTypes = {
 
 /***/ }),
 
+/***/ "./components/Report.js":
+/*!******************************!*\
+  !*** ./components/Report.js ***!
+  \******************************/
+/*! exports provided: ReportButton, ReportButtonDropdown */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportButton", function() { return ReportButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReportButtonDropdown", function() { return ReportButtonDropdown; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ReportModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ReportModal */ "./components/ReportModal.js");
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+function ReportButton(props) {
+  const {
+    0: modalShow,
+    1: setModalShow
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  return __jsx("div", {
+    className: "report"
+  }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2___default.a, {
+    size: "sm",
+    variant: "simple",
+    onClick: () => setModalShow(true)
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faFlag"]
+  }), " Report"), __jsx(_ReportModal__WEBPACK_IMPORTED_MODULE_5__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    show: modalShow,
+    onHide: () => setModalShow(false)
+  })));
+}
+
+function ReportButtonDropdown(props) {
+  const {
+    0: modalShow,
+    1: setModalShow
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  return __jsx("div", {
+    className: "report",
+    onClick: () => setModalShow(true)
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faFlag"]
+  }), " Report", __jsx(_ReportModal__WEBPACK_IMPORTED_MODULE_5__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    show: modalShow,
+    onHide: () => setModalShow(false)
+  })));
+}
+
+
+
+/***/ }),
+
+/***/ "./components/ReportModal.js":
+/*!***********************************!*\
+  !*** ./components/ReportModal.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Modal */ "react-bootstrap/Modal");
+/* harmony import */ var react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Form */ "react-bootstrap/Form");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/Alert */ "react-bootstrap/Alert");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! prop-types */ "prop-types");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
+
+
+
+
+
+
+
+
+class ReportModal extends react__WEBPACK_IMPORTED_MODULE_2___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      reason: '',
+      category: 0,
+      error: false,
+      success: false
+    };
+    this.inputUpdate = this.inputUpdate.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
+    this.submitReport = this.submitReport.bind(this);
+  }
+
+  inputUpdate(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  updateCategory(e) {
+    this.setState({
+      category: e.target.selectedIndex
+    });
+  }
+
+  async submitReport(e) {
+    e.preventDefault();
+
+    if (this.state.reason.length <= 0 || this.state.category === 0) {
+      this.setState({
+        error: true
+      });
+      return;
+    } else {
+      try {
+        const res = await fetch(`${window.location.origin}/api/report`, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-Origin': 'statmix'
+          },
+          body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default()({
+            reason: this.state.reason,
+            category: this.state.category,
+            urlRef: this.props.urlref
+          })
+        });
+        const data = await res.json();
+
+        if (data.message === 'success') {
+          this.setState({
+            error: false,
+            success: true,
+            reason: '',
+            category: 0
+          }); // display sucess
+        } else {
+          this.setState({
+            error: true
+          }); // display error
+        }
+      } catch (err) {// display error
+      }
+    }
+  }
+
+  render() {
+    const {
+      reason,
+      error,
+      success
+    } = this.state;
+    return __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.props, {
+      size: "lg",
+      centered: true,
+      animation: false,
+      dialogClassName: "modal-report",
+      onClick: e => e.stopPropagation()
+    }), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default.a.Header, {
+      closeButton: true
+    }, __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default.a.Title, null, "Report")), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default.a.Body, null, error ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_6___default.a, {
+      variant: "danger"
+    }, __jsx("b", null, "Error submitting poll")) : null, success ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_6___default.a, {
+      variant: "success"
+    }, __jsx("b", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCheck"]
+    }), " Report Recieved. Thank You")) : null, __jsx("p", null, "Please provide the reasoning for this report below. Thank you."), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a, {
+      autoComplete: "off"
+    }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Label, null, "Category"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Control, {
+      onChange: this.updateCategory,
+      as: "select",
+      name: "category"
+    }, __jsx("option", null, "Select a category"), __jsx("option", null, "Abuse"), __jsx("option", null, "Bug"), __jsx("option", null, "Spam"))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Label, null, "Reason:"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_5___default.a.Control, {
+      value: reason,
+      onChange: this.inputUpdate,
+      style: {
+        'maxHeight': '144px',
+        minHeight: '72px'
+      },
+      as: "textarea",
+      rows: "3",
+      name: "reason",
+      maxLength: "500"
+    })))), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_4___default.a.Footer, null, success ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      variant: "grey-blue",
+      onClick: this.props.onHide
+    }, "Close") : __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_3___default.a, {
+      variant: "light-blue",
+      type: "submit",
+      onClick: this.submitReport
+    }, "Submit")));
+  }
+
+}
+
+ReportModal.propTypes = {
+  onHide: prop_types__WEBPACK_IMPORTED_MODULE_9___default.a.func.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (ReportModal);
+
+/***/ }),
+
+/***/ "./components/ShareButton.js":
+/*!***********************************!*\
+  !*** ./components/ShareButton.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "react-bootstrap/InputGroup");
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/FormControl */ "react-bootstrap/FormControl");
+/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Row */ "react-bootstrap/Row");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Col */ "react-bootstrap/Col");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Overlay */ "react-bootstrap/Overlay");
+/* harmony import */ var react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Tooltip */ "react-bootstrap/Tooltip");
+/* harmony import */ var react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10__);
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
+
+
+
+
+function ShareButton(props) {
+  const {
+    0: show,
+    1: setShow
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const {
+    0: showToolTip,
+    1: setShowToolTip
+  } = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false);
+  const target = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])(null);
+
+  function copyToClipboard(e) {
+    console.log(target);
+    target.current.select();
+    target.current.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    setShowToolTip(true);
+    setTimeout(() => {
+      setShowToolTip(false);
+    }, 1200);
+  }
+
+  return __jsx("div", {
+    className: "share-poll"
+  }, !show ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    variant: "simple",
+    size: "sm",
+    onClick: () => setShow(!show),
+    className: "share-btn"
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faShare"]
+  }), " Share") : __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    size: "sm"
+  }, __jsx(react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6___default.a, {
+    readOnly: true,
+    value: props.url,
+    ref: target
+  }), __jsx(react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9___default.a, {
+    target: target.current,
+    show: showToolTip,
+    placement: "top"
+  }, props => __jsx(react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10___default.a, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    id: "tooltip-copied"
+  }, props, {
+    show: showToolTip.toString()
+  }), "Copied!")), __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4___default.a.Append, null, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5___default.a, {
+    variant: "grey-blue",
+    onClick: e => copyToClipboard(e)
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faClipboard"]
+  }), " Copy"))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (ShareButton);
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
@@ -817,6 +1178,39 @@ function _defineProperty(obj, key, value) {
   }
 
   return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+
+function _extends() {
+  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
 }
 
 /***/ }),
@@ -2750,8 +3144,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
 /* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
 
 
 
@@ -2786,7 +3184,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "404 Page Not Found"))));
+        }, "404 Page Not Found"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
         break;
 
       case 500:
@@ -2796,7 +3197,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "500 Internal Server Error"))));
+        }, "500 Internal Server Error"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
         break;
 
       default:
@@ -2806,7 +3210,10 @@ class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
           className: "error-container"
         }, __jsx("h4", {
           className: "page-header"
-        }, "An error occured while trying to access this page."))));
+        }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
+          variant: "grey-blue",
+          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
+        }, "Go back"))));
     }
 
     return response;
@@ -2843,9 +3250,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_error__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../pages/_error */ "./pages/_error.js");
 /* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next-absolute-url */ "next-absolute-url");
 /* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "react-bootstrap/InputGroup");
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/FormControl */ "react-bootstrap/FormControl");
+/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _components_ShareButton__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/ShareButton */ "./components/ShareButton.js");
+/* harmony import */ var _components_Report__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/Report */ "./components/Report.js");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap/Row */ "react-bootstrap/Row");
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap/Col */ "react-bootstrap/Col");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_16__);
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+
+
+
+
+
+
 
 
 
@@ -2873,10 +3299,12 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     });
     const errorCode = res.status > 200 ? res.status : false;
     const data = await res.json();
+    const url = `${origin}/poll/${slug}`;
     return {
       errorCode,
       poll: data.pollData,
-      user: data.userData
+      user: data.userData,
+      url: url
     };
   }
 
@@ -3015,6 +3443,9 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     }
 
     const {
+      url
+    } = this.props;
+    const {
       title,
       desc,
       visibility,
@@ -3048,12 +3479,18 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     }, "This is a ", __jsx("b", null, "private"), " poll. Please consider before sharing the link.")) : null, __jsx("h4", {
       className: "poll-title"
     }, title.length > 0 ? title : 'Untitled'), __jsx("hr", null), __jsx("div", {
-      className: "poll-desc"
+      className: "poll-desc mb-1"
     }, __jsx("h6", null, "Description"), __jsx("div", null, __jsx("p", null, desc.length > 0 ? desc : __jsx("i", null, "No description")), __jsx("hr", null), __jsx("div", {
       className: "poll-stat"
     }, "Category: ", category), __jsx("div", {
       className: "poll-stat"
-    }, visits, " views \u2022 ", dateCreated))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, visits, " views \u2022 ", dateCreated))), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_15___default.a, null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_16___default.a, null, __jsx("div", {
+      className: "poll-options mb-3"
+    }, __jsx(_components_ShareButton__WEBPACK_IMPORTED_MODULE_13__["default"], {
+      url: url
+    }), __jsx(_components_Report__WEBPACK_IMPORTED_MODULE_14__["ReportButton"], {
+      urlref: this.props.router.query.slug
+    })))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_5__["default"], {
       userDidVote: userDidVote,
       userDidVoteError: userDidVoteError,
       timelimit: timelimit,
@@ -3091,7 +3528,7 @@ PollPage.defaultProps = {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!*****************************!*\
   !*** multi ./pages/poll.js ***!
   \*****************************/
@@ -3367,6 +3804,17 @@ module.exports = require("react-bootstrap/Button");
 
 /***/ }),
 
+/***/ "react-bootstrap/Col":
+/*!**************************************!*\
+  !*** external "react-bootstrap/Col" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Col");
+
+/***/ }),
+
 /***/ "react-bootstrap/Container":
 /*!********************************************!*\
   !*** external "react-bootstrap/Container" ***!
@@ -3400,6 +3848,17 @@ module.exports = require("react-bootstrap/Form");
 
 /***/ }),
 
+/***/ "react-bootstrap/FormControl":
+/*!**********************************************!*\
+  !*** external "react-bootstrap/FormControl" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/FormControl");
+
+/***/ }),
+
 /***/ "react-bootstrap/InputGroup":
 /*!*********************************************!*\
   !*** external "react-bootstrap/InputGroup" ***!
@@ -3408,6 +3867,17 @@ module.exports = require("react-bootstrap/Form");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/InputGroup");
+
+/***/ }),
+
+/***/ "react-bootstrap/Modal":
+/*!****************************************!*\
+  !*** external "react-bootstrap/Modal" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Modal");
 
 /***/ }),
 
@@ -3433,6 +3903,28 @@ module.exports = require("react-bootstrap/Navbar");
 
 /***/ }),
 
+/***/ "react-bootstrap/Overlay":
+/*!******************************************!*\
+  !*** external "react-bootstrap/Overlay" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Overlay");
+
+/***/ }),
+
+/***/ "react-bootstrap/Row":
+/*!**************************************!*\
+  !*** external "react-bootstrap/Row" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Row");
+
+/***/ }),
+
 /***/ "react-bootstrap/Spinner":
 /*!******************************************!*\
   !*** external "react-bootstrap/Spinner" ***!
@@ -3441,6 +3933,17 @@ module.exports = require("react-bootstrap/Navbar");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/Spinner");
+
+/***/ }),
+
+/***/ "react-bootstrap/Tooltip":
+/*!******************************************!*\
+  !*** external "react-bootstrap/Tooltip" ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Tooltip");
 
 /***/ }),
 

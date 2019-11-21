@@ -47,13 +47,14 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
       visibility: visibility,
       votingPeriod: votingPeriod,
       results: results,
-      category: categoryName
+      category: categoryName,
+      dateCreated: new Date()
     });
     poll = await poll.save();
-    res.status(201).json({ message: 'success', url: url });
+    return res.status(201).json({ message: 'success', url: url }).end();
   } catch (err) {
     console.log(err)
-    res.status(500).json({ message: 'error' });
+    return res.status(500).json({ message: 'error' }).end();
   }
 
 });

@@ -11,5 +11,6 @@ router.use('/', require('./poll'));
 router.use('/', require('./choices'));
 router.use('/', require('./vote'));
 router.use('/', require('./results'));
+router.use('/', require('./report'));
 
 module.exports = router;

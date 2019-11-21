@@ -2,12 +2,24 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import CompactOptionsToggle from '../components/CompactOptionsToggle';
+import PropTypes from 'prop-types';
+import Router from 'next/router';
+import { ReportButton, ReportButtonDropdown } from './Report';
+
+
+function redirectToPoll(e, slug) {
+  Router.push(`/poll/${slug}`)
+}
 
 const PollCard = props => (
-  <div className='poll-card-container' key={props.poll.url}>
-    <Link href={`/poll/${props.poll.url}`}>
+  <div
+    className='poll-card-container'
+    key={props.poll.url}
+    onClick={(e) => redirectToPoll(e, props.poll.url)}
+    >
+    <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
       <a>
         <h6 className='poll-card-title'>
           {props.poll.title}
@@ -32,11 +44,9 @@ const PollCard = props => (
           <span>{props.poll.totalVotes} votes • {props.poll.dateCreated}</span>
         </div>
       </div>
-      <div className='poll-card-actions-options'>
+      <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>
         <div>
-          <span>
-            <FontAwesomeIcon icon={faFlag} /> Report
-          </span>
+          <ReportButton urlref={props.poll.url} />
         </div>
         <div className='poll-card-actions-compact'>
           <Dropdown alignRight>
@@ -45,8 +55,8 @@ const PollCard = props => (
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item as={Button}>
-                <FontAwesomeIcon icon={faFlag} /> Report
+              <Dropdown.Item>
+                <ReportButtonDropdown urlref={props.poll.url} />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -55,5 +65,9 @@ const PollCard = props => (
     </div>
   </div>
 );
+
+PollCard.propTypes = {
+  poll: PropTypes.object.isRequired
+}
 
 export default PollCard;

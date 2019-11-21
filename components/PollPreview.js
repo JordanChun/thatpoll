@@ -53,26 +53,12 @@ const PollPreview = props => (
       <div className='poll-stat mb-3'>
         0 votes • <b>{getMomentTimelimit(props.dateCreated, props.votingPeriod)}</b>
       </div>
-      <InputGroup className="mb-3">
-        <input className='choice-control' type='radio' name='poll-choice' value='0' />
-        <label className='form-control'>{props.choice1.length > 0 ? props.choice1 : 'Choice #1' }</label>
-      </InputGroup>
-      <InputGroup className="mb-3">
-        <input className='choice-control' type='radio' name='poll-choice' value='1' />
-        <label className='form-control'>{props.choice2.length > 0 ? props.choice2 : 'Choice #2' }</label>
-      </InputGroup>
-        { props.choice3.length > 0 ?
-          <InputGroup className="mb-3">
-            <input className='choice-control' type='radio' name='poll-choice' value='2' />
-            <label className='form-control'>{props.choice3.length > 0 ? props.choice3 : 'Choice #3' }</label>
-          </InputGroup>: null
-        }
-        { props.choice4.length > 0 ?
-          <InputGroup className="mb-3">
-            <input className='choice-control' type='radio' name='poll-choice' value='3' />
-            <label className='form-control'>{props.choice4.length > 0 ? props.choice4 : 'Choice #4' }</label>
-          </InputGroup>: null
-        }
+      {props.choices.map((choiceObj, i) => (
+        <InputGroup className="mb-3" key={i}>
+          <input className='choice-control' type='radio' name='poll-choice' value='0' />
+          <label className='form-control'>{choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i+1}`}</label>
+        </InputGroup>
+      ))}
     </div>
   </div>
 )

@@ -8,7 +8,7 @@ const visitSchema = new mongoose.Schema({
   ip: {
     type: String,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model('Visits', visitSchema);
