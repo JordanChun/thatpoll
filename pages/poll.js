@@ -4,7 +4,7 @@ import Alert from 'react-bootstrap/Alert';
 import PollChoices from '../components/PollChoices';
 import PollResults from '../components/PollResults';
 import { withRouter } from 'next/router'
-import ErrorPage from '../pages/_error';
+import ErrorPage from './_error';
 import absoluteUrl from 'next-absolute-url';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';

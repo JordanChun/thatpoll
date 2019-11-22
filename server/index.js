@@ -69,21 +69,21 @@ app.prepare().then(() => {
     return app.render(req, res, '/poll', { slug: req.params.slug });
   });
 
-  server.get('/terms-of-use', (req, res) => {
-    return app.render(req, res, '/terms-of-use');
-  });
+  // server.get('/terms-of-use', (req, res) => {
+  //   return app.render(req, res, '/terms-of-use');
+  // });
 
   server.get('/privacy-policy', (req, res) => {
     return app.render(req, res, '/privacy-policy');
   });
 
-  server.post('*', (req, res) => {
+  server.all('*', (req, res) => {
     return handle(req, res)
   })
 
-  server.get('*', (req, res) => {
-    return handle(req, res)
-  })
+  // server.get('*', (req, res) => {
+  //   return handle(req, res)
+  // })
 
   // remove '0.0.0.0' on production
   server.listen(port, '0.0.0.0', err => {

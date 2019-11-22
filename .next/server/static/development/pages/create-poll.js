@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -447,6 +447,114 @@ class MainHeaderSettings extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Co
 
 /***/ }),
 
+/***/ "./components/PollPreview.js":
+/*!***********************************!*\
+  !*** ./components/PollPreview.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "react-bootstrap/InputGroup");
+/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Alert */ "react-bootstrap/Alert");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var moment_precise_range_plugin__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment-precise-range-plugin */ "moment-precise-range-plugin");
+/* harmony import */ var moment_precise_range_plugin__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment_precise_range_plugin__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../helpers/CategoriesList */ "./helpers/CategoriesList.js");
+/* harmony import */ var _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_7__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+
+
+
+
+
+function getMomentTimelimit(dateCreated, votingPeriod) {
+  const endTime = moment__WEBPACK_IMPORTED_MODULE_5___default()(dateCreated, 'YYYY-MM-DD HH:mm:ss').add(votingPeriod, 'hours');
+  const currentTime = moment__WEBPACK_IMPORTED_MODULE_5___default()(new Date(), 'YYYY-MM-DD HH:mm:ss');
+  let timelimit = 'Voting ends in:';
+  const diff = moment__WEBPACK_IMPORTED_MODULE_5___default.a.preciseDiff(endTime, currentTime, true);
+  const days = diff.days;
+  const hours = diff.hours;
+  const minutes = diff.minutes;
+  if (days > 0) timelimit += ` ${days} days`;
+  if (hours > 0) timelimit += ` ${hours} hours`;
+  if (minutes > 0) timelimit += ` ${minutes} minutes`;
+  return timelimit;
+}
+
+const PollPreview = props => __jsx("div", {
+  className: "poll-wrapper"
+}, props.visibility == 'private' ? __jsx("div", {
+  className: "poll-alert"
+}, __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_2___default.a, {
+  variant: "danger"
+}, "This is a ", __jsx("b", null, "private"), " poll. Please consider before sharing the link.")) : null, __jsx("h4", {
+  className: "poll-title"
+}, props.title.length > 0 ? props.title : 'Untitled'), __jsx("hr", null), __jsx("div", {
+  className: "poll-desc"
+}, __jsx("h6", null, "Description"), __jsx("div", null, __jsx("p", null, props.desc.length > 0 ? props.desc : __jsx("i", null, "No description")), __jsx("hr", null), __jsx("div", {
+  className: "poll-stat"
+}, "Category: ", props.category === 0 ? 'Other' : _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_7___default.a[props.category - 1]), __jsx("div", {
+  className: "poll-stat"
+}, "0 views \u2022 ", moment__WEBPACK_IMPORTED_MODULE_5___default()(new Date()).format('ll')))), __jsx("hr", null), __jsx("div", {
+  className: "poll-choices"
+}, __jsx("h6", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__["FontAwesomeIcon"], {
+  icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faPollH"]
+}), " Poll Choices"), __jsx("div", {
+  className: "poll-stat mb-3"
+}, "0 votes \u2022 ", __jsx("b", null, getMomentTimelimit(props.dateCreated, props.votingPeriod))), props.choices.map((choiceObj, i) => __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_1___default.a, {
+  className: "mb-3",
+  key: i
+}, __jsx("input", {
+  className: "choice-control",
+  type: "radio",
+  name: "poll-choice",
+  value: "0"
+}), __jsx("label", {
+  className: "form-control"
+}, choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i + 1}`)))));
+
+/* harmony default export */ __webpack_exports__["default"] = (PollPreview);
+
+/***/ }),
+
+/***/ "./helpers/CategoriesList.js":
+/*!***********************************!*\
+  !*** ./helpers/CategoriesList.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const CategoriesList = ['Arts & Entertainment', 'Autos & Vehicles', 'Beautify & Fitness', 'Books & Literature', 'Business & Industrial', 'Computers & Electronics', 'Finance', 'Food & Drink', 'Gaming', 'Health', 'Hobbies & Leisure', 'Home & Garden', 'Internet & Telecom', 'Jobs & Education', 'Law & Government', 'News', 'Online Communities', 'People & Society', 'Pets & Animals', 'Real Estate', 'Science', 'Shopping', 'Sports', 'Travel', 'Other'];
+module.exports = CategoriesList;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/map.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/map.js ***!
@@ -480,6 +588,17 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/create */ "co
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/define-properties */ "core-js/library/fn/object/define-properties");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -499,6 +618,28 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptors */ "core-js/library/fn/object/get-own-property-descriptors");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 
@@ -532,6 +673,69 @@ module.exports = __webpack_require__(/*! core-js/library/fn/promise */ "core-js/
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/weak-map */ "core-js/library/fn/weak-map");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _defineProperty; });
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    _core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _extends; });
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/object/assign */ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js");
+/* harmony import */ var _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_object_assign__WEBPACK_IMPORTED_MODULE_0__);
+
+function _extends() {
+  _extends = _core_js_object_assign__WEBPACK_IMPORTED_MODULE_0___default.a || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
 
 /***/ }),
 
@@ -2448,111 +2652,425 @@ if (false) {} else {
 
 /***/ }),
 
-/***/ "./pages/_error.js":
-/*!*************************!*\
-  !*** ./pages/_error.js ***!
-  \*************************/
+/***/ "./pages/create-poll.js":
+/*!******************************!*\
+  !*** ./pages/create-poll.js ***!
+  \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ "next/router");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Container */ "react-bootstrap/Container");
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-properties */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptors */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var _components_PollPreview__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/PollPreview */ "./components/PollPreview.js");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Form */ "react-bootstrap/Form");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap/Button */ "react-bootstrap/Button");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-bootstrap/Col */ "react-bootstrap/Col");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_14__);
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap/Alert */ "react-bootstrap/Alert");
+/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var react_bootstrap_OverlayTrigger__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap/OverlayTrigger */ "react-bootstrap/OverlayTrigger");
+/* harmony import */ var react_bootstrap_OverlayTrigger__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_OverlayTrigger__WEBPACK_IMPORTED_MODULE_16__);
+/* harmony import */ var react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! react-bootstrap/ButtonGroup */ "react-bootstrap/ButtonGroup");
+/* harmony import */ var react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "@fortawesome/react-fontawesome");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "@fortawesome/free-solid-svg-icons");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(_fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! next/router */ "next/router");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_20___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_20__);
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! next-absolute-url */ "next-absolute-url");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_21___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_21__);
+/* harmony import */ var _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../helpers/CategoriesList */ "./helpers/CategoriesList.js");
+/* harmony import */ var _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(_helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_22__);
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 
 
-class ErrorPage extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
-  static propTypes() {
-    return {
-      errorCode: react__WEBPACK_IMPORTED_MODULE_0___default.a.PropTypes.number.isRequired
-    };
+
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
+
+function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(source).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //TO DO ##############################################
+//Validate Poll Inputs
+
+const visibilityTooltip = props => __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__["default"])({}, props, {
+  style: _objectSpread({
+    maxWidth: '400px',
+    backgroundColor: '#1c2c40',
+    padding: '0.5rem 0.75rem',
+    color: '#e6e6e6',
+    borderRadius: '0.25rem'
+  }, props.style)
+}), "Set whether to allow the public to see this poll or keep it private. Only those with the URL will be able to access the poll if set private.");
+
+const votingPeriodTooltip = props => __jsx("div", Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_7__["default"])({}, props, {
+  style: _objectSpread({
+    maxWidth: '400px',
+    backgroundColor: '#1c2c40',
+    padding: '0.5rem 0.75rem',
+    color: '#e6e6e6',
+    borderRadius: '0.25rem'
+  }, props.style)
+}), "Set in hours when the poll will expire.");
+
+function validatePollInput(pollDataObj) {
+  let choicesArr = [];
+
+  for (let i = 0; i < pollDataObj.choices.length; i++) {
+    if (pollDataObj.choices[i].choice !== '') {
+      choicesArr.push(pollDataObj.choices[i].choice);
+    }
   }
 
-  static getInitialProps({
-    res,
-    xhr
-  }) {
-    const errorCode = res ? res.statusCode : xhr ? xhr.status : null;
-    return {
-      errorCode
+  const pollData = {
+    title: pollDataObj.title,
+    desc: pollDataObj.desc,
+    choices: choicesArr,
+    visibility: pollDataObj.visibility,
+    votingPeriod: pollDataObj.votingPeriod,
+    category: pollDataObj.category
+  };
+  return pollData;
+}
+
+class CreatePoll extends react__WEBPACK_IMPORTED_MODULE_9___default.a.Component {
+  constructor() {
+    super();
+    this.state = {
+      title: '',
+      desc: '',
+      choices: [{
+        choice: ''
+      }, {
+        choice: ''
+      }],
+      visibility: 'public',
+      votingPeriod: 6,
+      dateCreated: new Date(),
+      category: 0,
+      error: false,
+      timelimit: 'Voting ends in: 6 hours'
     };
+    this.inputUpdate = this.inputUpdate.bind(this);
+    this.visibilityUpdate = this.visibilityUpdate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateTimePeriod = this.updateTimePeriod.bind(this);
+    this.updateCategory = this.updateCategory.bind(this);
+    this.setHourPreset = this.setHourPreset.bind(this);
+    this.updateChoice = this.updateChoice.bind(this);
+    this.addChoice = this.addChoice.bind(this);
+    this.removeChoice = this.removeChoice.bind(this);
+  }
+
+  inputUpdate(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  updateChoice(e) {
+    const choices = this.state.choices.slice();
+    choices[e.target.dataset['index']].choice = e.target.value;
+    this.setState({
+      choices: choices
+    });
+  }
+
+  updateCategory(e) {
+    this.setState({
+      category: e.target.selectedIndex
+    });
+  }
+
+  visibilityUpdate(e) {
+    this.setState({
+      visibility: e.target.value
+    });
+  }
+
+  async handleSubmit(e, req) {
+    e.preventDefault();
+    const {
+      origin
+    } = next_absolute_url__WEBPACK_IMPORTED_MODULE_21___default()(req);
+    const pollData = validatePollInput(this.state);
+
+    try {
+      const res = await fetch(`${origin}/api/create-poll`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Origin': 'statmix'
+        },
+        body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_6___default()(pollData)
+      });
+      const data = await res.json();
+
+      if (data.message === 'success') {
+        next_router__WEBPACK_IMPORTED_MODULE_20___default.a.push(`/poll/${data.url}`);
+      } else {
+        this.setState({
+          error: true
+        });
+        window.scrollTo({
+          top: 56,
+          left: 0,
+          behavior: 'smooth'
+        });
+      } //console.log(data);
+
+    } catch (err) {//console.log(err)
+      // display error
+    }
+  }
+
+  updateTimePeriod(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  setHourPreset(e) {
+    this.setState({
+      votingPeriod: e.target.dataset['hours']
+    });
+  }
+
+  addChoice() {
+    if (this.state.choices.length < 4) {
+      const choices = this.state.choices.slice();
+      choices.push({
+        choice: ''
+      });
+      this.setState({
+        choices: choices
+      });
+    }
+  }
+
+  removeChoice(e) {
+    if (this.state.choices.length > 2) {
+      const choices = this.state.choices.slice();
+      choices.splice(e.target.dataset['index'], 1);
+      this.setState({
+        choices: choices
+      });
+    }
   }
 
   render() {
-    var response;
-
-    switch (this.props.errorCode) {
-      case 200: // Also display a 404 if someone requests /_error explicitly
-
-      case 404:
-        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          pageTitle: "Page Not Found"
-        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
-          className: "error-container"
-        }, __jsx("h4", {
-          className: "page-header"
-        }, "404 Page Not Found"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-          variant: "grey-blue",
-          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
-        }, "Go back"))));
-        break;
-
-      case 500:
-        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          pageTitle: "Internal Server Error"
-        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
-          className: "error-container"
-        }, __jsx("h4", {
-          className: "page-header"
-        }, "500 Internal Server Error"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-          variant: "grey-blue",
-          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
-        }, "Go back"))));
-        break;
-
-      default:
-        response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          pageTitle: "An Error Occured"
-        }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_3___default.a, null, __jsx("div", {
-          className: "error-container"
-        }, __jsx("h4", {
-          className: "page-header"
-        }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4___default.a, {
-          variant: "grey-blue",
-          onClick: () => next_router__WEBPACK_IMPORTED_MODULE_2___default.a.back()
-        }, "Go back"))));
-    }
-
-    return response;
+    const {
+      title,
+      desc,
+      choices,
+      votingPeriod,
+      error
+    } = this.state;
+    return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      pageTitle: "Create Poll",
+      path: this.props.router.asPath
+    }, __jsx("h4", {
+      className: "page-header"
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPoll"]
+    }), " Create Poll"), __jsx("hr", null), error ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15___default.a, {
+      variant: "danger"
+    }, __jsx("b", null, "Error submitting poll")) : null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a, {
+      autoComplete: "off",
+      onSubmit: this.handleSubmit,
+      style: {
+        padding: '1rem'
+      }
+    }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Title"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Control, {
+      value: title,
+      onChange: this.inputUpdate,
+      type: "text",
+      name: "title",
+      maxLength: "120",
+      required: true
+    })), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Description (Optional)"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Control, {
+      value: desc,
+      onChange: this.inputUpdate,
+      style: {
+        'maxHeight': '144px',
+        minHeight: '72px'
+      },
+      as: "textarea",
+      rows: "3",
+      name: "desc",
+      maxLength: "500"
+    }), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Text, null, "Characters remaining: ", 500 - desc.length)), choices.map((choiceObj, i) => __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, {
+      key: i
+    }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Choice #", i + 1), i > 1 ? __jsx(react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17___default.a, {
+      size: "sm",
+      style: {
+        marginLeft: '0.5rem'
+      }
+    }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "grey-blue",
+      "data-index": i,
+      onClick: this.removeChoice
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faMinus"]
+    }), " Remove choice")) : null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Control, {
+      value: choiceObj.choice,
+      "data-index": i,
+      onChange: this.updateChoice,
+      type: "text",
+      maxLength: "75"
+    }))), __jsx(react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17___default.a, {
+      size: "sm",
+      className: "mb-3"
+    }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "grey-blue",
+      onClick: this.addChoice,
+      disabled: choices.length === 4
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faPlus"]
+    }), " Add choice")), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Category"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Control, {
+      onChange: this.updateCategory,
+      as: "select",
+      name: "category"
+    }, __jsx("option", null, "Select a category"), _helpers_CategoriesList__WEBPACK_IMPORTED_MODULE_22___default.a.map((category, i) => __jsx("option", {
+      key: i
+    }, category)))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Row, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, {
+      as: react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_14___default.a
+    }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Visibility", " ", __jsx(react_bootstrap_OverlayTrigger__WEBPACK_IMPORTED_MODULE_16___default.a, {
+      placement: "top-start",
+      delay: {
+        show: 250,
+        hide: 400
+      },
+      overlay: visibilityTooltip
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faQuestionCircle"]
+    }))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Check, {
+      onClick: this.visibilityUpdate,
+      type: "radio",
+      label: "Public",
+      name: "visibility",
+      value: "public",
+      defaultChecked: true
+    }), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Check, {
+      onClick: this.visibilityUpdate,
+      type: "radio",
+      label: "Private",
+      name: "visibility",
+      value: "private"
+    })), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, {
+      as: react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_14___default.a
+    }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Label, null, "Voting Period (hours)", " ", __jsx(react_bootstrap_OverlayTrigger__WEBPACK_IMPORTED_MODULE_16___default.a, {
+      placement: "top-start",
+      delay: {
+        show: 250,
+        hide: 400
+      },
+      overlay: votingPeriodTooltip
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faQuestionCircle"]
+    }))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Control, {
+      value: votingPeriod,
+      onChange: this.updateTimePeriod,
+      style: {
+        maxWidth: '200px'
+      },
+      type: "number",
+      min: "6",
+      max: "168",
+      name: "votingPeriod",
+      className: "mb-1"
+    }), __jsx(react_bootstrap_ButtonGroup__WEBPACK_IMPORTED_MODULE_17___default.a, {
+      size: "sm"
+    }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "grey-blue",
+      onClick: this.setHourPreset,
+      "data-hours": "24"
+    }, "1 day"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "grey-blue",
+      onClick: this.setHourPreset,
+      "data-hours": "72"
+    }, "3 days"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "grey-blue",
+      onClick: this.setHourPreset,
+      "data-hours": "168"
+    }, "7 days")), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Text, null, "6h - 168h (7 days)"))), __jsx("hr", null), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_12___default.a.Group, {
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '2rem'
+      }
+    }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_13___default.a, {
+      variant: "light-blue",
+      type: "submit",
+      style: {
+        width: '200px'
+      }
+    }, "Create Poll"))), __jsx("div", {
+      className: "poll-preview"
+    }, __jsx("h4", {
+      className: "page-header"
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_18__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_19__["faEye"]
+    }), " Preview"), __jsx("hr", null), __jsx(_components_PollPreview__WEBPACK_IMPORTED_MODULE_11__["default"], this.state)));
   }
 
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_2__["withRouter"])(ErrorPage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_20__["withRouter"])(CreatePoll));
 
 /***/ }),
 
-/***/ 3:
-/*!*******************************!*\
-  !*** multi ./pages/_error.js ***!
-  \*******************************/
+/***/ 4:
+/*!************************************!*\
+  !*** multi ./pages/create-poll.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\Users\Jordan\Desktop\statmix\pages\_error.js */"./pages/_error.js");
+module.exports = __webpack_require__(/*! E:\Users\Jordan\Desktop\statmix\pages\create-poll.js */"./pages/create-poll.js");
 
 
 /***/ }),
@@ -2576,6 +3094,17 @@ module.exports = require("@fortawesome/free-solid-svg-icons");
 /***/ (function(module, exports) {
 
 module.exports = require("@fortawesome/react-fontawesome");
+
+/***/ }),
+
+/***/ "core-js/library/fn/json/stringify":
+/*!****************************************************!*\
+  !*** external "core-js/library/fn/json/stringify" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 
@@ -2612,6 +3141,17 @@ module.exports = require("core-js/library/fn/object/create");
 
 /***/ }),
 
+/***/ "core-js/library/fn/object/define-properties":
+/*!**************************************************************!*\
+  !*** external "core-js/library/fn/object/define-properties" ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/define-properties");
+
+/***/ }),
+
 /***/ "core-js/library/fn/object/define-property":
 /*!************************************************************!*\
   !*** external "core-js/library/fn/object/define-property" ***!
@@ -2631,6 +3171,28 @@ module.exports = require("core-js/library/fn/object/define-property");
 /***/ (function(module, exports) {
 
 module.exports = require("core-js/library/fn/object/get-own-property-descriptor");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-descriptors":
+/*!*************************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-descriptors" ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-descriptors");
+
+/***/ }),
+
+/***/ "core-js/library/fn/object/get-own-property-symbols":
+/*!*********************************************************************!*\
+  !*** external "core-js/library/fn/object/get-own-property-symbols" ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/object/get-own-property-symbols");
 
 /***/ }),
 
@@ -2675,6 +3237,39 @@ module.exports = require("core-js/library/fn/weak-map");
 /***/ (function(module, exports) {
 
 module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
+
+/***/ }),
+
+/***/ "moment-precise-range-plugin":
+/*!**********************************************!*\
+  !*** external "moment-precise-range-plugin" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment-precise-range-plugin");
+
+/***/ }),
+
+/***/ "next-absolute-url":
+/*!************************************!*\
+  !*** external "next-absolute-url" ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("next-absolute-url");
 
 /***/ }),
 
@@ -2733,6 +3328,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-bootstrap/Alert":
+/*!****************************************!*\
+  !*** external "react-bootstrap/Alert" ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/Alert");
+
+/***/ }),
+
 /***/ "react-bootstrap/Button":
 /*!*****************************************!*\
   !*** external "react-bootstrap/Button" ***!
@@ -2741,6 +3347,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/Button");
+
+/***/ }),
+
+/***/ "react-bootstrap/ButtonGroup":
+/*!**********************************************!*\
+  !*** external "react-bootstrap/ButtonGroup" ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/ButtonGroup");
 
 /***/ }),
 
@@ -2788,6 +3405,17 @@ module.exports = require("react-bootstrap/Form");
 
 /***/ }),
 
+/***/ "react-bootstrap/InputGroup":
+/*!*********************************************!*\
+  !*** external "react-bootstrap/InputGroup" ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/InputGroup");
+
+/***/ }),
+
 /***/ "react-bootstrap/Nav":
 /*!**************************************!*\
   !*** external "react-bootstrap/Nav" ***!
@@ -2807,6 +3435,17 @@ module.exports = require("react-bootstrap/Nav");
 /***/ (function(module, exports) {
 
 module.exports = require("react-bootstrap/Navbar");
+
+/***/ }),
+
+/***/ "react-bootstrap/OverlayTrigger":
+/*!*************************************************!*\
+  !*** external "react-bootstrap/OverlayTrigger" ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("react-bootstrap/OverlayTrigger");
 
 /***/ }),
 
@@ -2833,4 +3472,4 @@ module.exports = require("url");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=_error.js.map
+//# sourceMappingURL=create-poll.js.map

@@ -51,8 +51,7 @@ class ErrorPage extends React.Component {
           <Layout pageTitle='An Error Occured'>
             <Container>
               <div className='error-container'>
-                <h4 className='page-header'>An error occured while trying to access this page.
-                {this.props.errorCode}</h4>
+                <h4 className='page-header'>An error occured while trying to access this page.</h4>
                 <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
               </div>
             </Container>

@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 const Layout = props => (
   <div>
     <Head>
+      <script></script>
       <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.ico"></link>
       <link
         rel="stylesheet"

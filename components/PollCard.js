@@ -9,19 +9,18 @@ import Router from 'next/router';
 import { ReportButton, ReportButtonDropdown } from './Report';
 
 
-function redirectToPoll(e, slug) {
-  Router.push(`/poll/${slug}`)
+function redirectToPoll(slug) {
+  Router.push(`/poll?slug=${slug}`, `/poll/${slug}`)
 }
 
 const PollCard = props => (
   <div
     className='poll-card-container'
-    key={props.poll.url}
-    onClick={(e) => redirectToPoll(e, props.poll.url)}
+    onClick={() => redirectToPoll(props.poll.url)}
     >
     <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
       <a>
-        <h6 className='poll-card-title'>
+        <h6 className='poll-card-title' onClick={(e) => {e.stopPropagation()}}>
           {props.poll.title}
         </h6>
       </a>
@@ -35,7 +34,7 @@ const PollCard = props => (
       <div>
         <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
           <a>
-            <Button variant="grey-blue" size="sm">
+            <Button variant="grey-blue" size="sm" onClick={(e) => {e.stopPropagation()}}>
               View Poll
             </Button>
           </a>
