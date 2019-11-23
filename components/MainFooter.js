@@ -8,14 +8,14 @@ const MainFooter = () => (
     <div className='footer-wrapper'>
       <Container>
         <div className='mb-3'>
-          <img src='/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
+          <img src='/public/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
         </div>
         <hr />
         <Row>
           <Col>
             <ul className='footer-list'>
               <li>
-                <Link href='/'>
+                <Link href='/' as='/'>
                   <a>Recent Polls</a>
                 </Link>
               </li>
@@ -24,7 +24,7 @@ const MainFooter = () => (
           <Col>
             <ul className='footer-list'>
               <li>
-                <Link href='/create-poll'>
+                <Link href='/create-poll' as='/create-poll'>
                   <a>Create Poll</a>
                 </Link>
               </li>
@@ -33,17 +33,17 @@ const MainFooter = () => (
           <Col>
             <ul className='footer-list'>
               <li>
-                <Link href='/terms-of-use'>
-                  <a>Terms of Use</a>
+                <Link href='/terms-of-service' as='/terms-of-service'>
+                  <a>Terms of Service</a>
                 </Link>
               </li>
               <li>
-                <Link href='/privacy-policy'>
+                <Link href='/privacy-policy' as='/privacy-policy'>
                   <a>Privacy Policy</a>
                 </Link>
               </li>
               <li>
-                <Link href='/feedback-and-suggestions'>
+                <Link href='/feedback-and-suggestions' as='feedback-and-suggestions'>
                   <a>Feedback & Suggestions</a>
                 </Link>
               </li>

@@ -6,11 +6,11 @@ const Vote = require('../models/Vote');
 
 router.post('/poll/vote/:slug', async (req, res) => {
   try {
-    const ip = req.clientIp;
+    // const ip = req.clientIp;
     const poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
       if(poll.active) {
-        let vote = await Vote.exists({ url: req.params.slug, ip: ip });
+        let vote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
         //console.log(vote)
         if(vote) {
           return res.status(200).json({ message: 'error' }).end();
@@ -19,7 +19,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
           // add vote doc
           vote = await new Vote({
             url: req.params.slug,
-            ip: ip,
+            ip: req.clientIp,
             vote: req.body.selectedVote,
             pollId: poll.id
           });

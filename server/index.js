@@ -52,7 +52,7 @@ app.prepare().then(() => {
   */
   //server.use(requestIp.mw());
 
-  server.use('/img', express.static('public'));
+  server.use('/public', express.static('public'));
 
   server.use('/api', apiRoutes);
 
@@ -69,9 +69,9 @@ app.prepare().then(() => {
     return app.render(req, res, '/poll', { slug: req.params.slug });
   });
 
-  // server.get('/terms-of-use', (req, res) => {
-  //   return app.render(req, res, '/terms-of-use');
-  // });
+  server.get('/terms-of-service', (req, res) => {
+    return app.render(req, res, '/terms-of-service');
+  });
 
   server.get('/privacy-policy', (req, res) => {
     return app.render(req, res, '/privacy-policy');

@@ -8,7 +8,7 @@ const Layout = props => (
   <div>
     <Head>
       <script></script>
-      <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.ico"></link>
+      <link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon.ico"></link>
       <link
         rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -24,7 +24,7 @@ const Layout = props => (
       <meta property="og:type" content="Website" />
       <meta property="og:title" content={props.pageTitle} />
       <meta property="og:description" content={props.pageDesc} />
-      <meta property="og:image" content='https://statmix.herokuapp.com/img/StatMix_Logo.png' />
+      <meta property="og:image" content='https://statmix.herokuapp.com/public/img/StatMix_Logo.png' />
       <meta property="og:url" content={`https://statmix.herokuapp.com${props.path}`} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"></script>
       <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];

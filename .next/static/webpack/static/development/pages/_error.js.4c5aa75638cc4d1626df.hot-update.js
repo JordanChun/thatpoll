@@ -91,7 +91,7 @@ var Layout = function Layout(props) {
     rel: "icon",
     type: "image/png",
     sizes: "32x32",
-    href: "/img/favicon.ico"
+    href: "/public/img/favicon.ico"
   }), __jsx("link", {
     rel: "stylesheet",
     href: "https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
@@ -122,7 +122,7 @@ var Layout = function Layout(props) {
     content: props.pageDesc
   }), __jsx("meta", {
     property: "og:image",
-    content: "https://statmix.herokuapp.com/img/StatMix_Logo.png"
+    content: "https://statmix.herokuapp.com/public/img/StatMix_Logo.png"
   }), __jsx("meta", {
     property: "og:url",
     content: "https://statmix.herokuapp.com".concat(props.path)
@@ -175,25 +175,30 @@ var MainFooter = function MainFooter() {
   }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_1__["default"], null, __jsx("div", {
     className: "mb-3"
   }, __jsx("img", {
-    src: "/img/StatMix_Logo.png",
+    src: "/public/img/StatMix_Logo.png",
     alt: "StatMix Logo",
     height: "32px"
   })), __jsx("hr", null), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_2__["default"], null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__["default"], null, __jsx("ul", {
     className: "footer-list"
   }, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/"
+    href: "/",
+    as: "/"
   }, __jsx("a", null, "Recent Polls"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__["default"], null, __jsx("ul", {
     className: "footer-list"
   }, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/create-poll"
+    href: "/create-poll",
+    as: "/create-poll"
   }, __jsx("a", null, "Create Poll"))))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_3__["default"], null, __jsx("ul", {
     className: "footer-list"
   }, __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/terms-of-use"
-  }, __jsx("a", null, "Terms of Use"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/privacy-policy"
+    href: "/terms-of-service",
+    as: "/terms-of-service"
+  }, __jsx("a", null, "Terms of Service"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+    href: "/privacy-policy",
+    as: "/privacy-policy"
   }, __jsx("a", null, "Privacy Policy"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/feedback-and-suggestions"
+    href: "/feedback-and-suggestions",
+    as: "feedback-and-suggestions"
   }, __jsx("a", null, "Feedback & Suggestions")))))))));
 };
 
@@ -246,13 +251,14 @@ var MainHeader = function MainHeader() {
     variant: "dark",
     expand: "sm"
   }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/"
+    href: "/",
+    as: "/"
   }, __jsx("a", null, __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"].Brand, {
     style: {
       padding: 0
     }
   }, __jsx("img", {
-    src: "/img/StatMix_Logo.png",
+    src: "/public/img/StatMix_Logo.png",
     alt: "StatMix Logo",
     height: "32px"
   })))), __jsx(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_4__["default"].Toggle, {
@@ -261,8 +267,18 @@ var MainHeader = function MainHeader() {
     id: "responsive-navbar-nav"
   }, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "mr-auto"
-  }, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"].Item, null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "/create-poll"
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/create-poll",
+    as: "/create-poll"
+  }, __jsx("a", null, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
+    className: "create-poll-item"
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faPoll"]
+  }), " Create Poll"))), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
+    className: "small-menu"
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: "/create-poll",
+    as: "/create-poll"
   }, __jsx("a", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faPoll"]
   }), " Create Poll")))), __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null, __jsx(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"].Item, null, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -273,7 +289,7 @@ var MainHeader = function MainHeader() {
     id: "dropdown-custom-components"
   }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_6__["FontAwesomeIcon"], {
     icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faCog"]
-  })), __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_8__["default"].Menu, {
+  }), " Settings"), __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_8__["default"].Menu, {
     as: _MainHeaderSettings__WEBPACK_IMPORTED_MODULE_11__["default"]
   }))))))));
 };
@@ -22258,4 +22274,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F_error
 /***/ })
 
 })
-//# sourceMappingURL=_error.js.c754c79e28f9e5f42c80.hot-update.js.map
+//# sourceMappingURL=_error.js.4c5aa75638cc4d1626df.hot-update.js.map

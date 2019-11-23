@@ -15,13 +15,13 @@ router.get('/poll/:slug', async (req, res) => {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
     //console.log(ip)
-    const ip = await req.clientIp;
+
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
 
-      const visit = await Visits.findOne({ url: req.params.slug, ip: ip });
+      const visit = await Visits.findOne({ url: req.params.slug, ip: req.clientIp });
       if(visit == null) {
-        let newVisit = await Visits({ url: req.params.slug, ip: ip });
+        let newVisit = await Visits({ url: req.params.slug, ip: req.clientIp });
         newVisit = await newVisit.save();
         
         poll = await Poll.findOneAndUpdate({ url: req.params.slug },
@@ -32,7 +32,7 @@ router.get('/poll/:slug', async (req, res) => {
         );
       } 
       //console.log("client ip: " + ip);
-      const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
+      const userDidVote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
       /*
       if(vote) {
         // user did voted

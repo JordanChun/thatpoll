@@ -14,19 +14,28 @@ const MainHeader = () => (
   <header className='header-wrapper'>
     <Container>
       <Navbar bg="dark-blue" variant="dark" expand='sm'>
-        <Link href='/'>
+        <Link href='/' as='/'>
           <a>
             <Navbar.Brand style={{ padding: 0 }}>
-              <img src='/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
+              <img src='/public/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
             </Navbar.Brand>
           </a>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Item>
-              <Link href='/create-poll'>
-                <a><FontAwesomeIcon icon={faPoll} /> Create Poll</a>
+            <Link href='/create-poll' as='/create-poll'>
+              <a>
+                <Nav.Item className='create-poll-item'>
+                  <FontAwesomeIcon icon={faPoll} /> Create Poll
+                </Nav.Item>
+              </a>
+            </Link>
+            <Nav.Item className='small-menu'>
+              <Link href='/create-poll' as='/create-poll'>
+                <a>
+                  <FontAwesomeIcon icon={faPoll} /> Create Poll
+                </a>
               </Link>
             </Nav.Item>
           {/*
@@ -41,7 +50,7 @@ const MainHeader = () => (
             <Nav.Item>
               <Dropdown className='header-settings' alignRight>
                 <Dropdown.Toggle as={CustomDropdownToggle} id="dropdown-custom-components">
-                  <FontAwesomeIcon icon={faCog} />
+                  <FontAwesomeIcon icon={faCog} /> Settings
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu as={MainHeaderSettings}>

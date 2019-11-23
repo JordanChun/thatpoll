@@ -6,10 +6,10 @@ const Vote = require('../models/Vote');
 
 router.get('/poll/results/:slug', async (req, res) => {
   try {
-    const ip = req.clientIp;
+    //const ip = req.clientIp;
     let poll = await Poll.exists({ url: req.params.slug });
     if(poll) {
-      const vote = await Vote.exists({ url: req.params.slug, ip: ip });
+      const vote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
       poll = await Poll.findOne({ url: req.params.slug });
 
       const resultsData = {

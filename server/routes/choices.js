@@ -12,16 +12,15 @@ const moment = require('moment');
 
 router.get('/poll/choices/:slug', async (req, res) => {
   try {
-    const ip = req.clientIp;
     const poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-      const userDidVote = await Vote.exists({ url: req.params.slug, ip: ip });
+      const userDidVote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
       const userData = { 
         didVote: userDidVote,
         vote: null
       };
       if(userDidVote) {
-        const userVote = await Vote.findOne({ url: req.params.slug, ip: ip });
+        const userVote = await Vote.findOne({ url: req.params.slug, ip: req.clientIp });
         userData.vote = userVote.vote;
       }
       const pollData = {

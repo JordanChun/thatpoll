@@ -20,7 +20,11 @@ const PollCard = props => (
     >
     <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
       <a>
-        <h6 className='poll-card-title' onClick={(e) => {e.stopPropagation()}}>
+        <h6
+          className='poll-card-title'
+          onClick={(e) => {e.stopPropagation()}}
+          title={props.poll.title}  
+        >
           {props.poll.title}
         </h6>
       </a>

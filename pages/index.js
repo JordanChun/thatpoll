@@ -17,7 +17,8 @@ import Router from 'next/router';
 class Home extends React.Component {
   static async getInitialProps({ query: { page }, req }) {
     const { origin } = absoluteUrl(req);
-    const res = await fetch(`${origin}/api/polls?page=${page}`, {
+    const searchPage = page < 1 || page == undefined ? 1 : page;
+    const res = await fetch(`${origin}/api/polls?page=${searchPage}`, {
       method: 'GET',
       headers: {
         'X-Origin': 'statmix',

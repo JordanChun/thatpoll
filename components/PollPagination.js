@@ -41,12 +41,10 @@ const PollPagination = props => {
     if ((i + offset) === active) {
       items.push(
         <li className="page-item active" key={i}>
-          <span className="page-link">
-            <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
-              <a>{i + offset}</a>
-            </Link>
-            <span className="sr-only">(current)</span>
-          </span>
+          <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
+            <a className='page-link'>{i + offset}</a>
+          </Link>
+          <span className="sr-only">(current)</span>
         </li>
       );
     } else {

@@ -37,6 +37,9 @@ a, a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+.navbar {
+  height: 50px;
+}
 
 .nav-item a {
   color: #e6e6e6;
@@ -46,6 +49,18 @@ a, a:hover {
   border: 1px solid #e6e6e6;
   padding: 0.4rem 0.5rem;
   border-radius: 0.25rem;
+}
+
+.nav-item.create-poll-item {
+  border: 1px solid white;
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.5rem;
+  color: white;
+}
+
+.nav-item.small-menu,
+.nav-item .header-settings.small-menu {
+  display: none;
 }
 
 .header-wrapper {
@@ -133,13 +148,9 @@ button[type='submit'].btn.btn-light-blue:hover {
 }
 
 select.form-control,
-
 textarea.form-control,
-
 input[type='text'],
-
 input[type='number'],
-
 .input-group>.form-control {
   color: var(--primaryTextColor);
   background-color: var(--secondaryBackground);
@@ -164,8 +175,14 @@ input[type='number'],
   border-radius: 0;
 }
 
+
+
 .header-settings.dropdown { 
   color: #e6e6e6;
+}
+
+.header-settings span {
+  cursor: pointer;
 }
 
 .dropdown.header-settings .dropdown-menu {
@@ -217,6 +234,15 @@ input[type='number'],
   box-shadow: var(--primaryBoxShadow);
 }
 
+.vote-history.card .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.vote-history .card-header span:last-child  {
+  cursor: pointer;
+}
+
 .vote-history .list-group {
   max-height: 300px;
   overflow-y: hidden;
@@ -230,6 +256,11 @@ input[type='number'],
   padding: .5rem 1rem;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
+}
+
+.vote-history.card .list-group-item:hover {
+  background-color: var(--primaryBackground);
 }
 
 .vote-history .list-group-item a {
@@ -595,6 +626,18 @@ input[type='number'],
 }
 
 @media (max-width: 576px) {
+  .navbar { 
+    height: auto;
+  }
+
+  .mr-auto .nav-item:not(.small-menu) {
+    display: none;
+  }
+  
+  .nav-item.small-menu {
+    display: inline;
+  }
+
   .poll-desc, .poll-choices {
     margin: 0;
   }

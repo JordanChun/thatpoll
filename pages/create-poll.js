@@ -133,7 +133,7 @@ class CreatePoll extends React.Component {
       });
       const data = await res.json();
       if(data.message === 'success') {
-        Router.push(`/poll/${data.url}`);
+        Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`)
       } else {
         this.setState({ error: true });
         window.scrollTo({
