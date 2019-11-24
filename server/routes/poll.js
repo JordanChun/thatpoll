@@ -21,6 +21,7 @@ router.get('/poll/:slug', async (req, res) => {
 
       const visit = await Visit.findOne({ url: req.params.slug, ip: req.clientIp });
       if(visit == null) {
+        console.log('client ip' + req.clientIp);
         let newVisit = await new Visit({ url: req.params.slug, ip: req.clientIp });
         newVisit = await newVisit.save();
         
@@ -33,12 +34,7 @@ router.get('/poll/:slug', async (req, res) => {
       } 
       //console.log("client ip: " + ip);
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
-      /*
-      if(vote) {
-        // user did voted
-        resultsData.userDidVote = true;
-      }
-      */
+
       const userData = { 
         didVote: userDidVote
       };
