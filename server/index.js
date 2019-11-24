@@ -53,7 +53,6 @@ app.prepare().then(() => {
     saveUninitialized: true
   }));
   */
-  //server.use(requestIp.mw());
 
   server.use('/public', express.static('public'));
 

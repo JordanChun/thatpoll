@@ -11,18 +11,21 @@ require('moment-precise-range-plugin');
 //const ipaddr = require('ipaddr.js');
 
 router.get('/poll/:slug', async (req, res) => {
-  console.log('client ip ' + req.clientIp);
+  const clientIp = req.clientIp;
+  console.log('clientIp1: ' + clientIp);
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
     //console.log(ip)
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-
-      const visit = await Visit.findOne({ url: req.params.slug, ip: req.clientIp });
+      console.log('req.clientIp1 ' + req.clientIp);
+      
+      const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });
       if(visit == null) {
-        console.log('client ip ' + req.clientIp);
-        let newVisit = await new Visit({ url: req.params.slug, ip: req.clientIp });
+        console.log('clientIp2: ' + clientIp);
+        console.log('req.clientIp2 ' + req.clientIp);
+        let newVisit = await new Visit({ url: req.params.slug, ip: clientIp });
         newVisit = await newVisit.save();
         
         poll = await Poll.findOneAndUpdate({ url: req.params.slug },
@@ -33,7 +36,7 @@ router.get('/poll/:slug', async (req, res) => {
         );
       } 
       //console.log("client ip: " + ip);
-      const userDidVote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
+      const userDidVote = await Vote.exists({ url: req.params.slug, ip: clientIp });
 
       const userData = { 
         didVote: userDidVote
