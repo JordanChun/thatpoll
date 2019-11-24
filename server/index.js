@@ -40,6 +40,7 @@ app.prepare().then(() => {
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
   server.use(cookieParser());
+  server.use(requestIp.mw())
   /*
   server.use(session({
     secret: 'super secret',

@@ -11,17 +11,17 @@ require('moment-precise-range-plugin');
 //const ipaddr = require('ipaddr.js');
 
 router.get('/poll/:slug', async (req, res) => {
+  console.log('client ip ' + req.clientIp);
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
     //console.log(ip)
-
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
 
       const visit = await Visit.findOne({ url: req.params.slug, ip: req.clientIp });
       if(visit == null) {
-        console.log('client ip' + req.clientIp);
+        console.log('client ip ' + req.clientIp);
         let newVisit = await new Visit({ url: req.params.slug, ip: req.clientIp });
         newVisit = await newVisit.save();
         
