@@ -96,11 +96,11 @@ class PollPage extends React.Component {
         });
   
         const data = await res.json();
-        console.log(data);
+        //console.log(data);
         
         if(data.message === 'error') {
           this.setState({ userDidVoteError: true });
-          console.log('already voted');
+          //console.log('already voted');
         } else {
           if (localStorage.voteHistory) {
             let voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
@@ -197,7 +197,7 @@ class PollPage extends React.Component {
             <Col>
               <div className='poll-options mb-3'>
                 <ShareButton url={url} />
-                <ReportButton urlref={this.props.router.query.slug} />
+                <ReportButton urlref={this.props.router.query.slug} title={title} />
               </div>
             </Col>
           </Row>

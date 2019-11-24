@@ -150,7 +150,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  //import '../style/index.css';
 
 var Layout = function Layout(props) {
-  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("script", null), __jsx("link", {
+  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("link", {
     rel: "icon",
     type: "image/png",
     sizes: "32x32",
@@ -559,7 +559,8 @@ var PollCard = function PollCard(props) {
       e.stopPropagation();
     }
   }, __jsx("div", null, __jsx(_Report__WEBPACK_IMPORTED_MODULE_9__["ReportButton"], {
-    urlref: props.poll.url
+    urlref: props.poll.url,
+    title: props.poll.title
   })), __jsx("div", {
     className: "poll-card-actions-compact"
   }, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -981,11 +982,13 @@ function (_React$Component) {
         closeButton: true
       }, __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Title, null, "Report")), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Body, null, error ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
         variant: "danger"
-      }, __jsx("b", null, "Error submitting poll")) : null, success ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      }, __jsx("b", null, "Error submitting report")) : null, success ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
         variant: "success"
       }, __jsx("b", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_16__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_17__["faCheck"]
-      }), " Report Recieved. Thank You")) : null, __jsx("p", null, "Please provide the reasoning for this report below. Thank you."), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }), " Report Recieved. Thank You")) : null, __jsx("div", {
+        className: "report-details mb-3"
+      }, __jsx("h6", null, "Poll Title"), __jsx("div", null, this.props.title)), __jsx("p", null, "Please describe the reason for this report below."), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"], {
         autoComplete: "off"
       }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Label, null, "Category"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Control, {
         onChange: this.updateCategory,
@@ -35639,7 +35642,7 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!*****************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
   \*****************************************************************************************************************************/
@@ -35662,5 +35665,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[4,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const Poll = require('../models/Poll');
 const Vote = require('../models/Vote');
-const Visits = require('../models/Visits');
+const Visit = require('../models/Visit');
 
 const moment = require('moment');
 require('moment-precise-range-plugin');
@@ -19,9 +19,9 @@ router.get('/poll/:slug', async (req, res) => {
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
 
-      const visit = await Visits.findOne({ url: req.params.slug, ip: req.clientIp });
+      const visit = await Visit.findOne({ url: req.params.slug, ip: req.clientIp });
       if(visit == null) {
-        let newVisit = await Visits({ url: req.params.slug, ip: req.clientIp });
+        let newVisit = await new Visit({ url: req.params.slug, ip: req.clientIp });
         newVisit = await newVisit.save();
         
         poll = await Poll.findOneAndUpdate({ url: req.params.slug },

@@ -13,9 +13,9 @@ const voteSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  pollId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true
+  votedAt: {
+    type: Date,
+    default: Date.now
   }
 });
 

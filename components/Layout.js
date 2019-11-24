@@ -7,7 +7,6 @@ import Container from 'react-bootstrap/Container';
 const Layout = props => (
   <div>
     <Head>
-      <script></script>
       <link rel="icon" type="image/png" sizes="32x32" href="/public/img/favicon.ico"></link>
       <link
         rel="stylesheet"
@@ -32,6 +31,7 @@ const Layout = props => (
         gtag('js', new Date());
 
         gtag('config', 'UA-150975737-1');`}} />
+      <script data-ad-client="ca-pub-7980461707615662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </Head>
     <MainHeader />
     <Container className='main-wrapper'>

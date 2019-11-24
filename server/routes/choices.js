@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Poll = require('../models/Poll');
 const Vote = require('../models/Vote');
-const Visits = require('../models/Visits');
 
 const moment = require('moment');
 

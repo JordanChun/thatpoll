@@ -20,8 +20,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
           vote = await new Vote({
             url: req.params.slug,
             ip: req.clientIp,
-            vote: req.body.selectedVote,
-            pollId: poll.id
+            vote: req.body.selectedVote
           });
   
           await vote.save();

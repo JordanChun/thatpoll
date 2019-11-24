@@ -92,7 +92,7 @@ class ReportModal extends React.Component {
         <Modal.Body>
           { error ?
             <Alert variant='danger'>
-              <b>Error submitting poll</b>
+              <b>Error submitting report</b>
             </Alert> : null
           }
           { success ?
@@ -102,7 +102,13 @@ class ReportModal extends React.Component {
               </b>
             </Alert> : null
           }
-          <p>Please provide the reasoning for this report below. Thank you.</p>
+          <div className='report-details mb-3'>
+            <h6>Poll Title</h6>
+            <div>
+              {this.props.title}
+            </div>
+          </div>
+          <p>Please describe the reason for this report below.</p>
           <Form autoComplete='off'>
             <Form.Group>
               <Form.Label>

@@ -37,6 +37,12 @@ a, a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.link {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
 .navbar {
   height: 50px;
 }
@@ -612,6 +618,12 @@ input[type='number'],
   border-color: #375275;
 }
 
+.report-details > div {
+  padding: 0.8rem;
+  border-radius: .25rem;
+  background-color: var(--primaryBackground);
+}
+
 .modal-report .modal-content {
   background-color: var(--primaryContainerColor);
   color: var(--primaryTextColor);
@@ -626,6 +638,10 @@ input[type='number'],
 }
 
 @media (max-width: 576px) {
+  .main-wrapper.container {
+    padding: 0 15px;
+  }
+
   .navbar { 
     height: auto;
   }

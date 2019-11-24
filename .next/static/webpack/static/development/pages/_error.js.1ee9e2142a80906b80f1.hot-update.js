@@ -87,7 +87,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
  //import '../style/index.css';
 
 var Layout = function Layout(props) {
-  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("script", null), __jsx("link", {
+  return __jsx("div", null, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, null, __jsx("link", {
     rel: "icon",
     type: "image/png",
     sizes: "32x32",
@@ -22274,4 +22274,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F_error
 /***/ })
 
 })
-//# sourceMappingURL=_error.js.4c5aa75638cc4d1626df.hot-update.js.map
+//# sourceMappingURL=_error.js.1ee9e2142a80906b80f1.hot-update.js.map
