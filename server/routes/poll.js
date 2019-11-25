@@ -13,7 +13,9 @@ require('moment-precise-range-plugin');
 router.get('/poll/:slug', async (req, res) => {
   const clientIp = req.clientIp;
   console.log('clientIp1: ' + clientIp);
-  console.log('express ip: ' + req.ip);
+  console.log('express ip: ' + req.ips["client"]);
+  console.log('express ip: ' + req.ips["proxy1"]);
+  console.log('express ip: ' + req.ips["proxy2"]);
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
