@@ -8,14 +8,15 @@ const Visit = require('../models/Visit');
 const moment = require('moment');
 require('moment-precise-range-plugin');
 
+const publicIp = require('public-ip')
+
 //const ipaddr = require('ipaddr.js');
 
 router.get('/poll/:slug', async (req, res) => {
   const clientIp = req.clientIp;
   console.log('clientIp1: ' + clientIp);
-  const forwarded = req.headers['x-forwarded-for']
-  const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
-  console.log(ip)
+  const pubIp = await publicIp.v4();
+  console.log(pubIp);
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
