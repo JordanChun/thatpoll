@@ -17,9 +17,12 @@ import Col from 'react-bootstrap/Col';
 class PollPage extends React.Component {
   static async getInitialProps({ query: { slug }, req }) {
     const { origin } = absoluteUrl(req);
+    console.log(req);
+    const clientIp = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    console.log(clientIp);
     const res = await fetch(`${origin}/api/poll/${slug}`, {
-      method: 'POST',
-      headers: { 'X-Origin': 'statmix' }
+      method: 'GET',
+      headers: { 'X-Origin': 'statmix', 'X-IP': clientIp }
     });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()

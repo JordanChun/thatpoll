@@ -37046,7 +37046,7 @@ function (_React$Component) {
       var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(_ref) {
-        var slug, req, _absoluteUrl, origin, res, errorCode, data, url;
+        var slug, req, _absoluteUrl, origin, clientIp, res, errorCode, data, url;
 
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -37054,21 +37054,25 @@ function (_React$Component) {
               case 0:
                 slug = _ref.query.slug, req = _ref.req;
                 _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl.origin;
-                _context.next = 4;
+                console.log(req);
+                clientIp = req.header('x-forwarded-for') || req.connection.remoteAddress;
+                console.log(clientIp);
+                _context.next = 7;
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug), {
-                  method: 'POST',
+                  method: 'GET',
                   headers: {
-                    'X-Origin': 'statmix'
+                    'X-Origin': 'statmix',
+                    'X-IP': clientIp
                   }
                 });
 
-              case 4:
+              case 7:
                 res = _context.sent;
                 errorCode = res.status > 200 ? res.status : false;
-                _context.next = 8;
+                _context.next = 11;
                 return res.json();
 
-              case 8:
+              case 11:
                 data = _context.sent;
                 url = "".concat(origin, "/poll/").concat(slug);
                 return _context.abrupt("return", {
@@ -37078,7 +37082,7 @@ function (_React$Component) {
                   url: url
                 });
 
-              case 11:
+              case 14:
               case "end":
                 return _context.stop();
             }

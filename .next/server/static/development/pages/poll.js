@@ -3313,10 +3313,14 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
     const {
       origin
     } = next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default()(req);
+    console.log(req);
+    const clientIp = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    console.log(clientIp);
     const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/${slug}`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
-        'X-Origin': 'statmix'
+        'X-Origin': 'statmix',
+        'X-IP': clientIp
       }
     });
     const errorCode = res.status > 200 ? res.status : false;

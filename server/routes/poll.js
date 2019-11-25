@@ -8,38 +8,26 @@ const Visit = require('../models/Visit');
 const moment = require('moment');
 require('moment-precise-range-plugin');
 
-const publicIp = require('public-ip')
-
-//const ipaddr = require('ipaddr.js');
-
-router.post('/poll/:slug', async (req, res) => {
+router.get('/poll/:slug', async (req, res) => {
   const clientIp = req.clientIp;
-  const pubIp = await publicIp.v4();
-  console.log('publicIP mdule: ' + pubIp);
+  console.log(req.headers['x-ip']);
   try {
-    //console.log(ipaddr.process(req.clientIp).kind());
-    //const ip = ipaddr.process(req.clientIp).octets.join('.');
-    //console.log(ip)
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-      const publicIpRes = await fetch('https://api.ipify.org?format=json', { method: 'GET'});
-      const publicIp = await publicIpRes.json();
-      console.log('ipify ' + publicIp.ip);
-      
-      const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });
-      if(visit == null) {
-        console.log('clientIp: ' + clientIp);
-        let newVisit = await new Visit({ url: req.params.slug, ip: clientIp });
-        newVisit = await newVisit.save();
+      // const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });
+      // if(visit == null) {
+      //   console.log('clientIp: ' + clientIp);
+      //   let newVisit = await new Visit({ url: req.params.slug, ip: clientIp });
+      //   newVisit = await newVisit.save();
         
-        poll = await Poll.findOneAndUpdate({ url: req.params.slug },
-          { $inc: {
-            visits: 1
-           }
-         }, {new: true}
-        );
-      } 
-      //console.log("client ip: " + ip);
+      // } 
+      poll = await Poll.findOneAndUpdate({ url: req.params.slug },
+        { $inc: {
+          visits: 1
+         }
+       }, {new: true}
+      );
+
       const userDidVote = await Vote.exists({ url: req.params.slug, ip: clientIp });
 
       const userData = { 
