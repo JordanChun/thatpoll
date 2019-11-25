@@ -12,7 +12,8 @@ const publicIp = require('public-ip')
 
 //const ipaddr = require('ipaddr.js');
 
-router.get('/poll/:slug', async (req, res) => {
+router.post('/poll/:slug', async (req, res) => {
+  const clientIp = req.clientIp;
   const pubIp = await publicIp.v4();
   console.log('publicIP mdule: ' + pubIp);
   try {
@@ -27,8 +28,7 @@ router.get('/poll/:slug', async (req, res) => {
       
       const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });
       if(visit == null) {
-        console.log('clientIp2: ' + clientIp);
-        console.log('req.clientIp2 ' + req.clientIp);
+        console.log('clientIp: ' + clientIp);
         let newVisit = await new Visit({ url: req.params.slug, ip: clientIp });
         newVisit = await newVisit.save();
         

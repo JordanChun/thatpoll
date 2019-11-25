@@ -37056,7 +37056,7 @@ function (_React$Component) {
                 _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl.origin;
                 _context.next = 4;
                 return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug), {
-                  method: 'GET',
+                  method: 'POST',
                   headers: {
                     'X-Origin': 'statmix'
                   }

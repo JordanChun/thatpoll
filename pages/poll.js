@@ -18,7 +18,7 @@ class PollPage extends React.Component {
   static async getInitialProps({ query: { slug }, req }) {
     const { origin } = absoluteUrl(req);
     const res = await fetch(`${origin}/api/poll/${slug}`, {
-      method: 'GET',
+      method: 'POST',
       headers: { 'X-Origin': 'statmix' }
     });
     const errorCode = res.status > 200 ? res.status : false

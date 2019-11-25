@@ -3314,7 +3314,7 @@ class PollPage extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
       origin
     } = next_absolute_url__WEBPACK_IMPORTED_MODULE_9___default()(req);
     const res = await isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_3___default()(`${origin}/api/poll/${slug}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'X-Origin': 'statmix'
       }
