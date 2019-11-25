@@ -13,13 +13,18 @@ require('moment-precise-range-plugin');
 router.get('/poll/:slug', async (req, res) => {
   const clientIp = req.clientIp;
   console.log('clientIp1: ' + clientIp);
-  
+  const forwarded = req.headers['x-forwarded-for']
+  const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
+  console.log(ip)
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
     //console.log(ip)
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
+      // const publicIpRes = await fetch('http://bot.whatismyipaddress.com', { method: 'GET'});
+      // const publicIp = await publicIpRes.json();
+      // console.log(publicIp);
       console.log('req.clientIp1 ' + req.clientIp);
       
       const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });

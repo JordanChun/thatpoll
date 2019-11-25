@@ -17,6 +17,10 @@
     "/_polyfills": [
       "static/runtime/polyfills.js",
       "static/runtime/polyfills.js.map"
+    ],
+    "/poll": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
     ]
   }
 }
