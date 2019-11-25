@@ -13,20 +13,17 @@ const publicIp = require('public-ip')
 //const ipaddr = require('ipaddr.js');
 
 router.get('/poll/:slug', async (req, res) => {
-  const clientIp = req.clientIp;
-  console.log('clientIp1: ' + clientIp);
   const pubIp = await publicIp.v4();
-  console.log(pubIp);
+  console.log('publicIP mdule: ' + pubIp);
   try {
     //console.log(ipaddr.process(req.clientIp).kind());
     //const ip = ipaddr.process(req.clientIp).octets.join('.');
     //console.log(ip)
     let poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
-      // const publicIpRes = await fetch('http://bot.whatismyipaddress.com', { method: 'GET'});
-      // const publicIp = await publicIpRes.json();
-      // console.log(publicIp);
-      console.log('req.clientIp1 ' + req.clientIp);
+      const publicIpRes = await fetch('https://api.ipify.org?format=json', { method: 'GET'});
+      const publicIp = await publicIpRes.json();
+      console.log('ipify ' + publicIp.ip);
       
       const visit = await Visit.findOne({ url: req.params.slug, ip: clientIp });
       if(visit == null) {
