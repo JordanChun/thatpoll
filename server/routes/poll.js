@@ -9,11 +9,12 @@ const moment = require('moment');
 require('moment-precise-range-plugin');
 
 router.get('/poll/:slug', async (req, res) => {
+  console.log(req.clientIp);
   let clientIp = req.clientIp;
   if (req.headers['x-ip'] !== 'undefined') {
     clientIp = req.headers['x-ip'];
   }
-  console.log(clientIp);;
+  //console.log(clientIp);;
 
   try {
     let poll = await Poll.findOne({ url: req.params.slug });

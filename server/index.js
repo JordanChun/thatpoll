@@ -36,6 +36,7 @@ db.once('open', function() {
 app.prepare().then(() => {
   const server = express();
   server.use(helmet());
+  server.set('trust proxy', 1);
   //server.use(ipfilter(ips, { mode: 'allow' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
