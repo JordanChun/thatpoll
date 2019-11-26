@@ -133,18 +133,19 @@ var Layout = function Layout(props) {
     dangerouslySetInnerHTML: {
       __html: "window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n\n        gtag('config', 'UA-150975737-1');"
     }
-  }), __jsx("script", {
+  }), props.ads ? __jsx("script", {
     "data-ad-client": "ca-pub-7980461707615662",
     async: true,
     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-  })), __jsx(_MainHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }) : null), __jsx(_MainHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "main-wrapper"
   }, props.children), __jsx(_MainFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.',
+  ads: false
 };
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
 
@@ -201,8 +202,8 @@ var MainFooter = function MainFooter() {
     href: "/privacy-policy",
     as: "/privacy-policy"
   }, __jsx("a", null, "Privacy Policy"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/feedback-and-suggestions",
-    as: "feedback-and-suggestions"
+    href: "/feedback",
+    as: "feedback"
   }, __jsx("a", null, "Feedback & Suggestions")))))))));
 };
 
@@ -818,7 +819,8 @@ function (_React$Component) {
       reason: '',
       category: 0,
       error: false,
-      success: false
+      success: false,
+      validated: false
     };
     _this.inputUpdate = _this.inputUpdate.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this));
     _this.updateCategory = _this.updateCategory.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_9__["default"])(_this));
@@ -844,26 +846,24 @@ function (_React$Component) {
       var _submitReport = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_3__["default"])(
       /*#__PURE__*/
       _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(e) {
-        var res, data;
+        var form, res, data;
         return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 e.preventDefault();
+                form = e.currentTarget;
 
-                if (!(this.state.reason.length <= 0 || this.state.category === 0)) {
-                  _context.next = 6;
-                  break;
+                if (form.checkValidity() === false) {
+                  e.preventDefault();
+                  e.stopPropagation();
                 }
 
                 this.setState({
-                  error: true
+                  validated: true
                 });
-                return _context.abrupt("return");
-
-              case 6:
-                _context.prev = 6;
-                _context.next = 9;
+                _context.prev = 4;
+                _context.next = 7;
                 return fetch("".concat(window.location.origin, "/api/report"), {
                   method: 'POST',
                   headers: {
@@ -874,16 +874,17 @@ function (_React$Component) {
                   body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_2___default()({
                     reason: this.state.reason,
                     category: this.state.category,
-                    urlRef: this.props.urlref
+                    urlRef: this.props.urlref,
+                    title: this.props.pollTitle
                   })
                 });
 
-              case 9:
+              case 7:
                 res = _context.sent;
-                _context.next = 12;
+                _context.next = 10;
                 return res.json();
 
-              case 12:
+              case 10:
                 data = _context.sent;
 
                 if (data.message === 'success') {
@@ -899,19 +900,19 @@ function (_React$Component) {
                   }); // display error
                 }
 
-                _context.next = 18;
+                _context.next = 16;
                 break;
 
-              case 16:
-                _context.prev = 16;
-                _context.t0 = _context["catch"](6);
+              case 14:
+                _context.prev = 14;
+                _context.t0 = _context["catch"](4);
 
-              case 18:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[6, 16]]);
+        }, _callee, this, [[4, 14]]);
       }));
 
       function submitReport(_x) {
@@ -926,7 +927,8 @@ function (_React$Component) {
       var _this$state = this.state,
           reason = _this$state.reason,
           error = _this$state.error,
-          success = _this$state.success;
+          success = _this$state.success,
+          validated = _this$state.validated;
       return __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, this.props, {
         size: "lg",
         centered: true,
@@ -939,33 +941,46 @@ function (_React$Component) {
         closeButton: true
       }, __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Title, null, "Report")), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Body, null, error ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
         variant: "danger"
-      }, __jsx("b", null, "Error submitting report")) : null, success ? __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
+      }, __jsx("b", null, "Error submitting report")) : null, success ? __jsx("div", null, __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_15__["default"], {
         variant: "success"
       }, __jsx("b", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_16__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_17__["faCheck"]
-      }), " Report Recieved. Thank You")) : null, __jsx("div", {
+      }), " Report Received. Thank You.")), __jsx("div", {
+        style: {
+          padding: '1rem',
+          textAlign: 'center'
+        }
+      }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        variant: "grey-blue",
+        onClick: this.props.onHide
+      }, "Close"))) : __jsx("div", null, __jsx("div", {
         className: "report-details mb-3"
-      }, __jsx("h6", null, "Poll Title"), __jsx("div", null, this.props.title)), __jsx("p", null, "Please describe the reason for this report below."), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }, __jsx("h6", null, "Poll Title"), __jsx("div", null, this.props.pollTitle)), __jsx("p", null, "Please describe the reason for this report below."), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        noValidate: true,
+        validated: validated,
         autoComplete: "off"
       }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Label, null, "Category"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Control, {
         onChange: this.updateCategory,
         as: "select",
         name: "category"
-      }, __jsx("option", null, "Select a category"), __jsx("option", null, "Abuse"), __jsx("option", null, "Bug"), __jsx("option", null, "Spam"))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Group, null, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Label, null, "Reason:"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Control, {
+      }, __jsx("option", null, "Abuse"), __jsx("option", null, "Bug"), __jsx("option", null, "Spam"))), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Group, {
+        controlId: "validateReason"
+      }, __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Label, null, "Reason:"), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Control, {
         value: reason,
         onChange: this.inputUpdate,
         style: {
-          'maxHeight': '144px',
+          maxHeight: '144px',
           minHeight: '72px'
         },
         as: "textarea",
         rows: "3",
         name: "reason",
-        maxLength: "500"
-      })))), __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Footer, null, success ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        variant: "grey-blue",
-        onClick: this.props.onHide
-      }, "Close") : __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        minLength: "5",
+        maxLength: "500",
+        required: true
+      }), __jsx(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_14__["default"].Control.Feedback, {
+        type: "invalid"
+      }, "Please provide a reason. Min 5 characters."))))), success ? null : __jsx(react_bootstrap_Modal__WEBPACK_IMPORTED_MODULE_13__["default"].Footer, null, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_12__["default"], {
         variant: "light-blue",
         type: "submit",
         onClick: this.submitReport
@@ -37337,7 +37352,8 @@ function (_React$Component) {
         pageTitle: "Poll - ".concat(title),
         pageDesc: desc,
         visibility: visibility,
-        path: this.props.router.asPath
+        path: this.props.router.asPath,
+        ads: true
       }, __jsx("div", {
         className: "poll-wrapper"
       }, visibility === 'private' ? __jsx("div", {
@@ -37358,7 +37374,7 @@ function (_React$Component) {
         url: url
       }), __jsx(_components_Report__WEBPACK_IMPORTED_MODULE_22__["ReportButton"], {
         urlref: this.props.router.query.slug,
-        title: title
+        pollTitle: title
       })))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_13__["default"], {
         userDidVote: userDidVote,
         userDidVoteError: userDidVoteError,

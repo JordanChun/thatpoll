@@ -15,6 +15,7 @@ class ReportModal extends React.Component {
       category: 0,
       error: false,
       success: false,
+      validated: false
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
@@ -31,50 +32,53 @@ class ReportModal extends React.Component {
   }
 
   async submitReport(e) {
-    e.preventDefault()
-    if (this.state.reason.length <= 0 || this.state.category === 0) {
-      this.setState({ error: true });
-      return;
-    } else {
-      try {
-        const res = await fetch(`${window.location.origin}/api/report`, {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'X-Origin': 'statmix'
-          },
-          body: JSON.stringify({
-            reason: this.state.reason,
-            category: this.state.category,
-            urlRef: this.props.urlref
-          })
+    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    this.setState({ validated: true });
+
+    try {
+      const res = await fetch(`${window.location.origin}/api/report`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-Origin': 'statmix'
+        },
+        body: JSON.stringify({
+          reason: this.state.reason,
+          category: this.state.category,
+          urlRef: this.props.urlref,
+          title: this.props.pollTitle
+        })
+      });
+
+      const data = await res.json();
+      if (data.message === 'success') {
+          this.setState({
+          error: false,
+          success: true,
+          reason: '',
+          category: 0,
         });
-  
-        const data = await res.json();
-        if (data.message === 'success') {
-           this.setState({
-            error: false,
-            success: true,
-            reason: '',
-            category: 0,
-          });
-          // display sucess
-        } else {
-          this.setState({ error: true });
-          // display error
-        }
-  
-  
-      } catch(err) {
-          // display error
+        // display sucess
+      } else {
+        this.setState({ error: true });
+        // display error
       }
 
+
+    } catch(err) {
+        // display error
     }
   }
 
   render() {
-    const { reason, error, success } = this.state;
+    const { reason, error, success, validated } = this.state;
     return (
       <Modal
         {...this.props}
@@ -96,55 +100,63 @@ class ReportModal extends React.Component {
             </Alert> : null
           }
           { success ?
-            <Alert variant='success'>
-              <b>
-                <FontAwesomeIcon icon={faCheck} /> Report Recieved. Thank You
-              </b>
-            </Alert> : null
-          }
-          <div className='report-details mb-3'>
-            <h6>Poll Title</h6>
             <div>
-              {this.props.title}
+              <Alert variant='success'>
+                <b>
+                  <FontAwesomeIcon icon={faCheck} /> Report Received. Thank You.
+                </b>
+              </Alert>
+              <div style={{ padding: '1rem', textAlign: 'center' }}>
+                <Button variant='grey-blue' onClick={this.props.onHide}>Close</Button>
+              </div>
             </div>
-          </div>
-          <p>Please describe the reason for this report below.</p>
-          <Form autoComplete='off'>
-            <Form.Group>
-              <Form.Label>
-                Category
-              </Form.Label>
-              <Form.Control
-                onChange={this.updateCategory}
-                as="select"
-                name='category'
-              >
-                <option>Select a category</option>
-                <option>Abuse</option>
-                <option>Bug</option>
-                <option>Spam</option>
-              </Form.Control>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>
-                Reason:
-              </Form.Label>
-              <Form.Control
-                value={reason}
-                onChange={this.inputUpdate}
-                style={{ 'maxHeight': '144px', minHeight: '72px' }}
-                as="textarea" rows="3" name='reason' maxLength='500'
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          {success ?
-            <Button variant='grey-blue' onClick={this.props.onHide}>Close</Button>
-          : 
-            <Button variant='light-blue' type='submit' onClick={this.submitReport}>Submit</Button>
+            : 
+            <div>
+              <div className='report-details mb-3'>
+                <h6>Poll Title</h6>
+                <div>
+                  {this.props.pollTitle}
+                </div>
+              </div>
+              <p>Please describe the reason for this report below.</p>
+              <Form noValidate validated={validated} autoComplete='off'>
+                <Form.Group>
+                  <Form.Label>
+                    Category
+                  </Form.Label>
+                  <Form.Control
+                    onChange={this.updateCategory}
+                    as="select"
+                    name='category'
+                  >
+                    <option>Abuse</option>
+                    <option>Bug</option>
+                    <option>Spam</option>
+                  </Form.Control>
+                </Form.Group>
+                <Form.Group controlId='validateReason'>
+                  <Form.Label>
+                    Reason:
+                  </Form.Label>
+                  <Form.Control
+                    value={reason}
+                    onChange={this.inputUpdate}
+                    style={{ maxHeight: '144px', minHeight: '72px' }}
+                    as="textarea" rows="3" name='reason' minLength='5' maxLength='500'
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a reason. Min 5 characters.
+                  </Form.Control.Feedback>
+                </Form.Group>
+              </Form>
+            </div>
           }
-        </Modal.Footer>
+          </Modal.Body>
+          { success ? null :
+            <Modal.Footer>
+              <Button variant='light-blue' type='submit' onClick={this.submitReport}>Submit</Button>
+            </Modal.Footer> }
       </Modal>
     );
   }

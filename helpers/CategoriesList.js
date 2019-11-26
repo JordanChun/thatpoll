@@ -11,11 +11,11 @@ const CategoriesList = [
   'Health',
   'Hobbies & Leisure',
   'Home & Garden',
-  'Internet & Telecom',
-  'Jobs & Education',
-  'Law & Government',
+  'Internet',
+  'Education',
+  'Government',
   'News',
-  'Online Communities',
+  'Community',
   'People & Society',
   'Pets & Animals',
   'Real Estate',
@@ -23,7 +23,8 @@ const CategoriesList = [
   'Shopping',
   'Sports',
   'Travel',
-  'Other'
+  'NSFW',
+  'Other',
 ];
 
 module.exports = CategoriesList;

@@ -43,6 +43,7 @@ class Home extends React.Component {
       <Layout
         pageTitle='StatMix'
         path={this.props.router.asPath}
+        ads={true}
       >
         <h4 className='page-header'>Recent Polls</h4>
         <hr />

@@ -80,6 +80,10 @@ app.prepare().then(() => {
     return app.render(req, res, '/privacy-policy');
   });
 
+  server.get('/feedback', (req, res) => {
+    return app.render(req, res, '/feedback');
+  });
+  
   server.all('*', (req, res) => {
     return handle(req, res)
   })

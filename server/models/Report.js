@@ -17,6 +17,10 @@ const reportSchema = new mongoose.Schema({
   urlRef: {
     type: String,
     required: true
+  },
+  title: {
+    type: String,
+    required: true
   }
 });
 

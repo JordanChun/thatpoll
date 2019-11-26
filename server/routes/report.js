@@ -12,13 +12,17 @@ router.post('/report', getUser, async (req, res) => {
     return res.status(400).json({ message: 'error '}).end();
   };
 
+  if (!validator.isLength(req.body.title, { min: 3, max: 120 })) {
+    return res.status(400).json({ message: 'error '}).end();
+  };
+
   if (!validator.isLength(req.body.reason, { min: 5, max: 500 })) {
     return res.status(400).json({ message: 'error '}).end();
   };
 
   const categoies = ['Abuse', 'Bug', 'Spam'];
 
-  if (req.body.category < 1 && req.body.category > 3) {
+  if (req.body.category < 0 || req.body.category > 2) {
     return res.status(400).json({ message: 'error '}).end();
   } 
 
@@ -27,8 +31,9 @@ router.post('/report', getUser, async (req, res) => {
     const report = await new Report({
       ip: user.ip,
       text: req.body.reason,
-      category: categoies[req.body.category - 1],
-      urlRef: req.body.urlRef
+      category: categoies[req.body.category],
+      urlRef: req.body.urlRef,
+      title: req.body.title
     });
 
     await report.save()

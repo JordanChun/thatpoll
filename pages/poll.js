@@ -171,6 +171,7 @@ class PollPage extends React.Component {
         pageDesc={desc}
         visibility={visibility}
         path={this.props.router.asPath}
+        ads={true}
       >
         <div className='poll-wrapper'>
           {visibility === 'private' ?
@@ -201,7 +202,7 @@ class PollPage extends React.Component {
             <Col>
               <div className='poll-options mb-3'>
                 <ShareButton url={url} />
-                <ReportButton urlref={this.props.router.query.slug} title={title} />
+                <ReportButton urlref={this.props.router.query.slug} pollTitle={title} />
               </div>
             </Col>
           </Row>

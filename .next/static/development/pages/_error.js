@@ -133,18 +133,19 @@ var Layout = function Layout(props) {
     dangerouslySetInnerHTML: {
       __html: "window.dataLayer = window.dataLayer || [];\n        function gtag(){dataLayer.push(arguments);}\n        gtag('js', new Date());\n\n        gtag('config', 'UA-150975737-1');"
     }
-  }), __jsx("script", {
+  }), props.ads ? __jsx("script", {
     "data-ad-client": "ca-pub-7980461707615662",
     async: true,
     src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-  })), __jsx(_MainHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }) : null), __jsx(_MainHeader__WEBPACK_IMPORTED_MODULE_2__["default"], null), __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: "main-wrapper"
   }, props.children), __jsx(_MainFooter__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.',
+  ads: false
 };
 /* harmony default export */ __webpack_exports__["default"] = (Layout);
 
@@ -201,8 +202,8 @@ var MainFooter = function MainFooter() {
     href: "/privacy-policy",
     as: "/privacy-policy"
   }, __jsx("a", null, "Privacy Policy"))), __jsx("li", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
-    href: "/feedback-and-suggestions",
-    as: "feedback-and-suggestions"
+    href: "/feedback",
+    as: "feedback"
   }, __jsx("a", null, "Feedback & Suggestions")))))))));
 };
 

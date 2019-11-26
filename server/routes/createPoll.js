@@ -84,6 +84,10 @@ function createPollAuth(req, res, next) {
     req.body.choices.forEach(choice => {
       req.choices.push(validator.trim(choice));
     });
+
+    if (req.choices.length < 2) {
+      return res.status(400).json({ message: 'error' }).end();
+    }
     // validate choice lengths, min 1, max 75 chars
     req.choices.forEach(choice => {
       if (!validator.isLength(choice, { min: 1, max: 75 })) {
@@ -100,7 +104,7 @@ function createPollAuth(req, res, next) {
   }
 
   // if title min 1 character max 120
-  if (!validator.isLength(req.title, { min: 1, max: 120 })) {
+  if (!validator.isLength(req.title, { min: 3, max: 120 })) {
     return res.status(400).json({ message: 'error' }).end();
   };
 

@@ -31,7 +31,7 @@ const Layout = props => (
         gtag('js', new Date());
 
         gtag('config', 'UA-150975737-1');`}} />
-      <script data-ad-client="ca-pub-7980461707615662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      {props.ads ? <script data-ad-client="ca-pub-7980461707615662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> : null}
     </Head>
     <MainHeader />
     <Container className='main-wrapper'>
@@ -43,7 +43,8 @@ const Layout = props => (
 
 Layout.defaultProps = {
   visibility: 'public',
-  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.'
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.',
+  ads: false
 }
 
 export default Layout;

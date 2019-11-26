@@ -13,9 +13,6 @@ import absoluteUrl from 'next-absolute-url';
 import { withRouter } from 'next/router';
 import CategoriesList from '../helpers/CategoriesList';
 
-//TO DO ##############################################
-//Validate Poll Inputs
-
 const visibilityTooltip = props => (
   <div
     {...props}
@@ -85,6 +82,7 @@ class CreatePoll extends React.Component {
       dateCreated: new Date(),
       category: 0,
       error: false,
+      validated: false,
       timelimit: 'Voting ends in: 6 hours'
     }
 
@@ -119,6 +117,14 @@ class CreatePoll extends React.Component {
 
   async handleSubmit(e, req) {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    this.setState({ validated: true });
+
     const { origin } = absoluteUrl(req);
     const pollData = validatePollInput(this.state);
     try {
@@ -179,7 +185,8 @@ class CreatePoll extends React.Component {
       desc,
       choices,
       votingPeriod,
-      error
+      error,
+      validated
     } = this.state;
 
     return (
@@ -194,17 +201,20 @@ class CreatePoll extends React.Component {
            <b>Error submitting poll</b>
           </Alert> : null
         }
-        <Form autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
-          <Form.Group>
+        <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
+          <Form.Group controlId="validationTitle">
             <Form.Label>
               Title
             </Form.Label>
             <Form.Control
               value={title}
               onChange={this.inputUpdate}
-              type='text' name='title' maxLength='120'
+              type='text' name='title' minLength='3' maxLength='120'
               required
             />
+            <Form.Control.Feedback type="invalid">
+              Please provide a title. Min 3 characters.
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group>
             <Form.Label>
@@ -213,7 +223,7 @@ class CreatePoll extends React.Component {
             <Form.Control
               value={desc}
               onChange={this.inputUpdate}
-              style={{ 'maxHeight': '144px', minHeight: '72px' }}
+              style={{ maxHeight: '144px', minHeight: '72px' }}
               as="textarea" rows="3" name='desc' maxLength='500'
             />
             <Form.Text>
@@ -221,7 +231,7 @@ class CreatePoll extends React.Component {
             </Form.Text>
           </Form.Group>
           {choices.map((choiceObj, i) => (
-            <Form.Group key={i}>
+            <Form.Group key={i} controlId={`validateChoice${i}`}>
               <Form.Label>
                 Choice #{i+1}
               </Form.Label>
@@ -235,8 +245,12 @@ class CreatePoll extends React.Component {
                 value={choiceObj.choice}
                 data-index={i}
                 onChange={this.updateChoice}
-                type='text' maxLength='75'
+                type='text' minLength='1' maxLength='75'
+                required
               />
+              <Form.Control.Feedback type="invalid">
+                Please provide a choice or remove it. Duplicate choices are <b>not</b> allowed. Min 3 characters.
+              </Form.Control.Feedback>
             </Form.Group>
           ))}
           <ButtonGroup size="sm" className='mb-3'>
@@ -247,7 +261,7 @@ class CreatePoll extends React.Component {
 
           <Form.Group>
             <Form.Label>
-              Category
+              Category (Optional)
             </Form.Label>
             <Form.Control
               onChange={this.updateCategory}
