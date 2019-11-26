@@ -143,7 +143,7 @@ button[type='submit'].btn.btn-light-blue:hover {
 }
 
 .btn-simple {
-  background-color: none;
+  background-color: transparent;
   color: var(--primaryTextColor); 
   border: none;
 }
@@ -635,6 +635,11 @@ input[type='number'],
 
 .modal-header, .modal-footer {
   border-color: var(--primaryBordercolor);
+}
+
+.filter-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 @media (max-width: 576px) {

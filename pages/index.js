@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faShare, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faFlag, faShare, faEllipsisV, faFilter } from '@fortawesome/free-solid-svg-icons';
 import absoluteUrl from 'next-absolute-url';
 import PollPagination from '../components/PollPagination';
 import PollCard from '../components/PollCard';
@@ -50,6 +50,21 @@ class Home extends React.Component {
         
         <Row>
           <Col md={9}>
+{/*            <div className='filter-container'>
+              <div style={{ lineHeight: 1.8 }}>
+                <FontAwesomeIcon icon={faFilter} /> Filter
+              </div>
+              <Dropdown alignRight>
+                <Dropdown.Toggle variant='simple' id="dropdown-phase" size='sm'>
+                  Any Voting Phase
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item eventKey="1">Active</Dropdown.Item>
+                  <Dropdown.Item eventKey="2">Ended</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+
+    </div>*/}
             { polls.length === 0 ?
               <div className='no-polls-card'>
                 <h4>No Polls Found</h4>

@@ -45,6 +45,7 @@ db.once('open', function() {
 app.prepare().then(() => {
   const server = express();
   server.use(helmet());
+  server.use(cors({ allowedHeaders: ['X-Origin', 'X-Ip', 'Content-Type', 'Accept'] }));
   //server.use(ipfilter(ips, { mode: 'allow' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());
