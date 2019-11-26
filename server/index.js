@@ -22,8 +22,17 @@ const mongoose = require('mongoose');
 const ua = require('universal-analytics');
 const visitor = ua('UA-150975737-1');
 
-mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds229088.mlab.com:29088/statmix`);
-mongoose.set('useNewUrlParser', true);
+// mongoose.connect(`mongodb+srv://UjxjklDyVCUXn5uz:NivBIzxj7MLj3VGT@statmix-juwed.mongodb.net/StatMix?retryWrites=true&w=majority`,
+// { useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
+
+mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds229088.mlab.com:29088/statmix`,
+{ 
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 
@@ -36,7 +45,6 @@ db.once('open', function() {
 app.prepare().then(() => {
   const server = express();
   server.use(helmet());
-  server.set('trust proxy', 1);
   //server.use(ipfilter(ips, { mode: 'allow' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(bodyParser.json());

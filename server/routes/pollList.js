@@ -15,6 +15,9 @@ router.get('/polls', async (req, res) => {
     const totalPages = Math.ceil(totalItems/10);
     page = Math.min(Math.max(page, 1), totalPages);
     skip = (page - 1) * 10;
+    if (skip < 0) {
+      skip = 0;
+    }
     
     const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ $natural: -1 }).limit(10);
     for (let i = 0; i < polls.length; i++) {

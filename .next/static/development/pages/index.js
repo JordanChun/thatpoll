@@ -1,4 +1,67 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\poll.js"],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["static\\development\\pages\\index.js"],{
+
+/***/ "./components/CompactOptionsToggle.js":
+/*!********************************************!*\
+  !*** ./components/CompactOptionsToggle.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
+
+var CompactOptionsToggle =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(CompactOptionsToggle, _React$Component);
+
+  function CompactOptionsToggle(props, context) {
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, CompactOptionsToggle);
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(CompactOptionsToggle).call(this, props, context));
+    _this.handleClick = _this.handleClick.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this));
+    return _this;
+  }
+
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(CompactOptionsToggle, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      e.preventDefault();
+      this.props.onClick(e);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return __jsx("span", {
+        onClick: this.handleClick
+      }, this.props.children);
+    }
+  }]);
+
+  return CompactOptionsToggle;
+}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (CompactOptionsToggle);
+
+/***/ }),
 
 /***/ "./components/CustomDropdownToggle.js":
 /*!********************************************!*\
@@ -412,10 +475,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./components/PollChoices.js":
-/*!***********************************!*\
-  !*** ./components/PollChoices.js ***!
-  \***********************************/
+/***/ "./components/PollCard.js":
+/*!********************************!*\
+  !*** ./components/PollCard.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -423,13 +486,18 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "./node_modules/react-bootstrap/esm/InputGroup.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/CompactOptionsToggle */ "./components/CompactOptionsToggle.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _Report__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Report */ "./components/Report.js");
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
@@ -439,241 +507,220 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
-var PollChoices = function PollChoices(props) {
+
+
+
+function redirectToPoll(slug) {
+  next_router__WEBPACK_IMPORTED_MODULE_8___default.a.push("/poll?slug=".concat(slug), "/poll/".concat(slug));
+}
+
+var PollCard = function PollCard(props) {
   return __jsx("div", {
-    className: "poll-choices"
-  }, props.userDidVoteError ? __jsx("div", {
-    className: "poll-alert"
-  }, __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    variant: "warning"
-  }, "You have already voted.")) : null, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_1__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faPollH"]
-  }), " Choices"), __jsx("div", {
-    className: "poll-stat mb-3"
-  }, __jsx("b", null, props.timelimit)), props.choices.map(function (choice, i) {
-    return __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      className: "mb-3",
-      key: i
-    }, __jsx("input", {
-      className: "choice-control",
-      type: "radio",
-      name: "poll-choice",
-      value: i,
-      onChange: props.updateChoiceSelected
-    }), __jsx("label", {
-      className: "form-control"
-    }, choice));
-  }), __jsx("div", {
-    className: "mb-3"
-  }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    size: "sm",
-    onClick: props.submitVote,
-    variant: "light-blue",
-    type: "submit",
-    style: {
-      width: '200px'
+    className: "poll-card-container",
+    onClick: function onClick() {
+      return redirectToPoll(props.poll.url);
     }
-  }, "Submit Vote")), !props.revealResults ? __jsx("div", {
-    className: "mb-3"
-  }, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: {
+      pathname: '/poll',
+      query: {
+        slug: props.poll.url
+      }
+    },
+    as: "/poll/".concat(props.poll.url)
+  }, __jsx("a", null, __jsx("h6", {
+    className: "poll-card-title",
+    onClick: function onClick(e) {
+      e.stopPropagation();
+    },
+    title: props.poll.title
+  }, props.poll.title))), __jsx("hr", null), __jsx("div", {
+    className: "poll-card-desc"
+  }, props.poll.desc.length > 0 ? __jsx("p", null, props.poll.desc) : __jsx("i", null, "No Description")), __jsx("hr", null), __jsx("div", {
+    className: "poll-card-actions"
+  }, __jsx("div", null, __jsx(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
+    href: {
+      pathname: '/poll',
+      query: {
+        slug: props.poll.url
+      }
+    },
+    as: "/poll/".concat(props.poll.url)
+  }, __jsx("a", null, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     variant: "grey-blue",
     size: "sm",
-    onClick: props.loadResults
-  }, "View Results")) : null);
+    onClick: function onClick(e) {
+      e.stopPropagation();
+    }
+  }, "View Poll"))), __jsx("div", {
+    className: "poll-stat",
+    style: {
+      lineHeight: '2.5',
+      marginLeft: '0.75rem'
+    }
+  }, __jsx("span", null, props.poll.totalVotes, " votes \u2022 ", props.poll.dateCreated))), __jsx("div", {
+    className: "poll-card-actions-options",
+    onClick: function onClick(e) {
+      e.stopPropagation();
+    }
+  }, __jsx("div", null, __jsx(_Report__WEBPACK_IMPORTED_MODULE_9__["ReportButton"], {
+    urlref: props.poll.url,
+    pollTitle: props.poll.title
+  })), __jsx("div", {
+    className: "poll-card-actions-compact"
+  }, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    alignRight: true
+  }, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Toggle, {
+    as: _components_CompactOptionsToggle__WEBPACK_IMPORTED_MODULE_6__["default"],
+    id: "dropdown-custom-components"
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faEllipsisV"]
+  })), __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Menu, null, __jsx(react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_3__["default"].Item, null, __jsx(_Report__WEBPACK_IMPORTED_MODULE_9__["ReportButtonDropdown"], {
+    urlref: props.poll.url
+  }))))))));
 };
 
-PollChoices.propTypes = {
-  userDidVote: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool.isRequired,
-  userDidVoteError: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool.isRequired,
-  timelimit: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.string.isRequired,
-  choices: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.array.isRequired,
-  revealResults: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.bool.isRequired,
-  updateChoiceSelected: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func.isRequired,
-  submitVote: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func.isRequired,
-  loadResults: prop_types__WEBPACK_IMPORTED_MODULE_6___default.a.func.isRequired
+PollCard.propTypes = {
+  poll: prop_types__WEBPACK_IMPORTED_MODULE_7___default.a.object.isRequired
 };
-/* harmony default export */ __webpack_exports__["default"] = (PollChoices);
+/* harmony default export */ __webpack_exports__["default"] = (PollCard);
 
 /***/ }),
 
-/***/ "./components/PollResults.js":
-/*!***********************************!*\
-  !*** ./components/PollResults.js ***!
-  \***********************************/
+/***/ "./components/PollPagination.js":
+/*!**************************************!*\
+  !*** ./components/PollPagination.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-property */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/define-properties */ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptors */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-descriptor */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptor.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/get-own-property-symbols */ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-bootstrap/Spinner */ "./node_modules/react-bootstrap/esm/Spinner.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var react_transition_group__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-transition-group */ "./node_modules/react-transition-group/esm/index.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_19__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Pagination */ "./node_modules/react-bootstrap/esm/Pagination.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_4__);
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
 
 
 
+var PollPagination = function PollPagination(props) {
+  var active;
 
-
-
-
-
-
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_12___default.a.createElement;
-
-function ownKeys(object, enumerableOnly) { var keys = _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_5___default()(object); if (_babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default.a) { var symbols = _babel_runtime_corejs2_core_js_object_get_own_property_symbols__WEBPACK_IMPORTED_MODULE_4___default()(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(target, key, source[key]); }); } else if (_babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default.a) { _babel_runtime_corejs2_core_js_object_define_properties__WEBPACK_IMPORTED_MODULE_1___default()(target, _babel_runtime_corejs2_core_js_object_get_own_property_descriptors__WEBPACK_IMPORTED_MODULE_2___default()(source)); } else { ownKeys(source).forEach(function (key) { _babel_runtime_corejs2_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(target, key, _babel_runtime_corejs2_core_js_object_get_own_property_descriptor__WEBPACK_IMPORTED_MODULE_3___default()(source, key)); }); } } return target; }
-
-
-
-
-
-
-
-
-var defaultStyle = {
-  width: 0
-};
-
-var transitionStyles = function transitionStyles(resultWidth) {
-  var style = {
-    entering: {
-      width: "".concat(resultWidth, "%")
-    },
-    entered: {
-      width: "".concat(resultWidth, "%")
-    },
-    exit: {
-      width: 0
-    }
-  };
-  return style;
-};
-
-var PollResults =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_11__["default"])(PollResults, _React$Component);
-
-  function PollResults(props) {
-    var _this;
-
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_7__["default"])(this, PollResults);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_9__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_10__["default"])(PollResults).call(this, props));
-    _this.state = {
-      resultsBar: false
-    };
-    return _this;
+  if (props.router.query.page) {
+    active = props.router.query.page;
+  } else {
+    active = 1;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_8__["default"])(PollResults, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
+  var items = [];
+  var offset = 0;
 
-      setTimeout(function () {
-        _this2.setState({
-          resultsBar: true
-        });
-      }, 0);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      return __jsx("div", {
-        className: "poll-results"
-      }, __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__["FontAwesomeIcon"], {
-        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__["faChartBar"]
-      }), " Results"), this.props.resultsLoading ? __jsx("div", {
-        className: "justify-content-center align-items-center",
-        style: {
-          height: '200px',
-          display: 'flex'
+  if (active > 3) {
+    offset = active - 3;
+    items.push(__jsx("li", {
+      className: "page-item",
+      key: "prev"
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: {
+        pathname: '/',
+        query: {
+          page: active - 1
         }
-      }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        animation: "grow",
-        variant: "light"
-      })) : __jsx("div", null, __jsx("div", {
-        className: "poll-stat mb-3"
-      }, __jsx("b", null, this.props.totalVotes, " votes"), " \u2022 ", __jsx("b", null, this.props.timelimit)), __jsx("div", {
-        className: "mb-3"
-      }, this.props.active ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__["default"], {
-        variant: "grey-blue",
-        size: "sm",
-        onClick: this.props.loadResults
-      }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        as: "span",
-        animation: "grow",
-        size: "sm",
-        role: "status",
-        "aria-hidden": "true"
-      }) : null, "Refresh Results") : null), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_18__["Transition"], {
-        "in": this.state.resultsBar,
-        timeout: 300,
-        appear: true
-      }, function (state) {
-        return __jsx("div", {
-          className: "results-container"
-        }, _this3.props.results.map(function (result, i) {
-          return __jsx("div", {
-            key: i
-          }, __jsx("h6", null, _this3.props.choices[i]), __jsx("div", {
-            className: "poll-result"
-          }, __jsx("div", {
-            className: "result-bar mb-3",
-            style: _objectSpread({}, defaultStyle, {}, transitionStyles(Math.round(result / _this3.props.totalVotes * 100))[state])
-          }, result !== 0 ? __jsx("div", null, __jsx("div", null, result, " votes"), __jsx("div", null, Math.round(result / _this3.props.totalVotes * 100), "%")) : __jsx("div", null, __jsx("div", null, "0 votes"), __jsx("div", null, "0%")))));
-        }));
-      })));
+      },
+      as: "?page=".concat(active - 1)
+    }, __jsx("a", {
+      className: "page-link",
+      role: "button"
+    }, __jsx("span", {
+      "aria-hidden": "true"
+    }, "\u2039"), __jsx("span", {
+      className: "sr-only"
+    }, "Previous")))));
+  }
+
+  var totalItems = props.totalItems;
+  var totalPages = Math.ceil(totalItems / 10);
+  if (totalPages === 0) totalPages = 1;
+  active = Math.min(Math.max(active, 1), totalPages); // max offset = total pages - max pagination items
+
+  offset = Math.min(Math.max(offset, 0), Math.max(totalPages - 5, 0)); //offset = Math.min(Math.max(offset, 0), (totalPages - 5));
+
+  for (var i = 1; i <= 5; i++) {
+    if (i > totalPages) break;
+
+    if (i + offset === active) {
+      items.push(__jsx("li", {
+        className: "page-item active",
+        key: i
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: {
+          pathname: '/',
+          query: {
+            page: i + offset
+          }
+        },
+        as: "?page=".concat(i + offset)
+      }, __jsx("a", {
+        className: "page-link"
+      }, i + offset)), __jsx("span", {
+        className: "sr-only"
+      }, "(current)")));
+    } else {
+      items.push(__jsx("li", {
+        className: "page-item",
+        key: i
+      }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+        href: {
+          pathname: '/',
+          query: {
+            page: i + offset
+          }
+        },
+        as: "?page=".concat(i + offset)
+      }, __jsx("a", {
+        className: "page-link"
+      }, i + offset))));
     }
-  }]);
+  }
 
-  return PollResults;
-}(react__WEBPACK_IMPORTED_MODULE_12___default.a.Component);
+  if (active < totalPages - 2) {
+    items.push(__jsx("li", {
+      className: "page-item",
+      key: "next"
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_2___default.a, {
+      href: {
+        pathname: '/',
+        query: {
+          page: active + 1
+        }
+      },
+      as: "?page=".concat(active + 1)
+    }, __jsx("a", {
+      className: "page-link",
+      role: "button"
+    }, __jsx("span", {
+      "aria-hidden": "true"
+    }, "\u203A"), __jsx("span", {
+      className: "sr-only"
+    }, "Next")))));
+  }
 
-PollResults.propTypes = {
-  totalVotes: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.number.isRequired,
-  results: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.array.isRequired,
-  choices: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.array.isRequired,
-  timelimit: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.string.isRequired,
-  resultsLoading: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.bool.isRequired,
-  refreshResultsLoading: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.bool.isRequired,
-  active: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.bool.isRequired,
-  loadResults: prop_types__WEBPACK_IMPORTED_MODULE_17___default.a.func.isRequired
+  return __jsx(react_bootstrap_Pagination__WEBPACK_IMPORTED_MODULE_1__["default"], null, items);
 };
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_19__["withRouter"])(PollResults));
+
+PollPagination.propTypes = {
+  totalItems: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.number.isRequired
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(PollPagination));
 
 /***/ }),
 
@@ -998,27 +1045,29 @@ ReportModal.propTypes = {
 
 /***/ }),
 
-/***/ "./components/ShareButton.js":
+/***/ "./components/VoteHistory.js":
 /*!***********************************!*\
-  !*** ./components/ShareButton.js ***!
+  !*** ./components/VoteHistory.js ***!
   \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "./node_modules/react-bootstrap/esm/InputGroup.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap/FormControl */ "./node_modules/react-bootstrap/esm/FormControl.js");
-/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
-/* harmony import */ var react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Overlay */ "./node_modules/react-bootstrap/esm/Overlay.js");
-/* harmony import */ var react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap/Tooltip */ "./node_modules/react-bootstrap/esm/Tooltip.js");
+/* harmony import */ var react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Card */ "./node_modules/react-bootstrap/esm/Card.js");
+/* harmony import */ var react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap/ListGroup */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var react_bootstrap_ListGroupItem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap/ListGroupItem */ "./node_modules/react-bootstrap/esm/ListGroupItem.js");
+/* harmony import */ var react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Accordion */ "./node_modules/react-bootstrap/esm/Accordion.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_9__);
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
@@ -1030,69 +1079,106 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
 
+ //import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
+// function ToggleHistoryCard({ children, eventKey }) {
+//   const decoratedOnClick = useAccordionToggle(eventKey);
+//   return (
+//     <span onClick={decoratedOnClick}>
+//       {children}
+//     </span>
+//   );
+// }
 
+function VoteHistory() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      history = _useState[0],
+      setHistory = _useState[1];
 
+  function getHistory() {
+    // get history from localstorage
+    if (localStorage.voteHistory) {
+      var voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
+      return voteHistory;
+    }
 
-function ShareButton(props) {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      show = _useState[0],
-      setShow = _useState[1];
-
-  var _useState2 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(false),
-      showToolTip = _useState2[0],
-      setShowToolTip = _useState2[1];
-
-  var target = Object(react__WEBPACK_IMPORTED_MODULE_1__["useRef"])(null);
-
-  function copyToClipboard(e) {
-    console.log(target);
-    target.current.select();
-    target.current.setSelectionRange(0, 99999);
-    document.execCommand("copy");
-    setShowToolTip(true);
-    setTimeout(function () {
-      setShowToolTip(false);
-    }, 1200);
+    return [];
   }
 
-  return __jsx("div", {
-    className: "share-poll"
-  }, !show ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    variant: "simple",
-    size: "sm",
-    onClick: function onClick() {
-      return setShow(!show);
-    },
-    className: "share-btn"
-  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faShare"]
-  }), " Share") : __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    size: "sm"
-  }, __jsx(react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    readOnly: true,
-    value: props.url,
-    ref: target
-  }), __jsx(react_bootstrap_Overlay__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    target: target.current,
-    show: showToolTip,
-    placement: "top"
-  }, function (props) {
-    return __jsx(react_bootstrap_Tooltip__WEBPACK_IMPORTED_MODULE_10__["default"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-      id: "tooltip-copied"
-    }, props, {
-      show: showToolTip.toString()
-    }), "Copied!");
-  }), __jsx(react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_4__["default"].Append, null, __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    variant: "grey-blue",
-    onClick: function onClick(e) {
-      return copyToClipboard(e);
+  function deleteHistory(e) {
+    e.stopPropagation(); // delete one item from history
+
+    if (localStorage.voteHistory) {
+      var index = e.target.parentElement.parentElement.dataset["index"];
+      var voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
+      voteHistory.splice(index, 1);
+      localStorage.voteHistory = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(voteHistory);
+      return voteHistory;
     }
-  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
-    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faClipboard"]
-  }), " Copy"))));
+  }
+
+  function clearHistory() {
+    //clear all history
+    if (localStorage.voteHistory) {
+      localStorage.removeItem('voteHistory');
+    }
+
+    return [];
+  }
+
+  function redirectToPoll(url) {
+    next_router__WEBPACK_IMPORTED_MODULE_9___default.a.push("/poll?slug=".concat(url), "/poll/".concat(url));
+  }
+
+  Object(react__WEBPACK_IMPORTED_MODULE_1__["useEffect"])(function () {
+    setHistory(getHistory());
+  }, []);
+  return __jsx(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    defaultActiveKey: "0"
+  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    className: "vote-history"
+  }, __jsx(react_bootstrap_Card__WEBPACK_IMPORTED_MODULE_2__["default"].Header, null, __jsx("span", null, "Vote History"), __jsx("span", {
+    onClick: function onClick() {
+      return setHistory(clearHistory());
+    }
+  }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
+    icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faTrashAlt"]
+  }))), __jsx(react_bootstrap_Accordion__WEBPACK_IMPORTED_MODULE_8__["default"].Collapse, {
+    eventKey: "0"
+  }, history.length > 0 ? __jsx(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "flush"
+  }, history.map(function (poll, i) {
+    return __jsx(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
+      key: i,
+      onClick: function onClick() {
+        return redirectToPoll(poll.url);
+      }
+    }, __jsx(next_link__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      href: {
+        pathname: '/poll',
+        query: {
+          slug: poll.url
+        }
+      },
+      as: "/poll/".concat(poll.url)
+    }, __jsx("a", {
+      title: poll.title,
+      onClick: function onClick(e) {
+        e.stopPropagation();
+      }
+    }, poll.title)), __jsx("span", {
+      onClick: function onClick(e) {
+        return setHistory(deleteHistory(e));
+      },
+      "data-index": i
+    }, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_5__["FontAwesomeIcon"], {
+      icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__["faTimes"]
+    })));
+  })) : __jsx(react_bootstrap_ListGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "flush"
+  }, __jsx(react_bootstrap_ListGroupItem__WEBPACK_IMPORTED_MODULE_7__["default"], null, __jsx("i", null, "No history..."))))));
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (ShareButton);
+/* harmony default export */ __webpack_exports__["default"] = (VoteHistory);
 
 /***/ }),
 
@@ -1184,17 +1270,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/create */ "./
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-properties.js ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/define-properties */ "./node_modules/core-js/library/fn/object/define-properties.js");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/define-property.js ***!
@@ -1214,28 +1289,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/define-proper
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptor */ "./node_modules/core-js/library/fn/object/get-own-property-descriptor.js");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-descriptors.js ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-descriptors */ "./node_modules/core-js/library/fn/object/get-own-property-descriptors.js");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/get-own-property-symbols.js ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-property-symbols */ "./node_modules/core-js/library/fn/object/get-own-property-symbols.js");
 
 /***/ }),
 
@@ -2296,26 +2349,6 @@ function _defineProperty(obj, key, value) {
 }
 
 module.exports = _defineProperty;
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js ***!
-  \**************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
 
 /***/ }),
 
@@ -12411,22 +12444,6 @@ module.exports = function create(P, D) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/fn/object/define-properties.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/define-properties.js ***!
-  \*********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es6.object.define-properties */ "./node_modules/core-js/library/modules/es6.object.define-properties.js");
-var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object;
-module.exports = function defineProperties(T, D) {
-  return $Object.defineProperties(T, D);
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/fn/object/define-property.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/core-js/library/fn/object/define-property.js ***!
@@ -12455,32 +12472,6 @@ var $Object = __webpack_require__(/*! ../../modules/_core */ "./node_modules/cor
 module.exports = function getOwnPropertyDescriptor(it, key) {
   return $Object.getOwnPropertyDescriptor(it, key);
 };
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/fn/object/get-own-property-descriptors.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/get-own-property-descriptors.js ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es7.object.get-own-property-descriptors */ "./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js");
-module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.getOwnPropertyDescriptors;
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/fn/object/get-own-property-symbols.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/core-js/library/fn/object/get-own-property-symbols.js ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(/*! ../../modules/es6.symbol */ "./node_modules/core-js/library/modules/es6.symbol.js");
-module.exports = __webpack_require__(/*! ../../modules/_core */ "./node_modules/core-js/library/modules/_core.js").Object.getOwnPropertySymbols;
 
 
 /***/ }),
@@ -14431,27 +14422,6 @@ module.exports = function (KEY, exec) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/library/modules/_own-keys.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/library/modules/_own-keys.js ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// all object keys, includes non-enumerable and symbols
-var gOPN = __webpack_require__(/*! ./_object-gopn */ "./node_modules/core-js/library/modules/_object-gopn.js");
-var gOPS = __webpack_require__(/*! ./_object-gops */ "./node_modules/core-js/library/modules/_object-gops.js");
-var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/library/modules/_an-object.js");
-var Reflect = __webpack_require__(/*! ./_global */ "./node_modules/core-js/library/modules/_global.js").Reflect;
-module.exports = Reflect && Reflect.ownKeys || function ownKeys(it) {
-  var keys = gOPN.f(anObject(it));
-  var getSymbols = gOPS.f;
-  return getSymbols ? keys.concat(getSymbols(it)) : keys;
-};
-
-
-/***/ }),
-
 /***/ "./node_modules/core-js/library/modules/_perform.js":
 /*!**********************************************************!*\
   !*** ./node_modules/core-js/library/modules/_perform.js ***!
@@ -15301,20 +15271,6 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(/*! ./_ob
 var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 $export($export.S, 'Object', { create: __webpack_require__(/*! ./_object-create */ "./node_modules/core-js/library/modules/_object-create.js") });
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/modules/es6.object.define-properties.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/es6.object.define-properties.js ***!
-  \******************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
-// 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(/*! ./_descriptors */ "./node_modules/core-js/library/modules/_descriptors.js"), 'Object', { defineProperties: __webpack_require__(/*! ./_object-dps */ "./node_modules/core-js/library/modules/_object-dps.js") });
 
 
 /***/ }),
@@ -16196,39 +16152,6 @@ __webpack_require__(/*! ./_set-collection-of */ "./node_modules/core-js/library/
 var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
 
 $export($export.P + $export.R, 'Map', { toJSON: __webpack_require__(/*! ./_collection-to-json */ "./node_modules/core-js/library/modules/_collection-to-json.js")('Map') });
-
-
-/***/ }),
-
-/***/ "./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/core-js/library/modules/es7.object.get-own-property-descriptors.js ***!
-  \*****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// https://github.com/tc39/proposal-object-getownpropertydescriptors
-var $export = __webpack_require__(/*! ./_export */ "./node_modules/core-js/library/modules/_export.js");
-var ownKeys = __webpack_require__(/*! ./_own-keys */ "./node_modules/core-js/library/modules/_own-keys.js");
-var toIObject = __webpack_require__(/*! ./_to-iobject */ "./node_modules/core-js/library/modules/_to-iobject.js");
-var gOPD = __webpack_require__(/*! ./_object-gopd */ "./node_modules/core-js/library/modules/_object-gopd.js");
-var createProperty = __webpack_require__(/*! ./_create-property */ "./node_modules/core-js/library/modules/_create-property.js");
-
-$export($export.S, 'Object', {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
-    var O = toIObject(object);
-    var getDesc = gOPD.f;
-    var keys = ownKeys(O);
-    var result = {};
-    var i = 0;
-    var key, desc;
-    while (keys.length > i) {
-      desc = getDesc(O, key = keys[i++]);
-      if (desc !== undefined) createProperty(result, key, desc);
-    }
-    return result;
-  }
-});
 
 
 /***/ }),
@@ -18153,21 +18076,21 @@ exports.__esModule=true;exports.default=void 0;var _default=window.fetch;exports
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js!./":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js!./":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
+  \*************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-    (window.__NEXT_P=window.__NEXT_P||[]).push(["/poll", function() {
-      var mod = __webpack_require__(/*! ./pages/poll.js */ "./pages/poll.js")
+    (window.__NEXT_P=window.__NEXT_P||[]).push(["/", function() {
+      var mod = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
       if(true) {
-        module.hot.accept(/*! ./pages/poll.js */ "./pages/poll.js", function() {
-          if(!next.router.components["/poll"]) return
-          var updatedPage = __webpack_require__(/*! ./pages/poll.js */ "./pages/poll.js")
-          next.router.update("/poll", updatedPage)
+        module.hot.accept(/*! ./pages/index.js */ "./pages/index.js", function() {
+          if(!next.router.components["/"]) return
+          var updatedPage = __webpack_require__(/*! ./pages/index.js */ "./pages/index.js")
+          next.router.update("/", updatedPage)
         })
       }
       return mod
@@ -25774,6 +25697,171 @@ AbstractNavItem.defaultProps = defaultProps;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/esm/Accordion.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Accordion.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var uncontrollable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uncontrollable */ "./node_modules/uncontrollable/esm/index.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _AccordionToggle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AccordionToggle */ "./node_modules/react-bootstrap/esm/AccordionToggle.js");
+/* harmony import */ var _SelectableContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SelectableContext */ "./node_modules/react-bootstrap/esm/SelectableContext.js");
+/* harmony import */ var _AccordionCollapse__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AccordionCollapse */ "./node_modules/react-bootstrap/esm/AccordionCollapse.js");
+/* harmony import */ var _AccordionContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AccordionContext */ "./node_modules/react-bootstrap/esm/AccordionContext.js");
+
+
+
+
+
+
+
+
+
+
+var Accordion = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (props, ref) {
+  var _useUncontrolled = Object(uncontrollable__WEBPACK_IMPORTED_MODULE_4__["useUncontrolled"])(props, {
+    activeKey: 'onSelect'
+  }),
+      _useUncontrolled$as = _useUncontrolled.as,
+      Component = _useUncontrolled$as === void 0 ? 'div' : _useUncontrolled$as,
+      activeKey = _useUncontrolled.activeKey,
+      bsPrefix = _useUncontrolled.bsPrefix,
+      children = _useUncontrolled.children,
+      className = _useUncontrolled.className,
+      onSelect = _useUncontrolled.onSelect,
+      controlledProps = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_useUncontrolled, ["as", "activeKey", "bsPrefix", "children", "className", "onSelect"]);
+
+  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__["useBootstrapPrefix"])(bsPrefix, 'accordion');
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_AccordionContext__WEBPACK_IMPORTED_MODULE_9__["default"].Provider, {
+    value: activeKey
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_SelectableContext__WEBPACK_IMPORTED_MODULE_7__["default"].Provider, {
+    value: onSelect
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref
+  }, controlledProps, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix)
+  }), children)));
+});
+Accordion.Toggle = _AccordionToggle__WEBPACK_IMPORTED_MODULE_6__["default"];
+Accordion.Collapse = _AccordionCollapse__WEBPACK_IMPORTED_MODULE_8__["default"];
+/* harmony default export */ __webpack_exports__["default"] = (Accordion);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/AccordionCollapse.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/AccordionCollapse.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Collapse__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Collapse */ "./node_modules/react-bootstrap/esm/Collapse.js");
+/* harmony import */ var _AccordionContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AccordionContext */ "./node_modules/react-bootstrap/esm/AccordionContext.js");
+
+
+
+
+
+var AccordionCollapse = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function (_ref, ref) {
+  var children = _ref.children,
+      eventKey = _ref.eventKey,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["children", "eventKey"]);
+
+  var contextEventKey = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_AccordionContext__WEBPACK_IMPORTED_MODULE_4__["default"]);
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(_Collapse__WEBPACK_IMPORTED_MODULE_3__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref,
+    in: contextEventKey === eventKey
+  }, props), react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_2___default.a.Children.only(children)));
+});
+AccordionCollapse.displayName = 'AccordionCollapse';
+/* harmony default export */ __webpack_exports__["default"] = (AccordionCollapse);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/AccordionContext.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/AccordionContext.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/AccordionToggle.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/AccordionToggle.js ***!
+  \*************************************************************/
+/*! exports provided: useAccordionToggle, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useAccordionToggle", function() { return useAccordionToggle; });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _SelectableContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectableContext */ "./node_modules/react-bootstrap/esm/SelectableContext.js");
+/* harmony import */ var _AccordionContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AccordionContext */ "./node_modules/react-bootstrap/esm/AccordionContext.js");
+
+
+
+
+
+function useAccordionToggle(eventKey, onClick) {
+  var contextEventKey = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_AccordionContext__WEBPACK_IMPORTED_MODULE_4__["default"]);
+  var onSelect = Object(react__WEBPACK_IMPORTED_MODULE_2__["useContext"])(_SelectableContext__WEBPACK_IMPORTED_MODULE_3__["default"]);
+  return function (e) {
+    /* 
+      Compare the event key in context with the given event key.
+      If they are the same, then collapse the component.
+    */
+    var eventKeyPassed = eventKey === contextEventKey ? null : eventKey;
+    onSelect(eventKeyPassed, e);
+    if (onClick) onClick(e);
+  };
+}
+var AccordionToggle = react__WEBPACK_IMPORTED_MODULE_2___default.a.forwardRef(function (_ref, ref) {
+  var _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'button' : _ref$as,
+      children = _ref.children,
+      eventKey = _ref.eventKey,
+      onClick = _ref.onClick,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["as", "children", "eventKey", "onClick"]);
+
+  var accordionOnClick = useAccordionToggle(eventKey, onClick);
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref,
+    onClick: accordionOnClick
+  }, props), children);
+});
+/* harmony default export */ __webpack_exports__["default"] = (AccordionToggle);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/esm/Alert.js":
 /*!***************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/Alert.js ***!
@@ -25934,6 +26022,90 @@ Button.defaultProps = defaultProps;
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap/esm/Card.js":
+/*!**************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Card.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/createWithBsPrefix */ "./node_modules/react-bootstrap/esm/utils/createWithBsPrefix.js");
+/* harmony import */ var _utils_divWithClassName__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/divWithClassName */ "./node_modules/react-bootstrap/esm/utils/divWithClassName.js");
+/* harmony import */ var _CardContext__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CardContext */ "./node_modules/react-bootstrap/esm/CardContext.js");
+/* harmony import */ var _CardImg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CardImg */ "./node_modules/react-bootstrap/esm/CardImg.js");
+
+
+
+
+
+
+
+
+
+var DivStyledAsH5 = Object(_utils_divWithClassName__WEBPACK_IMPORTED_MODULE_6__["default"])('h5');
+var DivStyledAsH6 = Object(_utils_divWithClassName__WEBPACK_IMPORTED_MODULE_6__["default"])('h6');
+var CardBody = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-body');
+var defaultProps = {
+  body: false
+};
+var Card = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      bg = _ref.bg,
+      text = _ref.text,
+      border = _ref.border,
+      body = _ref.body,
+      children = _ref.children,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'div' : _ref$as,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "className", "bg", "text", "border", "body", "children", "as"]);
+
+  var prefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__["useBootstrapPrefix"])(bsPrefix, 'card');
+  var cardContext = Object(react__WEBPACK_IMPORTED_MODULE_3__["useMemo"])(function () {
+    return {
+      cardHeaderBsPrefix: prefix + "-header"
+    };
+  }, [prefix]);
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_CardContext__WEBPACK_IMPORTED_MODULE_7__["default"].Provider, {
+    value: cardContext
+  }, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref
+  }, props, {
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, prefix, bg && "bg-" + bg, text && "text-" + text, border && "border-" + border)
+  }), body ? react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(CardBody, null, children) : children));
+});
+Card.displayName = 'Card';
+Card.defaultProps = defaultProps;
+Card.Img = _CardImg__WEBPACK_IMPORTED_MODULE_8__["default"];
+Card.Title = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-title', {
+  Component: DivStyledAsH5
+});
+Card.Subtitle = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-subtitle', {
+  Component: DivStyledAsH6
+});
+Card.Body = CardBody;
+Card.Link = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-link', {
+  Component: 'a'
+});
+Card.Text = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-text', {
+  Component: 'p'
+});
+Card.Header = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-header');
+Card.Footer = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-footer');
+Card.ImgOverlay = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_5__["default"])('card-img-overlay');
+/* harmony default export */ __webpack_exports__["default"] = (Card);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap/esm/CardContext.js":
 /*!*********************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/CardContext.js ***!
@@ -25947,6 +26119,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = (react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext(null));
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/CardImg.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/CardImg.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+
+
+
+var defaultProps = {
+  variant: null
+};
+var CardImg = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef( // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      className = _ref.className,
+      variant = _ref.variant,
+      _ref$as = _ref.as,
+      Component = _ref$as === void 0 ? 'img' : _ref$as,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "className", "variant", "as"]);
+
+  var prefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__["useBootstrapPrefix"])(bsPrefix, 'card-img');
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(variant ? prefix + "-" + variant : prefix, className)
+  }, props));
+});
+CardImg.displayName = 'CardImg';
+CardImg.defaultProps = defaultProps;
+/* harmony default export */ __webpack_exports__["default"] = (CardImg);
 
 /***/ }),
 
@@ -27296,10 +27513,10 @@ FormText.displayName = 'FormText';
 
 /***/ }),
 
-/***/ "./node_modules/react-bootstrap/esm/InputGroup.js":
-/*!********************************************************!*\
-  !*** ./node_modules/react-bootstrap/esm/InputGroup.js ***!
-  \********************************************************/
+/***/ "./node_modules/react-bootstrap/esm/ListGroup.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ListGroup.js ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27311,8 +27528,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/createWithBsPrefix */ "./node_modules/react-bootstrap/esm/utils/createWithBsPrefix.js");
+/* harmony import */ var uncontrollable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! uncontrollable */ "./node_modules/uncontrollable/esm/index.js");
 /* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _AbstractNav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AbstractNav */ "./node_modules/react-bootstrap/esm/AbstractNav.js");
+/* harmony import */ var _ListGroupItem__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ListGroupItem */ "./node_modules/react-bootstrap/esm/ListGroupItem.js");
 
 
 
@@ -27320,54 +27539,101 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/**
- *
- * @property {InputGroupAppend} Append
- * @property {InputGroupPrepend} Prepend
- * @property {InputGroupText} Text
- * @property {InputGroupRadio} Radio
- * @property {InputGroupCheckbox} Checkbox
- */
-var InputGroup = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      size = _ref.size,
-      className = _ref.className,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "size", "className", "as"]);
 
-  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__["useBootstrapPrefix"])(bsPrefix, 'input-group');
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+var defaultProps = {
+  variant: null
+};
+var ListGroup = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (props, ref) {
+  var _useUncontrolled = Object(uncontrollable__WEBPACK_IMPORTED_MODULE_4__["useUncontrolled"])(props, {
+    activeKey: 'onSelect'
+  }),
+      className = _useUncontrolled.className,
+      bsPrefix = _useUncontrolled.bsPrefix,
+      variant = _useUncontrolled.variant,
+      _useUncontrolled$as = _useUncontrolled.as,
+      as = _useUncontrolled$as === void 0 ? 'div' : _useUncontrolled$as,
+      controlledProps = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_useUncontrolled, ["className", "bsPrefix", "variant", "as"]);
+
+  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__["useBootstrapPrefix"])(bsPrefix, 'list-group');
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_AbstractNav__WEBPACK_IMPORTED_MODULE_6__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     ref: ref
-  }, props, {
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, size && bsPrefix + "-" + size)
+  }, controlledProps, {
+    as: as,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, variant && bsPrefix + "-" + variant)
   }));
 });
-var InputGroupAppend = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('input-group-append');
-var InputGroupPrepend = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('input-group-prepend');
-var InputGroupText = Object(_utils_createWithBsPrefix__WEBPACK_IMPORTED_MODULE_4__["default"])('input-group-text', {
-  Component: 'span'
+ListGroup.defaultProps = defaultProps;
+ListGroup.displayName = 'ListGroup';
+ListGroup.Item = _ListGroupItem__WEBPACK_IMPORTED_MODULE_7__["default"];
+/* harmony default export */ __webpack_exports__["default"] = (ListGroup);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/ListGroupItem.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/ListGroupItem.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _AbstractNavItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AbstractNavItem */ "./node_modules/react-bootstrap/esm/AbstractNavItem.js");
+/* harmony import */ var _SelectableContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SelectableContext */ "./node_modules/react-bootstrap/esm/SelectableContext.js");
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+
+
+
+
+
+
+
+var defaultProps = {
+  variant: null,
+  active: false,
+  disabled: false
+};
+var ListGroupItem = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (_ref, ref) {
+  var bsPrefix = _ref.bsPrefix,
+      active = _ref.active,
+      disabled = _ref.disabled,
+      className = _ref.className,
+      variant = _ref.variant,
+      action = _ref.action,
+      as = _ref.as,
+      eventKey = _ref.eventKey,
+      onClick = _ref.onClick,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "active", "disabled", "className", "variant", "action", "as", "eventKey", "onClick"]);
+
+  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_6__["useBootstrapPrefix"])(bsPrefix, 'list-group-item');
+  var handleClick = Object(react__WEBPACK_IMPORTED_MODULE_3__["useCallback"])(function (event) {
+    if (disabled) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    if (onClick) onClick(event);
+  }, [disabled, onClick]);
+  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_AbstractNavItem__WEBPACK_IMPORTED_MODULE_4__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    ref: ref
+  }, props, {
+    eventKey: Object(_SelectableContext__WEBPACK_IMPORTED_MODULE_5__["makeEventKey"])(eventKey, props.href) // eslint-disable-next-line
+    ,
+    as: as || (action ? props.href ? 'a' : 'button' : 'div'),
+    onClick: handleClick,
+    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, active && 'active', disabled && 'disabled', variant && bsPrefix + "-" + variant, action && bsPrefix + "-action")
+  }));
 });
-
-var InputGroupCheckbox = function InputGroupCheckbox(props) {
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(InputGroupText, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    type: "checkbox"
-  }, props)));
-};
-
-var InputGroupRadio = function InputGroupRadio(props) {
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(InputGroupText, null, react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("input", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    type: "radio"
-  }, props)));
-};
-
-InputGroup.displayName = 'InputGroup';
-InputGroup.Text = InputGroupText;
-InputGroup.Radio = InputGroupRadio;
-InputGroup.Checkbox = InputGroupCheckbox;
-InputGroup.Append = InputGroupAppend;
-InputGroup.Prepend = InputGroupPrepend;
-/* harmony default export */ __webpack_exports__["default"] = (InputGroup);
+ListGroupItem.defaultProps = defaultProps;
+ListGroupItem.displayName = 'ListGroupItem';
+/* harmony default export */ __webpack_exports__["default"] = (ListGroupItem);
 
 /***/ }),
 
@@ -28307,10 +28573,114 @@ NavbarToggle.defaultProps = defaultProps;
 
 /***/ }),
 
-/***/ "./node_modules/react-bootstrap/esm/Overlay.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-bootstrap/esm/Overlay.js ***!
-  \*****************************************************/
+/***/ "./node_modules/react-bootstrap/esm/PageItem.js":
+/*!******************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/PageItem.js ***!
+  \******************************************************/
+/*! exports provided: default, First, Prev, Ellipsis, Next, Last */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PageItem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "First", function() { return First; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Prev", function() { return Prev; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ellipsis", function() { return Ellipsis; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Next", function() { return Next; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Last", function() { return Last; });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _SafeAnchor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SafeAnchor */ "./node_modules/react-bootstrap/esm/SafeAnchor.js");
+
+
+
+
+/* eslint-disable react/no-multi-comp */
+
+
+
+var defaultProps = {
+  active: false,
+  disabled: false,
+  activeLabel: '(current)'
+};
+function PageItem(_ref) {
+  var active = _ref.active,
+      disabled = _ref.disabled,
+      className = _ref.className,
+      style = _ref.style,
+      activeLabel = _ref.activeLabel,
+      children = _ref.children,
+      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(_ref, ["active", "disabled", "className", "style", "activeLabel", "children"]);
+
+  var Component = active || disabled ? 'span' : _SafeAnchor__WEBPACK_IMPORTED_MODULE_5__["default"];
+  return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("li", {
+    style: style,
+    className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, 'page-item', {
+      active: active,
+      disabled: disabled
+    })
+  }, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    className: "page-link",
+    disabled: disabled
+  }, props), children, active && activeLabel && react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
+    className: "sr-only"
+  }, activeLabel)));
+}
+PageItem.defaultProps = defaultProps;
+
+function createButton(name, defaultValue, label) {
+  var _class, _temp;
+
+  if (label === void 0) {
+    label = name;
+  }
+
+  return _temp = _class =
+  /*#__PURE__*/
+  function (_React$Component) {
+    Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_class, _React$Component);
+
+    function _class() {
+      return _React$Component.apply(this, arguments) || this;
+    }
+
+    var _proto = _class.prototype;
+
+    _proto.render = function render() {
+      var _this$props = this.props,
+          children = _this$props.children,
+          props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(_this$props, ["children"]);
+
+      delete props.active;
+      return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement(PageItem, props, react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
+        "aria-hidden": "true"
+      }, children || defaultValue), react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("span", {
+        className: "sr-only"
+      }, label));
+    };
+
+    return _class;
+  }(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component), _class.displayName = name, _temp;
+}
+
+var First = createButton('First', '«');
+var Prev = createButton('Prev', '‹', 'Previous');
+var Ellipsis = createButton('Ellipsis', '…', 'More');
+var Next = createButton('Next', '›');
+var Last = createButton('Last', '»');
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap/esm/Pagination.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-bootstrap/esm/Pagination.js ***!
+  \********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -28318,15 +28688,13 @@ NavbarToggle.defaultProps = defaultProps;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_overlays_Overlay__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-overlays/Overlay */ "./node_modules/react-overlays/Overlay.js");
-/* harmony import */ var react_overlays_Overlay__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_overlays_Overlay__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Fade__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Fade */ "./node_modules/react-bootstrap/esm/Fade.js");
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
+/* harmony import */ var _PageItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./PageItem */ "./node_modules/react-bootstrap/esm/PageItem.js");
 
 
 
@@ -28334,55 +28702,50 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var defaultProps = {
-  transition: _Fade__WEBPACK_IMPORTED_MODULE_6__["default"],
-  rootClose: false,
-  show: false,
-  placement: 'top'
-};
+/**
+ * @property {PageItem} Item
+ * @property {PageItem} First
+ * @property {PageItem} Prev
+ * @property {PageItem} Ellipsis
+ * @property {PageItem} Next
+ * @property {PageItem} Last
+ */
 
-function wrapRefs(props, arrowProps) {
-  var ref = props.ref;
-  var aRef = arrowProps.ref;
+var Pagination =
+/*#__PURE__*/
+function (_React$Component) {
+  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(Pagination, _React$Component);
 
-  props.ref = ref.__wrapped || (ref.__wrapped = function (r) {
-    return ref(Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["findDOMNode"])(r));
-  });
+  function Pagination() {
+    return _React$Component.apply(this, arguments) || this;
+  }
 
-  arrowProps.ref = aRef.__wrapped || (aRef.__wrapped = function (r) {
-    return aRef(Object(react_dom__WEBPACK_IMPORTED_MODULE_3__["findDOMNode"])(r));
-  });
-}
+  var _proto = Pagination.prototype;
 
-function Overlay(_ref) {
-  var overlay = _ref.children,
-      transition = _ref.transition,
-      outerProps = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["children", "transition"]);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        bsPrefix = _this$props.bsPrefix,
+        className = _this$props.className,
+        children = _this$props.children,
+        size = _this$props.size,
+        props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["bsPrefix", "className", "children", "size"]);
 
-  transition = transition === true ? _Fade__WEBPACK_IMPORTED_MODULE_6__["default"] : transition || null;
-  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_overlays_Overlay__WEBPACK_IMPORTED_MODULE_5___default.a, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, outerProps, {
-    transition: transition
-  }), function (_ref2) {
-    var overlayProps = _ref2.props,
-        arrowProps = _ref2.arrowProps,
-        show = _ref2.show,
-        props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref2, ["props", "arrowProps", "show"]);
+    return react__WEBPACK_IMPORTED_MODULE_4___default.a.createElement("ul", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_3___default()(className, bsPrefix, size && bsPrefix + "-" + size)
+    }), children);
+  };
 
-    wrapRefs(overlayProps, arrowProps);
-    if (typeof overlay === 'function') return overlay(Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {}, overlayProps, {
-      show: show,
-      arrowProps: arrowProps
-    }));
-    return react__WEBPACK_IMPORTED_MODULE_2___default.a.cloneElement(overlay, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {}, overlayProps, {
-      arrowProps: arrowProps,
-      className: classnames__WEBPACK_IMPORTED_MODULE_4___default()(overlay.props.className, !transition && show && 'show'),
-      style: Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, overlay.props.style, {}, overlayProps.style)
-    }));
-  });
-}
+  return Pagination;
+}(react__WEBPACK_IMPORTED_MODULE_4___default.a.Component);
 
-Overlay.defaultProps = defaultProps;
-/* harmony default export */ __webpack_exports__["default"] = (Overlay);
+var DecoratedPagination = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__["createBootstrapComponent"])(Pagination, 'pagination');
+DecoratedPagination.First = _PageItem__WEBPACK_IMPORTED_MODULE_6__["First"];
+DecoratedPagination.Prev = _PageItem__WEBPACK_IMPORTED_MODULE_6__["Prev"];
+DecoratedPagination.Ellipsis = _PageItem__WEBPACK_IMPORTED_MODULE_6__["Ellipsis"];
+DecoratedPagination.Item = _PageItem__WEBPACK_IMPORTED_MODULE_6__["default"];
+DecoratedPagination.Next = _PageItem__WEBPACK_IMPORTED_MODULE_6__["Next"];
+DecoratedPagination.Last = _PageItem__WEBPACK_IMPORTED_MODULE_6__["Last"];
+/* harmony default export */ __webpack_exports__["default"] = (DecoratedPagination);
 
 /***/ }),
 
@@ -28539,51 +28902,6 @@ var makeEventKey = function makeEventKey(eventKey, href) {
 
 /***/ }),
 
-/***/ "./node_modules/react-bootstrap/esm/Spinner.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-bootstrap/esm/Spinner.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
-
-
-
-
-
-var Spinner = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      variant = _ref.variant,
-      animation = _ref.animation,
-      size = _ref.size,
-      children = _ref.children,
-      _ref$as = _ref.as,
-      Component = _ref$as === void 0 ? 'div' : _ref$as,
-      className = _ref.className,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "variant", "animation", "size", "children", "as", "className"]);
-
-  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_4__["useBootstrapPrefix"])(bsPrefix, 'spinner');
-  var bsSpinnerPrefix = bsPrefix + "-" + animation;
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(Component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: ref
-  }, props, {
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsSpinnerPrefix, size && bsSpinnerPrefix + "-" + size, variant && "text-" + variant)
-  }), children);
-});
-Spinner.displayName = 'Spinner';
-/* harmony default export */ __webpack_exports__["default"] = (Spinner);
-
-/***/ }),
-
 /***/ "./node_modules/react-bootstrap/esm/Switch.js":
 /*!****************************************************!*\
   !*** ./node_modules/react-bootstrap/esm/Switch.js ***!
@@ -28696,63 +29014,6 @@ function createBootstrapComponent(Component, opts) {
 
 
 /* harmony default export */ __webpack_exports__["default"] = (ThemeProvider);
-
-/***/ }),
-
-/***/ "./node_modules/react-bootstrap/esm/Tooltip.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/react-bootstrap/esm/Tooltip.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var prop_types_extra_lib_isRequiredForA11y__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types-extra/lib/isRequiredForA11y */ "./node_modules/prop-types-extra/lib/isRequiredForA11y.js");
-/* harmony import */ var prop_types_extra_lib_isRequiredForA11y__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types_extra_lib_isRequiredForA11y__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _ThemeProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ThemeProvider */ "./node_modules/react-bootstrap/esm/ThemeProvider.js");
-
-
-
-
-
-
-var defaultProps = {
-  placement: 'right'
-};
-var Tooltip = react__WEBPACK_IMPORTED_MODULE_3___default.a.forwardRef(function (_ref, ref) {
-  var bsPrefix = _ref.bsPrefix,
-      placement = _ref.placement,
-      className = _ref.className,
-      style = _ref.style,
-      children = _ref.children,
-      arrowProps = _ref.arrowProps,
-      _ = _ref.scheduleUpdate,
-      _1 = _ref.outOfBoundaries,
-      props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_ref, ["bsPrefix", "placement", "className", "style", "children", "arrowProps", "scheduleUpdate", "outOfBoundaries"]);
-
-  bsPrefix = Object(_ThemeProvider__WEBPACK_IMPORTED_MODULE_5__["useBootstrapPrefix"])(bsPrefix, 'tooltip');
-  return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    ref: ref,
-    style: style,
-    role: "tooltip",
-    "x-placement": placement,
-    className: classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, bsPrefix, "bs-tooltip-" + placement)
-  }, props), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    className: "arrow"
-  }, arrowProps)), react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement("div", {
-    className: bsPrefix + "-inner"
-  }, children));
-});
-Tooltip.defaultProps = defaultProps;
-Tooltip.displayName = 'Tooltip';
-/* harmony default export */ __webpack_exports__["default"] = (Tooltip);
 
 /***/ }),
 
@@ -30977,364 +31238,6 @@ module.exports = exports.default;
 
 /***/ }),
 
-/***/ "./node_modules/react-overlays/Overlay.js":
-/*!************************************************!*\
-  !*** ./node_modules/react-overlays/Overlay.js ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.__esModule = true;
-exports.default = void 0;
-
-var _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js"));
-
-var _elementType = _interopRequireDefault(__webpack_require__(/*! prop-types-extra/lib/elementType */ "./node_modules/prop-types-extra/lib/elementType.js"));
-
-var _componentOrElement = _interopRequireDefault(__webpack_require__(/*! prop-types-extra/lib/componentOrElement */ "./node_modules/prop-types-extra/lib/componentOrElement.js"));
-
-var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
-
-var _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
-
-var _Portal = _interopRequireDefault(__webpack_require__(/*! ./Portal */ "./node_modules/react-overlays/Portal.js"));
-
-var _RootCloseWrapper = _interopRequireDefault(__webpack_require__(/*! ./RootCloseWrapper */ "./node_modules/react-overlays/RootCloseWrapper.js"));
-
-var _reactPopper = __webpack_require__(/*! react-popper */ "./node_modules/react-popper/lib/esm/index.js");
-
-var _forwardRef = _interopRequireDefault(__webpack_require__(/*! react-context-toolbox/forwardRef */ "./node_modules/react-context-toolbox/forwardRef.js"));
-
-var _WaitForContainer = _interopRequireDefault(__webpack_require__(/*! ./WaitForContainer */ "./node_modules/react-overlays/WaitForContainer.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-/**
- * Built on top of `<Position/>` and `<Portal/>`, the overlay component is
- * great for custom tooltip overlays.
- */
-var Overlay =
-/*#__PURE__*/
-function (_React$Component) {
-  _inheritsLoose(Overlay, _React$Component);
-
-  function Overlay(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-
-    _this.handleHidden = function () {
-      _this.setState({
-        exited: true
-      });
-
-      if (_this.props.onExited) {
-        var _this$props;
-
-        (_this$props = _this.props).onExited.apply(_this$props, arguments);
-      }
-    };
-
-    _this.state = {
-      exited: !props.show
-    };
-    _this.onHiddenListener = _this.handleHidden.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this._lastTarget = null;
-    return _this;
-  }
-
-  Overlay.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps) {
-    if (nextProps.show) {
-      return {
-        exited: false
-      };
-    } else if (!nextProps.transition) {
-      // Otherwise let handleHidden take care of marking exited.
-      return {
-        exited: true
-      };
-    }
-
-    return null;
-  };
-
-  var _proto = Overlay.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.setState({
-      target: this.getTarget()
-    });
-  };
-
-  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
-    if (this.props === prevProps) return;
-    var target = this.getTarget();
-
-    if (target !== this.state.target) {
-      this.setState({
-        target: target
-      });
-    }
-  };
-
-  _proto.getTarget = function getTarget() {
-    var target = this.props.target;
-    target = typeof target === 'function' ? target() : target;
-    return target && _reactDom.default.findDOMNode(target) || null;
-  };
-
-  _proto.render = function render() {
-    var _this2 = this;
-
-    var _this$props2 = this.props,
-        _0 = _this$props2.target,
-        container = _this$props2.container,
-        containerPadding = _this$props2.containerPadding,
-        placement = _this$props2.placement,
-        rootClose = _this$props2.rootClose,
-        children = _this$props2.children,
-        flip = _this$props2.flip,
-        _this$props2$popperCo = _this$props2.popperConfig,
-        popperConfig = _this$props2$popperCo === void 0 ? {} : _this$props2$popperCo,
-        Transition = _this$props2.transition,
-        props = _objectWithoutPropertiesLoose(_this$props2, ["target", "container", "containerPadding", "placement", "rootClose", "children", "flip", "popperConfig", "transition"]);
-
-    var target = this.state.target; // Don't un-render the overlay while it's transitioning out.
-
-    var mountOverlay = props.show || Transition && !this.state.exited;
-
-    if (!mountOverlay) {
-      // Don't bother showing anything if we don't have to.
-      return null;
-    }
-
-    var child = children;
-    var _popperConfig$modifie = popperConfig.modifiers,
-        modifiers = _popperConfig$modifie === void 0 ? {} : _popperConfig$modifie;
-
-    var popperProps = _extends({}, popperConfig, {
-      placement: placement,
-      referenceElement: target,
-      enableEvents: props.show,
-      modifiers: _extends({}, modifiers, {
-        preventOverflow: _extends({
-          padding: containerPadding || 5
-        }, modifiers.preventOverflow),
-        flip: _extends({
-          enabled: !!flip
-        }, modifiers.preventOverflow)
-      })
-    });
-
-    child = _react.default.createElement(_reactPopper.Popper, popperProps, function (_ref) {
-      var arrowProps = _ref.arrowProps,
-          style = _ref.style,
-          ref = _ref.ref,
-          popper = _objectWithoutPropertiesLoose(_ref, ["arrowProps", "style", "ref"]);
-
-      _this2.popper = popper;
-
-      var innerChild = _this2.props.children(_extends({}, popper, {
-        // popper doesn't set the initial placement
-        placement: popper.placement || placement,
-        show: props.show,
-        arrowProps: arrowProps,
-        props: {
-          ref: ref,
-          style: style
-        }
-      }));
-
-      if (Transition) {
-        var onExit = props.onExit,
-            onExiting = props.onExiting,
-            onEnter = props.onEnter,
-            onEntering = props.onEntering,
-            onEntered = props.onEntered;
-        innerChild = _react.default.createElement(Transition, {
-          in: props.show,
-          appear: true,
-          onExit: onExit,
-          onExiting: onExiting,
-          onExited: _this2.onHiddenListener,
-          onEnter: onEnter,
-          onEntering: onEntering,
-          onEntered: onEntered
-        }, innerChild);
-      }
-
-      return innerChild;
-    });
-
-    if (rootClose) {
-      child = _react.default.createElement(_RootCloseWrapper.default, {
-        onRootClose: props.onHide,
-        event: props.rootCloseEvent,
-        disabled: props.rootCloseDisabled
-      }, child);
-    }
-
-    return _react.default.createElement(_Portal.default, {
-      container: container
-    }, child);
-  };
-
-  return Overlay;
-}(_react.default.Component);
-
-Overlay.propTypes = _extends({}, _Portal.default.propTypes, {
-  /**
-   * Set the visibility of the Overlay
-   */
-  show: _propTypes.default.bool,
-
-  /** Specify where the overlay element is positioned in relation to the target element */
-  placement: _propTypes.default.oneOf(_reactPopper.placements),
-
-  /**
-   * A Node, Component instance, or function that returns either. The `container` will have the Portal children
-   * appended to it.
-   */
-  container: _propTypes.default.oneOfType([_componentOrElement.default, _propTypes.default.func]),
-
-  /**
-   * Enables the Popper.js `flip` modifier, allowing the Overlay to
-   * automatically adjust it's placement in case of overlap with the viewport or toggle.
-   * Refer to the [flip docs](https://popper.js.org/popper-documentation.html#modifiers..flip.enabled) for more info
-   */
-  flip: _propTypes.default.bool,
-
-  /**
-   * A render prop that returns an element to overlay and position. See
-   * the [react-popper documentation](https://github.com/FezVrasta/react-popper#children) for more info.
-   *
-   * @type {Function ({
-   *   show: boolean,
-   *   placement: Placement,
-   *   outOfBoundaries: ?boolean,
-   *   scheduleUpdate: () => void,
-   *   props: {
-   *     ref: (?HTMLElement) => void,
-   *     style: { [string]: string | number },
-   *     aria-labelledby: ?string
-   *   },
-   *   arrowProps: {
-   *     ref: (?HTMLElement) => void,
-   *     style: { [string]: string | number },
-   *   },
-   * }) => React.Element}
-   */
-  children: _propTypes.default.func.isRequired,
-
-  /**
-   * A set of popper options and props passed directly to react-popper's Popper component.
-   */
-  popperConfig: _propTypes.default.object,
-
-  /**
-   * Specify whether the overlay should trigger `onHide` when the user clicks outside the overlay
-   */
-  rootClose: _propTypes.default.bool,
-
-  /**
-   * Specify event for toggling overlay
-   */
-  rootCloseEvent: _RootCloseWrapper.default.propTypes.event,
-
-  /**
-   * Specify disabled for disable RootCloseWrapper
-   */
-  rootCloseDisabled: _RootCloseWrapper.default.propTypes.disabled,
-
-  /**
-   * A Callback fired by the Overlay when it wishes to be hidden.
-   *
-   * __required__ when `rootClose` is `true`.
-   *
-   * @type func
-   */
-  onHide: function onHide(props) {
-    var propType = _propTypes.default.func;
-
-    if (props.rootClose) {
-      propType = propType.isRequired;
-    }
-
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    return propType.apply(void 0, [props].concat(args));
-  },
-
-  /**
-   * A `react-transition-group@2.0.0` `<Transition/>` component
-   * used to animate the overlay as it changes visibility.
-   */
-  transition: _elementType.default,
-
-  /**
-   * Callback fired before the Overlay transitions in
-   */
-  onEnter: _propTypes.default.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition in
-   */
-  onEntering: _propTypes.default.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning in
-   */
-  onEntered: _propTypes.default.func,
-
-  /**
-   * Callback fired right before the Overlay transitions out
-   */
-  onExit: _propTypes.default.func,
-
-  /**
-   * Callback fired as the Overlay begins to transition out
-   */
-  onExiting: _propTypes.default.func,
-
-  /**
-   * Callback fired after the Overlay finishes transitioning out
-   */
-  onExited: _propTypes.default.func
-});
-
-var _default = (0, _forwardRef.default)(function (props, ref) {
-  return (// eslint-disable-next-line react/prop-types
-    _react.default.createElement(_WaitForContainer.default, {
-      container: props.container
-    }, function (container) {
-      return _react.default.createElement(Overlay, _extends({}, props, {
-        ref: ref,
-        container: container
-      }));
-    })
-  );
-}, {
-  displayName: 'withContainer(Overlay)'
-});
-
-exports.default = _default;
-module.exports = exports.default;
-
-/***/ }),
-
 /***/ "./node_modules/react-overlays/Portal.js":
 /*!***********************************************!*\
   !*** ./node_modules/react-overlays/Portal.js ***!
@@ -32637,793 +32540,6 @@ var setRef = function setRef(ref, node) {
 
 /***/ }),
 
-/***/ "./node_modules/react-transition-group/esm/CSSTransition.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/CSSTransition.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var dom_helpers_addClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! dom-helpers/addClass */ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/addClass.js");
-/* harmony import */ var dom_helpers_removeClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! dom-helpers/removeClass */ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/removeClass.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _Transition__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/esm/Transition.js");
-/* harmony import */ var _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/PropTypes */ "./node_modules/react-transition-group/esm/utils/PropTypes.js");
-
-
-
-
-
-
-
-
-
-
-var _addClass = function addClass(node, classes) {
-  return node && classes && classes.split(' ').forEach(function (c) {
-    return Object(dom_helpers_addClass__WEBPACK_IMPORTED_MODULE_4__["default"])(node, c);
-  });
-};
-
-var removeClass = function removeClass(node, classes) {
-  return node && classes && classes.split(' ').forEach(function (c) {
-    return Object(dom_helpers_removeClass__WEBPACK_IMPORTED_MODULE_5__["default"])(node, c);
-  });
-};
-/**
- * A transition component inspired by the excellent
- * [ng-animate](http://www.nganimate.org/) library, you should use it if you're
- * using CSS transitions or animations. It's built upon the
- * [`Transition`](https://reactcommunity.org/react-transition-group/transition)
- * component, so it inherits all of its props.
- *
- * `CSSTransition` applies a pair of class names during the `appear`, `enter`,
- * and `exit` states of the transition. The first class is applied and then a
- * second `*-active` class in order to activate the CSS transition. After the
- * transition, matching `*-done` class names are applied to persist the
- * transition state.
- *
- * ```jsx
- * function App() {
- *   const [inProp, setInProp] = useState(false);
- *   return (
- *     <div>
- *       <CSSTransition in={inProp} timeout={200} classNames="my-node">
- *         <div>
- *           {"I'll receive my-node-* classes"}
- *         </div>
- *       </CSSTransition>
- *       <button type="button" onClick={() => setInProp(true)}>
- *         Click to Enter
- *       </button>
- *     </div>
- *   );
- * }
- * ```
- *
- * When the `in` prop is set to `true`, the child component will first receive
- * the class `example-enter`, then the `example-enter-active` will be added in
- * the next tick. `CSSTransition` [forces a
- * reflow](https://github.com/reactjs/react-transition-group/blob/5007303e729a74be66a21c3e2205e4916821524b/src/CSSTransition.js#L208-L215)
- * between before adding the `example-enter-active`. This is an important trick
- * because it allows us to transition between `example-enter` and
- * `example-enter-active` even though they were added immediately one after
- * another. Most notably, this is what makes it possible for us to animate
- * _appearance_.
- *
- * ```css
- * .my-node-enter {
- *   opacity: 0;
- * }
- * .my-node-enter-active {
- *   opacity: 1;
- *   transition: opacity 200ms;
- * }
- * .my-node-exit {
- *   opacity: 1;
- * }
- * .my-node-exit-active {
- *   opacity: 0;
- *   transition: opacity 200ms;
- * }
- * ```
- *
- * `*-active` classes represent which styles you want to animate **to**.
- *
- * **Note**: If you're using the
- * [`appear`](http://reactcommunity.org/react-transition-group/transition#Transition-prop-appear)
- * prop, make sure to define styles for `.appear-*` classes as well.
- */
-
-
-var CSSTransition =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(CSSTransition, _React$Component);
-
-  function CSSTransition() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
-    _this.appliedClasses = {
-      appear: {},
-      enter: {},
-      exit: {}
-    };
-
-    _this.onEnter = function (node, appearing) {
-      _this.removeClasses(node, 'exit');
-
-      _this.addClass(node, appearing ? 'appear' : 'enter', 'base');
-
-      if (_this.props.onEnter) {
-        _this.props.onEnter(node, appearing);
-      }
-    };
-
-    _this.onEntering = function (node, appearing) {
-      var type = appearing ? 'appear' : 'enter';
-
-      _this.addClass(node, type, 'active');
-
-      if (_this.props.onEntering) {
-        _this.props.onEntering(node, appearing);
-      }
-    };
-
-    _this.onEntered = function (node, appearing) {
-      var type = appearing ? 'appear' : 'enter';
-
-      _this.removeClasses(node, type);
-
-      _this.addClass(node, type, 'done');
-
-      if (_this.props.onEntered) {
-        _this.props.onEntered(node, appearing);
-      }
-    };
-
-    _this.onExit = function (node) {
-      _this.removeClasses(node, 'appear');
-
-      _this.removeClasses(node, 'enter');
-
-      _this.addClass(node, 'exit', 'base');
-
-      if (_this.props.onExit) {
-        _this.props.onExit(node);
-      }
-    };
-
-    _this.onExiting = function (node) {
-      _this.addClass(node, 'exit', 'active');
-
-      if (_this.props.onExiting) {
-        _this.props.onExiting(node);
-      }
-    };
-
-    _this.onExited = function (node) {
-      _this.removeClasses(node, 'exit');
-
-      _this.addClass(node, 'exit', 'done');
-
-      if (_this.props.onExited) {
-        _this.props.onExited(node);
-      }
-    };
-
-    _this.getClassNames = function (type) {
-      var classNames = _this.props.classNames;
-      var isStringClassNames = typeof classNames === 'string';
-      var prefix = isStringClassNames && classNames ? classNames + "-" : '';
-      var baseClassName = isStringClassNames ? "" + prefix + type : classNames[type];
-      var activeClassName = isStringClassNames ? baseClassName + "-active" : classNames[type + "Active"];
-      var doneClassName = isStringClassNames ? baseClassName + "-done" : classNames[type + "Done"];
-      return {
-        baseClassName: baseClassName,
-        activeClassName: activeClassName,
-        doneClassName: doneClassName
-      };
-    };
-
-    return _this;
-  }
-
-  var _proto = CSSTransition.prototype;
-
-  _proto.addClass = function addClass(node, type, phase) {
-    var className = this.getClassNames(type)[phase + "ClassName"];
-
-    if (type === 'appear' && phase === 'done') {
-      className += " " + this.getClassNames('enter').doneClassName;
-    } // This is for to force a repaint,
-    // which is necessary in order to transition styles when adding a class name.
-
-
-    if (phase === 'active') {
-      /* eslint-disable no-unused-expressions */
-      node && node.scrollTop;
-    }
-
-    this.appliedClasses[type][phase] = className;
-
-    _addClass(node, className);
-  };
-
-  _proto.removeClasses = function removeClasses(node, type) {
-    var _this$appliedClasses$ = this.appliedClasses[type],
-        baseClassName = _this$appliedClasses$.base,
-        activeClassName = _this$appliedClasses$.active,
-        doneClassName = _this$appliedClasses$.done;
-    this.appliedClasses[type] = {};
-
-    if (baseClassName) {
-      removeClass(node, baseClassName);
-    }
-
-    if (activeClassName) {
-      removeClass(node, activeClassName);
-    }
-
-    if (doneClassName) {
-      removeClass(node, doneClassName);
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        _ = _this$props.classNames,
-        props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(_this$props, ["classNames"]);
-
-    return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Transition__WEBPACK_IMPORTED_MODULE_7__["default"], Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
-      onEnter: this.onEnter,
-      onEntered: this.onEntered,
-      onEntering: this.onEntering,
-      onExit: this.onExit,
-      onExiting: this.onExiting,
-      onExited: this.onExited
-    }));
-  };
-
-  return CSSTransition;
-}(react__WEBPACK_IMPORTED_MODULE_6___default.a.Component);
-
-CSSTransition.defaultProps = {
-  classNames: ''
-};
-CSSTransition.propTypes =  true ? Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _Transition__WEBPACK_IMPORTED_MODULE_7__["default"].propTypes, {
-  /**
-   * The animation classNames applied to the component as it appears, enters,
-   * exits or has finished the transition. A single name can be provided and it
-   * will be suffixed for each stage: e.g.
-   *
-   * `classNames="fade"` applies `fade-appear`, `fade-appear-active`,
-   * `fade-appear-done`, `fade-enter`, `fade-enter-active`, `fade-enter-done`,
-   * `fade-exit`, `fade-exit-active`, and `fade-exit-done`.
-   *
-   * **Note**: `fade-appear-done` and `fade-enter-done` will _both_ be applied.
-   * This allows you to define different behavior for when appearing is done and
-   * when regular entering is done, using selectors like
-   * `.fade-enter-done:not(.fade-appear-done)`. For example, you could apply an
-   * epic entrance animation when element first appears in the DOM using
-   * [Animate.css](https://daneden.github.io/animate.css/). Otherwise you can
-   * simply use `fade-enter-done` for defining both cases.
-   *
-   * Each individual classNames can also be specified independently like:
-   *
-   * ```js
-   * classNames={{
-   *  appear: 'my-appear',
-   *  appearActive: 'my-active-appear',
-   *  appearDone: 'my-done-appear',
-   *  enter: 'my-enter',
-   *  enterActive: 'my-active-enter',
-   *  enterDone: 'my-done-enter',
-   *  exit: 'my-exit',
-   *  exitActive: 'my-active-exit',
-   *  exitDone: 'my-done-exit',
-   * }}
-   * ```
-   *
-   * If you want to set these classes using CSS Modules:
-   *
-   * ```js
-   * import styles from './styles.css';
-   * ```
-   *
-   * you might want to use camelCase in your CSS file, that way could simply
-   * spread them instead of listing them one by one:
-   *
-   * ```js
-   * classNames={{ ...styles }}
-   * ```
-   *
-   * @type {string | {
-   *  appear?: string,
-   *  appearActive?: string,
-   *  appearDone?: string,
-   *  enter?: string,
-   *  enterActive?: string,
-   *  enterDone?: string,
-   *  exit?: string,
-   *  exitActive?: string,
-   *  exitDone?: string,
-   * }}
-   */
-  classNames: _utils_PropTypes__WEBPACK_IMPORTED_MODULE_8__["classNamesShape"],
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'enter' or 'appear' class is
-   * applied.
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool)
-   */
-  onEnter: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'enter-active' or
-   * 'appear-active' class is applied.
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool)
-   */
-  onEntering: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'enter' or
-   * 'appear' classes are **removed** and the `done` class is added to the DOM node.
-   *
-   * @type Function(node: HtmlElement, isAppearing: bool)
-   */
-  onEntered: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'exit' class is
-   * applied.
-   *
-   * @type Function(node: HtmlElement)
-   */
-  onExit: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'exit-active' is applied.
-   *
-   * @type Function(node: HtmlElement)
-   */
-  onExiting: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func,
-
-  /**
-   * A `<Transition>` callback fired immediately after the 'exit' classes
-   * are **removed** and the `exit-done` class is added to the DOM node.
-   *
-   * @type Function(node: HtmlElement)
-   */
-  onExited: prop_types__WEBPACK_IMPORTED_MODULE_3___default.a.func
-}) : undefined;
-/* harmony default export */ __webpack_exports__["default"] = (CSSTransition);
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/esm/ReplaceTransition.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/ReplaceTransition.js ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _TransitionGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TransitionGroup */ "./node_modules/react-transition-group/esm/TransitionGroup.js");
-
-
-
-
-
-
-/**
- * The `<ReplaceTransition>` component is a specialized `Transition` component
- * that animates between two children.
- *
- * ```jsx
- * <ReplaceTransition in>
- *   <Fade><div>I appear first</div></Fade>
- *   <Fade><div>I replace the above</div></Fade>
- * </ReplaceTransition>
- * ```
- */
-
-var ReplaceTransition =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_1__["default"])(ReplaceTransition, _React$Component);
-
-  function ReplaceTransition() {
-    var _this;
-
-    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
-      _args[_key] = arguments[_key];
-    }
-
-    _this = _React$Component.call.apply(_React$Component, [this].concat(_args)) || this;
-
-    _this.handleEnter = function () {
-      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      return _this.handleLifecycle('onEnter', 0, args);
-    };
-
-    _this.handleEntering = function () {
-      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        args[_key3] = arguments[_key3];
-      }
-
-      return _this.handleLifecycle('onEntering', 0, args);
-    };
-
-    _this.handleEntered = function () {
-      for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-        args[_key4] = arguments[_key4];
-      }
-
-      return _this.handleLifecycle('onEntered', 0, args);
-    };
-
-    _this.handleExit = function () {
-      for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-        args[_key5] = arguments[_key5];
-      }
-
-      return _this.handleLifecycle('onExit', 1, args);
-    };
-
-    _this.handleExiting = function () {
-      for (var _len6 = arguments.length, args = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
-        args[_key6] = arguments[_key6];
-      }
-
-      return _this.handleLifecycle('onExiting', 1, args);
-    };
-
-    _this.handleExited = function () {
-      for (var _len7 = arguments.length, args = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++) {
-        args[_key7] = arguments[_key7];
-      }
-
-      return _this.handleLifecycle('onExited', 1, args);
-    };
-
-    return _this;
-  }
-
-  var _proto = ReplaceTransition.prototype;
-
-  _proto.handleLifecycle = function handleLifecycle(handler, idx, originalArgs) {
-    var _child$props;
-
-    var children = this.props.children;
-    var child = react__WEBPACK_IMPORTED_MODULE_3___default.a.Children.toArray(children)[idx];
-    if (child.props[handler]) (_child$props = child.props)[handler].apply(_child$props, originalArgs);
-    if (this.props[handler]) this.props[handler](react_dom__WEBPACK_IMPORTED_MODULE_4___default.a.findDOMNode(this));
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        children = _this$props.children,
-        inProp = _this$props.in,
-        props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_this$props, ["children", "in"]);
-
-    var _React$Children$toArr = react__WEBPACK_IMPORTED_MODULE_3___default.a.Children.toArray(children),
-        first = _React$Children$toArr[0],
-        second = _React$Children$toArr[1];
-
-    delete props.onEnter;
-    delete props.onEntering;
-    delete props.onEntered;
-    delete props.onExit;
-    delete props.onExiting;
-    delete props.onExited;
-    return react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement(_TransitionGroup__WEBPACK_IMPORTED_MODULE_5__["default"], props, inProp ? react__WEBPACK_IMPORTED_MODULE_3___default.a.cloneElement(first, {
-      key: 'first',
-      onEnter: this.handleEnter,
-      onEntering: this.handleEntering,
-      onEntered: this.handleEntered
-    }) : react__WEBPACK_IMPORTED_MODULE_3___default.a.cloneElement(second, {
-      key: 'second',
-      onEnter: this.handleExit,
-      onEntering: this.handleExiting,
-      onEntered: this.handleExited
-    }));
-  };
-
-  return ReplaceTransition;
-}(react__WEBPACK_IMPORTED_MODULE_3___default.a.Component);
-
-ReplaceTransition.propTypes =  true ? {
-  in: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.bool.isRequired,
-  children: function children(props, propName) {
-    if (react__WEBPACK_IMPORTED_MODULE_3___default.a.Children.count(props[propName]) !== 2) return new Error("\"" + propName + "\" must be exactly two transition components.");
-    return null;
-  }
-} : undefined;
-/* harmony default export */ __webpack_exports__["default"] = (ReplaceTransition);
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/esm/SwitchTransition.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/SwitchTransition.js ***!
-  \*********************************************************************/
-/*! exports provided: modes, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "modes", function() { return modes; });
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _Transition__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/esm/Transition.js");
-/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
-
-
-var _leaveRenders, _enterRenders;
-
-
-
-
-
-
-function areChildrenDifferent(oldChildren, newChildren) {
-  if (oldChildren === newChildren) return false;
-
-  if (react__WEBPACK_IMPORTED_MODULE_1___default.a.isValidElement(oldChildren) && react__WEBPACK_IMPORTED_MODULE_1___default.a.isValidElement(newChildren) && oldChildren.key != null && oldChildren.key === newChildren.key) {
-    return false;
-  }
-
-  return true;
-}
-/**
- * Enum of modes for SwitchTransition component
- * @enum { string }
- */
-
-
-var modes = {
-  out: 'out-in',
-  in: 'in-out'
-};
-
-var callHook = function callHook(element, name, cb) {
-  return function () {
-    var _element$props;
-
-    element.props[name] && (_element$props = element.props)[name].apply(_element$props, arguments);
-    cb();
-  };
-};
-
-var leaveRenders = (_leaveRenders = {}, _leaveRenders[modes.out] = function (_ref) {
-  var current = _ref.current,
-      changeState = _ref.changeState;
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(current, {
-    in: false,
-    onExited: callHook(current, 'onExited', function () {
-      changeState(_Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERING"], null);
-    })
-  });
-}, _leaveRenders[modes.in] = function (_ref2) {
-  var current = _ref2.current,
-      changeState = _ref2.changeState,
-      children = _ref2.children;
-  return [current, react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(children, {
-    in: true,
-    onEntered: callHook(children, 'onEntered', function () {
-      changeState(_Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERING"]);
-    })
-  })];
-}, _leaveRenders);
-var enterRenders = (_enterRenders = {}, _enterRenders[modes.out] = function (_ref3) {
-  var children = _ref3.children,
-      changeState = _ref3.changeState;
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(children, {
-    in: true,
-    onEntered: callHook(children, 'onEntered', function () {
-      changeState(_Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERED"], react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(children, {
-        in: true
-      }));
-    })
-  });
-}, _enterRenders[modes.in] = function (_ref4) {
-  var current = _ref4.current,
-      children = _ref4.children,
-      changeState = _ref4.changeState;
-  return [react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(current, {
-    in: false,
-    onExited: callHook(current, 'onExited', function () {
-      changeState(_Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERED"], react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(children, {
-        in: true
-      }));
-    })
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(children, {
-    in: true
-  })];
-}, _enterRenders);
-/**
- * A transition component inspired by the [vue transition modes](https://vuejs.org/v2/guide/transitions.html#Transition-Modes).
- * You can use it when you want to control the render between state transitions.
- * Based on the selected mode and the child's key which is the `Transition` or `CSSTransition` component, the `SwitchTransition` makes a consistent transition between them.
- *
- * If the `out-in` mode is selected, the `SwitchTransition` waits until the old child leaves and then inserts a new child.
- * If the `in-out` mode is selected, the `SwitchTransition` inserts a new child first, waits for the new child to enter and then removes the old child
- *
- * ```jsx
- *
- * function App() {
- *  const [state, setState] = useState(false);
- *  return (
- *    <SwitchTransition>
- *      <FadeTransition key={state ? "Goodbye, world!" : "Hello, world!"}
- *        addEndListener={(node, done) => node.addEventListener("transitionend", done, false)}
- *        classNames='fade' >
- *        <button onClick={() => setState(state => !state)}>
- *          {state ? "Goodbye, world!" : "Hello, world!"}
- *        </button>
- *      </FadeTransition>
- *    </SwitchTransition>
- *  )
- * }
- * ```
- */
-
-var SwitchTransition =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(SwitchTransition, _React$Component);
-
-  function SwitchTransition() {
-    var _this;
-
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
-    _this.state = {
-      status: _Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERED"],
-      current: null
-    };
-    _this.appeared = false;
-
-    _this.changeState = function (status, current) {
-      if (current === void 0) {
-        current = _this.state.current;
-      }
-
-      _this.setState({
-        status: status,
-        current: current
-      });
-    };
-
-    return _this;
-  }
-
-  var _proto = SwitchTransition.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.appeared = true;
-  };
-
-  SwitchTransition.getDerivedStateFromProps = function getDerivedStateFromProps(props, state) {
-    if (props.children == null) {
-      return {
-        current: null
-      };
-    }
-
-    if (state.status === _Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERING"] && props.mode === modes.in) {
-      return {
-        status: _Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERING"]
-      };
-    }
-
-    if (state.current && areChildrenDifferent(state.current, props.children)) {
-      return {
-        status: _Transition__WEBPACK_IMPORTED_MODULE_3__["EXITING"]
-      };
-    }
-
-    return {
-      current: react__WEBPACK_IMPORTED_MODULE_1___default.a.cloneElement(props.children, {
-        in: true
-      })
-    };
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        children = _this$props.children,
-        mode = _this$props.mode,
-        _this$state = this.state,
-        status = _this$state.status,
-        current = _this$state.current;
-    var data = {
-      children: children,
-      current: current,
-      changeState: this.changeState,
-      status: status
-    };
-    var component;
-
-    switch (status) {
-      case _Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERING"]:
-        component = enterRenders[mode](data);
-        break;
-
-      case _Transition__WEBPACK_IMPORTED_MODULE_3__["EXITING"]:
-        component = leaveRenders[mode](data);
-        break;
-
-      case _Transition__WEBPACK_IMPORTED_MODULE_3__["ENTERED"]:
-        component = current;
-    }
-
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_4__["default"].Provider, {
-      value: {
-        isMounting: !this.appeared
-      }
-    }, component);
-  };
-
-  return SwitchTransition;
-}(react__WEBPACK_IMPORTED_MODULE_1___default.a.Component);
-
-SwitchTransition.propTypes =  true ? {
-  /**
-   * Transition modes.
-   * `out-in`: Current element transitions out first, then when complete, the new element transitions in.
-   * `in-out: New element transitions in first, then when complete, the current element transitions out.`
-   *
-   * @type {'out-in'|'in-out'}
-   */
-  mode: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOf([modes.in, modes.out]),
-
-  /**
-   * Any `Transition` or `CSSTransition` component
-   */
-  children: prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.oneOfType([prop_types__WEBPACK_IMPORTED_MODULE_2___default.a.element.isRequired])
-} : undefined;
-SwitchTransition.defaultProps = {
-  mode: modes.out
-};
-/* harmony default export */ __webpack_exports__["default"] = (SwitchTransition);
-
-/***/ }),
-
 /***/ "./node_modules/react-transition-group/esm/Transition.js":
 /*!***************************************************************!*\
   !*** ./node_modules/react-transition-group/esm/Transition.js ***!
@@ -34037,219 +33153,6 @@ Transition.EXITING = 4;
 
 /***/ }),
 
-/***/ "./node_modules/react-transition-group/esm/TransitionGroup.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/TransitionGroup.js ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
-/* harmony import */ var _babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TransitionGroupContext */ "./node_modules/react-transition-group/esm/TransitionGroupContext.js");
-/* harmony import */ var _utils_ChildMapping__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/ChildMapping */ "./node_modules/react-transition-group/esm/utils/ChildMapping.js");
-
-
-
-
-
-
-
-
-
-var values = Object.values || function (obj) {
-  return Object.keys(obj).map(function (k) {
-    return obj[k];
-  });
-};
-
-var defaultProps = {
-  component: 'div',
-  childFactory: function childFactory(child) {
-    return child;
-  }
-  /**
-   * The `<TransitionGroup>` component manages a set of transition components
-   * (`<Transition>` and `<CSSTransition>`) in a list. Like with the transition
-   * components, `<TransitionGroup>` is a state machine for managing the mounting
-   * and unmounting of components over time.
-   *
-   * Consider the example below. As items are removed or added to the TodoList the
-   * `in` prop is toggled automatically by the `<TransitionGroup>`.
-   *
-   * Note that `<TransitionGroup>`  does not define any animation behavior!
-   * Exactly _how_ a list item animates is up to the individual transition
-   * component. This means you can mix and match animations across different list
-   * items.
-   */
-
-};
-
-var TransitionGroup =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_2__["default"])(TransitionGroup, _React$Component);
-
-  function TransitionGroup(props, context) {
-    var _this;
-
-    _this = _React$Component.call(this, props, context) || this;
-
-    var handleExited = _this.handleExited.bind(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(Object(_babel_runtime_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this))); // Initial children should all be entering, dependent on appear
-
-
-    _this.state = {
-      contextValue: {
-        isMounting: true
-      },
-      handleExited: handleExited,
-      firstRender: true
-    };
-    return _this;
-  }
-
-  var _proto = TransitionGroup.prototype;
-
-  _proto.componentDidMount = function componentDidMount() {
-    this.mounted = true;
-    this.setState({
-      contextValue: {
-        isMounting: false
-      }
-    });
-  };
-
-  _proto.componentWillUnmount = function componentWillUnmount() {
-    this.mounted = false;
-  };
-
-  TransitionGroup.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, _ref) {
-    var prevChildMapping = _ref.children,
-        handleExited = _ref.handleExited,
-        firstRender = _ref.firstRender;
-    return {
-      children: firstRender ? Object(_utils_ChildMapping__WEBPACK_IMPORTED_MODULE_7__["getInitialChildMapping"])(nextProps, handleExited) : Object(_utils_ChildMapping__WEBPACK_IMPORTED_MODULE_7__["getNextChildMapping"])(nextProps, prevChildMapping, handleExited),
-      firstRender: false
-    };
-  };
-
-  _proto.handleExited = function handleExited(child, node) {
-    var currentChildMapping = Object(_utils_ChildMapping__WEBPACK_IMPORTED_MODULE_7__["getChildMapping"])(this.props.children);
-    if (child.key in currentChildMapping) return;
-
-    if (child.props.onExited) {
-      child.props.onExited(node);
-    }
-
-    if (this.mounted) {
-      this.setState(function (state) {
-        var children = Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state.children);
-
-        delete children[child.key];
-        return {
-          children: children
-        };
-      });
-    }
-  };
-
-  _proto.render = function render() {
-    var _this$props = this.props,
-        Component = _this$props.component,
-        childFactory = _this$props.childFactory,
-        props = Object(_babel_runtime_helpers_esm_objectWithoutPropertiesLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(_this$props, ["component", "childFactory"]);
-
-    var contextValue = this.state.contextValue;
-    var children = values(this.state.children).map(childFactory);
-    delete props.appear;
-    delete props.enter;
-    delete props.exit;
-
-    if (Component === null) {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
-        value: contextValue
-      }, children);
-    }
-
-    return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_TransitionGroupContext__WEBPACK_IMPORTED_MODULE_6__["default"].Provider, {
-      value: contextValue
-    }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(Component, props, children));
-  };
-
-  return TransitionGroup;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-TransitionGroup.propTypes =  true ? {
-  /**
-   * `<TransitionGroup>` renders a `<div>` by default. You can change this
-   * behavior by providing a `component` prop.
-   * If you use React v16+ and would like to avoid a wrapping `<div>` element
-   * you can pass in `component={null}`. This is useful if the wrapping div
-   * borks your css styles.
-   */
-  component: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.any,
-
-  /**
-   * A set of `<Transition>` components, that are toggled `in` and out as they
-   * leave. the `<TransitionGroup>` will inject specific transition props, so
-   * remember to spread them through if you are wrapping the `<Transition>` as
-   * with our `<Fade>` example.
-   *
-   * While this component is meant for multiple `Transition` or `CSSTransition`
-   * children, sometimes you may want to have a single transition child with
-   * content that you want to be transitioned out and in when you change it
-   * (e.g. routes, images etc.) In that case you can change the `key` prop of
-   * the transition child as you change its content, this will cause
-   * `TransitionGroup` to transition the child out and back in.
-   */
-  children: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.node,
-
-  /**
-   * A convenience prop that enables or disables appear animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  appear: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * A convenience prop that enables or disables enter animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  enter: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * A convenience prop that enables or disables exit animations
-   * for all children. Note that specifying this will override any defaults set
-   * on individual children Transitions.
-   */
-  exit: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.bool,
-
-  /**
-   * You may need to apply reactive updates to a child as it is exiting.
-   * This is generally done by using `cloneElement` however in the case of an exiting
-   * child the element has already been removed and not accessible to the consumer.
-   *
-   * If you do need to update a child as it leaves you can provide a `childFactory`
-   * to wrap every child, even the ones that are leaving.
-   *
-   * @type Function(child: ReactElement) -> ReactElement
-   */
-  childFactory: prop_types__WEBPACK_IMPORTED_MODULE_4___default.a.func
-} : undefined;
-TransitionGroup.defaultProps = defaultProps;
-/* harmony default export */ __webpack_exports__["default"] = (TransitionGroup);
-
-/***/ }),
-
 /***/ "./node_modules/react-transition-group/esm/TransitionGroupContext.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/react-transition-group/esm/TransitionGroupContext.js ***!
@@ -34278,200 +33181,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   disabled: false
 });
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/esm/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/index.js ***!
-  \**********************************************************/
-/*! exports provided: CSSTransition, ReplaceTransition, SwitchTransition, TransitionGroup, Transition, config */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _CSSTransition__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CSSTransition */ "./node_modules/react-transition-group/esm/CSSTransition.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CSSTransition", function() { return _CSSTransition__WEBPACK_IMPORTED_MODULE_0__["default"]; });
-
-/* harmony import */ var _ReplaceTransition__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReplaceTransition */ "./node_modules/react-transition-group/esm/ReplaceTransition.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ReplaceTransition", function() { return _ReplaceTransition__WEBPACK_IMPORTED_MODULE_1__["default"]; });
-
-/* harmony import */ var _SwitchTransition__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SwitchTransition */ "./node_modules/react-transition-group/esm/SwitchTransition.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SwitchTransition", function() { return _SwitchTransition__WEBPACK_IMPORTED_MODULE_2__["default"]; });
-
-/* harmony import */ var _TransitionGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TransitionGroup */ "./node_modules/react-transition-group/esm/TransitionGroup.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TransitionGroup", function() { return _TransitionGroup__WEBPACK_IMPORTED_MODULE_3__["default"]; });
-
-/* harmony import */ var _Transition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Transition */ "./node_modules/react-transition-group/esm/Transition.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Transition", function() { return _Transition__WEBPACK_IMPORTED_MODULE_4__["default"]; });
-
-/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config */ "./node_modules/react-transition-group/esm/config.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "config", function() { return _config__WEBPACK_IMPORTED_MODULE_5__["default"]; });
-
-
-
-
-
-
-
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/esm/utils/ChildMapping.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/react-transition-group/esm/utils/ChildMapping.js ***!
-  \***********************************************************************/
-/*! exports provided: getChildMapping, mergeChildMappings, getInitialChildMapping, getNextChildMapping */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getChildMapping", function() { return getChildMapping; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mergeChildMappings", function() { return mergeChildMappings; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getInitialChildMapping", function() { return getInitialChildMapping; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getNextChildMapping", function() { return getNextChildMapping; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-/**
- * Given `this.props.children`, return an object mapping key to child.
- *
- * @param {*} children `this.props.children`
- * @return {object} Mapping of key to child
- */
-
-function getChildMapping(children, mapFn) {
-  var mapper = function mapper(child) {
-    return mapFn && Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(child) ? mapFn(child) : child;
-  };
-
-  var result = Object.create(null);
-  if (children) react__WEBPACK_IMPORTED_MODULE_0__["Children"].map(children, function (c) {
-    return c;
-  }).forEach(function (child) {
-    // run the map function here instead so that the key is the computed one
-    result[child.key] = mapper(child);
-  });
-  return result;
-}
-/**
- * When you're adding or removing children some may be added or removed in the
- * same render pass. We want to show *both* since we want to simultaneously
- * animate elements in and out. This function takes a previous set of keys
- * and a new set of keys and merges them with its best guess of the correct
- * ordering. In the future we may expose some of the utilities in
- * ReactMultiChild to make this easy, but for now React itself does not
- * directly have this concept of the union of prevChildren and nextChildren
- * so we implement it here.
- *
- * @param {object} prev prev children as returned from
- * `ReactTransitionChildMapping.getChildMapping()`.
- * @param {object} next next children as returned from
- * `ReactTransitionChildMapping.getChildMapping()`.
- * @return {object} a key set that contains all keys in `prev` and all keys
- * in `next` in a reasonable order.
- */
-
-function mergeChildMappings(prev, next) {
-  prev = prev || {};
-  next = next || {};
-
-  function getValueForKey(key) {
-    return key in next ? next[key] : prev[key];
-  } // For each key of `next`, the list of keys to insert before that key in
-  // the combined list
-
-
-  var nextKeysPending = Object.create(null);
-  var pendingKeys = [];
-
-  for (var prevKey in prev) {
-    if (prevKey in next) {
-      if (pendingKeys.length) {
-        nextKeysPending[prevKey] = pendingKeys;
-        pendingKeys = [];
-      }
-    } else {
-      pendingKeys.push(prevKey);
-    }
-  }
-
-  var i;
-  var childMapping = {};
-
-  for (var nextKey in next) {
-    if (nextKeysPending[nextKey]) {
-      for (i = 0; i < nextKeysPending[nextKey].length; i++) {
-        var pendingNextKey = nextKeysPending[nextKey][i];
-        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
-      }
-    }
-
-    childMapping[nextKey] = getValueForKey(nextKey);
-  } // Finally, add the keys which didn't appear before any key in `next`
-
-
-  for (i = 0; i < pendingKeys.length; i++) {
-    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
-  }
-
-  return childMapping;
-}
-
-function getProp(child, prop, props) {
-  return props[prop] != null ? props[prop] : child.props[prop];
-}
-
-function getInitialChildMapping(props, onExited) {
-  return getChildMapping(props.children, function (child) {
-    return Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(child, {
-      onExited: onExited.bind(null, child),
-      in: true,
-      appear: getProp(child, 'appear', props),
-      enter: getProp(child, 'enter', props),
-      exit: getProp(child, 'exit', props)
-    });
-  });
-}
-function getNextChildMapping(nextProps, prevChildMapping, onExited) {
-  var nextChildMapping = getChildMapping(nextProps.children);
-  var children = mergeChildMappings(prevChildMapping, nextChildMapping);
-  Object.keys(children).forEach(function (key) {
-    var child = children[key];
-    if (!Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(child)) return;
-    var hasPrev = key in prevChildMapping;
-    var hasNext = key in nextChildMapping;
-    var prevChild = prevChildMapping[key];
-    var isLeaving = Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(prevChild) && !prevChild.props.in; // item is new (entering)
-
-    if (hasNext && (!hasPrev || isLeaving)) {
-      // console.log('entering', key)
-      children[key] = Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(child, {
-        onExited: onExited.bind(null, child),
-        in: true,
-        exit: getProp(child, 'exit', nextProps),
-        enter: getProp(child, 'enter', nextProps)
-      });
-    } else if (!hasNext && hasPrev && !isLeaving) {
-      // item is old (exiting)
-      // console.log('leaving', key)
-      children[key] = Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(child, {
-        in: false
-      });
-    } else if (hasNext && hasPrev && Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(prevChild)) {
-      // item hasn't changed transition states
-      // copy over the last transition props;
-      // console.log('unchanged', key)
-      children[key] = Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(child, {
-        onExited: onExited.bind(null, child),
-        in: prevChild.props.in,
-        exit: getProp(child, 'exit', nextProps),
-        enter: getProp(child, 'enter', nextProps)
-      });
-    }
-  });
-  return children;
-}
 
 /***/ }),
 
@@ -34506,68 +33215,6 @@ var classNamesShape =  true ? prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.
   exitDone: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string,
   exitActive: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
 })]) : undefined;
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/addClass.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/react-transition-group/node_modules/dom-helpers/esm/addClass.js ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return addClass; });
-/* harmony import */ var _hasClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./hasClass */ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/hasClass.js");
-
-function addClass(element, className) {
-  if (element.classList) element.classList.add(className);else if (!Object(_hasClass__WEBPACK_IMPORTED_MODULE_0__["default"])(element, className)) if (typeof element.className === 'string') element.className = element.className + " " + className;else element.setAttribute('class', (element.className && element.className.baseVal || '') + " " + className);
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/hasClass.js":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/react-transition-group/node_modules/dom-helpers/esm/hasClass.js ***!
-  \**************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return hasClass; });
-function hasClass(element, className) {
-  if (element.classList) return !!className && element.classList.contains(className);
-  return (" " + (element.className.baseVal || element.className) + " ").indexOf(" " + className + " ") !== -1;
-}
-
-/***/ }),
-
-/***/ "./node_modules/react-transition-group/node_modules/dom-helpers/esm/removeClass.js":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/react-transition-group/node_modules/dom-helpers/esm/removeClass.js ***!
-  \*****************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return removeClass; });
-function replaceClassName(origClass, classToRemove) {
-  return origClass.replace(new RegExp("(^|\\s)" + classToRemove + "(?:\\s|$)", 'g'), '$1').replace(/\s+/g, ' ').replace(/^\s*|\s*$/g, '');
-}
-
-function removeClass(element, className) {
-  if (element.classList) {
-    element.classList.remove(className);
-  } else if (typeof element.className === 'string') {
-    ;
-    element.className = replaceClassName(element.className, className);
-  } else {
-    element.setAttribute('class', replaceClassName(element.className && element.className.baseVal || '', className));
-  }
-}
 
 /***/ }),
 
@@ -36857,249 +35504,109 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./pages/_error.js":
-/*!*************************!*\
-  !*** ./pages/_error.js ***!
-  \*************************/
+/***/ "./pages/index.js":
+/*!************************!*\
+  !*** ./pages/index.js ***!
+  \************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap/Container */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
+/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/next/dist/build/polyfills/fetch.js");
+/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Dropdown__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Dropdown */ "./node_modules/react-bootstrap/esm/Dropdown.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
+/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_15__);
+/* harmony import */ var _components_PollPagination__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../components/PollPagination */ "./components/PollPagination.js");
+/* harmony import */ var _components_PollCard__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../components/PollCard */ "./components/PollCard.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_18__);
+/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
+/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
+/* harmony import */ var _components_VoteHistory__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/VoteHistory */ "./components/VoteHistory.js");
 
 
 
 
 
 
-var __jsx = react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement;
+
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement;
 
 
 
 
 
 
-var ErrorPage =
+
+
+
+
+
+
+
+
+
+
+var Home =
 /*#__PURE__*/
 function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ErrorPage, _React$Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(Home, _React$Component);
 
-  function ErrorPage() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, ErrorPage);
-
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(ErrorPage).apply(this, arguments));
-  }
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(ErrorPage, [{
-    key: "render",
-    value: function render() {
-      var response;
-
-      switch (this.props.errorCode) {
-        case 200: // Also display a 404 if someone requests /_error explicitly
-
-        case 404:
-          response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            pageTitle: "Page Not Found"
-          }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__["default"], null, __jsx("div", {
-            className: "error-container"
-          }, __jsx("h4", {
-            className: "page-header"
-          }, "404 Page Not Found"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            variant: "grey-blue",
-            onClick: function onClick() {
-              return next_router__WEBPACK_IMPORTED_MODULE_7___default.a.back();
-            }
-          }, "Go back"))));
-          break;
-
-        case 500:
-          response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            pageTitle: "Internal Server Error"
-          }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__["default"], null, __jsx("div", {
-            className: "error-container"
-          }, __jsx("h4", {
-            className: "page-header"
-          }, "500 Internal Server Error"), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            variant: "grey-blue",
-            onClick: function onClick() {
-              return next_router__WEBPACK_IMPORTED_MODULE_7___default.a.back();
-            }
-          }, "Go back"))));
-          break;
-
-        default:
-          response = __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
-            pageTitle: "An Error Occured"
-          }, __jsx(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_8__["default"], null, __jsx("div", {
-            className: "error-container"
-          }, __jsx("h4", {
-            className: "page-header"
-          }, "An error occured while trying to access this page."), __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_9__["default"], {
-            variant: "grey-blue",
-            onClick: function onClick() {
-              return next_router__WEBPACK_IMPORTED_MODULE_7___default.a.back();
-            }
-          }, "Go back"))));
-      }
-
-      return response;
-    }
-  }], [{
-    key: "propTypes",
-    value: function propTypes() {
-      return {
-        errorCode: react__WEBPACK_IMPORTED_MODULE_5___default.a.PropTypes.number.isRequired
-      };
-    }
-  }, {
-    key: "getInitialProps",
-    value: function getInitialProps(_ref) {
-      var res = _ref.res,
-          xhr = _ref.xhr;
-      var errorCode = res ? res.statusCode : xhr ? xhr.status : null;
-      return {
-        errorCode: errorCode
-      };
-    }
-  }]);
-
-  return ErrorPage;
-}(react__WEBPACK_IMPORTED_MODULE_5___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_7__["withRouter"])(ErrorPage));
-
-/***/ }),
-
-/***/ "./pages/poll.js":
-/*!***********************!*\
-  !*** ./pages/poll.js ***!
-  \***********************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/regenerator */ "./node_modules/@babel/runtime-corejs2/regenerator/index.js");
-/* harmony import */ var _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/asyncToGenerator */ "./node_modules/@babel/runtime-corejs2/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Layout */ "./components/Layout.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! isomorphic-unfetch */ "./node_modules/next/dist/build/polyfills/fetch.js");
-/* harmony import */ var isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap/Alert */ "./node_modules/react-bootstrap/esm/Alert.js");
-/* harmony import */ var _components_PollChoices__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/PollChoices */ "./components/PollChoices.js");
-/* harmony import */ var _components_PollResults__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/PollResults */ "./components/PollResults.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_15__);
-/* harmony import */ var _error__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./_error */ "./pages/_error.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! next-absolute-url */ "./node_modules/next-absolute-url/index.js");
-/* harmony import */ var next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(next_absolute_url__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var react_bootstrap_InputGroup__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-bootstrap/InputGroup */ "./node_modules/react-bootstrap/esm/InputGroup.js");
-/* harmony import */ var react_bootstrap_FormControl__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! react-bootstrap/FormControl */ "./node_modules/react-bootstrap/esm/FormControl.js");
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var _components_ShareButton__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../components/ShareButton */ "./components/ShareButton.js");
-/* harmony import */ var _components_Report__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../components/Report */ "./components/Report.js");
-/* harmony import */ var react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-bootstrap/Row */ "./node_modules/react-bootstrap/esm/Row.js");
-/* harmony import */ var react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-bootstrap/Col */ "./node_modules/react-bootstrap/esm/Col.js");
-
-
-
-
-
-
-
-
-
-
-var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var PollPage =
-/*#__PURE__*/
-function (_React$Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_8__["default"])(PollPage, _React$Component);
-
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(PollPage, null, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Home, null, [{
     key: "getInitialProps",
     value: function () {
-      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
+      var _getInitialProps = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__["default"])(
       /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee(_ref) {
-        var slug, req, _absoluteUrl, origin, clientIp, res, errorCode, data, url;
+      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(_ref) {
+        var page, req, _absoluteUrl, origin, searchPage, res, data;
 
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
+        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                slug = _ref.query.slug, req = _ref.req;
-                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl.origin;
-
-                if (req && req.headers) {
-                  clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-                }
-
+                page = _ref.query.page, req = _ref.req;
+                _absoluteUrl = next_absolute_url__WEBPACK_IMPORTED_MODULE_15___default()(req), origin = _absoluteUrl.origin;
+                searchPage = page < 1 || page == undefined ? 1 : page;
                 _context.next = 5;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/").concat(slug), {
+                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_9___default()("".concat(origin, "/api/polls?page=").concat(searchPage), {
                   method: 'GET',
                   headers: {
-                    'X-Origin': 'statmix',
-                    'X-IP': clientIp
+                    'X-Origin': 'statmix'
                   }
                 });
 
               case 5:
                 res = _context.sent;
-                errorCode = res.status > 200 ? res.status : false;
-                _context.next = 9;
+                _context.next = 8;
                 return res.json();
 
-              case 9:
+              case 8:
                 data = _context.sent;
-                url = "".concat(origin, "/poll/").concat(slug);
                 return _context.abrupt("return", {
-                  errorCode: errorCode,
-                  poll: data.pollData,
-                  user: data.userData,
-                  url: url
+                  polls: data.pollsArr,
+                  totalItems: data.totalItems
                 });
 
-              case 12:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -37115,314 +35622,54 @@ function (_React$Component) {
     }()
   }]);
 
-  function PollPage(props) {
-    var _this;
+  function Home(props) {
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Home);
 
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_3__["default"])(this, PollPage);
-
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(PollPage).call(this, props));
-    _this.state = {
-      totalVotes: _this.props.poll.totalVotes,
-      results: _this.props.poll.results,
-      userDidVote: _this.props.user.didVote,
-      revealResults: !_this.props.poll.active,
-      resultsLoading: false,
-      refreshResultsLoading: false,
-      selectedVote: null,
-      userDidVoteError: false
-    };
-    _this.updateChoiceSelected = _this.updateChoiceSelected.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this));
-    _this.loadResults = _this.loadResults.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this));
-    _this.submitVote = _this.submitVote.bind(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this));
-    return _this;
+    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(Home).call(this, props));
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_7__["default"])(PollPage, [{
-    key: "updateChoiceSelected",
-    value: function updateChoiceSelected(e) {
-      this.setState({
-        selectedVote: e.target.value
-      });
-    }
-  }, {
-    key: "loadResults",
-    value: function () {
-      var _loadResults = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee2(e, req) {
-        var _absoluteUrl2, origin, slug, res, data;
-
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _absoluteUrl2 = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl2.origin;
-                slug = this.props.router.query.slug;
-
-                if (this.state.revealResults || this.state.userDidVote || this.props.active) {
-                  this.setState({
-                    refreshResultsLoading: true,
-                    revealResults: true
-                  });
-                } else {
-                  this.setState({
-                    revealResults: true,
-                    resultsLoading: true
-                  });
-                }
-
-                _context2.prev = 3;
-                _context2.next = 6;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/results/").concat(slug), {
-                  method: 'GET',
-                  headers: {
-                    'X-Origin': 'statmix'
-                  }
-                });
-
-              case 6:
-                res = _context2.sent;
-                _context2.next = 9;
-                return res.json();
-
-              case 9:
-                data = _context2.sent;
-                this.setState({
-                  totalVotes: data.totalVotes,
-                  userDidVote: data.userDidVote,
-                  results: data.results,
-                  resultsLoading: false,
-                  refreshResultsLoading: false
-                });
-                _context2.next = 15;
-                break;
-
-              case 13:
-                _context2.prev = 13;
-                _context2.t0 = _context2["catch"](3);
-
-              case 15:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this, [[3, 13]]);
-      }));
-
-      function loadResults(_x2, _x3) {
-        return _loadResults.apply(this, arguments);
-      }
-
-      return loadResults;
-    }()
-  }, {
-    key: "submitVote",
-    value: function () {
-      var _submitVote = Object(_babel_runtime_corejs2_helpers_esm_asyncToGenerator__WEBPACK_IMPORTED_MODULE_2__["default"])(
-      /*#__PURE__*/
-      _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee3(e, req) {
-        var _absoluteUrl3, origin, slug, res, data, voteHistory, _voteHistory;
-
-        return _babel_runtime_corejs2_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                e.preventDefault();
-
-                if (!(this.state.selectedVote !== null)) {
-                  _context3.next = 19;
-                  break;
-                }
-
-                _absoluteUrl3 = next_absolute_url__WEBPACK_IMPORTED_MODULE_17___default()(req), origin = _absoluteUrl3.origin;
-                slug = this.props.router.query.slug;
-                _context3.prev = 4;
-                _context3.next = 7;
-                return isomorphic_unfetch__WEBPACK_IMPORTED_MODULE_11___default()("".concat(origin, "/api/poll/vote/").concat(slug), {
-                  method: 'POST',
-                  headers: {
-                    'Accept': 'accplication/json',
-                    'Content-Type': 'application/json',
-                    'X-Origin': 'statmix'
-                  },
-                  body: _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()({
-                    selectedVote: this.state.selectedVote
-                  })
-                });
-
-              case 7:
-                res = _context3.sent;
-                _context3.next = 10;
-                return res.json();
-
-              case 10:
-                data = _context3.sent;
-
-                //console.log(data);
-                if (data.message === 'error') {
-                  this.setState({
-                    userDidVoteError: true
-                  }); //console.log('already voted');
-                } else {
-                  if (localStorage.voteHistory) {
-                    voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
-                    voteHistory.unshift({
-                      title: this.props.poll.title,
-                      url: this.props.router.query.slug
-                    });
-                    voteHistory = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(voteHistory);
-                    localStorage.setItem('voteHistory', voteHistory);
-                  } else {
-                    _voteHistory = [];
-
-                    _voteHistory.unshift({
-                      title: this.props.poll.title,
-                      url: this.props.router.query.slug
-                    });
-
-                    _voteHistory = _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(_voteHistory);
-                    localStorage.setItem('voteHistory', _voteHistory);
-                  }
-
-                  this.setState({
-                    totalVotes: data.resultsData.totalVotes,
-                    userDidVote: data.resultsData.userDidVote,
-                    selectedVote: data.resultsData.selectedVote,
-                    userDidVoteError: false
-                  });
-                  this.loadResults(e, req);
-                }
-
-                _context3.next = 17;
-                break;
-
-              case 14:
-                _context3.prev = 14;
-                _context3.t0 = _context3["catch"](4);
-                console.log(_context3.t0);
-
-              case 17:
-                _context3.next = 19;
-                break;
-
-              case 19:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[4, 14]]);
-      }));
-
-      function submitVote(_x4, _x5) {
-        return _submitVote.apply(this, arguments);
-      }
-
-      return submitVote;
-    }()
-  }, {
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_5__["default"])(Home, [{
     key: "render",
     value: function render() {
-      // if not data found for poll
-      if (this.props.errorCode) {
-        return __jsx(_error__WEBPACK_IMPORTED_MODULE_16__["default"], {
-          errorCode: this.props.errorCode
-        });
-      }
-
-      var url = this.props.url;
-      var _this$props$poll = this.props.poll,
-          title = _this$props$poll.title,
-          desc = _this$props$poll.desc,
-          visibility = _this$props$poll.visibility,
-          active = _this$props$poll.active,
-          choices = _this$props$poll.choices,
-          dateCreated = _this$props$poll.dateCreated,
-          visits = _this$props$poll.visits,
-          timelimit = _this$props$poll.timelimit,
-          category = _this$props$poll.category;
-      var _this$state = this.state,
-          totalVotes = _this$state.totalVotes,
-          results = _this$state.results,
-          userDidVote = _this$state.userDidVote,
-          userDidVoteError = _this$state.userDidVoteError,
-          revealResults = _this$state.revealResults,
-          resultsLoading = _this$state.resultsLoading,
-          refreshResultsLoading = _this$state.refreshResultsLoading;
-      return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        pageTitle: "Poll - ".concat(title),
-        pageDesc: desc,
-        visibility: visibility,
+      var _this$props = this.props,
+          polls = _this$props.polls,
+          totalItems = _this$props.totalItems;
+      return __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_8__["default"], {
+        pageTitle: "StatMix",
         path: this.props.router.asPath,
         ads: true
-      }, __jsx("div", {
-        className: "poll-wrapper"
-      }, visibility === 'private' ? __jsx("div", {
-        className: "poll-alert"
-      }, __jsx(react_bootstrap_Alert__WEBPACK_IMPORTED_MODULE_12__["default"], {
-        variant: "danger"
-      }, "This is a ", __jsx("b", null, "private"), " poll. Please consider before sharing the link.")) : null, __jsx("h4", {
-        className: "poll-title"
-      }, title.length > 0 ? title : 'Untitled'), __jsx("hr", null), __jsx("div", {
-        className: "poll-desc mb-1"
-      }, __jsx("h6", null, "Description"), __jsx("div", null, __jsx("p", null, desc.length > 0 ? desc : __jsx("i", null, "No description")), __jsx("hr", null), __jsx("div", {
-        className: "poll-stat"
-      }, "Category: ", category), __jsx("div", {
-        className: "poll-stat"
-      }, visits, " views \u2022 ", dateCreated))), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_23__["default"], null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_24__["default"], null, __jsx("div", {
-        className: "poll-options mb-3"
-      }, __jsx(_components_ShareButton__WEBPACK_IMPORTED_MODULE_21__["default"], {
-        url: url
-      }), __jsx(_components_Report__WEBPACK_IMPORTED_MODULE_22__["ReportButton"], {
-        urlref: this.props.router.query.slug,
-        pollTitle: title
-      })))), __jsx("hr", null), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        userDidVote: userDidVote,
-        userDidVoteError: userDidVoteError,
-        timelimit: timelimit,
-        choices: choices,
-        revealResults: revealResults,
-        updateChoiceSelected: this.updateChoiceSelected,
-        submitVote: this.submitVote,
-        loadResults: this.loadResults
-      }) : null, !active || userDidVote || revealResults ? __jsx(_components_PollResults__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        totalVotes: totalVotes,
-        results: results,
-        choices: choices,
-        timelimit: timelimit,
-        resultsLoading: resultsLoading,
-        refreshResultsLoading: refreshResultsLoading,
-        loadResults: this.loadResults,
-        active: active
-      }) : null));
+      }, __jsx("h4", {
+        className: "page-header"
+      }, "Recent Polls"), __jsx("hr", null), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_19__["default"], null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_20__["default"], {
+        md: 9
+      }, polls.length === 0 ? __jsx("div", {
+        className: "no-polls-card"
+      }, __jsx("h4", null, "No Polls Found")) : __jsx("div", null, polls.map(function (poll, i) {
+        return __jsx(_components_PollCard__WEBPACK_IMPORTED_MODULE_17__["default"], {
+          key: i,
+          poll: poll
+        });
+      }), __jsx(_components_PollPagination__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        totalItems: totalItems
+      }))), __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_20__["default"], null, __jsx(_components_VoteHistory__WEBPACK_IMPORTED_MODULE_21__["default"], null))));
     }
   }]);
 
-  return PollPage;
-}(react__WEBPACK_IMPORTED_MODULE_9___default.a.Component);
+  return Home;
+}(react__WEBPACK_IMPORTED_MODULE_7___default.a.Component);
 
-PollPage.defaultProps = {
-  poll: {
-    totalVotes: 0,
-    results: []
-  },
-  user: {
-    userDidVote: false
-  },
-  revealResults: false,
-  active: true
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_15__["withRouter"])(PollPage));
+/* harmony default export */ __webpack_exports__["default"] = (Object(next_router__WEBPACK_IMPORTED_MODULE_18__["withRouter"])(Home));
 
 /***/ }),
 
-/***/ 4:
-/*!********************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js ***!
-  \********************************************************************************************************************************/
+/***/ 3:
+/*!*****************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cindex.js!./");
 
 
 /***/ }),
@@ -37438,5 +35685,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[4,"static/runtime/webpack.js"]]]);
-//# sourceMappingURL=poll.js.map
+},[[3,"static/runtime/webpack.js"]]]);
+//# sourceMappingURL=index.js.map
