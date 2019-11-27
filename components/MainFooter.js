@@ -43,7 +43,7 @@ const MainFooter = () => (
                 </Link>
               </li>
               <li>
-                <Link href='/feedback' as='feedback'>
+                <Link href='/feedback' as='/feedback'>
                   <a>Feedback & Suggestions</a>
                 </Link>
               </li>
