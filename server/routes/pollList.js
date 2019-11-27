@@ -19,7 +19,7 @@ router.get('/polls', async (req, res) => {
       skip = 0;
     }
     
-    const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ $natural: -1 }).limit(10);
+    const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ dateCreated: -1 }).limit(10);
     for (let i = 0; i < polls.length; i++) {
       pollsArr.push({
         url: polls[i].url,
