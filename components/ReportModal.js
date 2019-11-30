@@ -42,18 +42,17 @@ class ReportModal extends React.Component {
     this.setState({ validated: true });
 
     try {
-      const res = await fetch(`${window.location.origin}/api/report`, {
+      const res = await fetch(`${window.location.origin}/api/v1/report`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'X-Origin': 'statmix'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           reason: this.state.reason,
           category: this.state.category,
           urlRef: this.props.urlref,
-          title: this.props.pollTitle
+          title: this.props.polltitle
         })
       });
 
@@ -74,6 +73,7 @@ class ReportModal extends React.Component {
 
     } catch(err) {
         // display error
+        this.setState({ error: true });
     }
   }
 
@@ -115,7 +115,7 @@ class ReportModal extends React.Component {
               <div className='report-details mb-3'>
                 <h6>Poll Title</h6>
                 <div>
-                  {this.props.pollTitle}
+                  {this.props.polltitle}
                 </div>
               </div>
               <p>Please describe the reason for this report below.</p>

@@ -12,6 +12,7 @@ import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
 import { withRouter } from 'next/router';
 import CategoriesList from '../helpers/CategoriesList';
+import Cookies from 'js-cookie';
 
 const visibilityTooltip = props => (
   <div
@@ -126,14 +127,14 @@ class CreatePoll extends React.Component {
     this.setState({ validated: true });
 
     const { origin } = absoluteUrl(req);
+    const publicAccessToken = Cookies.get('publicAccessToken');
     const pollData = validatePollInput(this.state);
     try {
-      const res = await fetch(`${origin}/api/create-poll`, {
+      const res = await fetch(`${origin}/api/v1/create-poll`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'X-Origin': 'statmix'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(pollData)
       });
@@ -152,6 +153,7 @@ class CreatePoll extends React.Component {
     } catch(err) {
       //console.log(err)
       // display error
+      this.setState({ error: true });
     }
   }
 
@@ -249,7 +251,7 @@ class CreatePoll extends React.Component {
                 required
               />
               <Form.Control.Feedback type="invalid">
-                Please provide a choice or remove it. Duplicate choices are <b>not</b> allowed. Min 3 characters.
+                Please provide a choice or remove it. Duplicate choices are <b>not</b> allowed. Min 1 characters.
               </Form.Control.Feedback>
             </Form.Group>
           ))}

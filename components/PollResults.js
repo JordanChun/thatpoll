@@ -36,6 +36,7 @@ class PollResults extends React.Component {
   render() {
     return (
       <div className='poll-results'>
+        <hr />
         <h5><FontAwesomeIcon icon={faChartBar}/> Results</h5>
         { this.props.resultsLoading ?
           <div className='justify-content-center align-items-center' style={{height: '200px', display: 'flex'}}>

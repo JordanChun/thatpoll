@@ -5,6 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 
 class Feedback extends React.Component {
   constructor(props) {
@@ -35,14 +36,12 @@ class Feedback extends React.Component {
     }
 
     this.setState({ validated: true });
-
     try {
-      const res = await fetch(`${window.location.origin}/api/feedback`, {
+      const res = await fetch(`${window.location.origin}/api/v1/feedback`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'X-Origin': 'statmix'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           text: this.state.text
@@ -55,6 +54,7 @@ class Feedback extends React.Component {
           error: false,
           success: true,
           text: '',
+          validated: false
         });
         // display sucess
       } else {
@@ -65,6 +65,7 @@ class Feedback extends React.Component {
 
     } catch(err) {
         // display error
+        this.setState({ error: true });
     }
 
   }
@@ -87,7 +88,7 @@ class Feedback extends React.Component {
             </b>
           </Alert> : null
         }
-        <p>Got feedback or a suggestion? StatMix is always striving to improve our web application. Please share your thoughts below.</p>
+        <p>Got feedback or a suggestion? ThatPoll is always striving to improve our web application. Please share your thoughts below.</p>
         <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
           <Form.Group controlId='validateText'>
             <Form.Label>

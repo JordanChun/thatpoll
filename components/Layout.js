@@ -23,8 +23,8 @@ const Layout = props => (
       <meta property="og:type" content="Website" />
       <meta property="og:title" content={props.pageTitle} />
       <meta property="og:description" content={props.pageDesc} />
-      <meta property="og:image" content='https://statmix.herokuapp.com/public/img/StatMix_Logo.png' />
-      <meta property="og:url" content={`https://statmix.herokuapp.com${props.path}`} />
+      <meta property="og:image" content='https://thatpoll.herokuapp.com/public/img/ThatPoll_Logo_thumbnail.jpg' />
+      <meta property="og:url" content={`https://thatpoll.herokuapp.com${props.path}`} />
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"></script>
       <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
@@ -42,8 +42,9 @@ const Layout = props => (
 );
 
 Layout.defaultProps = {
+  pageTitle: 'ThatPoll',
+  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or personal use. Share and discuss online with friends and communties.',
   visibility: 'public',
-  pageDesc: 'Create simple and free polls, no sign up required. Instantly create polls for the public or private/personal use. Share online with friends and communties.',
   ads: false
 }
 

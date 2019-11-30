@@ -8,7 +8,7 @@ const MainFooter = () => (
     <div className='footer-wrapper'>
       <Container>
         <div className='mb-3'>
-          <img src='/public/img/StatMix_Logo.png' alt='StatMix Logo' height='32px' />
+          <img src='/public/img/ThatPoll_Logo.png' alt='ThatPoll Logo' height='32px' />
         </div>
         <hr />
         <Row>

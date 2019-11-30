@@ -7,9 +7,8 @@ import { withRouter } from 'next/router';
 class Categories extends React.Component {
   static async getIntialProps({req}) {
     const { origin } = absoluteUrl(req);
-    const res = await fetch(`${origin}/api/categories`, {
-      method: 'GET',
-      headers: { 'X-Origin': 'statmix' }
+    const res = await fetch(`${origin}/api/v1/categories`, {
+      method: 'POST',
     });
     const data = await res.json();
     
@@ -20,7 +19,7 @@ class Categories extends React.Component {
     const { categories } = this.props;
     return (
       <Layout
-        pageTitle='StatMix'
+        pageTitle='ThatPoll - Categories'
         path={this.props.router.asPath}
       >
         <h4 className='page-header'>Categories</h4>

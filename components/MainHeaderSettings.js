@@ -20,7 +20,7 @@ class MainHeaderSettings extends React.Component {
     let theme = Cookies.get('theme');
     if (theme !== 'light' && theme !== 'dark') {
       theme = 'light';
-      Cookies.set('theme', theme);
+      Cookies.set('theme', theme, { expires: 365 });
     } else {
       this.setState({ theme });
     }

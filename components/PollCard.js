@@ -49,7 +49,7 @@ const PollCard = props => (
       </div>
       <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>
         <div>
-          <ReportButton urlref={props.poll.url} pollTitle={props.poll.title} />
+          <ReportButton urlref={props.poll.url} polltitle={props.poll.title} />
         </div>
         <div className='poll-card-actions-compact'>
           <Dropdown alignRight>

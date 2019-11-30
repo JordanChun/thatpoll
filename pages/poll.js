@@ -15,15 +15,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 class PollPage extends React.Component {
-  static async getInitialProps({ query: { slug }, req }) {
-    const { origin } = absoluteUrl(req);
+  static async getInitialProps(ctx) {
+    const { origin } = absoluteUrl(ctx.req);
+    const { slug } = ctx.query;
     let clientIp;
-    if (req && req.headers) {
-      clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    if (ctx.req && ctx.req.headers) {
+      clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.connection.remoteAddress;
     }
-    const res = await fetch(`${origin}/api/poll/${slug}`, {
-      method: 'GET',
-      headers: { 'X-Origin': 'statmix', 'X-IP': clientIp }
+    const res = await fetch(`${origin}/api/v1/poll/${slug}`, {
+      method: 'POST',
+      headers: { 
+        'X-IP': clientIp
+      }
     });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
@@ -42,7 +45,8 @@ class PollPage extends React.Component {
       resultsLoading: false,
       refreshResultsLoading: false,
       selectedVote: null,
-      userDidVoteError: false
+      userDidVoteError: false,
+      submitError: false
     }
 
     this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
@@ -65,9 +69,8 @@ class PollPage extends React.Component {
     }
 
     try {
-      const res = await fetch(`${origin}/api/poll/results/${slug}`, {
-        method: 'GET',
-        headers: { 'X-Origin': 'statmix' }
+      const res = await fetch(`${origin}/api/v1/poll/results/${slug}`, {
+        method: 'POST',
       });
       const data = await res.json();
 
@@ -89,12 +92,11 @@ class PollPage extends React.Component {
       const { origin } = absoluteUrl(req);
       const { slug } = this.props.router.query;
       try {
-        const res = await fetch(`${origin}/api/poll/vote/${slug}`, {
+        const res = await fetch(`${origin}/api/v1/poll/vote/${slug}`, {
           method: 'POST',
           headers: {
             'Accept': 'accplication/json',
             'Content-Type': 'application/json',
-            'X-Origin': 'statmix',
           },
           body: JSON.stringify({selectedVote: this.state.selectedVote})
         });
@@ -128,7 +130,7 @@ class PollPage extends React.Component {
         }
         
       } catch (err) {
-        console.log(err);
+        this.setState({ submitError: true });
       }
     } else {
       // user didnt select vote
@@ -162,7 +164,9 @@ class PollPage extends React.Component {
       userDidVoteError,
       revealResults,
       resultsLoading,
-      refreshResultsLoading
+      refreshResultsLoading,
+      submitError,
+      selectedVote
     } = this.state;
 
     return (
@@ -202,22 +206,23 @@ class PollPage extends React.Component {
             <Col>
               <div className='poll-options mb-3'>
                 <ShareButton url={url} />
-                <ReportButton urlref={this.props.router.query.slug} pollTitle={title} />
+                <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
               </div>
             </Col>
           </Row>
-          <hr />
 
           { active && !userDidVote ?
           <PollChoices
             userDidVote={userDidVote}
             userDidVoteError={userDidVoteError}
+            submitError={submitError}
             timelimit={timelimit}
             choices={choices}
             revealResults={revealResults}
             updateChoiceSelected={this.updateChoiceSelected}
             submitVote={this.submitVote}
             loadResults={this.loadResults}
+            selectedVote={selectedVote}
           /> : null }
 
           { !active || userDidVote || revealResults ?

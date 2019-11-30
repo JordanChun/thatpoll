@@ -7,10 +7,18 @@ import PropTypes from 'prop-types';
 
 const PollChoices = props => (
   <div className='poll-choices'>
+    <hr />
     {props.userDidVoteError ?
       <div className='poll-alert'>
         <Alert variant='warning'>
           You have already voted.
+        </Alert>
+      </div>
+    : null }
+      {props.submitError ?
+      <div className='poll-alert'>
+        <Alert variant='warning'>
+          Error submitting vote. Please try again.
         </Alert>
       </div>
     : null }
@@ -26,6 +34,7 @@ const PollChoices = props => (
     ))}
     <div className='mb-3'>
       <Button
+        disabled={props.selectedVote == null ? true : false}
         size='sm'
         onClick={props.submitVote} 
         variant='light-blue' type="submit" style={{ width: '200px' }}>

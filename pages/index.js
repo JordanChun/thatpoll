@@ -15,14 +15,12 @@ import VoteHistory from '../components/VoteHistory';
 import Router from 'next/router';
 
 class Home extends React.Component {
-  static async getInitialProps({ query: { page }, req }) {
-    const { origin } = absoluteUrl(req);
+  static async getInitialProps(ctx) {
+    const { origin } = absoluteUrl(ctx.req);
+    const { page } = ctx.query;
     const searchPage = page < 1 || page == undefined ? 1 : page;
-    const res = await fetch(`${origin}/api/polls?page=${searchPage}`, {
-      method: 'GET',
-      headers: {
-        'X-Origin': 'statmix',
-      }
+    const res = await fetch(`${origin}/api/v1/polls?page=${searchPage}`, {
+      method: 'POST',
     });
     const data = await res.json();
   
@@ -41,7 +39,7 @@ class Home extends React.Component {
     const { polls, totalItems } = this.props;
     return (
       <Layout
-        pageTitle='StatMix'
+        pageTitle='ThatPoll'
         path={this.props.router.asPath}
         ads={true}
       >
