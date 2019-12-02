@@ -5,6 +5,9 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import { withRouter } from 'next/router';
+import moment from 'moment';
+import 'moment-precise-range-plugin';
+import getMomentTimelimit from '../helpers/momentFunctions';
 
 const defaultStyle = {
   width: 0,
@@ -44,9 +47,6 @@ class PollResults extends React.Component {
           </div>
           :
           <div>
-            <div className='poll-stat mb-3'>
-              <b>{this.props.totalVotes} votes</b> • <b>{this.props.timelimit}</b>
-            </div>
             <div className='mb-3'>
             { this.props.active ?
               <Button variant='grey-blue' size='sm' onClick={this.props.loadResults}>
@@ -104,7 +104,6 @@ PollResults.propTypes = {
   totalVotes: PropTypes.number.isRequired,
   results: PropTypes.array.isRequired,
   choices: PropTypes.array.isRequired,
-  timelimit: PropTypes.string.isRequired,
   resultsLoading: PropTypes.bool.isRequired,
   refreshResultsLoading: PropTypes.bool.isRequired,
   active: PropTypes.bool.isRequired,

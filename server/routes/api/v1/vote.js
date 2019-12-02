@@ -10,6 +10,9 @@ router.post('/poll/vote/:slug', async (req, res) => {
     const poll = await Poll.findOne({ url: req.params.slug });
     if(poll !== null) {
       if(poll.active) {
+        if (req.body.selectedVote > poll.results.length - 1) {
+          return res.status(200).json({ message: 'error' }).end();
+        }
         let vote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
         //console.log(vote)
         if(vote) {
@@ -22,28 +25,28 @@ router.post('/poll/vote/:slug', async (req, res) => {
             ip: req.clientIp,
             vote: req.body.selectedVote
           });
-  
+          
           await vote.save();
           // increment number in array at position selected
           // increment totalvotes
           const pollResult = await Poll.findByIdAndUpdate(poll.id,
             { $inc: {
-               [`results.${req.body.selectedVote}`]: 1,
-               totalVotes: 1
-              }
-            }, {new: true}
+              [`results.${req.body.selectedVote}`]: 1,
+              totalVotes: 1
+            } }, {new: true}
           );
-  
+            
           const resultsData = {
             totalVotes: pollResult.totalVotes,
             results: pollResult.results,
             userDidVote: true,
             selectedVote: vote.selectedVote
           }
-          res.status(200).json({
-            message: 'success',
-            resultsData
-          });
+
+          const io = req.app.get('socketio');
+          io.sockets.in(req.params.slug).emit("updateResults", req.body.selectedVote);
+          
+          return res.status(200).json({ message: 'success' }).end();
         }             
       } else {
         return res.status(200).json({ message: 'error' }).end();
@@ -53,6 +56,7 @@ router.post('/poll/vote/:slug', async (req, res) => {
     }
   } catch (err) {
     console.log(err)
+    return res.status(500).json({ message: 'internal server error'}).end();
   }
   
 });

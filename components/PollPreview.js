@@ -5,21 +5,7 @@ import { faPollH } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
 import CategoryList from '../helpers/CategoriesList';
-
-function getMomentTimelimit(dateCreated, votingPeriod) {
-  const endTime = moment(dateCreated,'YYYY-MM-DD HH:mm:ss').add(votingPeriod, 'hours');
-  const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
-  let timelimit = 'Voting ends in:';
-  const diff = moment.preciseDiff(endTime, currentTime, true);
-  const days = diff.days;
-  const hours = diff.hours;
-  const minutes = diff.minutes;
-  if(days > 0) timelimit += ` ${days} days`;
-  if(hours > 0) timelimit += ` ${hours} hours`;
-  if(minutes > 0) timelimit += ` ${minutes} minutes`;
-
-  return timelimit;
-}
+import getMomentTimelimit from '../helpers/momentFunctions';
 
 const PollPreview = props => (
   <div className='poll-wrapper'>

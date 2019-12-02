@@ -13,6 +13,9 @@ import ShareButton from '../components/ShareButton';
 import { ReportButton } from '../components/Report';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import io from 'socket.io-client';
+import moment from 'moment';
+import getMomentTimelimit from '../helpers/momentFunctions';
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
@@ -46,12 +49,49 @@ class PollPage extends React.Component {
       refreshResultsLoading: false,
       selectedVote: null,
       userDidVoteError: false,
-      submitError: false
+      submitError: false,
+      timelimit: this.props.poll.timelimit
     }
 
     this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
     this.loadResults = this.loadResults.bind(this);
     this.submitVote = this.submitVote.bind(this);
+    this.connectSocket = this.connectSocket.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.active) {
+      this.connectSocket();
+      const updateTimelimit = setInterval(() => {
+        let timelimit = getMomentTimelimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
+        this.setState({
+          timelimit: timelimit
+        })
+      }, 60000)
+    }
+  }
+
+  componentWillUnmount() {
+    this.socket.close();
+    clearInterval(this.updateTimelimit);
+  }
+  
+  connectSocket() {
+    this.socket = io();
+    this.socket.emit('joinPollRoom', this.props.router.query.slug);
+
+    this.socket.on('joined', data => {
+      console.log('PollRoom:', data);
+    });
+
+    this.socket.on('updateResults', selectedVote => {
+      const newResults = this.state.results.slice(0);
+      newResults[selectedVote]++;
+      this.setState({
+        results: newResults,
+        totalVotes: this.state.totalVotes + 1
+      });
+    });
   }
 
   updateChoiceSelected(e) {
@@ -102,11 +142,9 @@ class PollPage extends React.Component {
         });
   
         const data = await res.json();
-        //console.log(data);
-        
+
         if(data.message === 'error') {
           this.setState({ userDidVoteError: true });
-          //console.log('already voted');
         } else {
           if (localStorage.voteHistory) {
             let voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
@@ -120,13 +158,7 @@ class PollPage extends React.Component {
             localStorage.setItem('voteHistory', voteHistory);
           }
 
-          this.setState({
-            totalVotes: data.resultsData.totalVotes,
-            userDidVote: data.resultsData.userDidVote,
-            selectedVote: data.resultsData.selectedVote,
-            userDidVoteError: false
-          });
-          this.loadResults(e, req);
+          this.setState({ userDidVote: true });
         }
         
       } catch (err) {
@@ -152,8 +184,8 @@ class PollPage extends React.Component {
       active,
       choices,
       dateCreated,
+      votingPeriod,
       visits,
-      timelimit,
       category
     } = this.props.poll;
 
@@ -166,7 +198,8 @@ class PollPage extends React.Component {
       resultsLoading,
       refreshResultsLoading,
       submitError,
-      selectedVote
+      selectedVote,
+      timelimit
     } = this.state;
 
     return (
@@ -198,7 +231,7 @@ class PollPage extends React.Component {
                 Category: {category}
               </div>
               <div className='poll-stat'>
-                {visits} views • {dateCreated}
+                {visits} views • {moment(dateCreated).format('ll')}
               </div>
             </div>
           </div>
@@ -210,13 +243,16 @@ class PollPage extends React.Component {
               </div>
             </Col>
           </Row>
-
+          <div className='poll-time mb-3'>
+            <h6>
+              {this.state.totalVotes} votes • <b>{this.state.timelimit}</b>
+            </h6>
+          </div>
           { active && !userDidVote ?
           <PollChoices
             userDidVote={userDidVote}
             userDidVoteError={userDidVoteError}
             submitError={submitError}
-            timelimit={timelimit}
             choices={choices}
             revealResults={revealResults}
             updateChoiceSelected={this.updateChoiceSelected}
@@ -230,7 +266,6 @@ class PollPage extends React.Component {
               totalVotes={totalVotes}
               results={results}
               choices={choices}
-              timelimit={timelimit}
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}

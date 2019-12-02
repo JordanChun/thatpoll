@@ -27,7 +27,8 @@ router.post('/polls', async (req, res) => {
         desc: polls[i].desc,
         totalVotes: polls[i].totalVotes,
         votingPeriod: polls[i].votingPeriod,
-        dateCreated: moment(polls[i].dateCreated).startOf('minute').fromNow()
+        dateCreated: moment(polls[i].dateCreated).startOf('minute').fromNow(),
+        active: polls[i].active
       });
     }
     res.status(200).json({

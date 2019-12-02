@@ -6,8 +6,8 @@ const dev = process.env.NODE_ENV !== 'production';
 
 const config = require('./server.config');
 
-const app = next({ dev });
-const handle = app.getRequestHandler();
+const nextApp = next({ dev });
+const handle = nextApp.getRequestHandler();
 const helmet = require('helmet');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -20,17 +20,15 @@ const mongoose = require('mongoose');
 
 const pageRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api/v1');
+
+// MONGO ATLAS
 // mongoose.connect(`mongodb+srv://UjxjklDyVCUXn5uz:NivBIzxj7MLj3VGT@statmix-juwed.mongodb.net/StatMix?retryWrites=true&w=majority`,
 // { useNewUrlParser: true,
 //   useUnifiedTopology: true
 // });
 
+
 // mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds229088.mlab.com:29088/statmix`,
-// { 
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-// mongoose.connect(`mongodb://NGWwDkXlcv:f089LhG0Sk@ds153715.mlab.com:53715/thatpoll`,
 // { 
 //   useNewUrlParser: true,
 //   useUnifiedTopology: true
@@ -54,18 +52,37 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-app.prepare().then(() => {
-  const server = express();
-  server.use(helmet());
-  server.use(cors({
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+// Connect to poll socket
+require('./socket/poll')(io);
+
+// io.on('connection', socket => {
+//   socket.on('joinPollRoom', pollRoom => {
+//     socket.join(pollRoom, () => {
+//       io.to(pollRoom).emit('joined', pollRoom);
+
+//     });
+//   });
+// });
+
+
+nextApp.prepare().then(() => {
+  //const server = express();
+  app.set('socketio', io);
+  app.use(helmet());
+  app.use(cors({
     origin: 'http://localhost.com:3000',
     allowedHeaders: ['Content-Type', 'Accept', 'X-Ip']
   }));
   //server.use(ipfilter(ips, { mode: 'allow' }));
-  server.use(bodyParser.urlencoded({ extended: false }));
-  server.use(bodyParser.json());
-  server.use(cookieParser());
-  server.use(requestIp.mw());
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  app.use(cookieParser());
+  app.use(requestIp.mw());
+
   /*
   server.use(session({
     secret: 'super secret',
@@ -79,11 +96,11 @@ app.prepare().then(() => {
   }));
   */
  
-  // routes
-  server.use('/public', express.static('public'));
-  server.use('/api/v1', apiRoutes);
-  server.use(pageRoutes(app, handle));
-
+ // routes
+ app.use('/public', express.static('public'));
+ app.use('/api/v1', apiRoutes);
+ app.use(pageRoutes(nextApp, handle));
+ 
   // remove '0.0.0.0' on production
   server.listen(port, '0.0.0.0', err => {
     if (err) throw err

@@ -2,18 +2,23 @@
 
 CLIENT
 ----------------------------------------------------------
-add choice input option
+[DONE] rebrand to thatpoll.com
+[DONE] update timelimit every minute
+[DONE] add socketio to poll voting and results
+[DONE] added form validation to all pages
+[DONE] report modal
+[DONE] add choice input option
 add content to index page
-add unique views to polls
+[DONE] add unique views to polls
 polls page filtered views. (most votes. most views, most recent)
 featured poll (most votes or views to front page(index))
-improve create poll validation UI
+[DONE] improve create poll validation UI
 [DONE] share and report features
 [REDO] categories for create poll page
 category page
 implement prop types
 react redux implement
-[DONE]light/dark theme toggle
+[DONE] light/dark theme toggle
 [DONE] voting hours preset button on create poll page
 [DONE] handle if user already voted
 [DONE] handle no vote submit
@@ -34,12 +39,13 @@ react redux implement
 
 SERVER
 ----------------------------------------------------------
+add last visted 5 mins for view before added another view
+[DONE] add socketio to poll voting and results
 get user country (node-where/node-geoip)
 [DONE] post report route
 [DONE] report db model
 page sorting methods
 [DONE] better create poll validation
-userDidVote not sending true on page refresh
 Google Analytics for page views
 limit poll creations to 5 every 3 hours?
 category page routing
@@ -62,5 +68,7 @@ express rate limiter
 
 BUGS
 -----------------------------------------------------------------------------------------
+[DONE] userDidVote not sending true on page refresh - send ip through Header
+
 [RESOLVED] links taking more than 1 click to load? cause recompiling time and loading?
 Normal loading time on production mode.

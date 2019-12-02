@@ -4,6 +4,11 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import PropTypes from 'prop-types';
+import moment from 'moment';
+import 'moment-precise-range-plugin';
+import getMomentTimelimit from '../helpers/momentFunctions';
+
+
 
 const PollChoices = props => (
   <div className='poll-choices'>
@@ -23,9 +28,6 @@ const PollChoices = props => (
       </div>
     : null }
     <h5><FontAwesomeIcon icon={faPollH} /> Choices</h5>
-    <div className='poll-stat mb-3'>
-      <b>{props.timelimit}</b>
-    </div>
     {props.choices.map((choice, i) => (
       <InputGroup className="mb-3" key={i}>
         <input className='choice-control' type='radio' name='poll-choice' value={i} onChange={props.updateChoiceSelected} />
@@ -53,7 +55,6 @@ const PollChoices = props => (
 PollChoices.propTypes = {
   userDidVote: PropTypes.bool.isRequired,
   userDidVoteError: PropTypes.bool.isRequired,
-  timelimit: PropTypes.string.isRequired,
   choices: PropTypes.array.isRequired,
   revealResults: PropTypes.bool.isRequired,
   updateChoiceSelected: PropTypes.func.isRequired,

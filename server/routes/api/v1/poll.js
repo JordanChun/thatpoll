@@ -50,9 +50,10 @@ router.post('/poll/:slug', async (req, res) => {
           const days = diff.days;
           const hours = diff.hours;
           const minutes = diff.minutes;
-          if(days > 0) timelimit += ` ${days} days`;
-          if(hours > 0) timelimit += ` ${hours} hours`;
-          if(minutes > 0) timelimit += ` ${minutes} minutes`;
+          if (days > 0) timelimit += ` ${days} days`;
+          if (hours > 0) timelimit += ` ${hours} hours`;
+          if (minutes > 0) timelimit += ` ${minutes} minutes`;
+          if (timelimit === 'Voting ends in:') timelimit += ' less than 1 minute';
         } else {
           timelimit = 'Voting has ended'
           poll = await Poll.findOneAndUpdate({ url: req.params.slug }, { active: false }, {new: true});
@@ -67,7 +68,7 @@ router.post('/poll/:slug', async (req, res) => {
         visibility: poll.visibility,
         choices: poll.choices,
         votingPeriod: poll.votingPeriod,
-        dateCreated: moment(poll.dateCreated).format('ll'),
+        dateCreated: poll.dateCreated,
         totalVotes: poll.totalVotes,
         timelimit: timelimit,
         active: poll.active,

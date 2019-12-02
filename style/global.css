@@ -483,6 +483,14 @@ input[type='number'],
   margin: 0.5rem 2rem;
 }
 
+.poll-time {
+
+}
+
+.poll-time h6 {
+  margin-bottom: 0;
+}
+
 .poll-timer {
   text-align: center;
 }
