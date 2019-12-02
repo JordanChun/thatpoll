@@ -1,0 +1,74 @@
+###############################################
+
+CLIENT
+----------------------------------------------------------
+[DONE] rebrand to thatpoll.com
+[DONE] update timelimit every minute
+[DONE] add socketio to poll voting and results
+[DONE] added form validation to all pages
+[DONE] report modal
+[DONE] add choice input option
+add content to index page
+[DONE] add unique views to polls
+polls page filtered views. (most votes. most views, most recent)
+featured poll (most votes or views to front page(index))
+[DONE] improve create poll validation UI
+[DONE] share and report features
+[REDO] categories for create poll page
+category page
+implement prop types
+react redux implement
+[DONE] light/dark theme toggle
+[DONE] voting hours preset button on create poll page
+[DONE] handle if user already voted
+[DONE] handle no vote submit
+[DONE] create poll validation
+[DONE] side bar for visit history with localstorage
+[DONE] voting functions
+[DONE] split components/Poll.js -> Choices, Results
+[DONE] create poll redirect to new created poll
+[DONE] moment/date tests - poll/pollpreview
+[DONE] split poll component? (Poll Info, Poll Choices, Poll Results) less renders
+[DONE] actual polls pages
+[DONE] Pagination for pages
+[DONE] Header added to prevent direct api route access
+[DONE] Hide refresh results of poll not active
+[DONE] poll results transitions
+[DONE] custom error pages
+
+
+SERVER
+----------------------------------------------------------
+add last visted 5 mins for view before added another view
+[DONE] add socketio to poll voting and results
+get user country (node-where/node-geoip)
+[DONE] post report route
+[DONE] report db model
+page sorting methods
+[DONE] better create poll validation
+Google Analytics for page views
+limit poll creations to 5 every 3 hours?
+category page routing
+[DONE] category added to poll schema
+[DONE] create poll validation
+[DONE] Header added to prevent direct api route access
+[DONE] poll doc expire
+[DONE] handle no vote submit
+[FIX] add unique views/ unique view middleware
+[DONE] date field to dateCreated
+[DONE] vote schema
+[DONE] results mongoose schema
+[DONE] views mongoose schema
+[DONE] voting api routes
+[DONE] page view query routing
+
+
+use express session?
+express rate limiter
+
+BUGS
+-----------------------------------------------------------------------------------------
+[DONE] userDidVote not sending true on page refresh - send ip through Header
+
+[RESOLVED] links taking more than 1 click to load? cause recompiling time and loading?
+Normal loading time on production mode.
