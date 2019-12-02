@@ -40,28 +40,28 @@ class PollResults extends React.Component {
     return (
       <div className='poll-results'>
         <hr />
-        <h5><FontAwesomeIcon icon={faChartBar}/> Results</h5>
+        <h5>
+          <FontAwesomeIcon icon={faChartBar}/> Results{' '}
+          { this.props.active ?
+            <Button variant='grey-blue' size='sm' onClick={this.props.loadResults} style={{ marginLeft: '0.5rem' }}>
+              { this.props.refreshResultsLoading ? 
+                <Spinner
+                as="span"
+                animation="grow"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+                /> : null
+              }
+              Refresh Results
+            </Button> : null }
+        </h5>
         { this.props.resultsLoading ?
           <div className='justify-content-center align-items-center' style={{height: '200px', display: 'flex'}}>
             <Spinner animation="grow" variant="light" />
           </div>
           :
           <div>
-            <div className='mb-3'>
-            { this.props.active ?
-              <Button variant='grey-blue' size='sm' onClick={this.props.loadResults}>
-                { this.props.refreshResultsLoading ? 
-                  <Spinner
-                  as="span"
-                  animation="grow"
-                  size="sm"
-                  role="status"
-                  aria-hidden="true"
-                  /> : null
-                }
-                Refresh Results
-              </Button> : null }
-            </div>
             <Transition in={this.state.resultsBar} timeout={300} appear>
               {state => (
                 <div className='results-container'>

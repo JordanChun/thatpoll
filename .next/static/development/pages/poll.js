@@ -637,7 +637,20 @@ function (_React$Component) {
         className: "poll-results"
       }, __jsx("hr", null), __jsx("h5", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_13__["FontAwesomeIcon"], {
         icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_14__["faChartBar"]
-      }), " Results"), this.props.resultsLoading ? __jsx("div", {
+      }), " Results", ' ', this.props.active ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__["default"], {
+        variant: "grey-blue",
+        size: "sm",
+        onClick: this.props.loadResults,
+        style: {
+          marginLeft: '0.5rem'
+        }
+      }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        as: "span",
+        animation: "grow",
+        size: "sm",
+        role: "status",
+        "aria-hidden": "true"
+      }) : null, "Refresh Results") : null), this.props.resultsLoading ? __jsx("div", {
         className: "justify-content-center align-items-center",
         style: {
           height: '200px',
@@ -646,19 +659,7 @@ function (_React$Component) {
       }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
         animation: "grow",
         variant: "light"
-      })) : __jsx("div", null, __jsx("div", {
-        className: "mb-3"
-      }, this.props.active ? __jsx(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_16__["default"], {
-        variant: "grey-blue",
-        size: "sm",
-        onClick: this.props.loadResults
-      }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        as: "span",
-        animation: "grow",
-        size: "sm",
-        role: "status",
-        "aria-hidden": "true"
-      }) : null, "Refresh Results") : null), __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_18__["Transition"], {
+      })) : __jsx("div", null, __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_18__["Transition"], {
         "in": this.state.resultsBar,
         timeout: 300,
         appear: true
