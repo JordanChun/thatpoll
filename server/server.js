@@ -74,7 +74,7 @@ nextApp.prepare().then(() => {
   app.set('socketio', io);
   app.use(helmet());
   app.use(cors({
-    origin: 'http://localhost.com:3000',
+    origin: ['http://localhost.com:3000, thatpoll.herokuapp.com'],
     allowedHeaders: ['Content-Type', 'Accept', 'X-Ip']
   }));
   //server.use(ipfilter(ips, { mode: 'allow' }));
