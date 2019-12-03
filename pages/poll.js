@@ -16,6 +16,9 @@ import Col from 'react-bootstrap/Col';
 import io from 'socket.io-client';
 import moment from 'moment';
 import getMomentTimelimit from '../helpers/momentFunctions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
@@ -60,7 +63,7 @@ class PollPage extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.active) {
+    if (this.props.poll.active) {
       this.connectSocket();
       const updateTimelimit = setInterval(() => {
         let timelimit = getMomentTimelimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
@@ -72,7 +75,9 @@ class PollPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this.socket.close();
+    if (this.socket) {
+      this.socket.close();
+    }
     clearInterval(this.updateTimelimit);
   }
   
@@ -184,9 +189,8 @@ class PollPage extends React.Component {
       active,
       choices,
       dateCreated,
-      votingPeriod,
       visits,
-      category
+      category,
     } = this.props.poll;
 
     const {
@@ -231,7 +235,7 @@ class PollPage extends React.Component {
                 Category: {category}
               </div>
               <div className='poll-stat'>
-                {visits} views • {moment(dateCreated).format('ll')}
+                {visits} views • {moment.utc(dateCreated).local().format('ll')}
               </div>
             </div>
           </div>
@@ -243,9 +247,9 @@ class PollPage extends React.Component {
               </div>
             </Col>
           </Row>
-          <div className='poll-time mb-3'>
+          <div className='poll-time'>
             <h6>
-              {this.state.totalVotes} votes • <b>{this.state.timelimit}</b>
+              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes}</b> votes • {active && timelimit != 'Voting has ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
             </h6>
           </div>
           { active && !userDidVote ?

@@ -1,7 +1,10 @@
 import InputGroup from 'react-bootstrap/InputGroup';
 import Alert from 'react-bootstrap/Alert';
+import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPollH } from '@fortawesome/free-solid-svg-icons';
+import { faPollH, faInfoCircle, faShare, faFlag } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
 import CategoryList from '../helpers/CategoriesList';
@@ -33,12 +36,26 @@ const PollPreview = props => (
         </div>
       </div>
     </div>
+    <Row>
+      <Col>
+        <div className='poll-options mb-3'>
+          <Button variant="simple" size='sm' className='share-btn'>
+            <FontAwesomeIcon icon={faShare} /> Share
+          </Button>
+          <Button size='sm' variant='simple'>
+            <FontAwesomeIcon icon={faFlag}/> Report
+          </Button>
+        </div>
+      </Col>
+    </Row>
+    <div className='poll-time'>
+      <h6>
+        <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>0</b> votes • {props.timelimit != 'Voting has ended' ? 'Voting ends in:' : null } <b>{props.timelimit}</b>
+      </h6>
+    </div>
     <hr />
     <div className='poll-choices'>
       <h6><FontAwesomeIcon icon={faPollH} /> Poll Choices</h6>
-      <div className='poll-stat mb-3'>
-        0 votes • <b>{getMomentTimelimit(props.dateCreated, props.votingPeriod)}</b>
-      </div>
       {props.choices.map((choiceObj, i) => (
         <InputGroup className="mb-3" key={i}>
           <input className='choice-control' type='radio' name='poll-choice' value='0' />

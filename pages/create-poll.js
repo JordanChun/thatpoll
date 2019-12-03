@@ -13,6 +13,7 @@ import absoluteUrl from 'next-absolute-url';
 import { withRouter } from 'next/router';
 import CategoriesList from '../helpers/CategoriesList';
 import Cookies from 'js-cookie';
+import getMomentTimelimit from '../helpers/momentFunctions';
 
 const visibilityTooltip = props => (
   <div
@@ -84,7 +85,7 @@ class CreatePoll extends React.Component {
       category: 0,
       error: false,
       validated: false,
-      timelimit: 'Voting ends in: 6 hours'
+      timelimit: ' 6 hours'
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
@@ -158,11 +159,17 @@ class CreatePoll extends React.Component {
   }
 
   updateTimePeriod(e) {
-   this.setState({ [e.target.name]: e.target.value });
+    const timelimit = getMomentTimelimit(new Date(), e.target.value);
+    this.setState({
+      [e.target.name]: e.target.value,
+      timelimit: timelimit
+    });
   }
 
   setHourPreset(e) {
-    this.setState({ votingPeriod: e.target.dataset['hours'] });
+    const timelimit = getMomentTimelimit(new Date(), e.target.dataset['hours']);
+    this.setState({ votingPeriod: e.target.dataset['hours'], timelimit: timelimit });
+    
   }
 
   addChoice() {
@@ -296,7 +303,7 @@ class CreatePoll extends React.Component {
                 type='radio' label='Private' name='visibility' value='private'
               />
             </Form.Group>
-            <Form.Group as={Col}>
+            <Form.Group as={Col} controlId='validateVotingPeriod'>
               <Form.Label>
                 Voting Period (hours){" "}
                 <OverlayTrigger
@@ -313,12 +320,16 @@ class CreatePoll extends React.Component {
                 style={{ maxWidth: '200px' }}
                 type='number' min='6' max='168' name='votingPeriod'
                 className="mb-1"
+                required
               />
               <ButtonGroup size="sm">
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='24'>1 day</Button>
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='72'>3 days</Button>
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='168'>7 days</Button>
               </ButtonGroup>
+              <Form.Control.Feedback type="invalid">
+                Voting period must be a minimum of 6 hours and a maximum of 168 hours.
+              </Form.Control.Feedback>
               <Form.Text>
                 6h - 168h (7 days) 
               </Form.Text>

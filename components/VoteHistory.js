@@ -67,7 +67,7 @@ function redirectToPoll(url) {
       <Card className='vote-history'>
         <Card.Header>
           <span>Vote History</span>
-          <span onClick={() => setHistory(clearHistory())}>
+          <span onClick={() => setHistory(clearHistory())} title='Clear History'>
             <FontAwesomeIcon icon={faTrashAlt} />
           </span>
           {/*

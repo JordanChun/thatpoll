@@ -4,7 +4,7 @@ import 'moment-precise-range-plugin';
 function getMomentTimelimit(dateCreated, votingPeriod) {
   const endTime = moment.utc(dateCreated).local().add(votingPeriod, 'hours');
   const currentTime = moment.utc(new Date()).local();
-  let timelimit = 'Voting ends in:';
+  let timelimit = '';
 
   if (endTime > currentTime) {
     const diff = moment.preciseDiff(endTime, currentTime, true);
@@ -14,7 +14,7 @@ function getMomentTimelimit(dateCreated, votingPeriod) {
     if(days > 0) timelimit += ` ${days} days`;
     if(hours > 0) timelimit += ` ${hours} hours`;
     if(minutes > 0) timelimit += ` ${minutes} minutes`;
-    if(timelimit === 'Voting ends in:') timelimit = ' less than 1 minute';
+    if(timelimit === '') timelimit = ' less than 1 minute';
   } else {
     timelimit = 'Voting has ended';
   }

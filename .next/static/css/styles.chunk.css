@@ -163,6 +163,9 @@ input[type='number'],
   border: var(--primaryBorder)
 }
 
+.spinner-border {
+  color: #598ecc;
+}
 .dropdown-menu {
   background-color: var(--primaryContainerColor);
 }
@@ -484,7 +487,10 @@ input[type='number'],
 }
 
 .poll-time {
-
+  display: inline-block;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--primaryBackground);
 }
 
 .poll-time h6 {

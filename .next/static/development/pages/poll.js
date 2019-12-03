@@ -642,22 +642,21 @@ function (_React$Component) {
         size: "sm",
         onClick: this.props.loadResults,
         style: {
-          marginLeft: '0.5rem'
-        }
-      }, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        as: "span",
-        animation: "grow",
+          margin: '0 0.5rem'
+        },
+        disabled: this.props.refreshResultsLoading
+      }, "Refresh Results") : null, this.props.refreshResultsLoading ? __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        animation: "border",
         size: "sm",
-        role: "status",
         "aria-hidden": "true"
-      }) : null, "Refresh Results") : null), this.props.resultsLoading ? __jsx("div", {
+      }) : null), this.props.resultsLoading ? __jsx("div", {
         className: "justify-content-center align-items-center",
         style: {
           height: '200px',
           display: 'flex'
         }
       }, __jsx(react_bootstrap_Spinner__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        animation: "grow",
+        animation: "border",
         variant: "light"
       })) : __jsx("div", null, __jsx(react_transition_group__WEBPACK_IMPORTED_MODULE_18__["Transition"], {
         "in": this.state.resultsBar,
@@ -1137,7 +1136,7 @@ __webpack_require__.r(__webpack_exports__);
 function getMomentTimelimit(dateCreated, votingPeriod) {
   var endTime = moment__WEBPACK_IMPORTED_MODULE_0___default.a.utc(dateCreated).local().add(votingPeriod, 'hours');
   var currentTime = moment__WEBPACK_IMPORTED_MODULE_0___default.a.utc(new Date()).local();
-  var timelimit = 'Voting ends in:';
+  var timelimit = '';
 
   if (endTime > currentTime) {
     var diff = moment__WEBPACK_IMPORTED_MODULE_0___default.a.preciseDiff(endTime, currentTime, true);
@@ -1147,7 +1146,7 @@ function getMomentTimelimit(dateCreated, votingPeriod) {
     if (days > 0) timelimit += " ".concat(days, " days");
     if (hours > 0) timelimit += " ".concat(hours, " hours");
     if (minutes > 0) timelimit += " ".concat(minutes, " minutes");
-    if (timelimit === 'Voting ends in:') timelimit = ' less than 1 minute';
+    if (timelimit === '') timelimit = ' less than 1 minute';
   } else {
     timelimit = 'Voting has ended';
   }
@@ -22299,7 +22298,7 @@ if (typeof WebSocket !== 'undefined') {
 
 if (typeof window === 'undefined') {
   try {
-    NodeWebSocket = __webpack_require__(/*! ws */ 4);
+    NodeWebSocket = __webpack_require__(/*! ws */ 6);
   } catch (e) { }
 }
 
@@ -42666,10 +42665,10 @@ exports.__esModule=true;exports.default=void 0;var _default=window.fetch;exports
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js!./":
-/*!****************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js ***!
-  \****************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cthatpoll%5Cpages%5Cpoll.js!./":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cthatpoll%5Cpages%5Cpoll.js ***!
+  \*****************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -64797,6 +64796,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_26___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_26__);
 /* harmony import */ var _helpers_momentFunctions__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ../helpers/momentFunctions */ "./helpers/momentFunctions.js");
+/* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 
 
 
@@ -64808,6 +64809,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
+
+
 
 
 
@@ -64921,7 +64924,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      if (this.props.active) {
+      if (this.props.poll.active) {
         this.connectSocket();
         var updateTimelimit = setInterval(function () {
           var timelimit = Object(_helpers_momentFunctions__WEBPACK_IMPORTED_MODULE_27__["default"])(_this2.props.poll.dateCreated, _this2.props.poll.votingPeriod);
@@ -64935,7 +64938,10 @@ function (_React$Component) {
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      this.socket.close();
+      if (this.socket) {
+        this.socket.close();
+      }
+
       clearInterval(this.updateTimelimit);
     }
   }, {
@@ -65152,7 +65158,6 @@ function (_React$Component) {
           active = _this$props$poll.active,
           choices = _this$props$poll.choices,
           dateCreated = _this$props$poll.dateCreated,
-          votingPeriod = _this$props$poll.votingPeriod,
           visits = _this$props$poll.visits,
           category = _this$props$poll.category;
       var _this$state = this.state,
@@ -65186,7 +65191,7 @@ function (_React$Component) {
         className: "poll-stat"
       }, "Category: ", category), __jsx("div", {
         className: "poll-stat"
-      }, visits, " views \u2022 ", moment__WEBPACK_IMPORTED_MODULE_26___default()(dateCreated).format('ll')))), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_23__["default"], null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_24__["default"], null, __jsx("div", {
+      }, visits, " views \u2022 ", moment__WEBPACK_IMPORTED_MODULE_26___default.a.utc(dateCreated).local().format('ll')))), __jsx(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_23__["default"], null, __jsx(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_24__["default"], null, __jsx("div", {
         className: "poll-options mb-3"
       }, __jsx(_components_ShareButton__WEBPACK_IMPORTED_MODULE_21__["default"], {
         url: url
@@ -65194,8 +65199,13 @@ function (_React$Component) {
         urlref: this.props.router.query.slug,
         polltitle: title
       })))), __jsx("div", {
-        className: "poll-time mb-3"
-      }, __jsx("h6", null, this.state.totalVotes, " votes \u2022 ", __jsx("b", null, this.state.timelimit))), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        className: "poll-time"
+      }, __jsx("h6", null, __jsx(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_28__["FontAwesomeIcon"], {
+        icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_29__["faInfoCircle"],
+        style: {
+          marginRight: '0.25rem'
+        }
+      }), " ", __jsx("b", null, totalVotes), " votes \u2022 ", active && timelimit != 'Voting has ended' ? 'Voting ends in:' : null, " ", __jsx("b", null, timelimit))), active && !userDidVote ? __jsx(_components_PollChoices__WEBPACK_IMPORTED_MODULE_13__["default"], {
         userDidVote: userDidVote,
         userDidVoteError: userDidVoteError,
         submitError: submitError,
@@ -65235,19 +65245,19 @@ PollPage.defaultProps = {
 
 /***/ }),
 
-/***/ 3:
-/*!********************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js ***!
-  \********************************************************************************************************************************/
+/***/ 5:
+/*!*********************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cthatpoll%5Cpages%5Cpoll.js ***!
+  \*********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cstatmix%5Cpages%5Cpoll.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cthatpoll%5Cpages%5Cpoll.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2Fpoll&absolutePagePath=E%3A%5CUsers%5CJordan%5CDesktop%5Cthatpoll%5Cpages%5Cpoll.js!./");
 
 
 /***/ }),
 
-/***/ 4:
+/***/ 6:
 /*!********************!*\
   !*** ws (ignored) ***!
   \********************/
@@ -65269,5 +65279,5 @@ module.exports = dll_e9ad7d891b372a4221cf;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[5,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=poll.js.map

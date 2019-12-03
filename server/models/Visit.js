@@ -9,6 +9,11 @@ const visitSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  lastVisited: {
+    type: Date,
+    required: true,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model('Visit', visitSchema);
