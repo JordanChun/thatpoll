@@ -29,7 +29,7 @@ class MainHeaderSettings extends React.Component {
   toggleTheme() {
     let theme = Cookies.get('theme');
     theme = theme === 'light' ? 'dark' : 'light';
-    Cookies.set('theme', theme);
+    Cookies.set('theme', theme, { expires: 365 });
     document.documentElement.setAttribute('data-theme', theme)
     this.setState({ theme });
   }
