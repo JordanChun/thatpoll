@@ -52,6 +52,18 @@ db.once('open', function() {
   console.log('db connected');
 });
 
+var whitelist = ['http://localhost.com:3000', 'https://thatpoll.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip']
+}
+
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -59,24 +71,9 @@ const io = require('socket.io')(server);
 // Connect to poll socket
 require('./socket/poll')(io);
 
-// io.on('connection', socket => {
-//   socket.on('joinPollRoom', pollRoom => {
-//     socket.join(pollRoom, () => {
-//       io.to(pollRoom).emit('joined', pollRoom);
-
-//     });
-//   });
-// });
-
-
-nextApp.prepare().then(() => {
-  //const server = express();
   app.set('socketio', io);
   app.use(helmet());
-  app.use(cors({
-    origin: ['http://localhost.com:3000', 'thatpoll.herokuapp.com'],
-    allowedHeaders: ['Content-Type', 'Accept', 'X-Ip']
-  }));
+  app.use(cors(corsOptions));
   //server.use(ipfilter(ips, { mode: 'allow' }));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
