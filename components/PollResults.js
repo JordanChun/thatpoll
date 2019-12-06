@@ -81,7 +81,7 @@ class PollResults extends React.Component {
                           >
                           {result !== 0 ?
                             <div>
-                              <div>{result} votes</div>
+                              <div>{result.toLocaleString()} votes</div>
                               <div>{Math.round((result/this.props.totalVotes) * 100)}%</div>
                             </div>
                           : 

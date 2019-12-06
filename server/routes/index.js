@@ -6,7 +6,10 @@ const visitor = ua('UA-150975737-1');
 
 function pageRoutes(nextApp, handle) {
   app.get('/', (req, res) => {
-    return nextApp.render(req, res, '/', { page: req.query.page });
+    return nextApp.render(req, res, '/', {
+      page: req.query.page,
+      state: req.query.state
+    });
   });
   
   app.get('/create-poll', (req, res) => {
@@ -36,6 +39,5 @@ function pageRoutes(nextApp, handle) {
 
   return app;
 }
-
 
 module.exports = pageRoutes;

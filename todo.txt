@@ -2,6 +2,8 @@
 
 CLIENT
 ----------------------------------------------------------
+pie chart option
+[DONE] voting state filter
 [DONE] rebrand to thatpoll.com
 [DONE] update timelimit every minute
 [DONE] add socketio to poll voting and results

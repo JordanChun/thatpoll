@@ -13,13 +13,28 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import VoteHistory from '../components/VoteHistory';
 import Router from 'next/router';
+import PollListFilter from '../components/PollListFilter';
 
 class Home extends React.Component {
   static async getInitialProps(ctx) {
     const { origin } = absoluteUrl(ctx.req);
-    const { page } = ctx.query;
-    const searchPage = page < 1 || page == undefined ? 1 : page;
-    const res = await fetch(`${origin}/api/v1/polls?page=${searchPage}`, {
+    const { page, state } = ctx.query;
+    let queryString = '';
+    for (let i = 0; i < Object.keys(ctx.query).length; i++) {
+      let name = Object.keys(ctx.query)[i];
+      let value = ctx.query[Object.keys(ctx.query)[i]];
+
+      if (value !== undefined && value !== '') {
+        if (i > 0) {
+          queryString += '&';
+        }
+        queryString += `${name}=${value}`;
+      }
+
+    }
+    // const searchPage = page < 1 || page == undefined ? 1 : page;
+
+    const res = await fetch(`${origin}/api/v1/polls?${queryString}`, {
       method: 'POST',
     });
     const data = await res.json();
@@ -33,6 +48,17 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
+    this.updateFilter = this.updateFilter.bind(this);
+  }
+
+  updateFilter(eventKey) {
+    const { state } = this.props.router.query;
+    let href = '/?page=1';
+    if (state !== eventKey) {
+      href += `&state=${eventKey}`
+    }
+    const as = href;
+    Router.push(href, as);
   }
 
   render() {
@@ -44,25 +70,15 @@ class Home extends React.Component {
         ads={true}
       >
         <h4 className='page-header'>Recent Polls</h4>
+        <Row>
+          <Col md={9}>
+            <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} />
+          </Col>
+        </Row>
         <hr />
         
         <Row>
           <Col md={9}>
-{/*            <div className='filter-container'>
-              <div style={{ lineHeight: 1.8 }}>
-                <FontAwesomeIcon icon={faFilter} /> Filter
-              </div>
-              <Dropdown alignRight>
-                <Dropdown.Toggle variant='simple' id="dropdown-phase" size='sm'>
-                  Any Voting Phase
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item eventKey="1">Active</Dropdown.Item>
-                  <Dropdown.Item eventKey="2">Ended</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
-    </div>*/}
             { polls.length === 0 ?
               <div className='no-polls-card'>
                 <h4>No Polls Found</h4>

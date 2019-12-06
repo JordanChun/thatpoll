@@ -1,4 +1,5 @@
-import cookies from 'next-cookies'
+import cookies from 'next-cookies';
+import Cookies from 'js-cookie';
 
 // _document is only rendered on the server side and not on the client side
 // Event handlers like onClick can't be added to this file
@@ -11,11 +12,13 @@ class MyDocument extends Document {
     const initialProps = await Document.getInitialProps(ctx);
 
     if (ctx.req && ctx.req.headers) {
-      let { theme } = cookies(ctx)
+      let { theme } = cookies(ctx);
 
       if (theme !== 'light' && theme !== 'dark') {
-        theme = 'light'
-      };
+        Cookies.set('theme', 'light', { expires: 365 });
+        theme = 'light';
+      }
+
       initialProps.theme = theme;
     }
 

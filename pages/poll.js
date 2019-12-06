@@ -84,11 +84,6 @@ class PollPage extends React.Component {
   connectSocket() {
     this.socket = io();
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
-
-    this.socket.on('joined', data => {
-      console.log('PollRoom:', data);
-    });
-
     this.socket.on('updateResults', selectedVote => {
       const newResults = this.state.results.slice(0);
       newResults[selectedVote]++;
@@ -235,7 +230,7 @@ class PollPage extends React.Component {
                 Category: {category}
               </div>
               <div className='poll-stat'>
-                {visits} views • {moment.utc(dateCreated).local().format('ll')}
+                {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
               </div>
             </div>
           </div>
@@ -249,7 +244,7 @@ class PollPage extends React.Component {
           </Row>
           <div className='poll-time'>
             <h6>
-              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes}</b> votes • {active && timelimit != 'Voting has ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
+              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes.toLocaleString()}</b> votes • {active && timelimit != 'Voting has ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
             </h6>
           </div>
           { active && !userDidVote ?

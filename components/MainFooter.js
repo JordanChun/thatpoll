@@ -12,7 +12,7 @@ const MainFooter = () => (
         </div>
         <hr />
         <Row>
-          <Col>
+          <Col xs={6} md>
             <ul className='footer-list'>
               <li>
                 <Link href='/' as='/'>
@@ -21,7 +21,7 @@ const MainFooter = () => (
               </li>
             </ul>
           </Col>
-          <Col>
+          <Col xs={6} md>
             <ul className='footer-list'>
               <li>
                 <Link href='/create-poll' as='/create-poll'>
@@ -30,7 +30,7 @@ const MainFooter = () => (
               </li>
             </ul>
           </Col>
-          <Col>
+          <Col xs={6} md>
             <ul className='footer-list'>
               <li>
                 <Link href='/terms-of-service' as='/terms-of-service'>

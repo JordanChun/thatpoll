@@ -3,7 +3,21 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 
+function setQueryString(query) {
+  let queryString = '';
+  for (let i = 0; i < Object.keys(query).length; i++) {
+    let name = Object.keys(query)[i];
+    let value = query[Object.keys(query)[i]];
+    
+    if (name !== 'page' && value !== undefined && value !== '') {
+      queryString += `&${name}=${value}`;
+    }
+  }
+  return queryString
+}
+
 const PollPagination = props => {
+  const { state } = props.router.query;
   let active;
   if (props.router.query.page) {
     active = props.router.query.page;
@@ -13,11 +27,12 @@ const PollPagination = props => {
   let items = [];
   let offset = 0;
 
+  // go to prev page
   if (active > 3) {
     offset = active - 3;
     items.push(
       <li className='page-item' key='prev'>
-        <Link href={{ pathname: '/', query: { page: active - 1 } }} as={`?page=${active - 1}`}>
+        <Link href={{ pathname: '/', query: { page: active - 1, state: state } }} as={`?page=${active - 1}${setQueryString(props.router.query)}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">‹</span>
             <span className="sr-only">Previous</span>
@@ -41,7 +56,7 @@ const PollPagination = props => {
     if ((i + offset) === active) {
       items.push(
         <li className="page-item active" key={i}>
-          <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
+          <Link href={{ pathname: '/', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className='page-link'>{i + offset}</a>
           </Link>
           <span className="sr-only">(current)</span>
@@ -50,7 +65,7 @@ const PollPagination = props => {
     } else {
       items.push(
         <li className="page-item" key={i}>
-          <Link href={{ pathname: '/', query: { page: i + offset } }} as={`?page=${i + offset}`}>
+          <Link href={{ pathname: '/', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className="page-link">{i + offset}</a>
           </Link>
         </li>
@@ -58,6 +73,7 @@ const PollPagination = props => {
     }
   }
 
+  // go to next page
   if (active < totalPages - 2) {
     items.push(
       <li className='page-item' key='next'>

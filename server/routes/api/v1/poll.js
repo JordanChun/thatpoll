@@ -119,6 +119,18 @@ require('moment-precise-range-plugin');
 
 router.post('/poll/:slug', async (req, res) => {
   let clientIp = req.clientIp;
+
+  // for heroku routing issue
+  let ipAddr = req.headers["x-forwarded-for"];
+  if (ipAddr){
+    let list = ipAddr.split(",");
+    ipAddr = list[list.length-1];
+  } else {
+    ipAddr = req.connection.remoteAddress;
+  }
+
+  console.log(ipAddr);
+
   if (req.headers['x-ip'] !== 'undefined') {
     clientIp = req.headers['x-ip'];
   }

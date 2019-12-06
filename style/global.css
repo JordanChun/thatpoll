@@ -3,7 +3,7 @@ html[data-theme="dark"] {
   --primaryTextColor: #e6e6e6;
   --primaryAnchorColor: #e6e6e6;
   --primaryBorder: 1px solid #375375;
-  --primaryBordercolor: #375375;
+  --primaryBorderColor: #375375;
   --primaryContainerColor: #2d4a6d;
   --primaryButtonTextColor: #e6e6e6;
 
@@ -17,7 +17,7 @@ html {
   --primaryTextColor: #3c3c3c;
   --primaryAnchorColor: #3c3c3c;
   --primaryBorder: 1px solid #e4e4e4;
-  --primaryBordercolor: #e4e4e4;
+  --primaryBorderColor: #e4e4e4;
   --primaryContainerColor: white;
   --primaryButtonTextColor: #e6e6e6;
 
@@ -104,6 +104,7 @@ a, a:hover {
 
 .footer-list { 
   padding: 0;
+  margin-bottom: 0.25rem;
 }
 
 .footer-list li { 
@@ -648,12 +649,35 @@ input[type='number'],
 }
 
 .modal-header, .modal-footer {
-  border-color: var(--primaryBordercolor);
+  border-color: var(--primaryBorderColor);
 }
 
 .filter-container {
   display: flex;
   justify-content: flex-end;
+}
+
+.cookies-banner {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  background-color: var(--secondaryBackground);
+  border-top: 1px solid var(--primaryBorderColor);
+  display: flex;
+  box-shadow: 0 -1px 4px 0px rgba(0,0,0,0.25);
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.cookies-banner div:nth-child(1){
+  padding: 1rem;
+}
+.cookies-banner div:nth-child(2){
+  cursor: pointer;
+  display: flex;
+  padding: 2rem;
+  align-self: center;
+  border-left: 1px solid var(--primaryBorderColor);
 }
 
 @media (max-width: 576px) {

@@ -44,7 +44,7 @@ const PollCard = props => (
           </a>
         </Link>
         <div className='poll-stat' style={{ lineHeight: '2.5', marginLeft: '0.75rem' }}>
-          <span>{props.poll.totalVotes} votes • {props.poll.dateCreated} • {props.poll.active ? <b style={{ color: 'red' }}>LIVE</b> : <b>ENDED</b>}</span>
+          <span>{props.poll.totalVotes.toLocaleString()} votes • {props.poll.dateCreated} • {props.poll.active ? <b style={{ color: 'red' }}>LIVE</b> : <b>ENDED</b>}</span>
         </div>
       </div>
       <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>

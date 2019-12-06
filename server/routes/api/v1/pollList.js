@@ -6,9 +6,15 @@ const moment = require('moment');
 
 
 router.post('/polls', async (req, res) => {
+  const filters = {
+    visibility: 'public'
+  }
   let pollsArr = [];
   let skip;
   let page = Math.round(req.query.page);
+  if (req.query.state === 'live') filters.active = true;
+  if (req.query.state === 'ended') filters.active = false;
+
 
   try {
     const totalItems = await Poll.countDocuments({ visibility: 'public' });
@@ -19,7 +25,7 @@ router.post('/polls', async (req, res) => {
       skip = 0;
     }
     
-    const polls = await Poll.find({ visibility: 'public' }).skip(skip).sort({ dateCreated: -1 }).limit(10);
+    const polls = await Poll.find(filters).skip(skip).sort({ dateCreated: -1 }).limit(10);
     for (let i = 0; i < polls.length; i++) {
       pollsArr.push({
         url: polls[i].url,
