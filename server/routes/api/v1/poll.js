@@ -122,6 +122,7 @@ router.post('/poll/:slug', async (req, res) => {
 
   // for heroku routing issue
   let ipAddr = req.headers["x-forwarded-for"];
+  console.log(ipAddr);
   if (ipAddr){
     let list = ipAddr.split(",");
     ipAddr = list[list.length-1];
