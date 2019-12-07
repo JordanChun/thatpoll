@@ -61,7 +61,7 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip']
+  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip', 'X-Forwarded-For']
 }
 
 const app = express();
