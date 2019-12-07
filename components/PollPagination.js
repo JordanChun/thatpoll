@@ -77,7 +77,7 @@ const PollPagination = props => {
   if (active < totalPages - 2) {
     items.push(
       <li className='page-item' key='next'>
-        <Link href={{ pathname: '/', query: { page: active + 1 } }} as={`?page=${active + 1}`}>
+        <Link href={{ pathname: '/', query: { page: active + 1 } }} as={`?page=${active + 1}${setQueryString(props.router.query)}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">›</span>
             <span className="sr-only">Next</span>
