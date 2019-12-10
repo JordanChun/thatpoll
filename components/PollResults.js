@@ -1,107 +1,76 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faSync } from "@fortawesome/free-solid-svg-icons";
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-transition-group';
 import { withRouter } from 'next/router';
-import moment from 'moment';
-import 'moment-precise-range-plugin';
-import getMomentTimelimit from '../helpers/momentFunctions';
+import ResultsBars from "./ResultsBars";
+import ResultsPieChart from "./ResultsPieChart";
+import Form from 'react-bootstrap/Form';
+import { useState } from "react";
 
-const defaultStyle = {
-  width: 0,
-}
+function PollResults(props) {
+  const [display, setDisplay] = useState('Bar');
+  const { results, choices, totalVotes, active, loadResults, refreshResultsLoading } = props;
 
-const transitionStyles = resultWidth => {
-  const style = {
-    entering: { width: `${resultWidth}%` },
-    entered:  { width: `${resultWidth}%` },
-    exit: { width: 0 }
+  function toggleDisplay() {
+    display === 'Bar' ? setDisplay('Donut') : setDisplay('Bar');
   }
 
-  return style
-};
+  return (
+    <div className='poll-results'>
+      <hr />
+      <div className='results-header'>
+        <div>
+          <h5>
+            <FontAwesomeIcon icon={faChartBar} /> Results{' '}
+            {active ?
+              <Button
+                variant='grey-blue'
+                size='sm'
+                onClick={loadResults}
+                style={{ margin: '0 0.5rem' }}
+                disabled={refreshResultsLoading}
+              >
+                <FontAwesomeIcon icon={faSync} /> Refresh
+              </Button> : null}
+            {refreshResultsLoading ?
+              <Spinner
+                animation="border"
+                size="sm"
+                aria-hidden="true"
+              /> : null
+            }
+          </h5>
+        </div>
+        <div className='result-display'>
+          Display: {display}
+          <Form>
+            <Form.Check
+              id='switch-result-display'
+              type="switch"
+              label=''
+              onChange={() => toggleDisplay()}
+              checked={display === 'Donut' ? false : true}
+            />
+          </Form>
+        </div>
 
-class PollResults extends React.Component {
-  constructor(props) {
-    super(props)
-
-    this.state = { resultsBar: false }
-  }
-
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ resultsBar: true });
-    }, 0)
-  }
-
-  render() {
-    return (
-      <div className='poll-results'>
-        <hr />
-        <h5>
-          <FontAwesomeIcon icon={faChartBar}/> Results{' '}
-          { this.props.active ?
-            <Button
-            variant='grey-blue'
-            size='sm'
-            onClick={this.props.loadResults}
-            style={{ margin: '0 0.5rem' }}
-            disabled={this.props.refreshResultsLoading}
-            >
-              Refresh Results
-            </Button> : null }
-              { this.props.refreshResultsLoading ? 
-                <Spinner
-                  animation="border"
-                  size="sm"
-                  aria-hidden="true"
-                /> : null
-              }
-        </h5>
-        { this.props.resultsLoading ?
-          <div className='justify-content-center align-items-center' style={{height: '200px', display: 'flex'}}>
-            <Spinner animation="border" variant="light" />
-          </div>
-          :
-          <div>
-            <Transition in={this.state.resultsBar} timeout={300} appear>
-              {state => (
-                <div className='results-container'>
-                    {this.props.results.map((result, i) => (
-                      <div key={i}>
-                        <h6>{this.props.choices[i]}</h6>
-                        <div className='poll-result'>
-                          <div className='result-bar mb-3'
-                            style={{
-                              ...defaultStyle,
-                              ...transitionStyles(Math.round((result/this.props.totalVotes) * 100))[state]
-                            }}
-                          >
-                          {result !== 0 ?
-                            <div>
-                              <div>{result.toLocaleString()} votes</div>
-                              <div>{Math.round((result/this.props.totalVotes) * 100)}%</div>
-                            </div>
-                          : 
-                            <div>
-                              <div>0 votes</div>
-                              <div>0%</div>
-                            </div>
-                          }
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </div>
-              )}
-            </Transition>
-          </div>
-        }
       </div>
-    )
-  }
+      {display === 'Bar' ?
+        <ResultsBars
+          results={results}
+          choices={choices}
+          totalVotes={totalVotes}
+        /> :
+        <ResultsPieChart
+          results={results}
+          choices={choices}
+          totalVotes={totalVotes}
+        />
+      }
+    </div>
+  )
 }
 
 PollResults.propTypes = {

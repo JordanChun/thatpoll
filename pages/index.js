@@ -56,9 +56,9 @@ class Home extends React.Component {
     let href = '/?page=1';
     if (state !== eventKey) {
       href += `&state=${eventKey}`
+      const as = href;
+      Router.push(href, as);
     }
-    const as = href;
-    Router.push(href, as);
   }
 
   render() {
@@ -69,9 +69,9 @@ class Home extends React.Component {
         path={this.props.router.asPath}
         ads={true}
       >
-        <h4 className='page-header'>Recent Polls</h4>
         <Row>
-          <Col md={9}>
+          <Col md={9} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <h4 className='page-header' style={{ padding: 0 }}>Recent Polls</h4>
             <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} />
           </Col>
         </Row>

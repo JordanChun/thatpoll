@@ -36,7 +36,8 @@ function VoteHistory() {
     e.stopPropagation();
   // delete one item from history
   if (localStorage.voteHistory) {
-    const index = e.target.parentElement.parentElement.dataset["index"];
+    const index = e.currentTarget.dataset["index"];
+    console.log(index)
     let voteHistory = JSON.parse(localStorage.getItem('voteHistory'));
     voteHistory.splice(index, 1);
     localStorage.voteHistory = JSON.stringify(voteHistory);

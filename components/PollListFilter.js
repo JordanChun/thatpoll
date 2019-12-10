@@ -6,7 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 function PollListFilter(props) {
   return (
     <div className='filter-container'>
-      <div style={{ lineHeight: 1.8, marginRight: '1rem' }}>
+      <div style={{ lineHeight: 1.8, marginRight: '0.5rem' }}>
         <FontAwesomeIcon icon={faFilter} /> Filter
       </div>
       <Dropdown alignRight>
