@@ -1,14 +1,11 @@
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import fetch from 'isomorphic-unfetch';
 import Alert from 'react-bootstrap/Alert';
-import PollChoices from '../components/PollChoices';
-import PollResults from '../components/PollResults';
+import PollChoices from '../components/poll/PollChoices';
+import PollResults from '../components/poll/PollResults';
 import { withRouter } from 'next/router'
 import ErrorPage from './_error';
 import absoluteUrl from 'next-absolute-url';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
 import ShareButton from '../components/ShareButton';
 import { ReportButton } from '../components/Report';
 import Row from 'react-bootstrap/Row';
@@ -244,7 +241,7 @@ class PollPage extends React.Component {
           </Row>
           <div className='poll-time'>
             <h6>
-              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes.toLocaleString()}</b> votes • {active && timelimit != 'Voting has ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
+              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes.toLocaleString()}</b> votes • {active && timelimit != 'Voting ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
             </h6>
           </div>
           { active && !userDidVote ?

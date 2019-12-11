@@ -1,19 +1,14 @@
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import fetch from 'isomorphic-unfetch';
-import Link from 'next/link';
-import Button from 'react-bootstrap/Button';
-import Dropdown from 'react-bootstrap/Dropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFlag, faShare, faEllipsisV, faFilter } from '@fortawesome/free-solid-svg-icons';
 import absoluteUrl from 'next-absolute-url';
-import PollPagination from '../components/PollPagination';
-import PollCard from '../components/PollCard';
+import PollPagination from '../components/poll/PollPagination';
+import PollCard from '../components/poll/PollCard';
 import { withRouter } from 'next/router';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import VoteHistory from '../components/VoteHistory';
 import Router from 'next/router';
-import PollListFilter from '../components/PollListFilter';
+import PollListFilter from '../components/poll/PollListFilter';
 
 class Home extends React.Component {
   static async getInitialProps(ctx) {

@@ -307,6 +307,7 @@ input[type='number'],
 
 .share-btn {
   border-radius: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .poll-card-actions {
@@ -435,10 +436,6 @@ input[type='number'],
 .poll-options {
   display: flex;
   justify-content: flex-end;
-}
-
-.poll-options > div {
-  margin-right: 0.25rem;
 }
 
 .poll-choices-icon {

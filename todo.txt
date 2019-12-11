@@ -2,7 +2,7 @@
 
 CLIENT
 ----------------------------------------------------------
-pie chart option
+[DONE] donut chart option
 [DONE] voting state filter
 [DONE] rebrand to thatpoll.com
 [DONE] update timelimit every minute

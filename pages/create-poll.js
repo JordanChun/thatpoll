@@ -1,5 +1,5 @@
-import Layout from '../components/Layout';
-import PollPreview from '../components/PollPreview';
+import Layout from '../components/layout/Layout';
+import PollPreview from '../components/poll/PollPreview';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
