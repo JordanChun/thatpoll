@@ -1,22 +1,10 @@
-class CustomDropdownToggle extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
+const CustomDropdownToggle = React.forwardRef(({ children, onClick }, ref) => (
+  <span ref={ref} onClick={e => {
     e.preventDefault();
-    this.props.onClick(e);
-  }
-
-  render() {
-    return (
-      <span onClick={this.handleClick}>
-        {this.props.children}
-      </span>
-    );
-  }
-}
+    onClick(e);
+  }}>
+    {children}
+  </span>
+));
 
 export default CustomDropdownToggle;

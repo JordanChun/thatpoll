@@ -40,8 +40,8 @@ function Layout(props) {
         <meta property="og:type" content="Website" />
         <meta property="og:title" content={props.pageTitle} />
         <meta property="og:description" content={props.pageDesc} />
-        <meta property="og:image" content='https://thatpoll.herokuapp.com/public/img/ThatPoll_Logo_thumbnail.jpg' />
-        <meta property="og:url" content={`https://thatpoll.herokuapp.com${props.path}`} />
+        <meta property="og:image" content='https://thatpoll.com/public/img/ThatPoll_Logo_thumbnail.jpg' />
+        <meta property="og:url" content={`https://thatpoll.com${props.path}`} />
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150975737-1"></script>
         <script dangerouslySetInnerHTML={{__html: `window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

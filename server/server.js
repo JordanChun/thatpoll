@@ -1,7 +1,7 @@
 const express = require('express');
 const next = require('next');
 
-const port = parseInt(process.env.PORT, 10) || 3000;
+const port = parseInt(process.env.PORT, 10) || 8080;
 const dev = process.env.NODE_ENV !== 'production';
 
 const config = require('./server.config');
@@ -36,8 +36,8 @@ const apiRoutes = require('./routes/api/v1');
 
 mongoose.connect('`mongodb://ds153715.mlab.com:53715/thatpoll', {
   auth: {
-    user: 'NGWwDkXlcv',
-    password: 'f089LhG0Sk'
+    user: config.db.user,
+    password: config.db.password
   },
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -52,7 +52,7 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-var whitelist = ['http://localhost:3000', 'https://thatpoll.herokuapp.com', 'https://maxcdn.bootstrapcdn.com']
+var whitelist = ['http://localhost:3000', 'https://thatpoll.herokuapp.com', 'https://maxcdn.bootstrapcdn.com', 'https://thatpoll.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {

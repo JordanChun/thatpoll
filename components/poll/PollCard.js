@@ -3,10 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFlag, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import CompactOptionsToggle from './CompactOptionsToggle';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
 import { ReportButton, ReportButtonDropdown } from '../Report';
+import CustomDropdownToggle from '../layout/CustomDropdownToggle';
 
 
 function redirectToPoll(slug) {
@@ -53,7 +53,7 @@ const PollCard = props => (
         </div>
         <div className='poll-card-actions-compact'>
           <Dropdown alignRight>
-            <Dropdown.Toggle as={CompactOptionsToggle} id="dropdown-custom-components">
+            <Dropdown.Toggle as={CustomDropdownToggle} id="poll-card-options-compact">
               <FontAwesomeIcon icon={faEllipsisV} />
             </Dropdown.Toggle>
 

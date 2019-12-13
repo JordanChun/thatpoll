@@ -239,6 +239,21 @@ class CreatePoll extends React.Component {
               Characters remaining: {500 - desc.length}
             </Form.Text>
           </Form.Group>
+          <Form.Group>
+            <Form.Label>
+              Category (Optional)
+            </Form.Label>
+            <Form.Control
+              onChange={this.updateCategory}
+              as="select"
+              name='category'
+            >
+            <option>Select a category</option>
+            {CategoriesList.map((category, i) => (
+              <option key={i}>{category}</option>
+            ))}
+            </Form.Control>
+          </Form.Group>
           {choices.map((choiceObj, i) => (
             <Form.Group key={i} controlId={`validateChoice${i}`}>
               <Form.Label>
@@ -267,22 +282,6 @@ class CreatePoll extends React.Component {
               <FontAwesomeIcon icon={faPlus} /> Add choice
             </Button>
           </ButtonGroup>
-
-          <Form.Group>
-            <Form.Label>
-              Category (Optional)
-            </Form.Label>
-            <Form.Control
-              onChange={this.updateCategory}
-              as="select"
-              name='category'
-            >
-            <option>Select a category</option>
-            {CategoriesList.map((category, i) => (
-              <option key={i}>{category}</option>
-            ))}
-            </Form.Control>
-          </Form.Group>
           <Form.Row>
             <Form.Group as={Col}>
               <Form.Label>

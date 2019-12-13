@@ -15,7 +15,6 @@ function ShareButton(props) {
   const target = useRef(null);
 
   function copyToClipboard(e) {
-    console.log(target)
     target.current.select();
     target.current.setSelectionRange(0, 99999); 
     document.execCommand("copy");

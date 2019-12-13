@@ -43,7 +43,7 @@ function PollResults(props) {
           </h5>
         </div>
         <div className='result-display'>
-          <b>Display:{" "}</b>{display}
+          Display:<b style={{ marginLeft: '0.25rem' }}>{display}</b>
           <Form>
             <Form.Check
               id='switch-result-display'
