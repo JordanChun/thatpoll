@@ -21,11 +21,12 @@ class PollPage extends React.Component {
   static async getInitialProps(ctx) {
     const { origin } = absoluteUrl(ctx.req);
     const { slug } = ctx.query;
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let clientIp;
     if (ctx.req && ctx.req.headers) {
       clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.connection.remoteAddress;
     }
-    const res = await fetch(`${origin}/api/v1/poll/${slug}`, {
+    const res = await fetch(`${baseUrl}/api/v1/poll/${slug}`, {
       method: 'POST',
       headers: { 
         'X-IP': clientIp

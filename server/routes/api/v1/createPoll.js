@@ -5,11 +5,25 @@ const getUser = require('../../../middleware/user');
 const Poll = require('../../../models/Poll');
 const shortid = require('shortid');
 const validator = require('validator');
+const moment = require('moment');
 
 const CategoriesList = require('../../../../helpers/CategoriesList');
 
 router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
   let user = res.user;
+
+  // created less than 10 polls
+  if (user.pollLimitCounter >= 10) {
+    const lastCreated = moment(user.lastCreated)
+    const hours = moment.duration(moment(new Date()).diff(lastCreated)).asHours();
+    // if last created was more than 5 hours ago
+    if (hours > 5) {
+      user.pollLimitCounter = 0;
+    } else {
+      return res.status(400).json({ message: 'limit' });
+    }
+  }
+  
   const url = shortid.generate();
   
   const {
@@ -20,11 +34,13 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     choices,
     category
   } = req;
-
+  
   try {
     user.createdPolls.push(url);
+    user.pollLimitCounter++;
+    user.lastCreated = new Date();
     user = await user.save();
-
+    
     let results = [];
     choices.forEach(() => {
       results.push(0);
@@ -60,17 +76,6 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
 });
 
 function createPollAuth(req, res, next) {
-  /*
-  const {
-    title,
-    desc,
-    visibility,
-    votingPeriod,
-    choices,
-    category
-  } = req.body;
-  */
-
   req.title = validator.trim(req.body.title)
   req.desc = validator.trim(req.body.desc)
   req.visibility = validator.trim(req.body.visibility)
@@ -124,51 +129,6 @@ function createPollAuth(req, res, next) {
     return res.status(400).json({ message: 'error' }).end();
   }
 
-  
-  /*
-  if (visibility !== 'public' && visibility !== 'private') {
-    return res.status(400).json({ message: 'error' });
-  }
-
-  if (category < 0 || category > CategoriesList.length - 1) {
-    return res.status(400).json({ message: 'error' });
-  }
-
-  if (title.length <= 0 || title.length > 100) {
-    res.status(400).json({ message: 'error' });
-  }
-
-  if (desc.length < 0 || desc.length > 500) {
-    res.status(400).json({ message: 'error' });
-  }
-
-  if (choices.length < 2 || choices.length > 4) {
-    res.status(400).json({ message: 'error' });
-  }
-  
-  choices.forEach(choice => {
-    if (choice.length < 0 || choice.length > 50) {
-      res.status(400).json({ message: 'error' });
-    }
-  });
-
-  let findDuplicates = choices.filter((item, index) => choices.indexOf(item) != index);
-  if (findDuplicates.length > 0) {
-    return res.status(400).json({ message: 'error' }).end();
-  }
-
-  if (votingPeriod < 6 || votingPeriod > 72 ) {
-    return res.status(400).json({ message: 'error' });
-  }
-  
-  if (visibility !== 'public' && visibility !== 'private') {
-    return res.status(400).json({ message: 'error' });
-  }
-
-  if (category < 0 || category > CategoriesList.length - 1) {
-    return res.status(400).json({ message: 'error' });
-  }
-*/
   next();
 }
 

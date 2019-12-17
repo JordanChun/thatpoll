@@ -85,7 +85,8 @@ class CreatePoll extends React.Component {
       category: 0,
       error: false,
       validated: false,
-      timelimit: ' 6 hours'
+      timelimit: ' 6 hours',
+      createLimit: false
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
@@ -142,8 +143,19 @@ class CreatePoll extends React.Component {
       const data = await res.json();
       if(data.message === 'success') {
         Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`)
-      } else {
+      }
+
+      if (data.message === 'error') {
         this.setState({ error: true });
+        window.scrollTo({
+          top: 56,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      if (data.message === 'limit') {
+        this.setState({ createLimit: true });
         window.scrollTo({
           top: 56,
           left: 0,
@@ -195,7 +207,8 @@ class CreatePoll extends React.Component {
       choices,
       votingPeriod,
       error,
-      validated
+      validated,
+      createLimit
     } = this.state;
 
     return (
@@ -203,13 +216,17 @@ class CreatePoll extends React.Component {
         pageTitle='Create Poll'
         path={this.props.router.asPath}
       >
+        <div className='poll-wrapper'>
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
         <hr />
         { error ?
           <Alert variant='danger'>
            <b>Error submitting poll</b>
-          </Alert> : null
-        }
+          </Alert> : null }
+          { createLimit ?
+            <Alert variant='warning'>
+            <b>You have reached the limit for now. Please try again in a few hours.</b>
+            </Alert> : null }
         <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
           <Form.Group controlId="validationTitle">
             <Form.Label>
@@ -342,6 +359,7 @@ class CreatePoll extends React.Component {
             </Button>
           </Form.Group>
         </Form>
+        </div>
         <div className='poll-preview'>
           <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
           <hr />

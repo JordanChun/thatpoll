@@ -1,6 +1,20 @@
 const express = require('express');
 const router = express.Router();
 
+const RateLimit = require('express-rate-limit');
+const MongoStore = require('rate-limit-mongo');
+const config = require('../../../server.config');
+
+// const limiter = new RateLimit({
+//   store: new MongoStore({
+//     uri: config.db.uri,
+//     user: config.db.user,
+//     password: config.db.password
+//   }),
+//   max: 100,
+//   windowMs: 15 * 60 * 1000
+// });
+
 const Poll = require('../../../models/Poll');
 const Vote = require('../../../models/Vote');
 

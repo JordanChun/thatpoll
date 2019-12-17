@@ -1,7 +1,7 @@
 const express = require('express');
 const next = require('next');
 
-const port = parseInt(process.env.PORT, 10) || 8080;
+const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
 const config = require('./server.config');
@@ -15,26 +15,14 @@ const cookieParser = require('cookie-parser')
 const requestIp = require('request-ip');
 
 const mongoose = require('mongoose');
+
 // const session = require('express-session');
 // const MongoStore = require('connect-mongo')(session);
 
 const pageRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api/v1');
 
-// MONGO ATLAS
-// mongoose.connect(`mongodb+srv://UjxjklDyVCUXn5uz:NivBIzxj7MLj3VGT@statmix-juwed.mongodb.net/StatMix?retryWrites=true&w=majority`,
-// { useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-
-// mongoose.connect(`mongodb://${config.db.user}:${config.db.password}@ds229088.mlab.com:29088/statmix`,
-// { 
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-
-mongoose.connect('`mongodb://ds153715.mlab.com:53715/thatpoll', {
+mongoose.connect(config.db.uri, {
   auth: {
     user: config.db.user,
     password: config.db.password
@@ -72,10 +60,10 @@ const io = require('socket.io')(server);
 require('./socket/poll')(io);
 
 nextApp.prepare().then(() => {
+  app.set('trust proxy', 1);
   app.set('socketio', io);
   app.use(helmet());
   app.use(cors(corsOptions));
-  //server.use(ipfilter(ips, { mode: 'allow' }));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
   app.use(cookieParser());

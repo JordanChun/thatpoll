@@ -8,6 +8,14 @@ const userSchema = new mongoose.Schema({
     unique: true
   },
   createdPolls: [],
+  pollLimitCounter: {
+    type: Number,
+    default: 0,
+    required: true
+  },
+  lastCreated: {
+    type: Date
+  }
 });
 
 module.exports = mongoose.model('User', userSchema);

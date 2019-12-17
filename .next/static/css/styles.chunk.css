@@ -6,6 +6,9 @@ html[data-theme="dark"] {
   --primaryBorderColor: #375375;
   --primaryContainerColor: #2d4a6d;
   --primaryButtonTextColor: #e6e6e6;
+  --inputBackgroundColor: #32547b;
+  --inputFocusColor: #406490;
+
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #2d4b6d;
@@ -20,6 +23,8 @@ html {
   --primaryBorderColor: #e4e4e4;
   --primaryContainerColor: white;
   --primaryButtonTextColor: #e6e6e6;
+  --inputBackgroundColor: #f1f1f1;
+  --inputFocusColor: white;
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #f9f9f9;
@@ -159,9 +164,18 @@ textarea.form-control,
 input[type='text'],
 input[type='number'],
 .input-group>.form-control {
+}
+
+.form-control:focus {
+  background-color: var(--inputFocusColor);
   color: var(--primaryTextColor);
-  background-color: var(--secondaryBackground);
+}
+
+.form-control {
+  background-color: var(--inputBackgroundColor);
+  color: var(--primaryTextColor);
   border: var(--primaryBorder)
+  
 }
 
 .spinner-border {

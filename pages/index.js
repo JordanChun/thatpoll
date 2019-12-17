@@ -14,6 +14,7 @@ class Home extends React.Component {
   static async getInitialProps(ctx) {
     const { origin } = absoluteUrl(ctx.req);
     const { page, state } = ctx.query;
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let queryString = '';
     for (let i = 0; i < Object.keys(ctx.query).length; i++) {
       let name = Object.keys(ctx.query)[i];
@@ -29,7 +30,7 @@ class Home extends React.Component {
     }
     // const searchPage = page < 1 || page == undefined ? 1 : page;
 
-    const res = await fetch(`${origin}/api/v1/polls?${queryString}`, {
+    const res = await fetch(`${baseUrl}/api/v1/polls?${queryString}`, {
       method: 'POST',
     });
     const data = await res.json();
