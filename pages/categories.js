@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import fetch from 'isomorphic-unfetch';
 import absoluteUrl from 'next-absolute-url';
 import Table from 'react-bootstrap/Table';

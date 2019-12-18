@@ -69,7 +69,7 @@ function ResultsPieChart(props) {
   return (
     <div className='results-container'>
       <div className='pie-chart-container'>
-        <Row noGutters>
+        <Row>
           <Col md={5} lg={3} style={{ display: 'flex', justifyContent: 'center' }}>
            <PieChart
               className='pie-chart'

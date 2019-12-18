@@ -315,12 +315,30 @@ input[type='number'],
   display: none;
 }
 
+.social-buttons {
+  height: 31px;
+  width: 31px;
+  text-align: center;
+  border-radius: 15px;
+  margin-right: 3px;
+}
+
+a:not([href]):not([tabindex]).social-buttons {
+  color: #e6e6e6;
+}
+
+.social-buttons svg {
+  top: 7px;
+  vertical-align: top;
+  position: relative;
+}
+
 .share-buttons {
   display: flex;
 }
 
 .share-poll {
-  margin-left: 0.25rem;
+  width: 300px;
 }
 
 .share-btn {
@@ -631,7 +649,6 @@ input[type='number'],
 }
 
 .pie-chart-labels {
-  margin-left: 1rem;
   max-height: 250px;
   overflow-y: hidden;
   box-shadow: var(--primaryBoxShadow);
@@ -733,7 +750,7 @@ input[type='number'],
 
 @media (max-width: 576px) {
   .main-wrapper.container {
-    padding: 0 15px;
+    padding: 0 10px;
   }
 
   .navbar { 
@@ -761,6 +778,23 @@ input[type='number'],
   .poll-card-actions-compact {
     display: block;
   }
+
+  .share-poll {
+    width: 260px;
+    display: inline-block;
+  }
+
+  .share-buttons {
+    display: block;
+  }
+
+  .social-buttons {
+    display: inline-block;
+  }
+
+  .content-container {
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -769,5 +803,13 @@ input[type='number'],
   }
   .form-group.col {
     flex-basis: auto;
+  }
+
+  .poll-options {
+    display: block;
+  }
+
+  .pie-chart {
+    margin-bottom: 1rem;
   }
 }
