@@ -16,7 +16,7 @@ function getMomentTimelimit(dateCreated, votingPeriod) {
     if(minutes > 0) timelimit += ` ${minutes} minutes`;
     if(timelimit === '') timelimit = ' less than 1 minute';
   } else {
-    timelimit = 'Voting ended';
+    timelimit = 'Voting Ended';
   }
 
   return timelimit;

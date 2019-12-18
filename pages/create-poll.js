@@ -185,7 +185,7 @@ class CreatePoll extends React.Component {
   }
 
   addChoice() {
-    if (this.state.choices.length < 4) {
+    if (this.state.choices.length < 30) {
       const choices = this.state.choices.slice();
       choices.push({ choice: '' });
       this.setState({ choices: choices })
@@ -216,7 +216,7 @@ class CreatePoll extends React.Component {
         pageTitle='Create Poll'
         path={this.props.router.asPath}
       >
-        <div className='poll-wrapper'>
+        <div className='content-container'>
         <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll</h4>
         <hr />
         { error ?
@@ -227,7 +227,7 @@ class CreatePoll extends React.Component {
             <Alert variant='warning'>
             <b>You have reached the limit for now. Please try again in a few hours.</b>
             </Alert> : null }
-        <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
+        <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit}>
           <Form.Group controlId="validationTitle">
             <Form.Label>
               Title
@@ -295,7 +295,7 @@ class CreatePoll extends React.Component {
             </Form.Group>
           ))}
           <ButtonGroup size="sm" className='mb-3'>
-            <Button variant="grey-blue" onClick={this.addChoice} disabled={choices.length === 4}>
+            <Button variant="grey-blue" onClick={this.addChoice} disabled={choices.length === 30}>
               <FontAwesomeIcon icon={faPlus} /> Add choice
             </Button>
           </ButtonGroup>

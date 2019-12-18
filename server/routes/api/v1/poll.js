@@ -85,11 +85,11 @@ router.post('/poll/:slug', async (req, res) => {
         if (minutes > 0) timelimit += ` ${minutes} minutes`;
         if (timelimit === '') timelimit += ' less than 1 minute';
       } else {
-        timelimit = 'Voting ended'
+        timelimit = 'Voting Ended'
         poll = await Poll.findOneAndUpdate({ url: req.params.slug }, { active: false }, {new: true});
       }
     } else {
-      timelimit = 'Voting ended'
+      timelimit = 'Voting Ended'
     }
     
     const userDidVote = await Vote.exists({ url: req.params.slug, ip: clientIp });

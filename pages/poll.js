@@ -6,7 +6,6 @@ import PollResults from '../components/poll/PollResults';
 import { withRouter } from 'next/router'
 import ErrorPage from './_error';
 import absoluteUrl from 'next-absolute-url';
-import ShareButton from '../components/ShareButton';
 import { ReportButton } from '../components/Report';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,7 +13,8 @@ import io from 'socket.io-client';
 import moment from 'moment';
 import getMomentTimelimit from '../helpers/momentFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import PollShare from '../components/poll/PollShare';
 
 
 class PollPage extends React.Component {
@@ -201,13 +201,13 @@ class PollPage extends React.Component {
 
     return (
       <Layout
-        pageTitle={`Poll - ${title}`}
+        pageTitle={`ThatPoll - ${title}`}
         pageDesc={desc}
         visibility={visibility}
         path={this.props.router.asPath}
         ads={true}
       >
-        <div className='poll-wrapper'>
+        <div className='content-container'>
           {visibility === 'private' ?
             <div className='poll-alert'>
               <Alert variant='danger'>
@@ -217,7 +217,7 @@ class PollPage extends React.Component {
           : null }
           <h4 className='poll-title'>{title.length > 0 ? title : 'Untitled'}</h4>
           <hr />
-          <div className='poll-desc mb-1'>
+          <div className='poll-desc mb-2'>
             <h6>Description</h6>
             <div>
               <p>
@@ -232,18 +232,25 @@ class PollPage extends React.Component {
               </div>
             </div>
           </div>
-          <Row>
+          <Row noGutters>
             <Col>
               <div className='poll-options mb-3'>
-                <ShareButton url={url} />
+                <PollShare url={url} />
                 <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
               </div>
             </Col>
           </Row>
-          <div className='poll-time'>
-            <h6>
-              <FontAwesomeIcon icon={faInfoCircle} style={{ marginRight: '0.25rem' }} /> <b>{totalVotes.toLocaleString()}</b> votes • {active && timelimit != 'Voting ended' ? 'Voting ends in:' : null } <b>{timelimit}</b>
-            </h6>
+          </div>
+          <div className='content-container'>
+          <div className='poll-time mb-3'>
+            <div>
+              <h5>
+                <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
+              </h5>
+              <h5>
+                <FontAwesomeIcon icon={faStopwatch} /> {active && timelimit != 'Voting Ended' ? <b>{timelimit}</b> : 'Voting Ended' } 
+              </h5>
+            </div>
           </div>
           { active && !userDidVote ?
           <PollChoices

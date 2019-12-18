@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const next = require('next');
 
@@ -22,10 +24,10 @@ const mongoose = require('mongoose');
 const pageRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api/v1');
 
-mongoose.connect(config.db.uri, {
+mongoose.connect(process.env.DB_HOST, {
   auth: {
-    user: config.db.user,
-    password: config.db.password
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS
   },
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -49,7 +51,8 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip', 'X-Forwarded-For']
+  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip', 'X-Forwarded-For'],
+  credentials: true
 }
 
 const app = express();

@@ -37,8 +37,8 @@ function Layout(props) {
         <meta charSet="UTF-8" />
         <meta name='description' content={props.pageDesc} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:type" content="Website" />
         <meta property="og:title" content={props.pageTitle} />
+        <meta property="og:type" content="Website" />
         <meta property="og:description" content={props.pageDesc} />
         <meta property="og:image" content='https://thatpoll.com/public/img/ThatPoll_Logo_thumbnail.jpg' />
         <meta property="og:url" content={`https://thatpoll.com${props.path}`} />

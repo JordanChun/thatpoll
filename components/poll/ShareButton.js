@@ -1,16 +1,13 @@
 import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboard, faShare } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard } from '@fortawesome/free-solid-svg-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Overlay from 'react-bootstrap/Overlay';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 function ShareButton(props) {
-  const [show, setShow] = useState(false);
   const [showToolTip, setShowToolTip] = useState(false);
   const target = useRef(null);
 
@@ -26,10 +23,6 @@ function ShareButton(props) {
 
   return (
     <div className='share-poll'>
-      { !show ?
-      <Button variant="simple" size='sm' onClick={() => setShow(!show)} className='share-btn'>
-        <FontAwesomeIcon icon={faShare} /> Share
-      </Button> : 
       <InputGroup size='sm'>
         <FormControl
           readOnly
@@ -49,7 +42,6 @@ function ShareButton(props) {
           </Button>
         </InputGroup.Append>
       </InputGroup>
-      }
     </div>
   )
 }

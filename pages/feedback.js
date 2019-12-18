@@ -74,44 +74,46 @@ class Feedback extends React.Component {
     const { text, error, success, validated } = this.state;
     return (
       <Layout>
-        <h4 className='page-header'>Feedback & Suggestions</h4>
-        <hr />
-        { error ?
-          <Alert variant='danger'>
-            <b>Error submitting form</b>
-          </Alert> : null
-        }
-        { success ?
-          <Alert variant='success'>
-            <b>
-              <FontAwesomeIcon icon={faCheck} /> Feedback/Suggestion Received. Thank You
-            </b>
-          </Alert> : null
-        }
-        <p>Got feedback or a suggestion? ThatPoll is always striving to improve our web application. Please share your thoughts below.</p>
-        <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
-          <Form.Group controlId='validateText'>
-            <Form.Label>
-              Text:
-            </Form.Label>
-            <Form.Control
-              value={text}
-              onChange={this.inputUpdate}
-              style={{ maxHeight: '180px', minHeight: '112px' }}
-              as="textarea" rows="3" name='text' minLength='10' maxLength='500'
-              required
-            />
-            <Form.Control.Feedback type="invalid">
-              Please provide some text. Min 10 characters.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-            <Button 
-              variant='light-blue' type="submit" style={{ width: '200px' }}>
-              Submit
-            </Button>
-          </Form.Group>
-        </Form>
+        <div className='content-container'>
+          <h4 className='page-header'>Feedback & Suggestions</h4>
+          <hr />
+          { error ?
+            <Alert variant='danger'>
+              <b>Error submitting form</b>
+            </Alert> : null
+          }
+          { success ?
+            <Alert variant='success'>
+              <b>
+                <FontAwesomeIcon icon={faCheck} /> Feedback/Suggestion Received. Thank You
+              </b>
+            </Alert> : null
+          }
+          <p>Got feedback or a suggestion? ThatPoll is always striving to improve our web application. Please share your thoughts below.</p>
+          <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
+            <Form.Group controlId='validateText'>
+              <Form.Label>
+                Text:
+              </Form.Label>
+              <Form.Control
+                value={text}
+                onChange={this.inputUpdate}
+                style={{ maxHeight: '180px', minHeight: '112px' }}
+                as="textarea" rows="3" name='text' minLength='10' maxLength='500'
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide some text. Min 10 characters.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+              <Button 
+                variant='light-blue' type="submit" style={{ width: '200px' }}>
+                Submit
+              </Button>
+            </Form.Group>
+          </Form>
+        </div>
       </Layout>
     )
   }

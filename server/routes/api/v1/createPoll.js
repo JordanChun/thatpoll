@@ -93,6 +93,10 @@ function createPollAuth(req, res, next) {
     if (req.choices.length < 2) {
       return res.status(400).json({ message: 'error' }).end();
     }
+
+    if (req.choices.length > 30) {
+      return res.status(400).json({ message: 'error' }).end();
+    }
     // validate choice lengths, min 1, max 75 chars
     req.choices.forEach(choice => {
       if (!validator.isLength(choice, { min: 1, max: 75 })) {

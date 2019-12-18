@@ -5,7 +5,38 @@ import Col from 'react-bootstrap/Col';
 function ResultsPieChart(props) {
   const data = [];
   const labels = [];
-  const colors = ['#28a745', '#3f86a5', '#dc4144', '#9ca02a'];
+  const colors = [
+    '#28a745',
+    '#3f86a5',
+    '#dc4144',
+    '#9ca02a',
+    '#1bc08a',
+    '#356f88',
+    '#b45051',
+    '#6c6e1e',
+    '#48d848',
+    '#3f57a5',
+    '#dc416f',
+    '#a0772a',
+    '#219630',
+    '#3f85a5',
+    '#962e27',
+    '#b67520',
+    '#54a164',
+    '#4e3fa5',
+    '#832e30',
+    '#c59d1a',
+    '#5dc01b',
+    '#302497',
+    '#dc41ae',
+    '#789443',
+    '#74c56a',
+    '#2a9dce',
+    '#b61b1e',
+    '#b7be51',
+    '#4b8367',
+    '#436c7e'];
+
   for (let i = 0; i < props.results.length; i++) {
     if (props.results[i] !== 0) {
       data.push({
@@ -38,8 +69,8 @@ function ResultsPieChart(props) {
   return (
     <div className='results-container'>
       <div className='pie-chart-container'>
-        <Row style={{ justifyContent: 'center' }}>
-          <Col md={5} lg={3}>
+        <Row noGutters>
+          <Col md={5} lg={3} style={{ display: 'flex', justifyContent: 'center' }}>
            <PieChart
               className='pie-chart'
               animate
@@ -59,17 +90,18 @@ function ResultsPieChart(props) {
             />
           
           </Col>
-          <Col md='auto' sm>
+          <Col>
             <div className='pie-chart-labels'>
-              {labels.map((data, i) => (
-                <div key={i}>
-                  <div className='label-box'></div>
-                  <div className='label-data'>
-                    <h6>{data.title}</h6>
-                    <span className='poll-stat'>{data.value.toLocaleString()} votes</span>
-                  </div>
-                </div>
-              ))}
+              <ul>
+                {labels.map((data, i) => (
+                  <li key={i}>
+                    <div className='label-data'>
+                      <h6>{data.title}</h6>
+                      <span className='poll-stat'>{data.value.toLocaleString()} votes {data.value === 0 ? '(0%)' : `(${Math.round((data.value/props.totalVotes) * 100)}%)`}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
           </Col>
         </Row>
