@@ -16,6 +16,9 @@ const voteSchema = new mongoose.Schema({
   votedAt: {
     type: Date,
     default: Date.now
+  },
+  cid: {
+    type: String
   }
 });
 

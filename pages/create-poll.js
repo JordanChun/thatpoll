@@ -15,35 +15,21 @@ import CategoriesList from '../helpers/CategoriesList';
 import Cookies from 'js-cookie';
 import getMomentTimelimit from '../helpers/momentFunctions';
 
-const visibilityTooltip = props => (
-  <div
-    {...props}
-    style={{
-      maxWidth: '400px',
-      backgroundColor: '#1c2c40',
-      padding: '0.5rem 0.75rem',
-      color: '#e6e6e6',
-      borderRadius: '0.25rem',
-      ...props.style,
-    }}
-  >
+const multiIpTooltip = ({placement, scheduleUpdate, arrowProps, outOfBoundaries, show, ...props}) => (
+  <div {...props} className='tool-tip' style={{...props.style}}>
+    Turns off the IP address filter and allow users which share the same network to vote.
+  </div>
+);
+
+const visibilityTooltip = ({placement, scheduleUpdate, arrowProps, outOfBoundaries, show, ...props}) => (
+  <div {...props} className='tool-tip' style={{...props.style}}>
     Set whether to allow the public to see this poll or keep it private.
     Only those with the URL will be able to access the poll if set private.
   </div>
 );
 
-const votingPeriodTooltip = props => (
-  <div
-    {...props}
-    style={{
-      maxWidth: '400px',
-      backgroundColor: '#1c2c40',
-      padding: '0.5rem 0.75rem',
-      color: '#e6e6e6',
-      borderRadius: '0.25rem',
-      ...props.style,
-    }}
-  >
+const votingPeriodTooltip = ({placement, scheduleUpdate, arrowProps, outOfBoundaries, show, ...props}) => (
+  <div {...props} className='tool-tip' style={{...props.style}}>
     Set in hours when the poll will expire.
   </div>
 );
@@ -62,7 +48,8 @@ function validatePollInput(pollDataObj) {
     choices: choicesArr,
     visibility: pollDataObj.visibility,
     votingPeriod: pollDataObj.votingPeriod,
-    category: pollDataObj.category
+    category: pollDataObj.category,
+    multiIp: pollDataObj.multiIp
   }
 
   return pollData;
@@ -84,13 +71,17 @@ class CreatePoll extends React.Component {
       dateCreated: new Date(),
       category: 0,
       error: false,
+      duplicate: false,
       validated: false,
       timelimit: ' 6 hours',
-      createLimit: false
+      createLimit: false,
+      multiIp: false,
+      success: false
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
     this.visibilityUpdate = this.visibilityUpdate.bind(this);
+    this.multiIpUpdate = this.multiIpUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
@@ -114,8 +105,16 @@ class CreatePoll extends React.Component {
     this.setState({ category: e.target.selectedIndex });
   }
 
+  multiIpUpdate(e) {
+    this.setState({ multiIp: !this.state.multiIp });
+  }
+
   visibilityUpdate(e) {
-    this.setState({ visibility: e.target.value });
+    if (this.state.visibility === 'public') {
+      this.setState({ visibility: 'private' });
+    } else {
+      this.setState({ visibility: 'public' });
+    }
   }
 
   async handleSubmit(e, req) {
@@ -126,7 +125,7 @@ class CreatePoll extends React.Component {
       e.stopPropagation();
     }
 
-    this.setState({ validated: true });
+    this.setState({ validated: true, error: false, duplicate: false });
 
     const { origin } = absoluteUrl(req);
     const publicAccessToken = Cookies.get('publicAccessToken');
@@ -141,28 +140,22 @@ class CreatePoll extends React.Component {
         body: JSON.stringify(pollData)
       });
       const data = await res.json();
-      if(data.message === 'success') {
-        Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`)
-      }
 
-      if (data.message === 'error') {
-        this.setState({ error: true });
-        window.scrollTo({
-          top: 56,
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
+      switch (data.message) {
+        case 'error':
+          this.setState({ error: true });
+          break;
+        case 'duplicate':
+          this.setState({ duplicate: true });
+          break;
+        case 'limit':
+          this.setState({ limit: true });
+          default:
+          this.setState({ success: true });
+          Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`).then(() => window.scrollTo(0, 0));
+      } 
+        window.scrollTo({ top: 56, left: 0, behavior: 'smooth' });
 
-      if (data.message === 'limit') {
-        this.setState({ createLimit: true });
-        window.scrollTo({
-          top: 56,
-          left: 0,
-          behavior: 'smooth'
-        });
-      }
-      //console.log(data);
     } catch(err) {
       //console.log(err)
       // display error
@@ -208,7 +201,11 @@ class CreatePoll extends React.Component {
       votingPeriod,
       error,
       validated,
-      createLimit
+      createLimit,
+      visibility,
+      multiIp,
+      duplicate,
+      success
     } = this.state;
 
     return (
@@ -223,10 +220,16 @@ class CreatePoll extends React.Component {
           <Alert variant='danger'>
            <b>Error submitting poll</b>
           </Alert> : null }
-          { createLimit ?
-            <Alert variant='warning'>
-            <b>You have reached the limit for now. Please try again in a few hours.</b>
-            </Alert> : null }
+        { createLimit ?
+          <Alert variant='warning'>
+          <b>You have reached the limit for now. Please try again in a few hours.</b>
+          </Alert> : null }
+        { duplicate ? <Alert variant='danger'>
+           <b>Duplicate choices found</b>
+          </Alert> : null }
+        { success ? <Alert variant='success'>
+           <b>Success!</b>
+          </Alert> : null }
         <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit}>
           <Form.Group controlId="validationTitle">
             <Form.Label>
@@ -299,25 +302,36 @@ class CreatePoll extends React.Component {
               <FontAwesomeIcon icon={faPlus} /> Add choice
             </Button>
           </ButtonGroup>
-          <Form.Row>
+          <h5>Options</h5>
+          <hr />
+          <Form.Row className='create-poll-options'>
             <Form.Group as={Col}>
-              <Form.Label>
-                Visibility{" "}
-                <OverlayTrigger
-                    placement="top-start"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={visibilityTooltip}>
-                  <FontAwesomeIcon icon={faQuestionCircle} />
-                </OverlayTrigger>
-              </Form.Label>
               <Form.Check
-                onClick={this.visibilityUpdate}
-                type='radio' label='Public' name='visibility' value='public' defaultChecked
+                id='switch-visibility'
+                type="switch"
+                label='Make this poll private '
+                onChange={() => this.visibilityUpdate()}
+                checked={visibility === 'public' ? false : true}
               />
+              <OverlayTrigger
+                  placement="top-start"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={visibilityTooltip}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
+              </OverlayTrigger>
               <Form.Check
-                onClick={this.visibilityUpdate}
-                type='radio' label='Private' name='visibility' value='private'
+                id='switch-multiple-ip'
+                type="switch"
+                label='Allow multiple votes from the same network'
+                onChange={() => this.multiIpUpdate()}
+                checked={multiIp === true ? true : false}
               />
+              <OverlayTrigger
+                placement="top-start"
+                delay={{ show: 250, hide: 400 }}
+                overlay={multiIpTooltip}>
+                <FontAwesomeIcon icon={faQuestionCircle} />
+              </OverlayTrigger>
             </Form.Group>
             <Form.Group as={Col} controlId='validateVotingPeriod'>
               <Form.Label>

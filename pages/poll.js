@@ -15,12 +15,14 @@ import getMomentTimelimit from '../helpers/momentFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import PollShare from '../components/poll/PollShare';
+import cookies from 'next-cookies';
 
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
     const { origin } = absoluteUrl(ctx.req);
     const { slug } = ctx.query;
+    const { cid } = cookies(ctx);
     const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let clientIp;
     if (ctx.req && ctx.req.headers) {
@@ -29,7 +31,8 @@ class PollPage extends React.Component {
     const res = await fetch(`${baseUrl}/api/v1/poll/${slug}`, {
       method: 'POST',
       headers: { 
-        'X-IP': clientIp
+        'X-IP': clientIp,
+        'X-CID': cid
       }
     });
     const errorCode = res.status > 200 ? res.status : false

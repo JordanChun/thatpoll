@@ -9,7 +9,7 @@ const transitionStyles = resultWidth => {
   const style = {
     entering: { width: `${resultWidth}%` },
     entered:  { width: `${resultWidth}%` },
-    exit: { width: 0 }
+    exited: { width: 0 }
   }
 
   return style
@@ -26,14 +26,14 @@ function ResultsBars(props){
 
   return (
     <div>
-      <Transition in={resultsBar} timeout={300} appear>
+      <Transition in={resultsBar} timeout={300} appear exit={false}>
         {state => (
           <div className='results-container'>
               {props.results.map((result, i) => (
                 <div key={i}>
                   <h6>{props.choices[i]}</h6>
                   <div className='poll-result'>
-                    <div className='result-bar mb-3'
+                    <div className='result-bar'
                       style={{
                         ...defaultStyle,
                         ...transitionStyles(Math.round((result/props.totalVotes) * 100))[state]

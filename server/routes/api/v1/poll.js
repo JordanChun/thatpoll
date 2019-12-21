@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+const setClientId = require('../../../middleware/setClientId');
+const cookieParser = require('cookie-parser')
+
 const Poll = require('../../../models/Poll');
 const Vote = require('../../../models/Vote');
 const Visit = require('../../../models/Visit');
@@ -8,9 +11,9 @@ const Visit = require('../../../models/Visit');
 const moment = require('moment');
 require('moment-precise-range-plugin');
 
-router.post('/poll/:slug', async (req, res) => {
+router.post('/poll/:slug', setClientId, async (req, res) => {
   let clientIp = req.clientIp;
-
+  let cid = req.cid;
   // for heroku routing issue
   let ipAddr = req.headers["x-forwarded-for"];
   console.log(`x-forwarded-for: ${ipAddr}`);
@@ -26,7 +29,11 @@ router.post('/poll/:slug', async (req, res) => {
   if (req.headers['x-ip'] !== 'undefined') {
     clientIp = req.headers['x-ip'];
   }
-  
+
+  if (req.headers['x-cid'] !== 'undefined') {
+    cid = cookieParser.signedCookie(req.headers['x-cid'], 's21Jc-2zXsQ');
+  }
+
   try {
     let poll = await Poll.findOne({ url: req.params.slug });
     
@@ -92,8 +99,14 @@ router.post('/poll/:slug', async (req, res) => {
       timelimit = 'Voting Ended'
     }
     
-    const userDidVote = await Vote.exists({ url: req.params.slug, ip: clientIp });
-    
+    let userDidVote;
+
+    if (poll.multiIp) {
+      userDidVote = await Vote.exists({ url: req.params.slug, cid: cid });
+    } else {
+      userDidVote = await Vote.exists({ url: req.params.slug, ip: clientIp });
+    }
+
     const userData = { 
       didVote: userDidVote
     };

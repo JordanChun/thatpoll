@@ -49,6 +49,11 @@ const pollSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 0
+  },
+  multiIp: {
+    type: Boolean,
+    required: true,
+    default: false
   }
 });
 

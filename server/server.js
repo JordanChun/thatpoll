@@ -24,6 +24,8 @@ const mongoose = require('mongoose');
 const pageRoutes = require('./routes/index');
 const apiRoutes = require('./routes/api/v1');
 
+const setClientId = require('./middleware/setClientId');
+
 mongoose.connect(process.env.DB_HOST, {
   auth: {
     user: process.env.DB_USER,
@@ -51,7 +53,7 @@ var corsOptions = {
       callback(new Error('Not allowed by CORS'))
     }
   },
-  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip', 'X-Forwarded-For'],
+  allowedHeaders: ['Content-Type', 'Accept', 'X-Ip', 'X-Forwarded-For', 'X-CID'],
   credentials: true
 }
 
@@ -69,8 +71,10 @@ nextApp.prepare().then(() => {
   app.use(cors(corsOptions));
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
-  app.use(cookieParser());
+  app.use(cookieParser('s21Jc-2zXsQ'));
   app.use(requestIp.mw());
+  app.use(setClientId)
+
 
   /*
   server.use(session({
@@ -90,7 +94,6 @@ nextApp.prepare().then(() => {
  app.use('/api/v1', apiRoutes);
  app.use(pageRoutes(nextApp, handle));
  
-  // remove '0.0.0.0' on production
   server.listen(port, '0.0.0.0', err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)

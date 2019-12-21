@@ -61,7 +61,7 @@ function Layout(props) {
 }
 
 Layout.defaultProps = {
-  pageTitle: 'ThatPoll',
+  pageTitle: 'ThatPoll - Create free polls instantly with real time results',
   pageDesc: 'Create your own FREE polls with LIVE, real time results, no sign up required. Instantly create polls for the public or personal use. Share and discuss online with friends and communties.',
   visibility: 'public',
   ads: false

@@ -1,27 +1,26 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar, faSync } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faSync, faTasks, faChartPie, faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import ResultsBars from "./ResultsBars";
 import ResultsPieChart from "./ResultsPieChart";
-import Form from 'react-bootstrap/Form';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import { useState } from "react";
 
 function PollResults(props) {
   const [display, setDisplay] = useState('Bar');
   const { results, choices, totalVotes, active, loadResults, refreshResultsLoading } = props;
 
-  function toggleDisplay() {
-    display === 'Bar' ? setDisplay('Donut') : setDisplay('Bar');
-  }
+  const handleChange = val => setDisplay(val);
 
   return (
     <div className='poll-results'>
       <hr />
       <div className='results-header'>
         <div>
-          <h5>
+          <h4>
             <FontAwesomeIcon icon={faChartBar} /> Results{' '}
             {active ?
               <Button
@@ -40,19 +39,15 @@ function PollResults(props) {
                 aria-hidden="true"
               /> : null
             }
-          </h5>
+          </h4>
         </div>
         <div className='result-display'>
-          Display:<b style={{ marginLeft: '0.25rem' }}>{display}</b>
-          <Form>
-            <Form.Check
-              id='switch-result-display'
-              type="switch"
-              label=''
-              onChange={() => toggleDisplay()}
-              checked={display === 'Donut' ? false : true}
-            />
-          </Form>
+          <ToggleButtonGroup type="radio" name='displays' value={display} onChange={handleChange}>
+            <ToggleButton value='Bar' className='btn-sm'>
+              <FontAwesomeIcon icon={faAlignLeft} /> Bar</ToggleButton>
+            <ToggleButton value='Donut' className='btn-sm'>
+              <FontAwesomeIcon icon={faChartPie} /> Donut</ToggleButton>
+          </ToggleButtonGroup>
         </div>
 
       </div>

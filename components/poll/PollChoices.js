@@ -23,12 +23,12 @@ const PollChoices = props => (
         </Alert>
       </div>
     : null }
-    <h5><FontAwesomeIcon icon={faPollH} /> Choices</h5>
+    <h4 className='mb-1'><FontAwesomeIcon icon={faPollH} /> Choices</h4>
     {props.choices.map((choice, i) => (
-      <InputGroup className="mb-3" key={i}>
-        <input className='choice-control' type='radio' name='poll-choice' value={i} onChange={props.updateChoiceSelected} />
-        <label className='form-control'>{choice}</label>
-      </InputGroup>
+      <div className="poll-choice-container" key={i}>
+        <input id={`choice-${i}`} name='poll-choice' type="radio" value={i} onChange={props.updateChoiceSelected} />
+        <label htmlFor={`choice-${i}`}>{choice}</label>
+      </div>
     ))}
     <div className='mb-3'>
       <Button

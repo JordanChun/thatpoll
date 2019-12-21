@@ -4,7 +4,8 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPollH, faVoteYea, faStopwatch, faShare, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faPollH, faVoteYea, faStopwatch, faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebookF, faReddit } from '@fortawesome/free-brands-svg-icons';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
 import CategoryList from '../../helpers/CategoriesList';
@@ -41,10 +42,35 @@ const PollPreview = props => (
         <Row>
           <Col>
             <div className='poll-options mb-3'>
-              <ShareButton url='https://thatpoll.com/create-poll/' />
-              <Button size='sm' variant='simple'>
-                <FontAwesomeIcon icon={faFlag}/> Report
-              </Button>
+              <div className='share-buttons mb-2'>
+                <a
+                  title='Facebook'
+                  className='social-buttons'
+                  style={{ backgroundColor: '#4267B2' }}
+                >
+                  <FontAwesomeIcon icon={faFacebookF} />
+                </a>
+                <a
+                  title='Twitter'
+                  className='social-buttons'
+                  style={{ backgroundColor: '#1b95e0' }}
+                  >
+                  <FontAwesomeIcon icon={faTwitter} />
+                </a>
+                <a 
+                  title='Reddit'
+                  className='social-buttons'
+                  style={{ backgroundColor: '#ff4500' }}
+                >
+                  <FontAwesomeIcon icon={faReddit} />
+                </a>
+                <ShareButton url='https://thatpoll.com/create-poll/' />
+              </div>
+              <div>
+                <Button size='sm' variant='simple'>
+                  <FontAwesomeIcon icon={faFlag}/> Report
+                </Button>
+              </div>
             </div>
           </Col>
         </Row>
@@ -63,12 +89,12 @@ const PollPreview = props => (
         </div>
         <hr />
         <div className='poll-choices'>
-          <h6><FontAwesomeIcon icon={faPollH} /> Poll Choices</h6>
+          <h4 className='mb-1'><FontAwesomeIcon icon={faPollH} /> Poll Choices</h4>
           {props.choices.map((choiceObj, i) => (
-            <InputGroup className="mb-3" key={i}>
-              <input className='choice-control' type='radio' name='poll-choice' value='0' />
-              <label className='form-control'>{choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i+1}`}</label>
-            </InputGroup>
+            <div className="poll-choice-container" key={i}>
+              <input id={`choice-${i}`} name='poll-choice' type="radio" value='0'/>
+              <label htmlFor={`choice-${i}`}>{choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i+1}`}</label>
+            </div>
           ))}
         </div>
     </div>
@@ -76,3 +102,7 @@ const PollPreview = props => (
 )
 
 export default PollPreview;
+            // <InputGroup className="mb-3" key={i}>
+            //   <input className='choice-control' type='radio' name='poll-choice' value='0' />
+            //   <label className='form-control'>{choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i+1}`}</label>
+            // </InputGroup>

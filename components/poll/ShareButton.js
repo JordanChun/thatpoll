@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboard } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard, faLink } from '@fortawesome/free-solid-svg-icons';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
@@ -10,6 +10,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 function ShareButton(props) {
   const [showToolTip, setShowToolTip] = useState(false);
   const target = useRef(null);
+  const copyBtn = useRef(null);
 
   function copyToClipboard(e) {
     target.current.select();
@@ -23,22 +24,22 @@ function ShareButton(props) {
 
   return (
     <div className='share-poll'>
+      <Overlay target={copyBtn.current} show={showToolTip} placement="top">
+        {props => (
+          <Tooltip id="tooltip-copied" {...props} show={showToolTip.toString()}>
+            Copied!
+          </Tooltip>
+        )}
+      </Overlay>
       <InputGroup size='sm'>
         <FormControl
           readOnly
           value={props.url}
           ref={target} 
         />
-        <Overlay target={target.current} show={showToolTip} placement="top">
-          {props => (
-            <Tooltip id="tooltip-copied" {...props} show={showToolTip.toString()}>
-              Copied!
-            </Tooltip>
-          )}
-        </Overlay>
         <InputGroup.Append>
-          <Button variant="grey-blue" onClick={(e) => copyToClipboard(e)}>
-            <FontAwesomeIcon icon={faClipboard}/> Copy
+          <Button variant="grey-blue" onClick={(target) => copyToClipboard(target)} ref={copyBtn} >
+            <FontAwesomeIcon icon={faLink}/> Copy
           </Button>
         </InputGroup.Append>
       </InputGroup>

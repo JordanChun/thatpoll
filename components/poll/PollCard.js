@@ -10,7 +10,7 @@ import CustomDropdownToggle from '../layout/CustomDropdownToggle';
 
 
 function redirectToPoll(slug) {
-  Router.push(`/poll?slug=${slug}`, `/poll/${slug}`)
+  Router.push(`/poll?slug=${slug}`, `/poll/${slug}`).then(() => window.scrollTo(0, 0));
 }
 
 const PollCard = props => (

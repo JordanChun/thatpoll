@@ -32,7 +32,8 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     visibility,
     votingPeriod,
     choices,
-    category
+    category,
+    multiIp
   } = req;
   
   try {
@@ -64,6 +65,7 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
       votingPeriod: votingPeriod,
       results: results,
       category: categoryName,
+      multiIp: multiIp,
       dateCreated: new Date()
     });
     poll = await poll.save();
@@ -81,6 +83,7 @@ function createPollAuth(req, res, next) {
   req.visibility = validator.trim(req.body.visibility)
   req.votingPeriod = req.body.votingPeriod;
   req.category = req.body.category;
+  req.multiIp = req.body.multiIp;
 
   // validate choices
   if (Array.isArray(req.body.choices)) {
@@ -106,7 +109,7 @@ function createPollAuth(req, res, next) {
     // find duplicate choices
     let findDuplicates = req.choices.filter((item, index) => req.choices.indexOf(item) != index);
     if (findDuplicates.length > 0) {
-      return res.status(400).json({ message: 'error' }).end();
+      return res.status(400).json({ message: 'duplicate' }).end();
     }
   } else {
     return res.status(400).json({ message: 'error' }).end();
@@ -126,6 +129,10 @@ function createPollAuth(req, res, next) {
   }
 
   if (!validator.equals(req.visibility, 'public') && !validator.equals(req.visibility, 'private')) {
+    return res.status(400).json({ message: 'error' }).end();
+  }
+
+  if (typeof req.multiIp !== "boolean") {
     return res.status(400).json({ message: 'error' }).end();
   }
 
