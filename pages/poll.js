@@ -22,7 +22,7 @@ class PollPage extends React.Component {
   static async getInitialProps(ctx) {
     let origin = '';
     if (ctx.req) {
-      origin = absoluteUrl(ctx.req);
+      origin = absoluteUrl(ctx.req).origin;
     }
     const { slug } = ctx.query;
     const { cid } = cookies(ctx);

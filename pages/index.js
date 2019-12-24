@@ -14,7 +14,7 @@ class Home extends React.Component {
   static async getInitialProps(ctx) {
     let origin = '';
     if (ctx.req) {
-      origin = absoluteUrl(ctx.req);
+      origin = absoluteUrl(ctx.req).origin;
     }
     const { page, state } = ctx.query;
     const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
