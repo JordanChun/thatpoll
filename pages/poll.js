@@ -20,7 +20,10 @@ import cookies from 'next-cookies';
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
-    const { origin } = absoluteUrl(ctx.req);
+    let origin = '';
+    if (ctx.req) {
+      origin = absoluteUrl(ctx.req);
+    }
     const { slug } = ctx.query;
     const { cid } = cookies(ctx);
     const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
@@ -83,7 +86,7 @@ class PollPage extends React.Component {
   }
   
   connectSocket() {
-    this.socket = io();
+    this.socket = io({ transports: ['websocket'] });
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
     this.socket.on('updateResults', selectedVote => {
       const newResults = this.state.results.slice(0);

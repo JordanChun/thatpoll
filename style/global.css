@@ -14,8 +14,6 @@ html[data-theme="dark"] {
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #2d4b6d;
-  --choiceLabelColor: #1c2c40;
-  --choiceCheckColor: 2d4b6d;
 }
 
 html {
@@ -31,7 +29,6 @@ html {
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #f9f9f9;
-  --choiceLabelColor: #588ecb;
   --primaryBoxShadow: 4px 4px 3px -4px rgba(0,0,0,0.25);
 }
 
@@ -125,8 +122,8 @@ a, a:hover {
 }
 
 button[type='submit'].btn.btn-light-blue {
-  background-color: #598ecc;
-  border-color: #598ecc;
+  background-color: #3279cc;
+  border-color: #3279cc;
   color: var(--primaryButtonTextColor);
   border-radius: 2rem;
   border-width: 2px;
@@ -134,7 +131,7 @@ button[type='submit'].btn.btn-light-blue {
 
 button[type='submit'].btn.btn-light-blue:hover {
   background-color: #21354c;
-  border-color: #598ecc;
+  border-color: #3279cc;
   color: var(--primaryButtonTextColor);
 }
 
@@ -481,6 +478,14 @@ a:not([href]):not([tabindex]).social-buttons {
   justify-content: space-between;
 }
 
+/* .poll-choices .choice-btns {
+  display: flex;
+} */
+
+.poll-choices .choice-btns button[type='submit'] {
+  margin-right: 0.5rem;
+}
+
 .poll-choices-icon {
   color: var(--primaryTextColor);
   cursor: pointer;
@@ -520,7 +525,7 @@ a:not([href]):not([tabindex]).social-buttons {
 .poll-choice-container { 
   background-color: var(--primaryBackground);
   display: block;
-  margin: 10px 0;
+  margin: 6px 0;
   position: relative;
   box-shadow: var(--primaryBoxShadow);
   border: var(--primaryBorder);
@@ -679,7 +684,7 @@ border-color: #54E0C7;
   border: none;
   color: var(--primaryTextColor);
   box-shadow: var(--primaryBoxShadow);
-  padding: .375rem .75rem;
+  padding: .375rem 0;
 }
 
 .result-bar > div {
@@ -687,6 +692,7 @@ border-color: #54E0C7;
   justify-content: space-between;
   width: 100%;
   font-weight: 600;
+  padding: 0 .75rem;
 }
 
 .result-bar > div div:not(:first-child) {
@@ -730,6 +736,7 @@ border-color: #54E0C7;
 
 .pie-chart {
   height: fit-content;
+  height: -moz-fit-content;
 }
 
 .pie-chart-container .row {
@@ -848,6 +855,27 @@ border-color: #54E0C7;
   border-radius: 0.25rem;
 }
 
+
+@media (max-width: 768px) {
+  .poll-desc, .poll-choices {
+    margin: 0;
+  }
+  .form-group.col {
+    flex-basis: auto;
+  }
+  
+  .pie-chart {
+    margin-bottom: 1rem;
+  }
+  
+  .share-poll {
+    max-width: 240px;
+    height: 31px;
+  }
+  
+
+}
+
 @media (max-width: 576px) {
   .main-wrapper.container {
     padding: 0 10px;
@@ -863,6 +891,16 @@ border-color: #54E0C7;
   
   .nav-item.small-menu {
     display: inline;
+  }
+
+  .nav-item.small-menu a {
+    display: block;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid white;
+  }
+
+  .navbar-nav .nav-item {
+    padding: 0.5rem 0;
   }
 
   .poll-desc, .poll-choices {
@@ -898,31 +936,34 @@ border-color: #54E0C7;
     position: relative;
     top: -31px;
   }
-
+  
   .share-poll .input-group>.input-group-append>.btn,
   .share-poll .input-group>.form-control:not(:last-child) {
     border-radius: .2rem;
   }
-
+  
   .content-container {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+  
+  .poll-choices .choice-btns {
+    text-align: center;
+  }
+  
+  .poll-choices .choice-btns button[type='submit'] {
+    margin-right: 0;
+    margin: 0 auto 0.5rem;
+  }
+  
+  .poll-choices .choice-btns button {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 768px) {
-  .poll-desc, .poll-choices {
-    margin: 0;
-  }
-  .form-group.col {
-    flex-basis: auto;
-  }
-
-  .pie-chart {
-    margin-bottom: 1rem;
-  }
-
-  .share-poll {
-    max-width: 240px;
-    height: 31px;
+@media (max-width: 400px) {
+  .results-header {
+    display: block;
   }
 }

@@ -27,7 +27,6 @@ function PollResults(props) {
                 variant='grey-blue'
                 size='sm'
                 onClick={loadResults}
-                style={{ margin: '0 0.5rem' }}
                 disabled={refreshResultsLoading}
               >
                 <FontAwesomeIcon icon={faSync} /> Refresh

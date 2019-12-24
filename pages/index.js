@@ -12,7 +12,10 @@ import PollListFilter from '../components/poll/PollListFilter';
 
 class Home extends React.Component {
   static async getInitialProps(ctx) {
-    const { origin } = absoluteUrl(ctx.req);
+    let origin = '';
+    if (ctx.req) {
+      origin = absoluteUrl(ctx.req);
+    }
     const { page, state } = ctx.query;
     const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let queryString = '';
@@ -61,7 +64,6 @@ class Home extends React.Component {
     const { polls, totalItems } = this.props;
     return (
       <Layout
-        pageTitle='ThatPoll'
         path={this.props.router.asPath}
         ads={true}
       >

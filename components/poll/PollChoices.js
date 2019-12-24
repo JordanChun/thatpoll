@@ -23,14 +23,14 @@ const PollChoices = props => (
         </Alert>
       </div>
     : null }
-    <h4 className='mb-1'><FontAwesomeIcon icon={faPollH} /> Choices</h4>
+    <h4 className='mb-3'><FontAwesomeIcon icon={faPollH} /> Choices</h4>
     {props.choices.map((choice, i) => (
       <div className="poll-choice-container" key={i}>
         <input id={`choice-${i}`} name='poll-choice' type="radio" value={i} onChange={props.updateChoiceSelected} />
         <label htmlFor={`choice-${i}`}>{choice}</label>
       </div>
     ))}
-    <div className='mb-3'>
+    <div className='mt-3 mb-3 choice-btns'>
       <Button
         disabled={props.selectedVote == null ? true : false}
         size='sm'
@@ -38,13 +38,11 @@ const PollChoices = props => (
         variant='light-blue' type="submit" style={{ width: '200px' }}>
         Submit Vote
       </Button>
+    { !props.revealResults ?
+      <Button variant='grey-blue' size='sm' onClick={props.loadResults}>View Results</Button>
+      : null }
     </div>
 
-    { !props.revealResults ?
-      <div className='mb-3'>
-        <Button variant='grey-blue' size='sm' onClick={props.loadResults}>View Results</Button>
-      </div>
-      : null }
   </div>
 );
 

@@ -60,6 +60,7 @@ var corsOptions = {
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+io.set('transports', ['websocket']);
 
 // Connect to poll socket
 require('./socket/poll')(io);
