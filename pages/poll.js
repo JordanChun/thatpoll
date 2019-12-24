@@ -40,7 +40,7 @@ class PollPage extends React.Component {
     });
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
-    const url = `${origin}/poll/${slug}`;
+    const url = `${baseUrl}/poll/${slug}`;
     return { errorCode, poll: data.pollData, user: data.userData, url: url }
   }
 
