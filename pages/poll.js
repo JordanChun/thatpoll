@@ -41,7 +41,7 @@ class PollPage extends React.Component {
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
     const url = `${baseUrl}/poll/${slug}`;
-    return { errorCode, poll: data.pollData, user: data.userData, url: url }
+    return { errorCode, poll: data.pollData, user: data.userData, url: url, baseUrl: baseUrl }
   }
 
   constructor(props) {
@@ -86,7 +86,7 @@ class PollPage extends React.Component {
   }
   
   connectSocket() {
-    this.socket = io({ transports: ['websocket'] });
+    this.socket = io();
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
     this.socket.on('updateResults', selectedVote => {
       const newResults = this.state.results.slice(0);
