@@ -20,13 +20,14 @@ import cookies from 'next-cookies';
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
-    let origin = '';
-    if (ctx.req) {
-      origin = absoluteUrl(ctx.req).origin;
-    }
+    // let origin = '';
+    // if (ctx.req) {
+    //   origin = absoluteUrl(ctx.req).origin;
+    // }
     const { slug } = ctx.query;
     const { cid } = cookies(ctx);
-    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
+    // const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
+    const baseUrl = 'https://thatpoll.com';
     let clientIp;
     if (ctx.req && ctx.req.headers) {
       clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.connection.remoteAddress;
