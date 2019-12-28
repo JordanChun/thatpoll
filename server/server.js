@@ -44,7 +44,7 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-var whitelist = ['http://localhost:3000', 'https://thatpoll.herokuapp.com', 'https://maxcdn.bootstrapcdn.com', 'https://thatpoll.com']
+var whitelist = ['http://localhost:3000', 'https://thatpoll.herokuapp.com', 'https://maxcdn.bootstrapcdn.com', 'http://thatpoll.com', 'https://thatpoll.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
