@@ -87,7 +87,7 @@ class PollPage extends React.Component {
   }
   
   connectSocket() {
-    this.socket = io({ path: '/socket.io' });
+    this.socket = io('ws://thatpoll.com');
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
     this.socket.on('updateResults', selectedVote => {
       const newResults = this.state.results.slice(0);
