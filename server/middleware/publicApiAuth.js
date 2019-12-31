@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const config = require('../server.config');
 
 function publicApiAuth(req, res, next) {
   // if (req.headers['x-p_auth'] !== 'undefined') {

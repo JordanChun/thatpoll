@@ -11,9 +11,15 @@ import { faPoll, faQuestionCircle, faEye, faPlus, faMinus } from '@fortawesome/f
 import Router from 'next/router';
 import absoluteUrl from 'next-absolute-url';
 import { withRouter } from 'next/router';
-import CategoriesList from '../helpers/CategoriesList';
+import CategoriesList from '../common/CategoriesList';
 import Cookies from 'js-cookie';
-import getMomentTimelimit from '../helpers/momentFunctions';
+import getMomentTimelimit from '../common/momentFunctions';
+
+const multiChoiceTooltip = ({placement, scheduleUpdate, arrowProps, outOfBoundaries, show, ...props}) => (
+  <div {...props} className='tool-tip' style={{...props.style}}>
+    Allows multiple choices to be selected.
+  </div>
+);
 
 const multiIpTooltip = ({placement, scheduleUpdate, arrowProps, outOfBoundaries, show, ...props}) => (
   <div {...props} className='tool-tip' style={{...props.style}}>
@@ -49,7 +55,9 @@ function validatePollInput(pollDataObj) {
     visibility: pollDataObj.visibility,
     votingPeriod: pollDataObj.votingPeriod,
     category: pollDataObj.category,
-    multiIp: pollDataObj.multiIp
+    multiIp: pollDataObj.multiIp,
+    multiChoice: pollDataObj.multiChoice,
+    maxSelectChoices: pollDataObj.maxSelectChoices
   }
 
   return pollData;
@@ -76,12 +84,15 @@ class CreatePoll extends React.Component {
       timelimit: ' 6 hours',
       createLimit: false,
       multiIp: false,
+      multiChoice: false,
+      maxSelectChoices: 2,
       success: false
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
     this.visibilityUpdate = this.visibilityUpdate.bind(this);
     this.multiIpUpdate = this.multiIpUpdate.bind(this);
+    this.multiChoiceUpdate = this.multiChoiceUpdate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
@@ -109,6 +120,10 @@ class CreatePoll extends React.Component {
     this.setState({ multiIp: !this.state.multiIp });
   }
 
+  multiChoiceUpdate(e) {
+    this.setState({ multiChoice: !this.state.multiChoice });
+  }
+
   visibilityUpdate(e) {
     if (this.state.visibility === 'public') {
       this.setState({ visibility: 'private' });
@@ -128,7 +143,6 @@ class CreatePoll extends React.Component {
     this.setState({ validated: true, error: false, duplicate: false });
 
     const { origin } = absoluteUrl(req);
-    const publicAccessToken = Cookies.get('publicAccessToken');
     const pollData = validatePollInput(this.state);
     try {
       const res = await fetch(`${origin}/api/v1/create-poll`, {
@@ -149,8 +163,9 @@ class CreatePoll extends React.Component {
           this.setState({ duplicate: true });
           break;
         case 'limit':
-          this.setState({ limit: true });
-          default:
+          this.setState({ createLimit: true });
+          break;
+        default:
           this.setState({ success: true });
           Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`).then(() => window.scrollTo(0, 0));
       } 
@@ -204,8 +219,10 @@ class CreatePoll extends React.Component {
       createLimit,
       visibility,
       multiIp,
+      multiChoice,
       duplicate,
-      success
+      success,
+      maxSelectChoices
     } = this.state;
 
     return (
@@ -313,12 +330,7 @@ class CreatePoll extends React.Component {
                 onChange={() => this.visibilityUpdate()}
                 checked={visibility === 'public' ? false : true}
               />
-              <OverlayTrigger
-                  placement="top-start"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={visibilityTooltip}>
-                <FontAwesomeIcon icon={faQuestionCircle} />
-              </OverlayTrigger>
+              <p>Set whether to allow the public to see this poll. (Direct link only)</p>
               <Form.Check
                 id='switch-multiple-ip'
                 type="switch"
@@ -326,23 +338,32 @@ class CreatePoll extends React.Component {
                 onChange={() => this.multiIpUpdate()}
                 checked={multiIp === true ? true : false}
               />
-              <OverlayTrigger
-                placement="top-start"
-                delay={{ show: 250, hide: 400 }}
-                overlay={multiIpTooltip}>
-                <FontAwesomeIcon icon={faQuestionCircle} />
-              </OverlayTrigger>
+              <p>Turns off the IP address filter and allow users which share the same network to vote.</p>
+              <Form.Check
+                id='switch-multiple-choices'
+                type="switch"
+                label='Allow multiple choices to be selected'
+                onChange={() => this.multiChoiceUpdate()}
+                checked={multiChoice === true ? true : false}
+              />
+              <p>Allows multiple choices to be selected.</p>
+              { multiChoice ?
+              <div>
+                <Form.Label>
+                  Max Selectable Choices
+                </Form.Label>
+                <Form.Control
+                  value={maxSelectChoices}
+                  onChange={this.inputUpdate}
+                  style={{ maxWidth: '200px' }}
+                  type='number' min='2' max={choices.length} name='maxSelectChoices'
+                  className="mb-1"
+                  />
+              </div> : null }
             </Form.Group>
             <Form.Group as={Col} controlId='validateVotingPeriod'>
               <Form.Label>
-                Voting Period (hours){" "}
-                <OverlayTrigger
-                  placement="top-start"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={votingPeriodTooltip}
-                >
-                  <FontAwesomeIcon icon={faQuestionCircle} />
-                </OverlayTrigger>
+                Voting Period (hours)
               </Form.Label>
               <Form.Control
                 value={votingPeriod}
@@ -351,7 +372,8 @@ class CreatePoll extends React.Component {
                 type='number' min='6' max='168' name='votingPeriod'
                 className="mb-1"
                 required
-              />
+                />
+                <p>Set in hours when the poll will expire.</p>
               <ButtonGroup size="sm">
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='24'>1 day</Button>
                 <Button variant="grey-blue" onClick={this.setHourPreset} data-hours='72'>3 days</Button>

@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import io from 'socket.io-client';
 import moment from 'moment';
-import getMomentTimelimit from '../helpers/momentFunctions';
+import getMomentTimelimit from '../common/momentFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import PollShare from '../components/poll/PollShare';
@@ -20,14 +20,13 @@ import cookies from 'next-cookies';
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
-    // let origin = '';
-    // if (ctx.req) {
-    //   origin = absoluteUrl(ctx.req).origin;
-    // }
+    let origin = '';
+    if (ctx.req) {
+      origin = absoluteUrl(ctx.req).origin;
+    }
     const { slug } = ctx.query;
     const { cid } = cookies(ctx);
-    // const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
-    const baseUrl = 'https://thatpoll.com';
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let clientIp;
     if (ctx.req && ctx.req.headers) {
       clientIp = ctx.req.headers['x-forwarded-for'] || ctx.req.connection.remoteAddress;
@@ -55,12 +54,12 @@ class PollPage extends React.Component {
       revealResults: !this.props.poll.active,
       resultsLoading: false,
       refreshResultsLoading: false,
-      selectedVote: null,
+      selectedChoices: [],
       userDidVoteError: false,
       submitError: false,
       timelimit: this.props.poll.timelimit
     }
-
+    this.updateMultiChoiceSelected = this.updateMultiChoiceSelected.bind(this);
     this.updateChoiceSelected = this.updateChoiceSelected.bind(this);
     this.loadResults = this.loadResults.bind(this);
     this.submitVote = this.submitVote.bind(this);
@@ -70,11 +69,9 @@ class PollPage extends React.Component {
   componentDidMount() {
     if (this.props.poll.active) {
       this.connectSocket();
-      const updateTimelimit = setInterval(() => {
+      this.updateTimelimit = setInterval(() => {
         let timelimit = getMomentTimelimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
-        this.setState({
-          timelimit: timelimit
-        })
+        this.setState({ timelimit });
       }, 60000)
     }
   }
@@ -85,13 +82,16 @@ class PollPage extends React.Component {
     }
     clearInterval(this.updateTimelimit);
   }
-  
+
   connectSocket() {
-    this.socket = io('https://thatpoll.com');
+    this.socket = io();
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
-    this.socket.on('updateResults', selectedVote => {
+    this.socket.on('updateResults', selectedChoices => {
       const newResults = this.state.results.slice(0);
-      newResults[selectedVote]++;
+      selectedChoices.forEach(choice => {
+        newResults[choice]++;
+      });
+
       this.setState({
         results: newResults,
         totalVotes: this.state.totalVotes + 1
@@ -99,8 +99,20 @@ class PollPage extends React.Component {
     });
   }
 
+  updateMultiChoiceSelected(e) {
+    const value = parseInt(e.target.value);
+    const { selectedChoices } = this.state;
+    if (!selectedChoices.includes(value)) {
+      selectedChoices.push(value);
+      this.setState({ selectedChoices })
+    } else {
+      selectedChoices.splice(selectedChoices.indexOf(value), 1);
+      this.setState({ selectedChoices });
+    }
+  }
+  
   updateChoiceSelected(e) {
-    this.setState({ selectedVote: e.target.value });
+    this.setState({ selectedChoices: [parseInt(e.target.value)] });
   }
 
   async loadResults(e, req) {
@@ -133,7 +145,7 @@ class PollPage extends React.Component {
 
   async submitVote(e, req) {
     e.preventDefault();
-    if(this.state.selectedVote !== null) {
+    if(this.state.selectedChoices !== null) {
       const { origin } = absoluteUrl(req);
       const { slug } = this.props.router.query;
       try {
@@ -143,12 +155,14 @@ class PollPage extends React.Component {
             'Accept': 'accplication/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({selectedVote: this.state.selectedVote})
+          body: JSON.stringify({selectedChoices: this.state.selectedChoices})
         });
   
         const data = await res.json();
 
         if(data.message === 'error') {
+          this.setState({ submitError: true });
+        } else if (data.message === 'didVote') {
           this.setState({ userDidVoteError: true });
         } else {
           if (localStorage.voteHistory) {
@@ -162,7 +176,6 @@ class PollPage extends React.Component {
             voteHistory = JSON.stringify(voteHistory)
             localStorage.setItem('voteHistory', voteHistory);
           }
-
           this.setState({ userDidVote: true });
         }
         
@@ -191,6 +204,8 @@ class PollPage extends React.Component {
       dateCreated,
       visits,
       category,
+      multiChoice,
+      maxSelectChoices
     } = this.props.poll;
 
     const {
@@ -202,7 +217,7 @@ class PollPage extends React.Component {
       resultsLoading,
       refreshResultsLoading,
       submitError,
-      selectedVote,
+      selectedChoices,
       timelimit
     } = this.state;
 
@@ -267,15 +282,18 @@ class PollPage extends React.Component {
             choices={choices}
             revealResults={revealResults}
             updateChoiceSelected={this.updateChoiceSelected}
+            updateMultiChoiceSelected={this.updateMultiChoiceSelected}
             submitVote={this.submitVote}
             loadResults={this.loadResults}
-            selectedVote={selectedVote}
+            selectedChoices={selectedChoices}
+            multiChoice={multiChoice}
+            maxSelectChoices={maxSelectChoices}
           /> : null }
 
           { !active || userDidVote || revealResults ?
             <PollResults
-              totalVotes={totalVotes}
               results={results}
+              combinedResults={results.reduce((total, num) => total + num, 0)}
               choices={choices}
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}

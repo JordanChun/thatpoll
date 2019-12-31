@@ -3,9 +3,9 @@ const router = express.Router();
 
 const setClientId = require('../../../middleware/setClientId');
 
-const RateLimit = require('express-rate-limit');
-const MongoStore = require('rate-limit-mongo');
-const config = require('../../../server.config');
+// const RateLimit = require('express-rate-limit');
+// const MongoStore = require('rate-limit-mongo');
+// const config = require('../../../server.config');
 
 // const limiter = new RateLimit({
 //   store: new MongoStore({

@@ -12,13 +12,12 @@ import PollListFilter from '../components/poll/PollListFilter';
 
 class Home extends React.Component {
   static async getInitialProps(ctx) {
-    // let origin = '';
-    // if (ctx.req) {
-    //   origin = absoluteUrl(ctx.req).origin;
-    // }
+    let origin = '';
+    if (ctx.req) {
+      origin = absoluteUrl(ctx.req).origin;
+    }
     const { page, state } = ctx.query;
-    // const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
-    const baseUrl = 'https://thatpoll.com';
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://thatpoll.com' : origin;
     let queryString = '';
     for (let i = 0; i < Object.keys(ctx.query).length; i++) {
       let name = Object.keys(ctx.query)[i];

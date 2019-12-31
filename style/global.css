@@ -180,6 +180,7 @@ input[type='number'],
 
 .spinner-border {
   color: #598ecc;
+  margin: 0.2rem;
 }
 .dropdown-menu {
   background-color: var(--primaryContainerColor);
@@ -313,8 +314,12 @@ input[type='number'],
 }
 
 .create-poll-options .custom-switch {
-  display: inline-block;
   margin-right: 0.5rem;
+}
+
+.create-poll-options p {
+  font-size: 0.9rem;
+  margin-bottom: 0.7rem;
 }
 
 .social-buttons {
@@ -926,6 +931,7 @@ border-color: #54E0C7;
     width: 67.3px;
     padding: 0;
     border: 0;
+    color: transparent;
   }
 
   .share-poll .input-group>.form-control:focus {

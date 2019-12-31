@@ -10,7 +10,7 @@ const voteSchema = new mongoose.Schema({
     required: true,
   },
   vote: {
-    type: Number,
+    type: Array,
     required: true
   },
   votedAt: {

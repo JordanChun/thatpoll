@@ -6,8 +6,6 @@ const next = require('next');
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
-const config = require('./server.config');
-
 const nextApp = next({ dev });
 const handle = nextApp.getRequestHandler();
 const helmet = require('helmet');
@@ -44,7 +42,7 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-var whitelist = ['http://localhost:3000', 'https://thatpoll.herokuapp.com', 'https://maxcdn.bootstrapcdn.com', 'http://thatpoll.com', 'https://thatpoll.com']
+var whitelist = ['http://localhost:3000', 'http://thatpoll.com', 'https://thatpoll.com', 'http://www.thatpoll.com', 'https://www.thatpoll.com']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
@@ -94,7 +92,7 @@ nextApp.prepare().then(() => {
  app.use('/api/v1', apiRoutes);
  app.use(pageRoutes(nextApp, handle));
  
-  server.listen(port, '0.0.0.0', err => {
+  server.listen(port, '127.0.0.1', err => {
     if (err) throw err
     console.log(`> Ready on http://localhost:${port}`)
   })

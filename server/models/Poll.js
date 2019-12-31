@@ -54,6 +54,16 @@ const pollSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false
+  },
+  multiChoice: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
+  maxSelectChoices: {
+    type: Number,
+    required: true,
+    default: 2
   }
 });
 

@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartBar, faSync, faTasks, faChartPie, faAlignLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChartBar, faSync, faChartPie, faAlignLeft } from "@fortawesome/free-solid-svg-icons";
 import Spinner from 'react-bootstrap/Spinner';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function PollResults(props) {
   const [display, setDisplay] = useState('Bar');
-  const { results, choices, totalVotes, active, loadResults, refreshResultsLoading } = props;
+  const { results, combinedResults, choices, active, loadResults, refreshResultsLoading } = props;
 
   const handleChange = val => setDisplay(val);
 
@@ -54,12 +54,12 @@ function PollResults(props) {
         <ResultsBars
           results={results}
           choices={choices}
-          totalVotes={totalVotes}
-        /> :
-        <ResultsPieChart
+          combinedResults={combinedResults}
+          /> :
+          <ResultsPieChart
           results={results}
           choices={choices}
-          totalVotes={totalVotes}
+          combinedResults={combinedResults}
         />
       }
     </div>
@@ -67,8 +67,8 @@ function PollResults(props) {
 }
 
 PollResults.propTypes = {
-  totalVotes: PropTypes.number.isRequired,
   results: PropTypes.array.isRequired,
+  combinedResults: PropTypes.number.isRequired,
   choices: PropTypes.array.isRequired,
   resultsLoading: PropTypes.bool.isRequired,
   refreshResultsLoading: PropTypes.bool.isRequired,

@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const requestIp = require('request-ip');
-const publicApiAuth = require('../../../middleware/publicApiAuth');
+//const publicApiAuth = require('../../../middleware/publicApiAuth');
 
-router.use(publicApiAuth);
+//router.use(publicApiAuth);
 router.use('/', require('./pollList'));
 router.use('/', require('./createPoll'));
 router.use('/', require('./poll'));

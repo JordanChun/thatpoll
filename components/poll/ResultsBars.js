@@ -36,13 +36,13 @@ function ResultsBars(props){
                     <div className='result-bar'
                       style={{
                         ...defaultStyle,
-                        ...transitionStyles(Math.round((result/props.totalVotes) * 100))[state]
+                        ...transitionStyles(Math.round((result/props.combinedResults) * 100))[state]
                       }}
                     >
                     {result !== 0 ?
                       <div>
                         <div>{result.toLocaleString()} votes</div>
-                        <div>{Math.round((result/props.totalVotes) * 100)}%</div>
+                        <div>{Math.round((result/props.combinedResults) * 100)}%</div>
                       </div>
                     : 
                       <div>

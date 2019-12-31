@@ -8,8 +8,8 @@ import { faPollH, faVoteYea, faStopwatch, faFlag } from '@fortawesome/free-solid
 import { faTwitter, faFacebookF, faReddit } from '@fortawesome/free-brands-svg-icons';
 import moment from 'moment';
 import 'moment-precise-range-plugin';
-import CategoryList from '../../helpers/CategoriesList';
-import getMomentTimelimit from '../../helpers/momentFunctions';
+import CategoryList from '../../common/CategoriesList';
+import getMomentTimelimit from '../../common/momentFunctions';
 import ShareButton from './ShareButton';
 
 const PollPreview = props => (
@@ -102,7 +102,3 @@ const PollPreview = props => (
 )
 
 export default PollPreview;
-            // <InputGroup className="mb-3" key={i}>
-            //   <input className='choice-control' type='radio' name='poll-choice' value='0' />
-            //   <label className='form-control'>{choiceObj.choice.length > 0 ? choiceObj.choice : `Choice #${i+1}`}</label>
-            // </InputGroup>

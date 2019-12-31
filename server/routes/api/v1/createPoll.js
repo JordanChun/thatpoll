@@ -7,7 +7,7 @@ const shortid = require('shortid');
 const validator = require('validator');
 const moment = require('moment');
 
-const CategoriesList = require('../../../../helpers/CategoriesList');
+const CategoriesList = require('../../../../common/CategoriesList');
 
 router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
   let user = res.user;
@@ -20,7 +20,7 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     if (hours > 5) {
       user.pollLimitCounter = 0;
     } else {
-      return res.status(400).json({ message: 'limit' });
+      return res.status(400).json({ message: 'limit' }).end();
     }
   }
   
@@ -33,7 +33,9 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     votingPeriod,
     choices,
     category,
-    multiIp
+    multiIp,
+    multiChoice,
+    maxSelectChoices
   } = req;
   
   try {
@@ -66,6 +68,8 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
       results: results,
       category: categoryName,
       multiIp: multiIp,
+      multiChoice: multiChoice,
+      maxSelectChoices: maxSelectChoices,
       dateCreated: new Date()
     });
     poll = await poll.save();
@@ -84,6 +88,8 @@ function createPollAuth(req, res, next) {
   req.votingPeriod = req.body.votingPeriod;
   req.category = req.body.category;
   req.multiIp = req.body.multiIp;
+  req.multiChoice = req.body.multiChoice;
+  req.maxSelectChoices = req.body.maxSelectChoices;
 
   // validate choices
   if (Array.isArray(req.body.choices)) {
@@ -96,7 +102,7 @@ function createPollAuth(req, res, next) {
     if (req.choices.length < 2) {
       return res.status(400).json({ message: 'error' }).end();
     }
-
+    // validate maximum choices
     if (req.choices.length > 30) {
       return res.status(400).json({ message: 'error' }).end();
     }
@@ -133,6 +139,14 @@ function createPollAuth(req, res, next) {
   }
 
   if (typeof req.multiIp !== "boolean") {
+    return res.status(400).json({ message: 'error' }).end();
+  }
+
+  if (typeof req.multiChoice !== "boolean") {
+    return res.status(400).json({ message: 'error' }).end();
+  }
+  
+  if (req.maxSelectChoices > req.choices.length || req.maxSelectChoices < 2) {
     return res.status(400).json({ message: 'error' }).end();
   }
 

@@ -15,16 +15,16 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
   let clientIp = req.clientIp;
   let cid = req.cid;
   // for heroku routing issue
-  let ipAddr = req.headers["x-forwarded-for"];
-  console.log(`x-forwarded-for: ${ipAddr}`);
-  if (ipAddr){
-    let list = ipAddr.split(",");
-    ipAddr = list[list.length-1];
-  } else {
-    ipAddr = req.connection.remoteAddress;
-  }
+  // let ipAddr = req.headers["x-forwarded-for"];
+  // console.log(`x-forwarded-for: ${ipAddr}`);
+  // if (ipAddr){
+  //   let list = ipAddr.split(",");
+  //   ipAddr = list[list.length-1];
+  // } else {
+  //   ipAddr = req.connection.remoteAddress;
+  // }
 
-  console.log(ipAddr);
+  // console.log(ipAddr);
 
   if (req.headers['x-ip'] !== 'undefined') {
     clientIp = req.headers['x-ip'];
@@ -124,6 +124,8 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
       results: poll.results,
       category: poll.category,
       visits: poll.visits,
+      multiChoice: poll.multiChoice,
+      maxSelectChoices: poll.maxSelectChoices
     }
     
     res.status(200).json({pollData, userData});

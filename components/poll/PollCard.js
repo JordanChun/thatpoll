@@ -59,7 +59,7 @@ const PollCard = props => (
 
             <Dropdown.Menu>
               <Dropdown.Item>
-                <ReportButtonDropdown urlref={props.poll.url} />
+                <ReportButtonDropdown urlref={props.poll.url} polltitle={props.poll.title} />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

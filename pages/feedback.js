@@ -90,7 +90,7 @@ class Feedback extends React.Component {
             </Alert> : null
           }
           <p>Got feedback or a suggestion? ThatPoll is always striving to improve our web application. Please share your thoughts below.</p>
-          <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} style={{ padding: '1rem' }}>
+          <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} >
             <Form.Group controlId='validateText'>
               <Form.Label>
                 Text:
