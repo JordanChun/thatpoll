@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function ResultsPieChart(props) {
+  let empty = false;
   const data = [];
   const labels = [];
   const colors = [
@@ -63,6 +64,17 @@ function ResultsPieChart(props) {
       color: '#7b7b7b'
     });
     labelPosX = 0;
+    empty = true;
+  }
+
+  const labelStyle = {
+    fill: 'var(--primaryTextColor)',
+    fontWeight: 600,
+    fontSize: '0.5rem'
+  }
+
+  if (data.length > 15) {
+    labelStyle.fontSize = '0.4rem';
   }
 
 
@@ -77,14 +89,10 @@ function ResultsPieChart(props) {
               cx={50}
               cy={50}
               label={({ data, dataIndex }) =>
-                data[0].color !== '#7b7b7b' ? Math.round(data[dataIndex].percentage) + '%' : data[0].title
+                !empty ? Math.round(data[dataIndex].percentage) + '%' : data[0].title
               }
               labelPosition={labelPosX}
-              labelStyle={{
-                fill: 'var(--primaryTextColor)',
-                fontWeight: 600,
-                fontSize: '0.5rem'
-              }}
+              labelStyle={labelStyle}
               data={data}
               lineWidth={40}
             />
