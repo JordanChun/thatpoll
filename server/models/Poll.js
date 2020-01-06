@@ -18,7 +18,9 @@ const pollSchema = new mongoose.Schema({
   desc: {
     type: String,
   },
-  choices: [],
+  entries: {
+    type: Array
+  },
   visibility: {
     type: String,
     required: true,
@@ -34,7 +36,6 @@ const pollSchema = new mongoose.Schema({
     required: true,
     default: 6
   },
-  results: [],
   active: {
     type: Boolean,
     required: true,
@@ -64,7 +65,7 @@ const pollSchema = new mongoose.Schema({
     type: Number,
     required: true,
     default: 2
-  }
+  },
 });
 
 module.exports = mongoose.model('Poll', pollSchema);

@@ -36,10 +36,13 @@ router.post('/poll/results/:slug', setClientId, async (req, res) => {
       vote = await Vote.exists({ url: req.params.slug, ip: req.clientIp });
     }
 
+    const sortedEntries = poll.entries;
+    sortedEntries.sort((a, b) => b.result - a.result);
+
     const resultsData = {
       userDidVote: false,
       totalVotes: poll.totalVotes,
-      results: poll.results
+      entries: sortedEntries
     }
     
     if (vote) {

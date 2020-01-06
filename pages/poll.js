@@ -41,13 +41,21 @@ class PollPage extends React.Component {
     const errorCode = res.status > 200 ? res.status : false
     const data = await res.json()
     const url = `${baseUrl}/poll/${slug}`;
-    return { errorCode, poll: data.pollData, user: data.userData, url: url, baseUrl: baseUrl }
+
+    return {
+      errorCode,
+      poll: data.pollData,
+      user: data.userData,
+      url: url,
+      baseUrl: baseUrl
+    }
   }
 
   constructor(props) {
     super(props);
 
     this.state = {
+      entries: this.props.poll.entries,
       totalVotes: this.props.poll.totalVotes,
       results: this.props.poll.results,
       userDidVote: this.props.user.didVote,
@@ -86,17 +94,19 @@ class PollPage extends React.Component {
   connectSocket() {
     this.socket = io();
     this.socket.emit('joinPollRoom', this.props.router.query.slug);
-    this.socket.on('updateResults', selectedChoices => {
-      const newResults = this.state.results.slice(0);
-      selectedChoices.forEach(choice => {
-        newResults[choice]++;
-      });
-
-      this.setState({
-        results: newResults,
-        totalVotes: this.state.totalVotes + 1
-      });
+    this.socket.on('updateResults', sortedEntries => {
+      this.setState({ entries: sortedEntries, totalVotes: this.state.totalVotes + 1 });
     });
+    // this.socket.on('updateResults', selectedChoices => {
+    //   const newResults = this.state.results.slice(0);
+    //   selectedChoices.forEach(choice => {
+    //     newResults[choice]++;
+    //   });
+    //   this.setState({
+    //     results: newResults,
+    //     totalVotes: this.state.totalVotes + 1
+    //   });
+    // });
   }
 
   updateMultiChoiceSelected(e) {
@@ -134,7 +144,7 @@ class PollPage extends React.Component {
       this.setState({
         totalVotes: data.totalVotes,
         userDidVote: data.userDidVote,
-        results: data.results,
+        entries: data.entries,
         resultsLoading: false,
         refreshResultsLoading: false,
       });
@@ -194,23 +204,21 @@ class PollPage extends React.Component {
     }
 
     const { url } = this.props;
-
     const {
       title,
       desc,
       visibility,
       active,
-      choices,
       dateCreated,
       visits,
       category,
       multiChoice,
-      maxSelectChoices
+      maxSelectChoices,
+      choices
     } = this.props.poll;
 
     const {
       totalVotes,
-      results,
       userDidVote,
       userDidVoteError,
       revealResults,
@@ -218,7 +226,8 @@ class PollPage extends React.Component {
       refreshResultsLoading,
       submitError,
       selectedChoices,
-      timelimit
+      timelimit,
+      entries
     } = this.state;
 
     return (
@@ -292,13 +301,12 @@ class PollPage extends React.Component {
 
           { !active || userDidVote || revealResults ?
             <PollResults
-              results={results}
-              combinedResults={results.reduce((total, num) => total + num, 0)}
-              choices={choices}
+              combinedResults={entries.reduce((total, current) => total + current.result, 0)}
               resultsLoading={resultsLoading}
               refreshResultsLoading={refreshResultsLoading}
               loadResults={this.loadResults}
               active={active}
+              entries={entries}
             />
             : null }
         </div>

@@ -6,7 +6,7 @@ const next = require('next');
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 
-const nextApp = next({ dev });
+const nextApp = next({ dev, poweredByHeader: false, });
 const handle = nextApp.getRequestHandler();
 const helmet = require('helmet');
 const cors = require('cors');
@@ -71,7 +71,7 @@ nextApp.prepare().then(() => {
   app.use(bodyParser.json());
   app.use(cookieParser('s21Jc-2zXsQ'));
   app.use(requestIp.mw());
-  app.use(setClientId)
+  app.use(setClientId);
 
 
   /*

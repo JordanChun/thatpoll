@@ -51,7 +51,7 @@ router.post('/poll/vote/:slug', setClientId, async (req, res) => {
     // 4 > (2 - 1) => true => send error
     for (let i = 0; i < selectedChoices.length; i++) {
       selectedChoices[i] = parseInt(selectedChoices[i]);
-      if (selectedChoices[i] > poll.choices.length - 1 || selectedChoices[i] < 0) {
+      if (selectedChoices[i] > poll.entries.length - 1 || selectedChoices[i] < 0) {
         return res.status(400).json({ message: 'error' }).end();
       }
     }
@@ -73,10 +73,11 @@ router.post('/poll/vote/:slug', setClientId, async (req, res) => {
     const resultsQueryObj = { totalVotes: 1 };
     if (poll.multiChoice) {
       selectedChoices.forEach(selectedVote => {
-        resultsQueryObj[`results.${selectedVote}`] = 1;
+        resultsQueryObj[`entries.${selectedVote}.result`] = 1
+        //resultsQueryObj[`entries[${selectedVote}].result`] = 1;
       });
     } else {
-      resultsQueryObj[`results.${selectedChoices[0]}`] = 1;
+      resultsQueryObj[`entries.${selectedChoices[0]}.result`] = 1;
     }
 
     // if (selectedChoices > poll.results.length - 1) {
@@ -103,8 +104,11 @@ router.post('/poll/vote/:slug', setClientId, async (req, res) => {
       selectedChoices: vote.selectedChoices
     }
 
+    const sortedEntries = pollResult.entries;
+    sortedEntries.sort((a, b) => b.result - a.result);
+
     const io = req.app.get('socketio');
-    io.sockets.in(req.params.slug).emit('updateResults', selectedChoices);
+    io.sockets.in(req.params.slug).emit('updateResults', sortedEntries);
     // io.sockets.in(req.params.slug).emit("updateResults", selectedChoices);
     
     return res.status(200).json({ message: 'success' }).end();

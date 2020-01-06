@@ -8,14 +8,15 @@ const validator = require('validator');
 const moment = require('moment');
 
 const CategoriesList = require('../../../../common/CategoriesList');
+const colors = require('../../../../common/pollColors');
 
 router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
   let user = res.user;
 
-  // created less than 10 polls
+  // created 10 or more than 10 polls
   if (user.pollLimitCounter >= 10) {
-    const lastCreated = moment(user.lastCreated)
-    const hours = moment.duration(moment(new Date()).diff(lastCreated)).asHours();
+    const lastCreated = moment.utc(user.lastCreated);
+    const hours = moment.duration(moment.utc(new Date()).diff(lastCreated)).asHours();
     // if last created was more than 5 hours ago
     if (hours > 5) {
       user.pollLimitCounter = 0;
@@ -42,12 +43,7 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     user.createdPolls.push(url);
     user.pollLimitCounter++;
     user.lastCreated = new Date();
-    user = await user.save();
     
-    let results = [];
-    choices.forEach(() => {
-      results.push(0);
-    });
     let categoryName;
     if (category === 0) {
       // If select category is 'Select a category' set to 'Other' (last item)
@@ -56,23 +52,33 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     } else {
       categoryName = CategoriesList[category - 1]
     }
-
+    
+    const entries = [];
+    for (let i = 0; i < choices.length; i++) {
+      entries.push({
+        choice: choices[i],
+        result: 0,
+        color: colors[i]
+      });
+    }
+    
     let poll = await new Poll({
       creatorIp: user.ip,
       url: url,
       title: title,
       desc: desc,
-      choices: choices,
       visibility: visibility,
       votingPeriod: votingPeriod,
-      results: results,
       category: categoryName,
       multiIp: multiIp,
       multiChoice: multiChoice,
       maxSelectChoices: maxSelectChoices,
-      dateCreated: new Date()
+      dateCreated: new Date(),
+      entries: entries
     });
+    
     poll = await poll.save();
+    user = await user.save();
     return res.status(201).json({ message: 'success', url: url }).end();
   } catch (err) {
     console.log(err)

@@ -15,16 +15,16 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
   let clientIp = req.clientIp;
   let cid = req.cid;
 
-  let ipAddr = req.headers["x-forwarded-for"];
-  console.log(`x-forwarded-for: ${ipAddr}`);
-  if (ipAddr){
-    let list = ipAddr.split(",");
-    ipAddr = list[list.length-1];
-  } else {
-    ipAddr = req.connection.remoteAddress;
-  }
+  // let ipAddr = req.headers["x-forwarded-for"];
+  // console.log(`x-forwarded-for: ${ipAddr}`);
+  // if (ipAddr){
+  //   let list = ipAddr.split(",");
+  //   ipAddr = list[list.length-1];
+  // } else {
+  //   ipAddr = req.connection.remoteAddress;
+  // }
 
-  console.log(ipAddr);
+  // console.log(ipAddr);
 
   if (req.headers['x-ip'] !== 'undefined') {
     clientIp = req.headers['x-ip'];
@@ -108,24 +108,32 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
     }
 
     const userData = { 
-      didVote: userDidVote
+      didVote: userDidVote,
     };
+
+    const choices = [];
+    poll.entries.forEach(entry => {
+      choices.push(entry.choice)
+    });
+
+    const sortedEntries = poll.entries;
+    sortedEntries.sort((a, b) => b.result - a.result);
     
     const pollData = {
       title: poll.title,
       desc: poll.desc,
       visibility: poll.visibility,
-      choices: poll.choices,
+      choices: choices,
       votingPeriod: poll.votingPeriod,
       dateCreated: poll.dateCreated,
       totalVotes: poll.totalVotes,
       timelimit: timelimit,
       active: poll.active,
-      results: poll.results,
       category: poll.category,
       visits: poll.visits,
       multiChoice: poll.multiChoice,
-      maxSelectChoices: poll.maxSelectChoices
+      maxSelectChoices: poll.maxSelectChoices,
+      entries: sortedEntries
     }
     
     res.status(200).json({pollData, userData});

@@ -1,55 +1,25 @@
 import PieChart from 'react-minimal-pie-chart';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import colors from '../../common/pollColors';
 
 function ResultsPieChart(props) {
   let empty = false;
   const data = [];
   const labels = [];
-  const colors = [
-    '#28a745',
-    '#3f86a5',
-    '#dc4144',
-    '#9ca02a',
-    '#1bc08a',
-    '#356f88',
-    '#b45051',
-    '#6c6e1e',
-    '#48d848',
-    '#3f57a5',
-    '#dc416f',
-    '#a0772a',
-    '#219630',
-    '#3f85a5',
-    '#962e27',
-    '#b67520',
-    '#54a164',
-    '#4e3fa5',
-    '#832e30',
-    '#c59d1a',
-    '#5dc01b',
-    '#302497',
-    '#dc41ae',
-    '#789443',
-    '#74c56a',
-    '#2a9dce',
-    '#b61b1e',
-    '#b7be51',
-    '#4b8367',
-    '#436c7e'];
 
-  for (let i = 0; i < props.results.length; i++) {
-    if (props.results[i] !== 0) {
+  for (let i = 0; i < props.entries.length; i++) {
+    if (props.entries[i].result !== 0) {
       data.push({
-        title: props.choices[i],
-        value: props.results[i],
-        color: colors[i]
+        title: props.entries[i].choice,
+        value: props.entries[i].result,
+        color: props.entries[i].color
       });
     }
     labels.push({
-      title: props.choices[i],
-      value: props.results[i],
-      color: colors[i]
+      title: props.entries[i].choice,
+      value: props.entries[i].result,
+      color: props.entries[i].color
     });
   }
 
@@ -101,11 +71,11 @@ function ResultsPieChart(props) {
           <Col>
             <div className='pie-chart-labels'>
               <ul>
-                {labels.map((data, i) => (
-                  <li key={i}>
-                    <div className='label-data'>
-                      <h6>{data.title}</h6>
-                      <span className='poll-stat'>{data.value.toLocaleString()} votes {data.value === 0 ? '(0%)' : `(${Math.round((data.value/props.combinedResults) * 100)}%)`}</span>
+                {labels.map((entry, i) => (
+                  <li key={i} style={{ backgroundColor: entry.color }}>
+                    <div className='label-entry'>
+                      <h6>{entry.title}</h6>
+                      <span className='poll-stat'>{entry.value.toLocaleString()} votes {entry.value === 0 ? '(0%)' : `(${Math.round((entry.value/props.combinedResults) * 100)}%)`}</span>
                     </div>
                   </li>
                 ))}

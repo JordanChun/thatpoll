@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function PollResults(props) {
   const [display, setDisplay] = useState('Bar');
-  const { results, combinedResults, choices, active, loadResults, refreshResultsLoading } = props;
+  const { entries, results, combinedResults, choices, active, loadResults, refreshResultsLoading } = props;
 
   const handleChange = val => setDisplay(val);
 
@@ -52,11 +52,13 @@ function PollResults(props) {
       </div>
       {display === 'Bar' ?
         <ResultsBars
+          entries={entries}
           results={results}
           choices={choices}
           combinedResults={combinedResults}
-          /> :
-          <ResultsPieChart
+        /> :
+        <ResultsPieChart
+          entries={entries}
           results={results}
           choices={choices}
           combinedResults={combinedResults}
@@ -67,9 +69,8 @@ function PollResults(props) {
 }
 
 PollResults.propTypes = {
-  results: PropTypes.array.isRequired,
+  entries: PropTypes.array.isRequired,
   combinedResults: PropTypes.number.isRequired,
-  choices: PropTypes.array.isRequired,
   resultsLoading: PropTypes.bool.isRequired,
   refreshResultsLoading: PropTypes.bool.isRequired,
   active: PropTypes.bool.isRequired,

@@ -1,5 +1,6 @@
 import { Transition } from 'react-transition-group';
 import { useState, useEffect } from 'react';
+import FlipMove from 'react-flip-move';
 
 const defaultStyle = {
   width: 0,
@@ -29,20 +30,22 @@ function ResultsBars(props){
       <Transition in={resultsBar} timeout={300} appear exit={false}>
         {state => (
           <div className='results-container'>
-              {props.results.map((result, i) => (
-                <div key={i}>
-                  <h6>{props.choices[i]}</h6>
+            <FlipMove typeName='ul' typeName='ul' easing='ease' staggerDurationBy="15" staggerDelayBy="20" duration={700} maintainContainerHeight>
+              {props.entries.map((entry, i) => (
+                <li key={entry.choice}>
+                  <h6>{entry.choice}</h6>
                   <div className='poll-result'>
                     <div className='result-bar'
                       style={{
+                        backgroundColor: entry.color,
                         ...defaultStyle,
-                        ...transitionStyles(Math.round((result/props.combinedResults) * 100))[state]
+                        ...transitionStyles(Math.round((entry.result/props.combinedResults) * 100))[state]
                       }}
                     >
-                    {result !== 0 ?
+                    {entry.result !== 0 ?
                       <div>
-                        <div>{result.toLocaleString()} votes</div>
-                        <div>{Math.round((result/props.combinedResults) * 100)}%</div>
+                        <div>{entry.result.toLocaleString()} votes</div>
+                        <div>{Math.round((entry.result/props.combinedResults) * 100)}%</div>
                       </div>
                     : 
                       <div>
@@ -52,8 +55,9 @@ function ResultsBars(props){
                     }
                     </div>
                   </div>
-                </div>
+                </li>
               ))}
+            </FlipMove>
           </div>
         )}
       </Transition>

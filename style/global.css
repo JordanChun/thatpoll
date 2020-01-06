@@ -1,4 +1,4 @@
-@import './resultColors.css';
+/* @import './resultColors.css'; */
 
 html[data-theme="dark"] {
   --primaryBackground: #2d4563;
@@ -656,9 +656,14 @@ border-color: #54E0C7;
   text-align: center;
 }
 
-.results-container > div {
-  padding: 0.5rem 0;
+.results-container ul {
+  margin: 0;
+  padding: 0;
+}
 
+.results-container li {
+  padding: 0.5rem 0;
+  list-style: none;
 }
 
 .results-header {
