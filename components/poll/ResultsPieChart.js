@@ -1,7 +1,7 @@
 import PieChart from 'react-minimal-pie-chart';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import colors from '../../common/pollColors';
+import FlipMove from 'react-flip-move';
 
 function ResultsPieChart(props) {
   let empty = false;
@@ -40,7 +40,9 @@ function ResultsPieChart(props) {
   const labelStyle = {
     fill: 'var(--primaryTextColor)',
     fontWeight: 600,
-    fontSize: '0.5rem'
+    fontSize: '0.5rem',
+    userSelect: 'none',
+    pointerEvents: 'none'
   }
 
   if (data.length > 15) {
@@ -70,16 +72,16 @@ function ResultsPieChart(props) {
           </Col>
           <Col>
             <div className='pie-chart-labels'>
-              <ul>
-                {labels.map((entry, i) => (
-                  <li key={i} style={{ backgroundColor: entry.color }}>
+              <FlipMove typeName='ul' typeName='ul' easing='ease' staggerDurationBy="15" staggerDelayBy="20" duration={700} maintainContainerHeight>
+                {labels.map(entry => (
+                  <li key={entry.color} style={{ backgroundColor: entry.color }}>
                     <div className='label-entry'>
                       <h6>{entry.title}</h6>
                       <span className='poll-stat'>{entry.value.toLocaleString()} votes {entry.value === 0 ? '(0%)' : `(${Math.round((entry.value/props.combinedResults) * 100)}%)`}</span>
                     </div>
                   </li>
                 ))}
-              </ul>
+              </FlipMove>
             </div>
           </Col>
         </Row>

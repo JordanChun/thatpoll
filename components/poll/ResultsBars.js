@@ -31,8 +31,8 @@ function ResultsBars(props){
         {state => (
           <div className='results-container'>
             <FlipMove typeName='ul' typeName='ul' easing='ease' staggerDurationBy="15" staggerDelayBy="20" duration={700} maintainContainerHeight>
-              {props.entries.map((entry, i) => (
-                <li key={entry.choice}>
+              {props.entries.map(entry => (
+                <li key={entry.color}>
                   <h6>{entry.choice}</h6>
                   <div className='poll-result'>
                     <div className='result-bar'
