@@ -1,5 +1,5 @@
 import Layout from '../components/layout/Layout';
-import PollPreview from '../components/poll/PollPreview';
+// import PollPreview from '../components/poll/PollPreview';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
@@ -13,12 +13,6 @@ import { withRouter } from 'next/router';
 import CategoriesList from '../common/CategoriesList';
 import getTimeLimit from '../common/momentFunctions';
 import { setHours, addMinutes, setMinutes, isSameDay, format, addYears } from 'date-fns';
-// import setHours from 'date-fns/setHours';
-// import addHours from 'date-fns/addHours';
-// import setMinutes from 'date-fns/setMinutes';
-// import isSameDay from 'date-fns/isSameDay';
-// import format from 'date-fns/format';
-// import addYears from 'date-fns/addYears';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -72,7 +66,7 @@ class CreatePoll extends React.Component {
       maxSelectChoices: 2,
       success: false,
       pollExpires: false,
-      endDate: addMinutes(new Date(), 30)
+      endDate: ''
     }
 
     this.inputUpdate = this.inputUpdate.bind(this);
@@ -114,9 +108,9 @@ class CreatePoll extends React.Component {
 
   togglePollExpires() {
     if (!this.state.pollExpires) {
-      const timelimit = getTimeLimit(addMinutes(new Date(), 30));
+      const timelimit = getTimeLimit(addMinutes(new Date(), 60));
       this.setState({
-        endDate: addMinutes(new Date(), 30),
+        endDate: addMinutes(new Date(), 60),
         timelimit: timelimit,
         pollExpires: true
       });
@@ -405,7 +399,7 @@ class CreatePoll extends React.Component {
                     <div>
                       <p>Voting ends in: <b>{timelimit}</b> on <b>{format(endDate, 'MMMM do, yyyy, p')}</b></p>
                     </div> :
-                    <div>
+                    <div className='invalid-feedback' style={{ display: 'block' }}>
                       <p><b>Please select a valid date and time to end. Minimum 30 minutes.</b></p>
                     </div> }
                 </div> : null
@@ -421,11 +415,14 @@ class CreatePoll extends React.Component {
           </Form.Group>
         </Form>
         </div>
+        {/*
         <div className='poll-preview'>
           <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
           <hr />
           <PollPreview {...this.state} />
         </div>
+
+        */}
       </Layout>
     )
   }

@@ -90,7 +90,7 @@ const PollPreview = props => (
         </div>
         <hr />
         <div className='poll-choices'>
-          <h4 className='mb-1'><FontAwesomeIcon icon={faPollH} /> Poll Choices</h4>
+          <h4 className='mb-3'><FontAwesomeIcon icon={faPollH} /> Poll Choices</h4>
           {props.choices.map((choiceObj, i) => (
             <div className="poll-choice-container" key={i}>
               <input id={`choice-${i}`} name='poll-choice' type="radio" value='0'/>

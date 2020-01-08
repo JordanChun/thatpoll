@@ -181,7 +181,7 @@ function createPollAuth(req, res, next) {
 
   if (req.pollExpires) {
     // add 29 minutes instead of 30 to give timing window
-    if (req.endDate <= addMinutes(new Date(), 29) && req.endDate >= addYears(new Date(), 10)) {
+    if (req.endDate <= addMinutes(new Date(), 29) || req.endDate >= addYears(new Date(), 10)) {
       return res.status(400).json({ message: 'error' }).end();
     }
   }

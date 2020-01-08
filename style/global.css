@@ -1,5 +1,3 @@
-/* @import './resultColors.css'; */
-
 html[data-theme="dark"] {
   --primaryBackground: #2d4563;
   --primaryTextColor: #e6e6e6;
@@ -969,10 +967,11 @@ border-color: #54E0C7;
     padding: 0;
     border: 0;
     color: transparent;
+    z-index: -100;
   }
 
   .share-poll .input-group>.form-control:focus {
-    z-index: 0;
+    z-index: -100;
   }
   
   .share-poll .input-group-append {
