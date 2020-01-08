@@ -77,10 +77,12 @@ class PollPage extends React.Component {
   componentDidMount() {
     if (this.props.poll.active) {
       this.connectSocket();
-      this.updateTimelimit = setInterval(() => {
-        let timelimit = getTimeLimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
-        this.setState({ timelimit });
-      }, 60000)
+      if (this.props.poll.pollExpires) {
+        this.updateTimelimit = setInterval(() => {
+          let timelimit = getTimeLimit(this.props.poll.endDate);
+          this.setState({ timelimit });
+        }, 60000)
+      }
     }
   }
 
