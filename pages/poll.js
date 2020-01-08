@@ -11,7 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import io from 'socket.io-client';
 import moment from 'moment';
-import getMomentTimelimit from '../common/momentFunctions';
+import getTimeLimit from '../common/momentFunctions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import PollShare from '../components/poll/PollShare';
@@ -78,7 +78,7 @@ class PollPage extends React.Component {
     if (this.props.poll.active) {
       this.connectSocket();
       this.updateTimelimit = setInterval(() => {
-        let timelimit = getMomentTimelimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
+        let timelimit = getTimeLimit(this.props.poll.dateCreated, this.props.poll.votingPeriod);
         this.setState({ timelimit });
       }, 60000)
     }
