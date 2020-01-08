@@ -214,7 +214,8 @@ class PollPage extends React.Component {
       category,
       multiChoice,
       maxSelectChoices,
-      choices
+      choices,
+      pollExpires
     } = this.props.poll;
 
     const {
@@ -278,9 +279,11 @@ class PollPage extends React.Component {
               <h5>
                 <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
               </h5>
-              <h5>
-                <FontAwesomeIcon icon={faStopwatch} /> {active && timelimit != 'Voting Ended' ? <b>{timelimit}</b> : 'Voting Ended' } 
-              </h5>
+              { pollExpires ? 
+                <h5>
+                  <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b> 
+                </h5> : null
+              }
             </div>
           </div>
           { active && !userDidVote ?

@@ -6,6 +6,9 @@ const Poll = require('../../../models/Poll');
 const shortid = require('shortid');
 const validator = require('validator');
 const moment = require('moment');
+const isDate = require('date-fns/isDate');
+const addMinutes = require('date-fns/addMinutes');
+const addYears = require('date-fns/addYears');
 
 const CategoriesList = require('../../../../common/CategoriesList');
 const colors = require('../../../../common/pollColors');
@@ -14,6 +17,7 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
   let user = res.user;
 
   // created 10 or more than 10 polls
+
   if (user.pollLimitCounter >= 10) {
     const lastCreated = moment.utc(user.lastCreated);
     const hours = moment.duration(moment.utc(new Date()).diff(lastCreated)).asHours();
@@ -24,6 +28,18 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
       return res.status(400).json({ message: 'limit' }).end();
     }
   }
+
+
+  // if (user.pollLimitCounter >= 10) {
+  //   const lastCreated = moment.utc(user.lastCreated);
+  //   const hours = moment.duration(moment.utc(new Date()).diff(lastCreated)).asHours();
+  //   // if last created was more than 5 hours ago
+  //   if (hours > 5) {
+  //     user.pollLimitCounter = 0;
+  //   } else {
+  //     return res.status(400).json({ message: 'limit' }).end();
+  //   }
+  // }
   
   const url = shortid.generate();
   
@@ -31,12 +47,13 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
     title,
     desc,
     visibility,
-    votingPeriod,
     choices,
     category,
     multiIp,
     multiChoice,
-    maxSelectChoices
+    maxSelectChoices,
+    pollExpires,
+    endDate
   } = req;
   
   try {
@@ -61,24 +78,30 @@ router.post('/create-poll', getUser, createPollAuth, async (req, res) => {
         color: colors[i]
       });
     }
-    
-    let poll = await new Poll({
+
+    const pollObj = {
       creatorIp: user.ip,
       url: url,
       title: title,
       desc: desc,
       visibility: visibility,
-      votingPeriod: votingPeriod,
       category: categoryName,
       multiIp: multiIp,
       multiChoice: multiChoice,
       maxSelectChoices: maxSelectChoices,
       dateCreated: new Date(),
-      entries: entries
-    });
+      entries: entries,
+      pollExpires: pollExpires,
+    }
+
+    if (pollExpires) {
+      pollObj.endDate = endDate;
+    }
     
-    poll = await poll.save();
-    user = await user.save();
+    const poll = await new Poll(pollObj);
+    
+    await poll.save();
+    await user.save();
     return res.status(201).json({ message: 'success', url: url }).end();
   } catch (err) {
     console.log(err)
@@ -91,7 +114,8 @@ function createPollAuth(req, res, next) {
   req.title = validator.trim(req.body.title)
   req.desc = validator.trim(req.body.desc)
   req.visibility = validator.trim(req.body.visibility)
-  req.votingPeriod = req.body.votingPeriod;
+  req.pollExpires = req.body.pollExpires;
+  req.endDate = new Date(req.body.endDate);
   req.category = req.body.category;
   req.multiIp = req.body.multiIp;
   req.multiChoice = req.body.multiChoice;
@@ -136,20 +160,30 @@ function createPollAuth(req, res, next) {
     return res.status(400).json({ message: 'error' }).end();
   };
 
+  
   if (req.votingPeriod < 6 || req.votingPeriod > 168) {
     return res.status(400).json({ message: 'error' }).end();
   }
-
+  
   if (!validator.equals(req.visibility, 'public') && !validator.equals(req.visibility, 'private')) {
     return res.status(400).json({ message: 'error' }).end();
   }
 
-  if (typeof req.multiIp !== "boolean") {
+  if (typeof req.pollExpires !== 'boolean' ||
+    typeof req.multiIp !== "boolean" ||
+    typeof req.multiChoice !== "boolean") {
+      return res.status(400).json({ message: 'error' }).end();
+  }
+    
+  if (!isDate(req.endDate)) {
     return res.status(400).json({ message: 'error' }).end();
   }
 
-  if (typeof req.multiChoice !== "boolean") {
-    return res.status(400).json({ message: 'error' }).end();
+  if (req.pollExpires) {
+    // add 29 minutes instead of 30 to give timing window
+    if (req.endDate <= addMinutes(new Date(), 29) && req.endDate >= addYears(new Date(), 10)) {
+      return res.status(400).json({ message: 'error' }).end();
+    }
   }
   
   if (req.maxSelectChoices > req.choices.length || req.maxSelectChoices < 2) {

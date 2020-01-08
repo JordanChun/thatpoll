@@ -81,10 +81,11 @@ const PollPreview = props => (
             <h5>
               <FontAwesomeIcon icon={faVoteYea} /> <b>0</b> votes
             </h5>
-            <hr />
-            <h5>
-              <FontAwesomeIcon icon={faStopwatch} /> {props.timelimit != 'Voting Ended' ? <b>{props.timelimit}</b> : 'Voting Ended' } 
-            </h5>
+            { props.pollExpires ? 
+              <h5>
+                <FontAwesomeIcon icon={faStopwatch} /> <b>{props.timelimit}</b> 
+              </h5> : null
+            }
           </div>
         </div>
         <hr />

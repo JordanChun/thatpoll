@@ -31,10 +31,13 @@ const pollSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
-  votingPeriod: {
-    type: Number,
+  pollExpires: {
+    type: Boolean,
     required: true,
-    default: 6
+    default: false
+  },
+  endDate: {
+    type: Date,
   },
   active: {
     type: Boolean,

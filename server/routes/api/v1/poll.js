@@ -11,6 +11,8 @@ const Visit = require('../../../models/Visit');
 const moment = require('moment');
 require('moment-precise-range-plugin');
 
+
+
 router.post('/poll/:slug', setClientId, async (req, res) => {
   let clientIp = req.clientIp;
   let cid = req.cid;
@@ -79,21 +81,29 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
     
     // if poll is active calculate timelimit
     let timelimit = '';
+
     if(poll.active) {
-      const endTime = moment(poll.dateCreated,'YYYY-MM-DD HH:mm:ss').add(poll.votingPeriod, 'hours');
-      const currentTime = moment(new Date(),'YYYY-MM-DD HH:mm:ss');
-      if(endTime > currentTime) {
-        const diff = moment.preciseDiff(endTime, currentTime, true);
-        const days = diff.days;
-        const hours = diff.hours;
-        const minutes = diff.minutes;
-        if (days > 0) timelimit += ` ${days} days`;
-        if (hours > 0) timelimit += ` ${hours} hours`;
-        if (minutes > 0) timelimit += ` ${minutes} minutes`;
-        if (timelimit === '') timelimit += ' less than 1 minute';
-      } else {
-        timelimit = 'Voting Ended'
-        poll = await Poll.findOneAndUpdate({ url: req.params.slug }, { active: false }, {new: true});
+      if (poll.pollExpires) {
+        const endTime = moment.utc(poll.endDate);
+        const currentTime = moment.utc(new Date());
+        
+        if (endTime > currentTime) {
+          const diff = moment.preciseDiff(endTime, currentTime, true);
+          const years = diff.years;
+          const months = diff.months;
+          const days = diff.days;
+          const hours = diff.hours;
+          const minutes = diff.minutes;
+          if(years > 0) timelimit += ` ${years} years`;
+          if(months > 0) timelimit += ` ${months} months`;
+          if(days > 0) timelimit += ` ${days} days`;
+          if(hours > 0) timelimit += ` ${hours} hours`;
+          if(minutes > 0) timelimit += ` ${minutes} minutes`;
+          if(timelimit === '') timelimit = ' less than 1 minute';
+        } else {
+          timelimit = 'Voting Ended';
+          poll = await Poll.findOneAndUpdate({ url: req.params.slug }, { active: false }, {new: true});
+        }
       }
     } else {
       timelimit = 'Voting Ended'
@@ -133,7 +143,9 @@ router.post('/poll/:slug', setClientId, async (req, res) => {
       visits: poll.visits,
       multiChoice: poll.multiChoice,
       maxSelectChoices: poll.maxSelectChoices,
-      entries: sortedEntries
+      entries: sortedEntries,
+      pollExpires: poll.pollExpires,
+      endDate: poll.endDate
     }
     
     res.status(200).json({pollData, userData});
