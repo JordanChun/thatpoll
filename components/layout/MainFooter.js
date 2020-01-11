@@ -15,8 +15,8 @@ const MainFooter = () => (
           <Col xs={6} md>
             <ul className='footer-list'>
               <li>
-                <Link href='/' as='/'>
-                  <a>Recent Polls</a>
+                <Link href='/explore' as='/explore'>
+                  <a>Explore</a>
                 </Link>
               </li>
             </ul>
@@ -24,7 +24,7 @@ const MainFooter = () => (
           <Col xs={6} md>
             <ul className='footer-list'>
               <li>
-                <Link href='/create-poll' as='/create-poll'>
+                <Link href='/' as='/'>
                   <a>Create Poll</a>
                 </Link>
               </li>
@@ -43,8 +43,8 @@ const MainFooter = () => (
                 </Link>
               </li>
               <li>
-                <Link href='/feedback' as='/feedback'>
-                  <a>Feedback & Suggestions</a>
+                <Link href='/contact' as='/contact'>
+                  <a>Contact Us</a>
                 </Link>
               </li>
             </ul>

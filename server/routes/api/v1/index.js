@@ -9,6 +9,6 @@ router.use('/', require('./poll'));
 router.use('/', require('./vote'));
 router.use('/', require('./results'));
 router.use('/', require('./report'));
-router.use('/', require('./feedback'));
+router.use('/', require('./contact'));
 
 module.exports = router;

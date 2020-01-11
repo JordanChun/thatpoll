@@ -2,11 +2,9 @@ import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPoll, faMoon, faSun, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faPoll, faCog, faCertificate } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from 'react-bootstrap/Dropdown';
-import Form from 'react-bootstrap/Form';
 import CustomDropdownToggle from './CustomDropdownToggle';
 import MainHeaderSettings from './MainHeaderSettings';
 
@@ -24,18 +22,30 @@ const MainHeader = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Link href='/create-poll' as='/create-poll'>
-              <a>
-                <Nav.Item className='create-poll-item'>
-                  <FontAwesomeIcon icon={faPoll} /> Create Poll
-                </Nav.Item>
-              </a>
-            </Link>
-            <Nav.Item className='small-menu'>
-              <Link href='/create-poll' as='/create-poll'>
+            <Nav.Item className='create-poll-item'>
+              <Link href='/' as='/'>
                 <a>
                   <FontAwesomeIcon icon={faPoll} /> Create Poll
                 </a>
+              </Link>
+            </Nav.Item>
+            <Nav.Item className='small-menu'>
+              <Link href='/' as='/'>
+                <a>
+                  <FontAwesomeIcon icon={faPoll} /> Create Poll
+                </a>
+              </Link>
+            </Nav.Item>
+            <Nav.Item className='small-menu'>
+              <Link href='/explore' as='/explore'>
+                <a>
+                  <FontAwesomeIcon icon={faCertificate} /> Explore
+                </a>
+              </Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Link href='/explore' as='/explore'>
+                <a><FontAwesomeIcon icon={faCertificate} /> Explore</a>
               </Link>
             </Nav.Item>
           {/*

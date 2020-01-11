@@ -5,11 +5,13 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 const ErrorLayout = props => (
-  <Container>
-    <div className='error-container'>
-      <h4 className='page-header'>{props.errorCode} {props.errorInfo}</h4>
-      <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
-    </div>
+  <Container className='main-wrapper'>
+    <Container>
+      <div className='error-container'>
+        <h4 className='page-header'>{props.errorCode} {props.errorInfo}</h4>
+        <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
+      </div>
+    </Container>
   </Container>
 );
 

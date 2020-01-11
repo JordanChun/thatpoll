@@ -5,15 +5,16 @@ const ua = require('universal-analytics');
 const visitor = ua('UA-150975737-1');
 
 function pageRoutes(nextApp, handle) {
+  
   app.get('/', (req, res) => {
-    return nextApp.render(req, res, '/', {
+    return nextApp.render(req, res, '/')
+  });
+  
+  app.get('/explore', (req, res) => {
+    return nextApp.render(req, res, '/explore', {
       page: req.query.page,
       state: req.query.state
     });
-  });
-  
-  app.get('/create-poll', (req, res) => {
-    return nextApp.render(req, res, '/create-poll')
   });
   
   app.get('/poll/:slug', (req, res) => {
@@ -29,8 +30,8 @@ function pageRoutes(nextApp, handle) {
     return nextApp.render(req, res, '/privacy-policy');
   });
   
-  app.get('/feedback', (req, res) => {
-    return nextApp.render(req, res, '/feedback');
+  app.get('/contact', (req, res) => {
+    return nextApp.render(req, res, '/contact');
   });
 
   app.all('*', (req, res) => {

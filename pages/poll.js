@@ -1,6 +1,7 @@
 import Layout from '../components/layout/Layout';
 import fetch from 'isomorphic-unfetch';
 import Alert from 'react-bootstrap/Alert';
+import Container from 'react-bootstrap/Container';
 import PollChoices from '../components/poll/PollChoices';
 import PollResults from '../components/poll/PollResults';
 import { withRouter } from 'next/router'
@@ -241,80 +242,82 @@ class PollPage extends React.Component {
         path={this.props.router.asPath}
         ads={true}
       >
-        <div className='content-container'>
-          {visibility === 'private' ?
-            <div className='poll-alert'>
-              <Alert variant='danger'>
-                This is a <b>private</b> poll. Please consider before sharing the link.
-              </Alert>
-            </div>
-          : null }
-          <h4 className='poll-title'>{title.length > 0 ? title : 'Untitled'}</h4>
-          <hr />
-          <div className='poll-desc mb-2'>
-            <h6>Description</h6>
-            <div>
-              <p>
-                {desc.length > 0 ? desc : <i>No description</i>}
-              </p>
-              <hr />
-              <div className='poll-stat'>
-                Category: {category}
-              </div>
-              <div className='poll-stat'>
-                {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
-              </div>
-            </div>
-          </div>
-          <Row noGutters>
-            <Col>
-              <div className='poll-options mb-3'>
-                <PollShare url={url} />
-                <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
-              </div>
-            </Col>
-          </Row>
-          </div>
+        <Container className='main-wrapper'>
           <div className='content-container'>
-          <div className='poll-time mb-3'>
-            <div>
-              <h5>
-                <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
-              </h5>
-              { pollExpires ? 
-                <h5>
-                  <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b> 
-                </h5> : null
-              }
-            </div>
-          </div>
-          { active && !userDidVote ?
-          <PollChoices
-            userDidVote={userDidVote}
-            userDidVoteError={userDidVoteError}
-            submitError={submitError}
-            choices={choices}
-            revealResults={revealResults}
-            updateChoiceSelected={this.updateChoiceSelected}
-            updateMultiChoiceSelected={this.updateMultiChoiceSelected}
-            submitVote={this.submitVote}
-            loadResults={this.loadResults}
-            selectedChoices={selectedChoices}
-            multiChoice={multiChoice}
-            maxSelectChoices={maxSelectChoices}
-          /> : null }
-
-          { !active || userDidVote || revealResults ?
-            <PollResults
-              combinedResults={entries.reduce((total, current) => total + current.result, 0)}
-              resultsLoading={resultsLoading}
-              refreshResultsLoading={refreshResultsLoading}
-              loadResults={this.loadResults}
-              active={active}
-              entries={entries}
-            />
+            {visibility === 'private' ?
+              <div className='poll-alert'>
+                <Alert variant='danger'>
+                  This is a <b>private</b> poll. Please consider before sharing the link.
+                </Alert>
+              </div>
             : null }
-        </div>
+            <h4 className='poll-title'>{title.length > 0 ? title : 'Untitled'}</h4>
+            <hr />
+            <div className='poll-desc mb-2'>
+              <h6>Description</h6>
+              <div>
+                <p>
+                  {desc.length > 0 ? desc : <i>No description</i>}
+                </p>
+                <hr />
+                <div className='poll-stat'>
+                  Category: {category}
+                </div>
+                <div className='poll-stat'>
+                  {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
+                </div>
+              </div>
+            </div>
+            <Row noGutters>
+              <Col>
+                <div className='poll-options mb-3'>
+                  <PollShare url={url} />
+                  <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
+                </div>
+              </Col>
+            </Row>
+            </div>
+            <div className='content-container'>
+            <div className='poll-time mb-3'>
+              <div>
+                <h4>
+                  <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
+                </h4>
+                { pollExpires ? 
+                  <h5>
+                    <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b> 
+                  </h5> : null
+                }
+              </div>
+            </div>
+            { active && !userDidVote ?
+            <PollChoices
+              userDidVote={userDidVote}
+              userDidVoteError={userDidVoteError}
+              submitError={submitError}
+              choices={choices}
+              revealResults={revealResults}
+              updateChoiceSelected={this.updateChoiceSelected}
+              updateMultiChoiceSelected={this.updateMultiChoiceSelected}
+              submitVote={this.submitVote}
+              loadResults={this.loadResults}
+              selectedChoices={selectedChoices}
+              multiChoice={multiChoice}
+              maxSelectChoices={maxSelectChoices}
+            /> : null }
+
+            { !active || userDidVote || revealResults ?
+              <PollResults
+                combinedResults={entries.reduce((total, current) => total + current.result, 0)}
+                resultsLoading={resultsLoading}
+                refreshResultsLoading={refreshResultsLoading}
+                loadResults={this.loadResults}
+                active={active}
+                entries={entries}
+              />
+              : null }
+          </div>
+        </Container>
       </Layout>
     )
   }

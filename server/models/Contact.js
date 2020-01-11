@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const feedbackSchema = new mongoose.Schema({
+const contactSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   ip: {
     type: String,
@@ -12,4 +12,4 @@ const feedbackSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Feedback', feedbackSchema);
+module.exports = mongoose.model('Contact', contactSchema);

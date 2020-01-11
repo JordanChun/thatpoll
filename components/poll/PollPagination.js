@@ -32,7 +32,7 @@ const PollPagination = props => {
     offset = active - 3;
     items.push(
       <li className='page-item' key='prev'>
-        <Link href={{ pathname: '/', query: { page: active - 1, state: state } }} as={`?page=${active - 1}${setQueryString(props.router.query)}`}>
+        <Link href={{ pathname: '/discover', query: { page: active - 1, state: state } }} as={`?page=${active - 1}${setQueryString(props.router.query)}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">‹</span>
             <span className="sr-only">Previous</span>
@@ -56,7 +56,7 @@ const PollPagination = props => {
     if ((i + offset) === active) {
       items.push(
         <li className="page-item active" key={i}>
-          <Link href={{ pathname: '/', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
+          <Link href={{ pathname: '/discover', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className='page-link'>{i + offset}</a>
           </Link>
           <span className="sr-only">(current)</span>
@@ -65,7 +65,7 @@ const PollPagination = props => {
     } else {
       items.push(
         <li className="page-item" key={i}>
-          <Link href={{ pathname: '/', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
+          <Link href={{ pathname: '/discover', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className="page-link">{i + offset}</a>
           </Link>
         </li>
@@ -77,7 +77,7 @@ const PollPagination = props => {
   if (active < totalPages - 2) {
     items.push(
       <li className='page-item' key='next'>
-        <Link href={{ pathname: '/', query: { page: active + 1 } }} as={`?page=${active + 1}${setQueryString(props.router.query)}`}>
+        <Link href={{ pathname: '/discover', query: { page: active + 1 } }} as={`?page=${active + 1}${setQueryString(props.router.query)}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">›</span>
             <span className="sr-only">Next</span>

@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const getUser = require('../../../middleware/user');
-const Feedback = require('../../../models/Feedback');
+const Contact = require('../../../models/Contact');
 const validator = require('validator');
 
-router.post('/feedback', getUser, async (req, res) => {
+router.post('/contact', getUser, async (req, res) => {
   let user = res.user;
 
   if (!validator.isLength(req.body.text, { min: 10, max: 500 })) {
@@ -14,12 +14,12 @@ router.post('/feedback', getUser, async (req, res) => {
 
   try {
 
-    const feedback = await new Feedback({
+    const contact = await new Contact({
       ip: user.ip,
       text: req.body.text,
     });
 
-    await feedback.save()
+    await contact.save()
 
     res.status(200).json({ message: 'success' });
 

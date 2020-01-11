@@ -51,9 +51,7 @@ function Layout(props) {
         {props.ads ? <script data-ad-client="ca-pub-7980461707615662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> : null}
       </Head>
       <MainHeader />
-      <Container className='main-wrapper'>
-        {props.children}
-      </Container>
+      {props.children}
       <MainFooter />
       {showBanner ? <CookiesBanner closeBanner={closeBanner} /> : null } 
     </div>
@@ -61,7 +59,7 @@ function Layout(props) {
 }
 
 Layout.defaultProps = {
-  pageTitle: 'ThatPoll - Create free polls instantly with real time results',
+  pageTitle: 'ThatPoll - Instant Poll Maker - Create free polls with real time results and advanced options',
   pageDesc: 'Create your own FREE polls with LIVE, real time results, no sign up required. Instantly create polls for the public or personal use. Share and discuss online with friends and communties.',
   visibility: 'public',
   ads: false

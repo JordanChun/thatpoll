@@ -11,7 +11,7 @@ import { useState } from "react";
 
 function PollResults(props) {
   const [display, setDisplay] = useState('Bar');
-  const { entries, results, combinedResults, choices, active, loadResults, refreshResultsLoading } = props;
+  const { entries, combinedResults, active, loadResults, refreshResultsLoading } = props;
 
   const handleChange = val => setDisplay(val);
 
@@ -22,23 +22,23 @@ function PollResults(props) {
         <div>
           <h4>
             <FontAwesomeIcon icon={faChartBar} /> Results{' '}
-            {active ?
-              <Button
-                variant='grey-blue'
-                size='sm'
-                onClick={loadResults}
-                disabled={refreshResultsLoading}
-              >
-                <FontAwesomeIcon icon={faSync} /> Refresh
-              </Button> : null}
-            {refreshResultsLoading ?
-              <Spinner
-                animation="border"
-                size="sm"
-                aria-hidden="true"
-              /> : null
-            }
           </h4>
+          {active ?
+            <Button
+              variant='grey-blue'
+              size='sm'
+              onClick={loadResults}
+              disabled={refreshResultsLoading}
+            >
+              <FontAwesomeIcon icon={faSync} /> Refresh
+            </Button> : null}
+          {refreshResultsLoading ?
+            <Spinner
+              animation="border"
+              size="sm"
+              aria-hidden="true"
+            /> : null
+          }
         </div>
         <div className='result-display'>
           <ToggleButtonGroup type="radio" name='displays' value={display} onChange={handleChange}>
@@ -53,14 +53,10 @@ function PollResults(props) {
       {display === 'Bar' ?
         <ResultsBars
           entries={entries}
-          results={results}
-          choices={choices}
           combinedResults={combinedResults}
         /> :
         <ResultsPieChart
           entries={entries}
-          results={results}
-          choices={choices}
           combinedResults={combinedResults}
         />
       }
