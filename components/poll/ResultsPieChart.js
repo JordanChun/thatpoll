@@ -77,7 +77,7 @@ function ResultsPieChart(props) {
                   <li key={entry.color} style={{ backgroundColor: entry.color }}>
                     <div className='label-entry'>
                       <h6>{entry.title}</h6>
-                      <span className='poll-stat'>{entry.value.toLocaleString()} votes {entry.value === 0 ? '(0%)' : `(${Math.round((entry.value/props.combinedResults) * 100)}%)`}</span>
+                      <span className='poll-stat'>{entry.value.toLocaleString()} votes {entry.value === 0 ? '(0%)' : `(${((entry.value/props.combinedResults) * 100).toFixed(2)}%)`}</span>
                     </div>
                   </li>
                 ))}

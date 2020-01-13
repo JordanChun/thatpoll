@@ -542,10 +542,11 @@ a:not([href]):not([tabindex]).social-buttons {
 
 .poll-title {
   word-break: break-word;
+  text-align: center;
 }
 
-.poll-desc, .poll-choices {
-
+.poll-no-desc {
+  text-align: center;
 }
 
 .poll-card-desc {

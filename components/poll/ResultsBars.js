@@ -45,7 +45,7 @@ function ResultsBars(props){
                     {entry.result !== 0 ?
                       <div>
                         <div>{entry.result.toLocaleString()} votes</div>
-                        <div>{Math.round((entry.result/props.combinedResults) * 100)}%</div>
+                        <div>{((entry.result/props.combinedResults) * 100).toFixed(2)}%</div>
                       </div>
                     : 
                       <div>

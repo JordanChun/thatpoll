@@ -24,20 +24,13 @@ function PollResults(props) {
             <FontAwesomeIcon icon={faChartBar} /> Results{' '}
           </h4>
           {active ?
-            <Button
-              variant='grey-blue'
-              size='sm'
+            <Button variant='grey-blue' size='sm'
               onClick={loadResults}
-              disabled={refreshResultsLoading}
-            >
+              disabled={refreshResultsLoading} >
               <FontAwesomeIcon icon={faSync} /> Refresh
             </Button> : null}
           {refreshResultsLoading ?
-            <Spinner
-              animation="border"
-              size="sm"
-              aria-hidden="true"
-            /> : null
+            <Spinner animation="border" size="sm" aria-hidden="true" /> : null
           }
         </div>
         <div className='result-display'>

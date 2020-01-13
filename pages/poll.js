@@ -251,15 +251,25 @@ class PollPage extends React.Component {
                 </Alert>
               </div>
             : null }
-            <h4 className='poll-title'>{title.length > 0 ? title : 'Untitled'}</h4>
+            <h3 className='poll-title'>{title}</h3>
             <hr />
-            <div className='poll-desc mb-2'>
-              <h6>Description</h6>
-              <div>
-                <p>
-                  {desc.length > 0 ? desc : <i>No description</i>}
-                </p>
-                <hr />
+            {desc.length > 0 ?
+              <div className='poll-desc mb-2'>
+                <h6>Description</h6>
+                <div>
+                  <p>
+                    {desc.length > 0 ? desc : <i>No description</i>}
+                  </p>
+                  <hr />
+                  <div className='poll-stat'>
+                    Category: {category}
+                  </div>
+                  <div className='poll-stat'>
+                    {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
+                  </div>
+                </div>
+              </div> :
+              <div className='poll-no-desc mb-2'>
                 <div className='poll-stat'>
                   Category: {category}
                 </div>
@@ -267,10 +277,10 @@ class PollPage extends React.Component {
                   {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
                 </div>
               </div>
-            </div>
-            <Row noGutters>
+            }
+            <Row noGutters className='poll-options-row'>
               <Col>
-                <div className='poll-options mb-3'>
+                <div className='poll-options'>
                   <PollShare url={url} />
                   <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
                 </div>
@@ -278,7 +288,7 @@ class PollPage extends React.Component {
             </Row>
             </div>
             <div className='content-container'>
-            <div className='poll-time mb-3'>
+            <div className='poll-time'>
               <div>
                 <h4>
                   <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes

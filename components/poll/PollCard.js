@@ -29,10 +29,13 @@ const PollCard = props => (
         </h6>
       </a>
     </Link>
-    <hr />
-    <div className='poll-card-desc'>
-      {props.poll.desc.length > 0 ? <p>{props.poll.desc}</p> : <i>No Description</i> }
-    </div>
+    {props.poll.desc.length > 0 ?
+      <div>
+        <hr />
+        <div className='poll-card-desc'>
+          <p>{props.poll.desc}</p>
+        </div>
+      </div> : null }
     <hr />
     <div className='poll-card-actions'>
       <div>
