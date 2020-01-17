@@ -17,7 +17,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import PollShare from '../components/poll/PollShare';
 import cookies from 'next-cookies';
-
+import Screenshot from '../components/poll/Screenshot';
+//import ThatPoll_Logo from '../public/img/ThatPoll_Logo.svg';
+import { ReactSVG } from 'react-svg'
 
 class PollPage extends React.Component {
   static async getInitialProps(ctx) {
@@ -58,7 +60,6 @@ class PollPage extends React.Component {
     this.state = {
       entries: this.props.poll.entries,
       totalVotes: this.props.poll.totalVotes,
-      results: this.props.poll.results,
       userDidVote: this.props.user.didVote,
       revealResults: !this.props.poll.active,
       resultsLoading: false,
@@ -218,7 +219,8 @@ class PollPage extends React.Component {
       multiChoice,
       maxSelectChoices,
       choices,
-      pollExpires
+      pollExpires,
+      endDate,
     } = this.props.poll;
 
     const {
@@ -243,24 +245,34 @@ class PollPage extends React.Component {
         ads={true}
       >
         <Container className='main-wrapper'>
-          <div className='content-container'>
-            {visibility === 'private' ?
-              <div className='poll-alert'>
-                <Alert variant='danger'>
-                  This is a <b>private</b> poll. Please consider before sharing the link.
+          <div id='poll'>
+            <div className='content-container'>
+              {visibility === 'private' ?
+                <div className='poll-alert' data-html2canvas-ignore>
+                  <Alert variant='danger'>
+                    This is a <b>private</b> poll. Please consider before sharing the link.
                 </Alert>
-              </div>
-            : null }
-            <h3 className='poll-title'>{title}</h3>
-            <hr />
-            {desc.length > 0 ?
-              <div className='poll-desc mb-2'>
-                <h6>Description</h6>
-                <div>
-                  <p>
-                    {desc.length > 0 ? desc : <i>No description</i>}
-                  </p>
-                  <hr />
+                </div>
+                : null}
+              <h3 className='poll-title'>{title}</h3>
+              <hr />
+              {desc.length > 0 ?
+                <div className='poll-desc mb-2'>
+                  <h6>Description</h6>
+                  <div>
+                    <p>
+                      {desc.length > 0 ? desc : <i>No description</i>}
+                    </p>
+                    <hr />
+                    <div className='poll-stat'>
+                      Category: {category}
+                    </div>
+                    <div className='poll-stat'>
+                      {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
+                    </div>
+                  </div>
+                </div> :
+                <div className='poll-no-desc mb-2'>
                   <div className='poll-stat'>
                     Category: {category}
                   </div>
@@ -268,64 +280,68 @@ class PollPage extends React.Component {
                     {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
                   </div>
                 </div>
-              </div> :
-              <div className='poll-no-desc mb-2'>
-                <div className='poll-stat'>
-                  Category: {category}
-                </div>
-                <div className='poll-stat'>
-                  {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
-                </div>
-              </div>
-            }
-            <Row noGutters className='poll-options-row'>
-              <Col>
-                <div className='poll-options'>
-                  <PollShare url={url} />
-                  <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
-                </div>
-              </Col>
-            </Row>
+              }
+              <Row noGutters className='poll-options-row' data-html2canvas-ignore>
+                <Col>
+                  <div className='poll-options'>
+                    <PollShare url={url} />
+                    <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
+                  </div>
+                </Col>
+              </Row>
             </div>
+            {!active || userDidVote || revealResults ? <Screenshot /> : null }
             <div className='content-container'>
-            <div className='poll-time'>
+              <div className='poll-vote-time'>
+                <div>
+                  <h4>
+                    <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
+                  </h4>
+                  {pollExpires ?
+                    <h5 data-html2canvas-ignore className='poll-time'>
+                      <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b>
+                    </h5> : null
+                  }
+                </div>
+              </div>
+              {active && !userDidVote ?
+                <PollChoices
+                  userDidVote={userDidVote}
+                  userDidVoteError={userDidVoteError}
+                  submitError={submitError}
+                  choices={choices}
+                  revealResults={revealResults}
+                  updateChoiceSelected={this.updateChoiceSelected}
+                  updateMultiChoiceSelected={this.updateMultiChoiceSelected}
+                  submitVote={this.submitVote}
+                  loadResults={this.loadResults}
+                  selectedChoices={selectedChoices}
+                  multiChoice={multiChoice}
+                  maxSelectChoices={maxSelectChoices}
+                /> : null}
+
+              {!active || userDidVote || revealResults ?
+                <PollResults
+                  combinedResults={entries.reduce((total, current) => total + current.result, 0)}
+                  resultsLoading={resultsLoading}
+                  refreshResultsLoading={refreshResultsLoading}
+                  loadResults={this.loadResults}
+                  active={active}
+                  entries={entries}
+                />
+                : null}
+            </div>
+            <div className='poll-extra-info'>
               <div>
-                <h4>
-                  <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
-                </h4>
-                { pollExpires ? 
-                  <h5>
-                    <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b> 
-                  </h5> : null
-                }
+                <h6>Additional Information</h6>
+                {multiChoice ? <p>This is a <b>multiple</b> choice poll with up to <b>{maxSelectChoices}</b> selections</p> : <p>This is a <b>single</b> choice poll of <b>1</b> selection.</p> }
+                {active ? <p>This poll is still <b>running</b></p> : <p>This poll ended on <b>{moment.utc(endDate).local().format('MMMM Do YYYY, h:mm:ss a')}</b></p>} 
+              </div>
+              <div className='created-with'>
+                <p><b>Created with ThatPoll.com</b></p>
+                <ReactSVG src='/public/img/ThatPoll_Logo.svg' />
               </div>
             </div>
-            { active && !userDidVote ?
-            <PollChoices
-              userDidVote={userDidVote}
-              userDidVoteError={userDidVoteError}
-              submitError={submitError}
-              choices={choices}
-              revealResults={revealResults}
-              updateChoiceSelected={this.updateChoiceSelected}
-              updateMultiChoiceSelected={this.updateMultiChoiceSelected}
-              submitVote={this.submitVote}
-              loadResults={this.loadResults}
-              selectedChoices={selectedChoices}
-              multiChoice={multiChoice}
-              maxSelectChoices={maxSelectChoices}
-            /> : null }
-
-            { !active || userDidVote || revealResults ?
-              <PollResults
-                combinedResults={entries.reduce((total, current) => total + current.result, 0)}
-                resultsLoading={resultsLoading}
-                refreshResultsLoading={refreshResultsLoading}
-                loadResults={this.loadResults}
-                active={active}
-                entries={entries}
-              />
-              : null }
           </div>
         </Container>
       </Layout>
@@ -335,12 +351,12 @@ class PollPage extends React.Component {
 
 PollPage.defaultProps = {
   poll: {
-    totalVotes: 0,
-    results: [],
+    totalVotes: 0
   },
   user: { userDidVote: false },
   revealResults: false,
-  active: true
+  active: true,
+  endDate: null
 }
 
 export default withRouter(PollPage)

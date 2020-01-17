@@ -6,7 +6,7 @@ let windowOpenParams = `scrollbars=no,resizable=no,status=no,location=no,toolbar
 width=680,height=350,left=100,top=100`;
 
 const PollShare = props => (
-  <div className='share-buttons mb-2'>
+  <div className='share-buttons'>
     <a
       title='Facebook'
       className='social-buttons'

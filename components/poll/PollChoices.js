@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import PropTypes from 'prop-types';
 
 const PollChoices = props => (
-  <div className='poll-choices'>
+  <div className='poll-choices' data-html2canvas-ignore>
     <hr />
     <h4 className='mb-3'><FontAwesomeIcon icon={faPollH} /> Choices</h4>
     {props.choices.map((choice, i) => (
@@ -15,7 +15,6 @@ const PollChoices = props => (
           :
           <input id={`choice-${i}`} name='poll-choice' type="radio" value={i} onChange={props.updateChoiceSelected} />
         }
-        
         <label htmlFor={`choice-${i}`}>{choice}</label>
       </div>
     ))}

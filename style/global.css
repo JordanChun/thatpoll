@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Patua+One&display=swap');
 
 html[data-theme="dark"] {
   --primaryBackground: #2d4563;
@@ -10,7 +9,6 @@ html[data-theme="dark"] {
   --primaryButtonTextColor: #e6e6e6;
   --inputBackgroundColor: #32547b;
   --inputFocusColor: #406490;
-
 
   --headerBackgroundColor: #1c2c40;
   --secondaryBackground: #2d4b6d;
@@ -41,10 +39,6 @@ a, a:hover {
   color: var(--primaryAnchorColor);
   text-decoration: none;
   cursor: pointer;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Patua One', cursive;
 }
 
 .link {
@@ -590,6 +584,8 @@ a:not([href]):not([tabindex]).social-buttons {
   display: flex;
 } */
 
+
+
 .poll-choices .choice-btns button[type='submit'] {
   margin-right: 0.5rem;
 }
@@ -741,17 +737,17 @@ border-color: #54E0C7;
   margin: 0.5rem 2rem;
 }
 
-.poll-time {
+.poll-vote-time {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-.poll-time > div {
+.poll-vote-time > div {
   text-align: center;
 }
 
-.poll-time h5 {
+.poll-vote-time h5 {
   margin-bottom: 1rem;
 }
 
@@ -792,7 +788,31 @@ border-color: #54E0C7;
 
 .poll-results {
   width: 100%;
-  min-height: 250px;
+}
+
+.poll-extra-info {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.poll-extra-info p {
+  margin-bottom: 0;
+}
+
+.created-with {
+  text-align: right;
+}
+
+.created-with > div > div {
+  text-align: center;
+}
+
+.created-with > div {
+  background-color: #1c2c40;
+  padding: 8px;
+  border-radius: 0.25rem;
 }
 
 .user-vote {
@@ -942,6 +962,20 @@ border-color: #54E0C7;
 
 .modal-header, .modal-footer {
   border-color: var(--primaryBorderColor);
+}
+
+.generated-screenshot-modal .modal-body {
+  padding: 0;
+}
+
+.generated-screenshot-modal .modal-footer > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.generated-screenshot-modal .modal-footer p {
+  margin: 0;
 }
 
 .filter-container {
@@ -1096,6 +1130,7 @@ border-color: #54E0C7;
   
   .content-container {
     padding: 1rem;
+    width: 100%;
   }
   
   .poll-choices .choice-btns {

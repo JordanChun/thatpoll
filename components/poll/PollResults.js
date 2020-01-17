@@ -25,6 +25,7 @@ function PollResults(props) {
           </h4>
           {active ?
             <Button variant='grey-blue' size='sm'
+            data-html2canvas-ignore
               onClick={loadResults}
               disabled={refreshResultsLoading} >
               <FontAwesomeIcon icon={faSync} /> Refresh
@@ -33,7 +34,7 @@ function PollResults(props) {
             <Spinner animation="border" size="sm" aria-hidden="true" /> : null
           }
         </div>
-        <div className='result-display'>
+        <div className='result-display' data-html2canvas-ignore>
           <ToggleButtonGroup type="radio" name='displays' value={display} onChange={handleChange}>
             <ToggleButton value='Bar' className='btn-sm'>
               <FontAwesomeIcon icon={faAlignLeft} /> Bar</ToggleButton>
