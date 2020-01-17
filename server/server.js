@@ -13,7 +13,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser')
 const requestIp = require('request-ip');
-const proxy = require('html2canvas-proxy');
 
 const mongoose = require('mongoose');
 
