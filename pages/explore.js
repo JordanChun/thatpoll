@@ -53,7 +53,7 @@ class Explore extends React.Component {
 
   updateFilter(eventKey) {
     const { state } = this.props.router.query;
-    let href = '/?page=1';
+    let href = '/explore/?page=1';
     if (state !== eventKey) {
       href += `&state=${eventKey}`
       const as = href;
