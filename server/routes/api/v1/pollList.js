@@ -7,7 +7,7 @@ const moment = require('moment');
 
 router.post('/polls', async (req, res) => {
   const filters = {
-    visibility: 'public'
+    visibility: 'public',
   }
   let pollsArr = [];
   let skip;
@@ -17,7 +17,7 @@ router.post('/polls', async (req, res) => {
 
 
   try {
-    const totalItems = await Poll.countDocuments({ visibility: 'public' });
+    const totalItems = await Poll.countDocuments(filters);
     const totalPages = Math.ceil(totalItems/10);
     page = Math.min(Math.max(page, 1), totalPages);
     skip = (page - 1) * 10;

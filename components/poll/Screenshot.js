@@ -167,7 +167,7 @@ class Screenshot extends React.Component {
     return (
       <div className='content-container' data-html2canvas-ignore style={{ textAlign: 'center' }}>
         <h5><FontAwesomeIcon icon={faCamera} /> Generate Image</h5>
-        <p>Create an image of this poll with <b>only</b> the necesarry data and elements.</p>
+        <p>Create an image of this poll with <b>only</b> the necesary data and elements.</p>
         <Button variant='grey-blue' onClick={this.generateScreenshot} disabled={this.state.show || this.state.disabled}>
           <FontAwesomeIcon icon={faCamera} /> Generate Image
         </Button>
