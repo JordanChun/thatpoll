@@ -951,7 +951,7 @@ border-color: #54E0C7;
   background-color: var(--primaryBackground);
 }
 
-.modal-report .modal-content {
+.modal-content {
   background-color: var(--primaryContainerColor);
   color: var(--primaryTextColor);
 }

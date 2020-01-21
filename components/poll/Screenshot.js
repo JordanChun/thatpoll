@@ -65,11 +65,13 @@ class Screenshot extends React.Component {
     }
 
     document.getElementById('poll').style.width = '1140px';
+    const bgColor = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+
     this.html2canvas(document.getElementById('poll'),
       { scale: 1,
         useCORS: true,
         foreignObjectRendering: true,
-        backgroundColor: '#f1f1f1',
+        backgroundColor: bgColor,
         windowWidth: 1200,
         windowHeight: document.getElementById('poll').scrollHeight,
         height: canvasHeight,
