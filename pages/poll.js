@@ -18,7 +18,6 @@ import { faVoteYea, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 import PollShare from '../components/poll/PollShare';
 import cookies from 'next-cookies';
 import Screenshot from '../components/poll/Screenshot';
-//import ThatPoll_Logo from '../public/img/ThatPoll_Logo.svg';
 import { ReactSVG } from 'react-svg'
 
 class PollPage extends React.Component {
@@ -242,7 +241,7 @@ class PollPage extends React.Component {
         pageDesc={desc}
         visibility={visibility}
         path={this.props.router.asPath}
-        ads={true}
+        //ads={true}
       >
         <Container className='main-wrapper'>
           <div id='poll'>
