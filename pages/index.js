@@ -215,7 +215,7 @@ class CreatePoll extends React.Component {
 
     return (
       <Layout
-        pageTitle='Create Poll - Instant Poll Maker'
+        pageTitle='ThatPoll - Instant Poll Maker'
         path={this.props.router.asPath}
       >
         <Container className='main-wrapper'>

@@ -1079,12 +1079,12 @@ border-color: #54E0C7;
 
   .nav-item.small-menu a {
     display: block;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid white;
+
   }
 
   .navbar-nav .nav-item {
     padding: 0.5rem 0;
+    margin: 0;
   }
 
   .poll-desc, .poll-choices {
