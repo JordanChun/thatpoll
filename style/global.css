@@ -530,7 +530,7 @@ a:not([href]):not([tabindex]).social-buttons {
   padding: 2rem;
   background-color: var(--secondaryBackground);
   border-radius: 0.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.6rem;
   box-shadow: var(--primaryBoxShadow);
 }
 

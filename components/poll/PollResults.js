@@ -18,7 +18,7 @@ function PollResults(props) {
   return (
     <div className='poll-results'>
       <hr />
-      <div className='results-header'>
+      <div className='results-header mb-2'>
         <div>
           <h4>
             <FontAwesomeIcon icon={faChartBar} /> Results{' '}

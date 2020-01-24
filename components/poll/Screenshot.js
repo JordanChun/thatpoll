@@ -32,16 +32,18 @@ class Screenshot extends React.Component {
   closeModal() {
     this.setState({ show: false, loading: true });
   }
-
+  
   generateScreenshot() {    
     this.setState({ show: !this.state.show });
-
+    
     const pollDoc = document.getElementById('poll');
+    pollDoc.style.width = '1140px';
+
     let canvasHeight = pollDoc.scrollHeight + 20;
     // remove options section
     canvasHeight -= pollDoc.getElementsByClassName('poll-options-row row no-gutters')[0].scrollHeight;
     // remove screenshot section
-    canvasHeight -= pollDoc.getElementsByClassName('content-container')[1].scrollHeight;
+    canvasHeight -= pollDoc.getElementsByClassName('content-container')[2].scrollHeight;
     // remove choices
     if (pollDoc.getElementsByClassName('poll-choices').length > 0) {
       //canvasHeight -= 20
@@ -54,17 +56,16 @@ class Screenshot extends React.Component {
     if (pollDoc.getElementsByClassName('poll-time').length > 0) {
       canvasHeight -= pollDoc.getElementsByClassName('poll-time')[0].scrollHeight;
     }
-
+    
     // for media query
     if (document.body.clientWidth < 578) {
-      canvasHeight += 46;
+      canvasHeight += 86;
       const containers = document.getElementsByClassName('content-container');
       Array.from(containers).forEach(container => {
         container.style.padding = '2rem';
       });
     }
 
-    document.getElementById('poll').style.width = '1140px';
     const bgColor = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
 
     this.html2canvas(document.getElementById('poll'),

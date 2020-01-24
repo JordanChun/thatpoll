@@ -151,6 +151,8 @@ class PollPage extends React.Component {
         resultsLoading: false,
         refreshResultsLoading: false,
       });
+
+      
     } catch (err) {
       
     }
@@ -289,7 +291,6 @@ class PollPage extends React.Component {
                 </Col>
               </Row>
             </div>
-            {!active || userDidVote || revealResults ? <Screenshot /> : null }
             <div className='content-container'>
               <div className='poll-vote-time'>
                 <div>
@@ -305,11 +306,11 @@ class PollPage extends React.Component {
               </div>
               {active && !userDidVote ?
                 <PollChoices
-                  userDidVote={userDidVote}
-                  userDidVoteError={userDidVoteError}
-                  submitError={submitError}
-                  choices={choices}
-                  revealResults={revealResults}
+                userDidVote={userDidVote}
+                userDidVoteError={userDidVoteError}
+                submitError={submitError}
+                choices={choices}
+                revealResults={revealResults}
                   updateChoiceSelected={this.updateChoiceSelected}
                   updateMultiChoiceSelected={this.updateMultiChoiceSelected}
                   submitVote={this.submitVote}
@@ -317,19 +318,20 @@ class PollPage extends React.Component {
                   selectedChoices={selectedChoices}
                   multiChoice={multiChoice}
                   maxSelectChoices={maxSelectChoices}
-                /> : null}
+                  /> : null}
 
               {!active || userDidVote || revealResults ?
                 <PollResults
-                  combinedResults={entries.reduce((total, current) => total + current.result, 0)}
-                  resultsLoading={resultsLoading}
-                  refreshResultsLoading={refreshResultsLoading}
-                  loadResults={this.loadResults}
-                  active={active}
-                  entries={entries}
+                combinedResults={entries.reduce((total, current) => total + current.result, 0)}
+                resultsLoading={resultsLoading}
+                refreshResultsLoading={refreshResultsLoading}
+                loadResults={this.loadResults}
+                active={active}
+                entries={entries}
                 />
-                : null}
+              : null}
             </div>
+            {!active || userDidVote || revealResults ? <Screenshot /> : null }
             <div className='poll-extra-info'>
               <div>
                 <h6>Additional Information</h6>
