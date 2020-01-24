@@ -813,6 +813,11 @@ border-color: #54E0C7;
   background-color: #1c2c40;
   padding: 8px;
   border-radius: 0.25rem;
+  height: 55px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user-vote {

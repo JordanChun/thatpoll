@@ -340,7 +340,10 @@ class PollPage extends React.Component {
               </div>
               <div className='created-with'>
                 <p><b>Created with ThatPoll.com</b></p>
-                <ReactSVG src='/public/img/ThatPoll_Logo.svg' />
+                <ReactSVG src='/public/img/ThatPoll_Logo.svg' beforeInjection={svg => {
+                  svg.setAttribute('style', 'height: 40px');
+                  svg.setAttribute('style', 'width: 150px')
+                }} />
               </div>
             </div>
           </div>

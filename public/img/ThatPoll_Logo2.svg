@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="259.5" height="64" viewBox="0 0 1038 256">
+<svg xmlns="http://www.w3.org/2000/svg" width="159.956" height="39.45" viewBox="0 0 1038 256">
   <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
 <x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
    <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -44,11 +44,18 @@
       .cls-4 {
         fill: #9ca02a;
       }
+
+      .cls-5 {
+        font-size: 75px;
+        fill: #fff;
+        text-anchor: middle;
+        font-family: Nasalization;
+      }
     </style>
   </defs>
   <rect class="cls-1" x="-0.469" y="169.906" width="1038.469" height="17.782"/>
   <rect id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-2" x="-0.469" y="193.656" width="886.125" height="17.688"/>
   <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" class="cls-3" x="-0.469" y="216.469" width="692.313" height="17.687"/>
   <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" class="cls-4" x="-0.469" y="239.125" width="540.063" height="17.875"/>
-  <image id="ThatPoll" x="1" y="-7" width="873" height="172" xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAANoAAAArCAQAAAC02l7sAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQfkARgNKzpRaBJ8AAAHe0lEQVR42u2ba2xURRTHf3e7lNJaKC/R4gNky+ODICiKBgIBDBEUghCDGlFJBI1E0SgGYxqjxhdgQIwQRZSHiEAMEBEERUVSAUVQFKWCCBTk3QKl9rHb6weWdebufc3s0rsq//3QOTNzzpnZ/965Z+ZMDZMU0YRFNE1Ir7A6VYP/Y3RjWqJcz/3ss205Fk7ZUR5DBWntBdJSQIR+gnSpQJrUEkrZUYwzglQe9Lz/1aiUpGqHlsOpk3YBDY4w3WhFrbJeFjG+46+gh58iDK4njzof/WIco0xaUwJEmDVcrKnbl/VBD991Zk0S5WoHYlqzUcFiBT/xKR+wO+iphaSVU1U3k/EeBxKfxQ59spQsFtCb59nFTJoFO7UQNdq6sWCH7oF25Cc+7R361Gu8GOBBdnJjkFPL7KclFVQI5XTHtG0ooXtwU/vvkna+sY7soFyHuFxbt4m2ZqYgnMIXX8BLwQ17JZ0sb6d6QnSRprObchpJfULEOGhj72RQE0mC+K52enNV8g35Pt7NMS4ikrQqTaA4mE1AmJG29bvoIEijKfFp70pa0dhSZxClitP4O+bMpSX1Hn0M/uKUQxifTwExolKEl08bsjDiUogqjgNwkpt8f1OXMYrJUk2I21jk2D+PPLKFORvUUJmena3T2aPhIrnhBYotz+TZrWk15ezlFzbxBXtcLbzMeB+k1XCSUjawlK2WtvkMpZ6otFL0Yh8hgbSddFH+psqYQinLpbq+NqRlM4KBdCVCLmGJtDoqKWUbn/CxsncZpv3nd1PEABPHT3Oz0lTDMld7CxWtLTELJf0SHzonXPy7f1ZLdtYltT9plvnwv8McbWt9kNSrm0PLoSCix2F8xjzHZ7xSyRaMZIcUfp/yoVOhPfYFktRKkgrZyKu09WGlC3P5CO0MS1Ah/z1sp0WabDWjhOYNNO7DkiR+7W35gRsULA1ni27sGtw+rbPDuV+uhq0c3k2UL/LRP1971PKP459VwaDE8tx5oyuf6w0iyM11EXNtak9r2RpGu3jJz/Ko5wNgiCSVJUozuELDWm/G6wwi9cy1jGeZa4keTQwa04IIvRhKG6ltNFP50WJhEq8TdfVhYnAxA3lWqh3B1LjN1kSJMkfI9W7iLiF6DPsi1g4duEeSt8X/FvKwpedKlrODY8TiXk3CtOZqbmeA1O813tY4/U1z9DjKNfbKNZ+zxFGLteM4zD6SpQ8trUuFttUpeBH9HbKM/vp4y8tSbZ052MXKKIuNB9Wjx3Q/ae4BQRXF7OctoWYYuVRp+vqaFcL9FOvylCOUG3tY6k5PCqVdlYwYTbmOPpbaA2yOl+6Q6gexzsXXIgwWCvLdzFKdeLpJ88bbjGBQQsrmJj7TtrVBIC1P00Z73qWvluZT8b9XSamfNa6UAXzAk8Im5Uaaqi7XQQQiL0hS1xQsVQhlvbuAeWzRpGwj78dLPaX6t3zozhbKWepJnoZ/0uBbqoTA3m0zWkBzcnAiJEpnQdIj7QnNHd6fwmoRkVo2+9CWNztFfKXmPAjSajhAUUKy31fdyWCuob32oucXQ7W0tnKLsKRdIrQcYb8P/T+oE2LsQlX3QZCGdD6fvEDfylQ6Nsg4sjSyiTVM4RmpRswnHPZl4yTHBaqVb5wEQ5pIlHVZG8M7DTaOXKVEbhXbWcFcDljqxdjU3zWpmJSiUT7MCoY0Z3RqQMqSU04T+V7aKpzrVU8t5ezhhK0V8WfnN7AzHPR9IdNIm5JUU4vpkM+rpYniJTgrTMsXNtUzk2cH8anx9w7OFv5lBfXEaGaRlm8525vEWsocSatmIk+n1X8HftPQEp+/tmT7uJbXSopZT3j2tyCzSLtWouc+2wNlEQdd2lJagJRQJpTzibDDU6NIGl2ZZ38LMusKnXgUVeFJmXuKxXQopx+/SlJ/HxqDJMmbZAsyizQxllPNYFshbisaaVvxA3k7/agPjQeE8im2qzrMLNLEJEWhtGm1h1uALZJe5GUoJRxnkyBFeNGj/ztSuvRzj0SUDTKLNHEHFGKe5+jcYrVDQvkShp3Xcc+RpEnM4kqHnp1YyBipZjbKyKxA5HtJupndrOIgdbbRo0lTxgmyleBSSVpKMespx8CgEUfVX/6umMM0aWkfx1i+YBsV1CbGnk1LetDbormPT9TdZRZpxymRro+24yHfutYdlnwIG5YWrc1KV3C8EWUs86Uag/6+QpLROu4ya3nEcoVABdYL6aWWqE5EDunGAj7U0Jqser5/FplG2lqWaGr+nFTzuGPf83EDfxTLFDXeZKKeq0wjDe5glZbezKSaVUxv0JEP53nffWt5JOkykG84kSb/76RblJYltfpLKYrWkwP7wTzG70qziDHOdrczgQkctak/F9uFLNvzVP/jrJhuzPO883KMNyhihk2LnFvMcWhp4xSIvEd74RzB7Ss8w3IhI7TF1+Tm0TFhfY1N+zSm0Z9eRCikkeMPy6CeGGVsYxl7HfpMZzZD6EGEgsQlOiMxymqWUZDoG7UlWA0/ci9P0I/udKClcG3v7FiPsIvvWOe4PO/iy0S5XjqkE1uO/g3apPMQY6JnUwAAAABJRU5ErkJggg=="/>
+  <text id="ThatPoll" class="cls-5" transform="translate(445.577 163.064) scale(2.967 2.965)"><tspan x="0">ThatPoll</tspan></text>
 </svg>
