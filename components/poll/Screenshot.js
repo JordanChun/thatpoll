@@ -108,6 +108,9 @@ class Screenshot extends React.Component {
             container.style.boxShadow = 'none';
           });
 
+          // Show created with div
+          pollDiv.getElementsByClassName('created-with')[0].style.display = 'block';
+
           // const multiplyRatio = 1140/containers[0].scrollWidth;
 
           // Array.from(pollDiv.getElementsByTagName("*")).forEach(el => {
@@ -129,7 +132,6 @@ class Screenshot extends React.Component {
         var img = new Image();
         img.src = canvas.toDataURL("image/jpeg", 1);
         img.style.width = '100%'
-        // img.style.height = '80vh';
         document.getElementById('generated-screenshot').appendChild(img);
         this.setState({ loading: false });
         document.getElementById('download-img').href = img.src;

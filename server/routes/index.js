@@ -13,7 +13,8 @@ function pageRoutes(nextApp, handle) {
   app.get('/explore', (req, res) => {
     return nextApp.render(req, res, '/explore', {
       page: req.query.page,
-      state: req.query.state
+      status: req.query.status,
+      most: req.query.most,
     });
   });
   

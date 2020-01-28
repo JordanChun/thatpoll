@@ -51,9 +51,9 @@ const PollCard = props => (
         </div>
       </div>
       <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>
-        <div>
+{/*        <div>
           <ReportButton urlref={props.poll.url} polltitle={props.poll.title} />
-        </div>
+</div>*/}
         <div className='poll-card-actions-compact'>
           <Dropdown alignRight>
             <Dropdown.Toggle as={CustomDropdownToggle} id="poll-card-options-compact">

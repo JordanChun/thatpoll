@@ -10,6 +10,9 @@ import VoteHistory from '../components/VoteHistory';
 import Router from 'next/router';
 import PollListFilter from '../components/poll/PollListFilter';
 import Container from 'react-bootstrap/Container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import Button from 'react-bootstrap/Button';
 
 class Explore extends React.Component {
   static async getInitialProps(ctx) {
@@ -48,21 +51,38 @@ class Explore extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showFilters: false
+    }
+
     this.updateFilter = this.updateFilter.bind(this);
+    this.toggleFilter = this.toggleFilter.bind(this);
   }
 
-  updateFilter(eventKey) {
-    const { state } = this.props.router.query;
+  updateFilter(eventKey, e) {
     let href = '/explore/?page=1';
-    if (state !== eventKey) {
-      href += `&state=${eventKey}`
-      const as = href;
-      Router.push(href, as);
+    
+    const queries = Object.assign({}, this.props.router.query);
+    queries.page = 1;
+    queries[e.target.name] = eventKey;
+
+    for (let i = 1; i < Object.keys(queries).length; i++) {
+      const key = Object.keys(queries)[i];
+      const value = queries[key];
+      href += `&${key}=${value}`
     }
+
+    const as = href;
+    Router.push(href, as);
+  }
+
+  toggleFilter() {
+    this.setState({ showFilters: !this.state.showFilters });
   }
 
   render() {
     const { polls, totalItems } = this.props;
+    const { showFilters } = this.state;
     return (
       <Layout
         path={this.props.router.asPath}
@@ -71,9 +91,14 @@ class Explore extends React.Component {
       >
         <Container className='main-wrapper'>
           <Row>
-            <Col md={9} style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <h4 className='page-header' style={{ padding: 0 }}>Recent Polls</h4>
-              <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} />
+            <Col md={9}>
+              <div className='d-flex justify-content-between'>
+                <h4 className='page-header' style={{ padding: 0 }}>Recent Polls</h4>
+                <Button variant='simple' size='sm' onClick={this.toggleFilter}>
+                  <FontAwesomeIcon icon={faFilter} /> Filter
+                </Button>
+              </div>
+            { showFilters ? <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} /> : null }
             </Col>
           </Row>
           <hr />

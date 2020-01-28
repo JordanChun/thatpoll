@@ -4,17 +4,40 @@ const router = express.Router();
 const Poll = require('../../../models/Poll');
 const moment = require('moment');
 
-
 router.post('/polls', async (req, res) => {
-  const filters = {
-    visibility: 'public',
-  }
+  const filters = { visibility: 'public' };
   let pollsArr = [];
   let skip;
   let page = Math.round(req.query.page);
-  if (req.query.state === 'live') filters.active = true;
-  if (req.query.state === 'ended') filters.active = false;
+  const sortBy = {};
 
+  if (req.query.status === 'live') filters.active = true;
+  if (req.query.status === 'ended') filters.active = false;
+
+  switch (req.query.most) {
+    case 'today':
+      filters.dateCreated = { $gte: moment(new Date()).startOf('day').toISOString(), $lte: moment(new Date()).endOf('day').toISOString()}
+      sortBy.totalVotes = -1;
+      break;
+    case 'week':
+      filters.dateCreated = { $gte: moment(new Date()).startOf('week').toISOString(), $lte: moment(new Date()).endOf('week').toISOString() };
+      sortBy.totalVotes = -1;
+      break;
+    case 'month':
+      filters.dateCreated = { $gte: moment(new Date()).startOf('month').toISOString(), $lte: moment(new Date()).endOf('month').toISOString() };
+      sortBy.totalVotes = -1;
+      break;
+    case 'year':
+      filters.dateCreated = { $gte: moment(new Date()).startOf('year').toISOString(), $lte: moment(new Date()).endOf('year').toISOString() };
+      sortBy.totalVotes = -1;
+      break;
+    case 'all':
+      sortBy.totalVotes = -1;
+      break;
+    default:
+      sortBy.dateCreated = -1;
+      break;
+  }
 
   try {
     const totalItems = await Poll.countDocuments(filters);
@@ -24,8 +47,8 @@ router.post('/polls', async (req, res) => {
     if (skip < 0) {
       skip = 0;
     }
-    
-    const polls = await Poll.find(filters).skip(skip).sort({ dateCreated: -1 }).limit(10);
+
+    const polls = await Poll.find(filters).sort(sortBy).skip(skip).limit(10);
     for (let i = 0; i < polls.length; i++) {
       pollsArr.push({
         url: polls[i].url,

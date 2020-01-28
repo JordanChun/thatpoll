@@ -86,7 +86,6 @@ a, a:hover {
 }
 
 .main-wrapper { 
-  padding: 1.65rem 0;
   background-color: var(--primaryBackground);
   height: calc(100% - 56px);
   margin-top: 75px;
@@ -478,7 +477,7 @@ a:not([href]):not([tabindex]).social-buttons {
 }
 
 .poll-card-actions-compact {
-  display: none;
+  display: block;
 }
 
 .poll-card-actions-compact span {
@@ -530,7 +529,7 @@ a:not([href]):not([tabindex]).social-buttons {
   padding: 2rem;
   background-color: var(--secondaryBackground);
   border-radius: 0.25rem;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
   box-shadow: var(--primaryBoxShadow);
 }
 
@@ -802,6 +801,7 @@ border-color: #54E0C7;
 }
 
 .created-with {
+  display: none;
   text-align: right;
 }
 
@@ -983,9 +983,14 @@ border-color: #54E0C7;
   margin: 0;
 }
 
-.filter-container {
-  display: inline-flex;
-  justify-content: flex-end;
+.filter-dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.filter-dropdown-container svg {
+  margin: 5px;
 }
 
 .cookies-banner {
@@ -1065,10 +1070,6 @@ border-color: #54E0C7;
 }
 
 @media (max-width: 576px) {
-  .main-wrapper.container {
-    padding: 0 10px;
-  }
-
   .navbar { 
     height: auto;
     padding: 0.5rem 1rem;
@@ -1098,13 +1099,15 @@ border-color: #54E0C7;
   .form-group.col {
     flex-basis: auto;
   }
+  /*
   .poll-card-actions-options > div:first-child {
     display: none;
   }
-
+  
   .poll-card-actions-compact {
     display: block;
   }
+  */
 
   .share-poll {
     width: 67px;
