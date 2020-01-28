@@ -93,7 +93,7 @@ class Explore extends React.Component {
           <Row>
             <Col md={9}>
               <div className='d-flex justify-content-between'>
-                <h4 className='page-header' style={{ padding: 0 }}>Recent Polls</h4>
+                <h4 className='page-header' style={{ padding: 0 }}>Polls</h4>
                 <Button variant='simple' size='sm' onClick={this.toggleFilter}>
                   <FontAwesomeIcon icon={faFilter} /> Filter
                 </Button>

@@ -18,17 +18,22 @@ const PollCard = props => (
     className='poll-card-container'
     onClick={() => redirectToPoll(props.poll.url)}
     >
-    <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
-      <a>
-        <h6
-          className='poll-card-title'
-          onClick={(e) => {e.stopPropagation()}}
-          title={props.poll.title}  
-        >
-          {props.poll.title}
-        </h6>
-      </a>
-    </Link>
+    <div className='d-flex justify-content-between'>
+      <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
+        <a>
+          <h6
+            className='poll-card-title'
+            onClick={(e) => {e.stopPropagation()}}
+            title={props.poll.title}  
+          >
+            {props.poll.title}
+          </h6>
+        </a>
+      </Link>
+      <div className='tag-active'>
+        <span>{props.poll.active ? <b style={{ color: 'red' }}>LIVE</b> : <b>ENDED</b>}</span>
+      </div>
+    </div>
     {props.poll.desc.length > 0 ?
       <div>
         <hr />
@@ -42,12 +47,12 @@ const PollCard = props => (
         <Link href={{ pathname: '/poll', query: { slug: props.poll.url } }} as={`/poll/${props.poll.url}`}>
           <a>
             <Button variant="grey-blue" size="sm" onClick={(e) => {e.stopPropagation()}}>
-              View Poll
+              View
             </Button>
           </a>
         </Link>
         <div className='poll-stat' style={{ lineHeight: '2.5', marginLeft: '0.75rem' }}>
-          <span>{props.poll.totalVotes.toLocaleString()} votes • {props.poll.dateCreated} • {props.poll.active ? <b style={{ color: 'red' }}>LIVE</b> : <b>ENDED</b>}</span>
+          <span>{props.poll.totalVotes.toLocaleString()} votes • {props.poll.dateCreated}</span>
         </div>
       </div>
       <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>

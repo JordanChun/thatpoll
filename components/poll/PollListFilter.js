@@ -26,6 +26,7 @@ function PollListFilter(props) {
             {getQueryMost(props.query.most)}
           </Dropdown.Toggle>
           <Dropdown.Menu>
+            <Dropdown.Item name='most' eventKey="any" onSelect={props.updateFilter}>Any</Dropdown.Item>
             <Dropdown.Item name='most' eventKey="today" onSelect={props.updateFilter}>Today</Dropdown.Item>
             <Dropdown.Item name='most' eventKey="week" onSelect={props.updateFilter}>This Week</Dropdown.Item>
             <Dropdown.Item name='most' eventKey="month" onSelect={props.updateFilter}>This Month</Dropdown.Item>

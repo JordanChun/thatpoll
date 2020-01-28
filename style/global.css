@@ -522,6 +522,7 @@ a:not([href]):not([tabindex]).social-buttons {
   background-color: var(--secondaryBackground);
   padding: 3rem;
   border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .content-container {
@@ -577,6 +578,17 @@ a:not([href]):not([tabindex]).social-buttons {
 .poll-options {
   display: flex;
   justify-content: space-between;
+}
+
+.tag-active {
+  margin-left: 0.5rem;
+}
+
+.tag-active span {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.3rem;
+  background-color: #d4d4d4;
+  border-radius: 0.25rem;
 }
 
 /* .poll-choices .choice-btns {

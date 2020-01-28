@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Alert from 'react-bootstrap/Alert';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPoll, faEye, faPlus, faMinus, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import Router from 'next/router';
@@ -74,7 +76,6 @@ class CreatePoll extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateTimePeriod = this.updateTimePeriod.bind(this);
     this.updateCategory = this.updateCategory.bind(this);
-    // this.setHourPreset = this.setHourPreset.bind(this);
     this.updateChoice = this.updateChoice.bind(this);
     this.addChoice = this.addChoice.bind(this);
     this.removeChoice = this.removeChoice.bind(this);
@@ -198,7 +199,6 @@ class CreatePoll extends React.Component {
       title,
       desc,
       choices,
-      votingPeriod,
       error,
       validated,
       createLimit,
@@ -286,19 +286,23 @@ class CreatePoll extends React.Component {
                 <Form.Label>
                   Choice #{i+1}
                 </Form.Label>
-                {i > 1 ? 
-                  <ButtonGroup size='sm' style={{ marginLeft: '0.5rem' }}>
-                    <Button variant="grey-blue" data-index={i} onClick={this.removeChoice}>
-                      <FontAwesomeIcon icon={faMinus} /> Remove choice
-                    </Button>
-                  </ButtonGroup> : null }
+              {i > 1 ?
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <Button variant="grey-blue" data-index={i} onClick={this.removeChoice}><FontAwesomeIcon icon={faMinus} /></Button>
+                  </InputGroup.Prepend>
+                  <FormControl value={choiceObj.choice}
+                    data-index={i}
+                    onChange={this.updateChoice}
+                    type='text' minLength='1' maxLength='75' required />
+                </InputGroup> :
                 <Form.Control
                   value={choiceObj.choice}
                   data-index={i}
                   onChange={this.updateChoice}
                   type='text' minLength='1' maxLength='75'
-                  required
-                />
+                  required /> }
+
                 <Form.Control.Feedback type="invalid">
                   Please provide a choice or remove it. Duplicate choices are <b>not</b> allowed. Min 1 characters.
                 </Form.Control.Feedback>
@@ -407,3 +411,4 @@ class CreatePoll extends React.Component {
 }
 
 export default withRouter(CreatePoll);
+
