@@ -17,7 +17,7 @@ function setQueryString(query) {
 }
 
 const PollPagination = props => {
-  const { state } = props.router.query;
+  const { status, most } = props.router.query;
   let active;
   if (props.router.query.page) {
     active = props.router.query.page;
@@ -32,7 +32,7 @@ const PollPagination = props => {
     offset = active - 3;
     items.push(
       <li className='page-item' key='prev'>
-        <Link href={{ pathname: '/explore', query: { page: active - 1, state: state } }} as={`?page=${active - 1}${setQueryString(props.router.query)}`}>
+        <Link href={{ pathname: '/explore', query: { page: active - 1, status: status, most: most } }} as={`?page=${active - 1}${setQueryString(props.router.query)}`}>
           <a className="page-link" role="button">
             <span aria-hidden="true">‹</span>
             <span className="sr-only">Previous</span>
@@ -56,7 +56,7 @@ const PollPagination = props => {
     if ((i + offset) === active) {
       items.push(
         <li className="page-item active" key={i}>
-          <Link href={{ pathname: '/explore', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
+          <Link href={{ pathname: '/explore', query: { page: i + offset, status: status, most: most } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className='page-link'>{i + offset}</a>
           </Link>
           <span className="sr-only">(current)</span>
@@ -65,7 +65,7 @@ const PollPagination = props => {
     } else {
       items.push(
         <li className="page-item" key={i}>
-          <Link href={{ pathname: '/explore', query: { page: i + offset, state: state } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
+          <Link href={{ pathname: '/explore', query: { page: i + offset, status: status, most: most } }} as={`?page=${i + offset}${setQueryString(props.router.query)}`} replace>
             <a className="page-link">{i + offset}</a>
           </Link>
         </li>
