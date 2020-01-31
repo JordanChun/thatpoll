@@ -51,7 +51,7 @@ class Contact extends React.Component {
 
       const data = await res.json();
       if (data.message === 'success') {
-          this.setState({
+        this.setState({
           error: false,
           success: true,
           text: '',
@@ -64,9 +64,9 @@ class Contact extends React.Component {
       }
 
 
-    } catch(err) {
-        // display error
-        this.setState({ error: true });
+    } catch (err) {
+      // display error
+      this.setState({ error: true });
     }
 
   }
@@ -75,48 +75,46 @@ class Contact extends React.Component {
     const { text, error, success, validated } = this.state;
     return (
       <Layout pageTitle={'ThatPoll - Contact Us'}>
-        <Container className='main-wrapper'>
-          <div className='content-container'>
-            <h4 className='page-header'>Contact Us</h4>
-            <hr />
-            { error ?
-              <Alert variant='danger'>
-                <b>Error submitting form</b>
-              </Alert> : null
-            }
-            { success ?
-              <Alert variant='success'>
-                <b>
-                  <FontAwesomeIcon icon={faCheck} /> Submittion Received. Thank You
+        <div className='content-container'>
+          <h4 className='page-header'>Contact Us</h4>
+          <hr />
+          {error ?
+            <Alert variant='danger'>
+              <b>Error submitting form</b>
+            </Alert> : null
+          }
+          {success ?
+            <Alert variant='success'>
+              <b>
+                <FontAwesomeIcon icon={faCheck} /> Submittion Received. Thank You
                 </b>
-              </Alert> : null
-            }
-            <p>Want to contact us or provide feedback? Please share your thoughts below.</p>
-            <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} >
-              <Form.Group controlId='validateText'>
-                <Form.Label>
-                  Text:
+            </Alert> : null
+          }
+          <p>Want to contact us or provide feedback? Please share your thoughts below.</p>
+          <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit} >
+            <Form.Group controlId='validateText'>
+              <Form.Label>
+                Text:
                 </Form.Label>
-                <Form.Control
-                  value={text}
-                  onChange={this.inputUpdate}
-                  style={{ maxHeight: '180px', minHeight: '112px' }}
-                  as="textarea" rows="3" name='text' minLength='10' maxLength='500'
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please provide some text. Min 10 characters.
+              <Form.Control
+                value={text}
+                onChange={this.inputUpdate}
+                style={{ maxHeight: '180px', minHeight: '112px' }}
+                as="textarea" rows="3" name='text' minLength='10' maxLength='500'
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Please provide some text. Min 10 characters.
                 </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-                <Button 
-                  variant='light-blue' type="submit" style={{ width: '200px' }}>
-                  Submit
+            </Form.Group>
+            <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+              <Button
+                variant='light-blue' type="submit" style={{ width: '200px' }}>
+                Submit
                 </Button>
-              </Form.Group>
-            </Form>
-          </div>
-        </Container>
+            </Form.Group>
+          </Form>
+        </div>
       </Layout>
     )
   }

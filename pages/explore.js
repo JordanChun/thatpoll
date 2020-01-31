@@ -41,7 +41,7 @@ class Explore extends React.Component {
       method: 'POST',
     });
     const data = await res.json();
-  
+
     return {
       polls: data.pollsArr,
       totalItems: data.totalItems
@@ -61,7 +61,7 @@ class Explore extends React.Component {
 
   updateFilter(eventKey, e) {
     let href = '/explore/?page=1';
-    
+
     const queries = Object.assign({}, this.props.router.query);
     queries.page = 1;
     queries[e.target.name] = eventKey;
@@ -89,40 +89,38 @@ class Explore extends React.Component {
         ads={true}
         pageTitle={'ThatPoll - Explore'}
       >
-        <Container className='main-wrapper'>
-          <Row>
-            <Col md={9}>
-              <div className='d-flex justify-content-between'>
-                <h4 className='page-header' style={{ padding: 0 }}>Polls</h4>
-                <Button variant='simple' size='sm' onClick={this.toggleFilter}>
-                  <FontAwesomeIcon icon={faFilter} /> Filter
+        <Row>
+          <Col md={9}>
+            <div className='d-flex justify-content-between'>
+              <h4 className='page-header' style={{ padding: 0 }}>Polls</h4>
+              <Button variant='simple' size='sm' onClick={this.toggleFilter}>
+                <FontAwesomeIcon icon={faFilter} /> Filter
                 </Button>
+            </div>
+            {showFilters ? <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} /> : null}
+          </Col>
+        </Row>
+        <hr />
+
+        <Row>
+          <Col md={9}>
+            {polls.length === 0 ?
+              <div className='no-polls-card'>
+                <h4>No Polls Found</h4>
               </div>
-            { showFilters ? <PollListFilter updateFilter={this.updateFilter} query={this.props.router.query} /> : null }
-            </Col>
-          </Row>
-          <hr />
-          
-          <Row>
-            <Col md={9}>
-              { polls.length === 0 ?
-                <div className='no-polls-card'>
-                  <h4>No Polls Found</h4>
-                </div>
               :
-                <div>
-                  {polls.map((poll, i) => (
-                    <PollCard key={i} poll={poll} />
-                  ))}
-                  <PollPagination totalItems={totalItems} />
-                </div>
-              }
-            </Col>
-            <Col>
-              <VoteHistory />
-            </Col>
-          </Row>
-        </Container>
+              <div>
+                {polls.map((poll, i) => (
+                  <PollCard key={i} poll={poll} />
+                ))}
+                <PollPagination totalItems={totalItems} />
+              </div>
+            }
+          </Col>
+          <Col>
+            <VoteHistory />
+          </Col>
+        </Row>
       </Layout>
     )
   }

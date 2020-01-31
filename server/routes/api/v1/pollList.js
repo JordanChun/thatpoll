@@ -34,9 +34,6 @@ router.post('/polls', async (req, res) => {
     case 'all':
       sortBy.totalVotes = -1;
       break;
-    case 'any':
-      sortBy.dateCreated = -1;
-      break;
     default:
       sortBy.dateCreated = -1;
       break;

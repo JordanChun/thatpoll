@@ -51,7 +51,9 @@ function Layout(props) {
         {props.ads ? <script data-ad-client="ca-pub-7980461707615662" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> : null}
       </Head>
       <MainHeader />
-      {props.children}
+        <Container className='main-wrapper'>
+          {props.children}
+        </Container>
       <MainFooter />
       {showBanner ? <CookiesBanner closeBanner={closeBanner} /> : null } 
     </div>

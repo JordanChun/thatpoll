@@ -5,13 +5,11 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 const ErrorLayout = props => (
-  <Container className='main-wrapper'>
-    <Container>
-      <div className='error-container'>
-        <h4 className='page-header'>{props.errorCode} {props.errorInfo}</h4>
-        <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
-      </div>
-    </Container>
+  <Container>
+    <div className='error-container'>
+      <h4 className='page-header'>{props.errorCode} {props.errorInfo}</h4>
+      <Button variant='grey-blue' onClick={() => Router.back()}>Go back</Button>
+    </div>
   </Container>
 );
 
@@ -23,9 +21,9 @@ class ErrorPage extends React.Component {
     }
   }
 
-  static getInitialProps({res, xhr}) {
+  static getInitialProps({ res, xhr }) {
     const errorCode = res ? res.statusCode : (xhr ? xhr.status : null)
-    return {errorCode}
+    return { errorCode }
   }
 
   render() {
@@ -37,7 +35,7 @@ class ErrorPage extends React.Component {
           <Layout pageTitle='Not Authorized'>
             <ErrorLayout
               errorCode={this.props.errorCode}
-              errorInfo='Not Authorized'  
+              errorInfo='Not Authorized'
             />
           </Layout>
         )
@@ -47,7 +45,7 @@ class ErrorPage extends React.Component {
           <Layout pageTitle='Page Not Found'>
             <ErrorLayout
               errorCode={this.props.errorCode}
-              errorInfo='Page Not Found'  
+              errorInfo='Page Not Found'
             />
           </Layout>
         )
@@ -57,7 +55,7 @@ class ErrorPage extends React.Component {
           <Layout pageTitle='Internal Server Error'>
             <ErrorLayout
               errorCode={this.props.errorCode}
-              errorInfo='Internal Server Error'  
+              errorInfo='Internal Server Error'
             />
           </Layout>
         )

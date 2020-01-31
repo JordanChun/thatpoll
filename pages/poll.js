@@ -35,7 +35,7 @@ class PollPage extends React.Component {
     }
     const res = await fetch(`${baseUrl}/api/v1/poll/${slug}`, {
       method: 'POST',
-      headers: { 
+      headers: {
         'X-IP': clientIp,
         'X-CID': cid
       }
@@ -123,7 +123,7 @@ class PollPage extends React.Component {
       this.setState({ selectedChoices });
     }
   }
-  
+
   updateChoiceSelected(e) {
     this.setState({ selectedChoices: [parseInt(e.target.value)] });
   }
@@ -152,15 +152,15 @@ class PollPage extends React.Component {
         refreshResultsLoading: false,
       });
 
-      
+
     } catch (err) {
-      
+
     }
   }
 
   async submitVote(e, req) {
     e.preventDefault();
-    if(this.state.selectedChoices !== null) {
+    if (this.state.selectedChoices !== null) {
       const { origin } = absoluteUrl(req);
       const { slug } = this.props.router.query;
       try {
@@ -170,12 +170,12 @@ class PollPage extends React.Component {
             'Accept': 'accplication/json',
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({selectedChoices: this.state.selectedChoices})
+          body: JSON.stringify({ selectedChoices: this.state.selectedChoices })
         });
-  
+
         const data = await res.json();
 
-        if(data.message === 'error') {
+        if (data.message === 'error') {
           this.setState({ submitError: true });
         } else if (data.message === 'didVote') {
           this.setState({ userDidVoteError: true });
@@ -193,7 +193,7 @@ class PollPage extends React.Component {
           }
           this.setState({ userDidVote: true });
         }
-        
+
       } catch (err) {
         this.setState({ submitError: true });
       }
@@ -243,37 +243,27 @@ class PollPage extends React.Component {
         pageDesc={desc}
         visibility={visibility}
         path={this.props.router.asPath}
-        //ads={true}
+      //ads={true}
       >
-        <Container className='main-wrapper'>
-          <div id='poll'>
-            <div className='content-container'>
-              {visibility === 'private' ?
-                <div className='poll-alert' data-html2canvas-ignore>
-                  <Alert variant='danger'>
-                    This is a <b>private</b> poll. Please consider before sharing the link.
+        <div id='poll'>
+          <div className='content-container'>
+            {visibility === 'private' ?
+              <div className='poll-alert' data-html2canvas-ignore>
+                <Alert variant='danger'>
+                  This is a <b>private</b> poll. Please consider before sharing the link.
                 </Alert>
-                </div>
-                : null}
-              <h3 className='poll-title'>{title}</h3>
-              <hr />
-              {desc.length > 0 ?
-                <div className='poll-desc mb-2'>
-                  <h6>Description</h6>
-                  <div>
-                    <p>
-                      {desc.length > 0 ? desc : <i>No description</i>}
-                    </p>
-                    <hr />
-                    <div className='poll-stat'>
-                      Category: {category}
-                    </div>
-                    <div className='poll-stat'>
-                      {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
-                    </div>
-                  </div>
-                </div> :
-                <div className='poll-no-desc mb-2'>
+              </div>
+              : null}
+            <h3 className='poll-title'>{title}</h3>
+            <hr />
+            {desc.length > 0 ?
+              <div className='poll-desc mb-2'>
+                <h6>Description</h6>
+                <div>
+                  <p>
+                    {desc.length > 0 ? desc : <i>No description</i>}
+                  </p>
+                  <hr />
                   <div className='poll-stat'>
                     Category: {category}
                   </div>
@@ -281,73 +271,81 @@ class PollPage extends React.Component {
                     {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
                   </div>
                 </div>
-              }
-              <Row noGutters className='poll-options-row' data-html2canvas-ignore>
-                <Col>
-                  <div className='poll-options'>
-                    <PollShare url={url} />
-                    <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
-                  </div>
-                </Col>
-              </Row>
-            </div>
-            <div className='content-container'>
-              <div className='poll-vote-time'>
-                <div>
-                  <h4>
-                    <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
-                  </h4>
-                  {pollExpires ?
-                    <h5 data-html2canvas-ignore className='poll-time'>
-                      <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b>
-                    </h5> : null
-                  }
+              </div> :
+              <div className='poll-no-desc mb-2'>
+                <div className='poll-stat'>
+                  Category: {category}
+                </div>
+                <div className='poll-stat'>
+                  {visits.toLocaleString()} views • {moment.utc(dateCreated).local().format('ll')}
                 </div>
               </div>
-              {active && !userDidVote ?
-                <PollChoices
+            }
+            <Row noGutters className='poll-options-row' data-html2canvas-ignore>
+              <Col>
+                <div className='poll-options'>
+                  <PollShare url={url} />
+                  <ReportButton urlref={this.props.router.query.slug} polltitle={title} />
+                </div>
+              </Col>
+            </Row>
+          </div>
+          <div className='content-container'>
+            <div className='poll-vote-time'>
+              <div>
+                <h4>
+                  <FontAwesomeIcon icon={faVoteYea} /> <b>{totalVotes.toLocaleString()}</b> votes
+                  </h4>
+                {pollExpires ?
+                  <h5 data-html2canvas-ignore className='poll-time'>
+                    <FontAwesomeIcon icon={faStopwatch} /> <b>{timelimit}</b>
+                  </h5> : null
+                }
+              </div>
+            </div>
+            {active && !userDidVote ?
+              <PollChoices
                 userDidVote={userDidVote}
                 userDidVoteError={userDidVoteError}
                 submitError={submitError}
                 choices={choices}
                 revealResults={revealResults}
-                  updateChoiceSelected={this.updateChoiceSelected}
-                  updateMultiChoiceSelected={this.updateMultiChoiceSelected}
-                  submitVote={this.submitVote}
-                  loadResults={this.loadResults}
-                  selectedChoices={selectedChoices}
-                  multiChoice={multiChoice}
-                  maxSelectChoices={maxSelectChoices}
-                  /> : null}
+                updateChoiceSelected={this.updateChoiceSelected}
+                updateMultiChoiceSelected={this.updateMultiChoiceSelected}
+                submitVote={this.submitVote}
+                loadResults={this.loadResults}
+                selectedChoices={selectedChoices}
+                multiChoice={multiChoice}
+                maxSelectChoices={maxSelectChoices}
+              /> : null}
 
-              {!active || userDidVote || revealResults ?
-                <PollResults
+            {!active || userDidVote || revealResults ?
+              <PollResults
                 combinedResults={entries.reduce((total, current) => total + current.result, 0)}
                 resultsLoading={resultsLoading}
                 refreshResultsLoading={refreshResultsLoading}
                 loadResults={this.loadResults}
                 active={active}
                 entries={entries}
-                />
+              />
               : null}
+          </div>
+          {!active || userDidVote || revealResults ? <Screenshot /> : null}
+          <div className='poll-extra-info'>
+            <div>
+              <h6>Additional Information</h6>
+              {multiChoice ? <p>This is a <b>multiple</b> choice poll with up to <b>{maxSelectChoices}</b> selections</p> : <p>This is a <b>single</b> choice poll of <b>1</b> selection.</p>}
+              {active ? <p>This poll is still <b>running</b></p> : <p>This poll ended on <b>{moment.utc(endDate).local().format('MMMM Do YYYY, h:mm:ss a')}</b></p>}
             </div>
-            {!active || userDidVote || revealResults ? <Screenshot /> : null }
-            <div className='poll-extra-info'>
-              <div>
-                <h6>Additional Information</h6>
-                {multiChoice ? <p>This is a <b>multiple</b> choice poll with up to <b>{maxSelectChoices}</b> selections</p> : <p>This is a <b>single</b> choice poll of <b>1</b> selection.</p> }
-                {active ? <p>This poll is still <b>running</b></p> : <p>This poll ended on <b>{moment.utc(endDate).local().format('MMMM Do YYYY, h:mm:ss a')}</b></p>} 
-              </div>
-              <div className='created-with'>
-                <p><b>Created with ThatPoll.com</b></p>
-                <ReactSVG src='/public/img/ThatPoll_Logo.svg' beforeInjection={svg => {
-                  svg.setAttribute('style', 'height: 40px');
-                  svg.setAttribute('style', 'width: 150px')
-                }} />
-              </div>
+            <div className='created-with'>
+              <p><b>Created with ThatPoll.com</b></p>
+              <ReactSVG src='/public/img/ThatPoll_Logo.svg' beforeInjection={svg => {
+                svg.setAttribute('style', 'height: 40px');
+                svg.setAttribute('style', 'width: 150px')
+              }} />
             </div>
           </div>
-        </Container>
+        </div>
       </Layout>
     )
   }

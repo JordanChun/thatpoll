@@ -165,10 +165,10 @@ class CreatePoll extends React.Component {
         default:
           this.setState({ success: true });
           Router.push(`/poll?slug=${data.url}`, `/poll/${data.url}`).then(() => window.scrollTo(0, 0));
-      } 
-        window.scrollTo({ top: 56, left: 0, behavior: 'smooth' });
+      }
+      window.scrollTo({ top: 56, left: 0, behavior: 'smooth' });
 
-    } catch(err) {
+    } catch (err) {
       this.setState({ error: true });
     }
   }
@@ -189,7 +189,7 @@ class CreatePoll extends React.Component {
   removeChoice(e) {
     if (this.state.choices.length > 2) {
       const choices = this.state.choices.slice();
-      choices.splice(e.target.dataset['index'], 1);
+      choices.splice(e.currentTarget.dataset['index'], 1);
       this.setState({ choices: choices })
     }
   }
@@ -219,24 +219,23 @@ class CreatePoll extends React.Component {
         path={this.props.router.asPath}
         ads={true}
       >
-        <Container className='main-wrapper'>
-          <div className='content-container'>
+        <div className='content-container'>
           <h4 className='page-header'><FontAwesomeIcon icon={faPoll} /> Create Poll - Instant Poll Maker</h4>
           <hr />
-          { error ?
+          {error ?
             <Alert variant='danger'>
-            <b>Error submitting poll</b>
-            </Alert> : null }
-          { createLimit ?
+              <b>Error submitting poll</b>
+            </Alert> : null}
+          {createLimit ?
             <Alert variant='warning'>
-            <b>You have reached the limit for now. Please try again in a few hours.</b>
-            </Alert> : null }
-          { duplicate ? <Alert variant='danger'>
+              <b>You have reached the limit for now. Please try again in a few hours.</b>
+            </Alert> : null}
+          {duplicate ? <Alert variant='danger'>
             <b>Duplicate choices found</b>
-            </Alert> : null }
-          { success ? <Alert variant='success'>
+          </Alert> : null}
+          {success ? <Alert variant='success'>
             <b>Success!</b>
-            </Alert> : null }
+          </Alert> : null}
           <Form noValidate validated={validated} autoComplete='off' onSubmit={this.handleSubmit}>
             <Form.Group controlId="validationTitle">
               <Form.Label>
@@ -275,33 +274,39 @@ class CreatePoll extends React.Component {
                 as="select"
                 name='category'
               >
-              <option>Select a category</option>
-              {CategoriesList.map((category, i) => (
-                <option key={i}>{category}</option>
-              ))}
+                <option>Select a category</option>
+                {CategoriesList.map((category, i) => (
+                  <option key={i}>{category}</option>
+                ))}
               </Form.Control>
             </Form.Group>
             {choices.map((choiceObj, i) => (
               <Form.Group key={i} controlId={`validateChoice${i}`}>
                 <Form.Label>
-                  Choice #{i+1}
+                  Choice #{i + 1}
                 </Form.Label>
-              {i > 1 ?
-                <InputGroup className="mb-3">
-                  <InputGroup.Prepend>
-                    <Button variant="grey-blue" data-index={i} onClick={this.removeChoice}><FontAwesomeIcon icon={faMinus} /></Button>
-                  </InputGroup.Prepend>
-                  <FormControl value={choiceObj.choice}
+                {i > 1 ?
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <Button variant="grey-blue"
+                        data-index={i}
+                        onClick={this.removeChoice}
+                        style={{ borderTopLeftRadius: '0.25rem', borderBottomLeftRadius: '0.25rem' }}
+                      >
+                      <FontAwesomeIcon icon={faMinus} />
+                      </Button>
+                    </InputGroup.Prepend>
+                    <FormControl value={choiceObj.choice}
+                      data-index={i}
+                      onChange={this.updateChoice}
+                      type='text' minLength='1' maxLength='75' required />
+                  </InputGroup> :
+                  <Form.Control
+                    value={choiceObj.choice}
                     data-index={i}
                     onChange={this.updateChoice}
-                    type='text' minLength='1' maxLength='75' required />
-                </InputGroup> :
-                <Form.Control
-                  value={choiceObj.choice}
-                  data-index={i}
-                  onChange={this.updateChoice}
-                  type='text' minLength='1' maxLength='75'
-                  required /> }
+                    type='text' minLength='1' maxLength='75'
+                    required />}
 
                 <Form.Control.Feedback type="invalid">
                   Please provide a choice or remove it. Duplicate choices are <b>not</b> allowed. Min 1 characters.
@@ -341,19 +346,19 @@ class CreatePoll extends React.Component {
                   checked={multiChoice === true ? true : false}
                 />
                 <p>Allows multiple choices to be selected.</p>
-                { multiChoice ?
-                <div>
-                  <Form.Label>
-                    Max Selectable Choices
+                {multiChoice ?
+                  <div>
+                    <Form.Label>
+                      Max Selectable Choices
                   </Form.Label>
-                  <Form.Control
-                    value={maxSelectChoices}
-                    onChange={this.inputUpdate}
-                    style={{ maxWidth: '200px' }}
-                    type='number' min='2' max={choices.length} name='maxSelectChoices'
-                    className="mb-1"
+                    <Form.Control
+                      value={maxSelectChoices}
+                      onChange={this.inputUpdate}
+                      style={{ maxWidth: '200px' }}
+                      type='number' min='2' max={choices.length} name='maxSelectChoices'
+                      className="mb-1"
                     />
-                </div> : null }
+                  </div> : null}
               </Form.Group>
               <Form.Group as={Col} controlId='validatePollExpires'>
                 <Form.Check
@@ -362,8 +367,8 @@ class CreatePoll extends React.Component {
                   label='Set voting expiration date and time.'
                   onChange={() => this.togglePollExpires()}
                   checked={pollExpires ? true : false}
-                  />
-                { pollExpires ?
+                />
+                {pollExpires ?
                   <div>
                     <DatePicker
                       inline
@@ -376,27 +381,27 @@ class CreatePoll extends React.Component {
                       maxTime={isSameDay(addYears(new Date(), 10), endDate) ? new Date() : setHours(setMinutes(new Date(), 30), 23)}
                       showTimeSelect
                     />
-                    {endDate >= addMinutes(new Date(), 30) && endDate <= addYears(addMinutes(new Date(), 30), 10)?
+                    {endDate >= addMinutes(new Date(), 30) && endDate <= addYears(addMinutes(new Date(), 30), 10) ?
                       <div>
                         <p>Voting ends in: <b>{timelimit}</b> on <b>{format(endDate, 'MMMM do, yyyy, p')}</b></p>
                       </div> :
                       <div className='invalid-feedback' style={{ display: 'block' }}>
                         <p><b>Please select a valid date and time to end. Minimum 30 minutes.</b></p>
-                      </div> }
+                      </div>}
                   </div> : null
                 }
               </Form.Group>
             </Form.Row>
             <hr />
             <Form.Group style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-              <Button 
+              <Button
                 variant='light-blue' type="submit" style={{ width: '200px' }}>
                 Create Poll
               </Button>
             </Form.Group>
           </Form>
-          </div>
-          {/*
+        </div>
+        {/*
           <div className='poll-preview'>
             <h4 className='page-header'><FontAwesomeIcon icon={faEye} /> Preview</h4>
             <hr />
@@ -404,7 +409,6 @@ class CreatePoll extends React.Component {
           </div>
 
           */}
-        </Container>
       </Layout>
     )
   }
