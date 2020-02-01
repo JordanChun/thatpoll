@@ -580,15 +580,21 @@ a:not([href]):not([tabindex]).social-buttons {
   justify-content: space-between;
 }
 
-.tag-active {
+.card-tag {
   margin-left: 0.5rem;
 }
 
-.tag-active span {
+.card-tag span.tag-live, .card-tag span.tag-ended {
   font-size: 0.7rem;
   padding: 0.2rem 0.3rem;
-  background-color: #d4d4d4;
+  background-color: #ffc6c6;
   border-radius: 0.25rem;
+  color: red;
+}
+
+.card-tag span.tag-ended {
+  background-color: #d2d2d2;
+  color: black;
 }
 
 /* .poll-choices .choice-btns {

@@ -29,8 +29,12 @@ const PollCard = props => (
           </h6>
         </a>
       </Link>
-      <div className='tag-active'>
-        <span>{props.poll.active ? <b style={{ color: 'red' }}>LIVE</b> : <b>ENDED</b>}</span>
+      <div className='card-tag'>
+        {props.poll.active ?
+          <span className='tag-live'><b>LIVE</b></span>
+          : 
+          <span className='tag-ended'><b>ENDED</b></span>
+        }
       </div>
     </div>
     {props.poll.desc.length > 0 ?
@@ -45,7 +49,7 @@ const PollCard = props => (
       <div className='align-items-center'>
         <FontAwesomeIcon icon={faVoteYea} />
         <div className='poll-stat' style={{ marginLeft: '0.5rem' }}>
-          <span>{props.poll.totalVotes.toLocaleString()} votes • {props.poll.dateCreated}</span>
+          <span><b>{props.poll.totalVotes.toLocaleString()}</b> votes • {props.poll.dateCreated}</span>
         </div>
       </div>
       <div className='poll-card-actions-options' onClick={(e) => {e.stopPropagation()}}>

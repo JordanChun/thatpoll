@@ -17,7 +17,7 @@ function setQueryString(query) {
 }
 
 const PollPagination = props => {
-  const { status, most } = props.router.query;
+  const { status, most, page } = props.router.query;
   let active;
   if (props.router.query.page) {
     active = props.router.query.page;
@@ -26,6 +26,20 @@ const PollPagination = props => {
   }
   let items = [];
   let offset = 0;
+
+  // first page
+  if (active !== 1 && page != 1) {
+    items.push(
+      <li className='page-item' key='first'>
+        <Link href={{ pathname: '/explore', query: { page: 1, status: status, most: most } }} as={`?page=${1}${setQueryString(props.router.query)}`}>
+          <a className="page-link" role="button">
+            <span aria-hidden="true">‹‹</span>
+            <span className="sr-only">First</span>
+          </a>
+        </Link>
+      </li>
+    );
+  }
 
   // go to prev page
   if (active > 3) {
@@ -46,9 +60,7 @@ const PollPagination = props => {
   let totalPages = Math.ceil(totalItems/10);
   if (totalPages === 0) totalPages = 1;
   active = Math.min(Math.max(active, 1), totalPages);
-  // max offset = total pages - max pagination items
   offset = Math.min(Math.max(offset, 0), Math.max((totalPages - 5), 0));
-  //offset = Math.min(Math.max(offset, 0), (totalPages - 5));
   
 
   for (let i = 1; i <= 5; i++) {
@@ -85,6 +97,20 @@ const PollPagination = props => {
         </Link>
       </li>
     )
+  }
+
+  // last page
+  if (active !== totalPages) {
+    items.push(
+      <li className='page-item' key='last'>
+        <Link href={{ pathname: '/explore', query: { page: totalPages, status: status, most: most } }} as={`?page=${totalPages}${setQueryString(props.router.query)}`}>
+          <a className="page-link" role="button">
+            <span aria-hidden="true">››</span>
+            <span className="sr-only">Last</span>
+          </a>
+        </Link>
+      </li>
+    );
   }
 
   return (

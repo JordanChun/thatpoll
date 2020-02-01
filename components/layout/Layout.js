@@ -2,7 +2,6 @@ import Head from 'next/head';
 import MainHeader from './MainHeader';
 import MainFooter from './MainFooter';
 import Container from 'react-bootstrap/Container';
-//import '../style/index.css';
 import { useState, useEffect, useCallback } from 'react';
 import CookiesBanner from './CookiesBanner';
 import Cookies from 'js-cookie';
