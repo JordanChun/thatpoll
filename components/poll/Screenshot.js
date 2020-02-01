@@ -40,6 +40,10 @@ class Screenshot extends React.Component {
     pollDoc.style.width = '1140px';
 
     let canvasHeight = pollDoc.scrollHeight + 20;
+    // remove alert 
+    if (pollDoc.getElementsByClassName('poll-alert').length > 0) {
+      canvasHeight -= pollDoc.getElementsByClassName('poll-alert')[0].scrollHeight;
+    }
     // remove options section
     canvasHeight -= pollDoc.getElementsByClassName('poll-options-row row no-gutters')[0].scrollHeight;
     // remove screenshot section
@@ -52,6 +56,7 @@ class Screenshot extends React.Component {
         canvasHeight += 8;
       }
     }
+
     // remove time
     if (pollDoc.getElementsByClassName('poll-time').length > 0) {
       canvasHeight -= pollDoc.getElementsByClassName('poll-time')[0].scrollHeight;
@@ -98,6 +103,11 @@ class Screenshot extends React.Component {
             containers[1].getElementsByClassName('poll-vote-time')[0].style.height = containers[1].getElementsByClassName('poll-vote-time')[0].scrollHeight - document.getElementsByClassName('poll-time')[0].scrollHeight + 'px';
             containers[1].style.height = containers[1].scrollHeight - 20 + 'px';
           }
+
+          // remove alert 
+          if (document.getElementsByClassName('poll-alert').length > 0) {
+            containers[0].style.height = containers[0].scrollHeight - document.getElementsByClassName('poll-alert')[0].scrollHeight + 'px';
+          }
           
           // for media query
           if (document.body.clientWidth < 578) {
@@ -110,14 +120,6 @@ class Screenshot extends React.Component {
 
           // Show created with div
           pollDiv.getElementsByClassName('created-with')[0].style.display = 'block';
-
-          // const multiplyRatio = 1140/containers[0].scrollWidth;
-
-          // Array.from(pollDiv.getElementsByTagName("*")).forEach(el => {
-          //   if (el.className !== 'result-bar') {
-          //     el.style.width = el.scrollWidth * multiplyRatio + 'px';
-          //   }
-          // });
 
         }
       }).then(canvas => {
