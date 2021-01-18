@@ -42,7 +42,7 @@ db.once('open', function() {
   console.log('db connected');
 });
 
-var whitelist = ['http://localhost:3000', 'http://thatpoll.com', 'https://thatpoll.com', 'http://www.thatpoll.com', 'https://www.thatpoll.com']
+var whitelist = ['http://localhost:8080']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1 || !origin) {
