@@ -1,6 +1,0 @@
-  Remove '0.0.0.0' used to force ipv4 for local testing
-  
-  server.listen(port, '0.0.0.0', err => {
-    if (err) throw err
-    console.log(`> Ready on http://localhost:${port}`)
-  })
