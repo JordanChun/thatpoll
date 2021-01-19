@@ -1,5 +1,15 @@
-# thatpoll
-NextJs, MERN Polling web app
+# ThatPoll - NextJs, MERN Stack
+A fast and simple poll creating web app.
+- Live results
+- Capture screenshot of poll and results
+- Duplicate vote testing
+- Light/Dark theme
+- Easy poll creation, poll expiration
+- Sortable poll listings
+- Social share buttons
+- Vote history
+- Mobile friendly
+
 
 Setup
 1. Install dependencies
