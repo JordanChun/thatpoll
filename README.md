@@ -16,7 +16,7 @@ Setup
 ```
 yarn
 ```
-2. Create .env file
+2. Create .env file in root folder
 ```
 PORT=8080
 NODE_ENV=production
