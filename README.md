@@ -1,5 +1,6 @@
 # ThatPoll - NextJs, MERN Stack
 A fast and simple poll creating web app.
+
 - Live results
 - Capture screenshot of poll and results
 - Duplicate vote testing
@@ -10,6 +11,11 @@ A fast and simple poll creating web app.
 - Vote history
 - Mobile friendly
 
+![alt text](https://github.com/JordanChun/thatpoll/blob/master/screenshots/create-poll.jpg?raw=true)
+![alt text](https://github.com/JordanChun/thatpoll/blob/master/screenshots/explore-page.jpg?raw=true)
+![alt text](https://github.com/JordanChun/thatpoll/blob/master/screenshots/generate-image.jpg?raw=true)
+![alt text](https://github.com/JordanChun/thatpoll/blob/master/screenshots/poll-page.jpg?raw=true)
+![alt text](https://github.com/JordanChun/thatpoll/blob/master/screenshots/toggle-theme.jpg?raw=true)
 
 Setup
 1. Install dependencies
